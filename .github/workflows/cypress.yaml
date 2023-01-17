@@ -1,0 +1,24 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Cypress CI(E2E)
+
+on: [ deployment_status ]
+
+jobs: 
+  E2E:
+    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+    - name: Run Cypress
+      uses: cypress-io/github-action@v5 # use the explicit version number
+      with:
+        browser: chrome
+        record: true
+      env:
+        CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
+        CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
