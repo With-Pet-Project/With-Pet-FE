@@ -6,7 +6,8 @@
     "extends": [
         "airbnb",
         "airbnb/hooks", 
-        "plugin:prettier/recommended"
+        "plugin:prettier/recommended",
+        "plugin:cypress/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
