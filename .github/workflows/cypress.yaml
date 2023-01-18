@@ -3,7 +3,10 @@
 
 name: Cypress CI(E2E)
 
-on: [ deployment_status ]
+on: 
+  deployment_status:
+    branches-ignore:
+      - production
 
 jobs: 
   E2E:
