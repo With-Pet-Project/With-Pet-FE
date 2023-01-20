@@ -20,8 +20,7 @@ jobs:
     - name: Run Cypress
       uses: cypress-io/github-action@v5 # use the explicit version number
       with:
-        browser: chrome
-        record: true
+        browser: chrome  # cypress cloude에서 testing영상을 녹화하고 싶다면 record: true 추가
       env:
         CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
         CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
