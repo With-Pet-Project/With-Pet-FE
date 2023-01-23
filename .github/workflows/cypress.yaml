@@ -5,8 +5,9 @@ name: Cypress CI(E2E)
 
 on: 
   # deployment_status
-  branches:
-    - AAAAAAAAAAAAAAAAAAA
+  push:
+    branches:
+      - AAAAAAAAAAAAAAAAAAA
 
 jobs: 
   E2E:
