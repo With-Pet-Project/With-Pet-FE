@@ -4,9 +4,7 @@
 name: Cypress CI(E2E)
 
 on: 
-  deployment_status:
-    branches-ignore:
-      - production
+  deployment_status
 
 jobs: 
   E2E:
