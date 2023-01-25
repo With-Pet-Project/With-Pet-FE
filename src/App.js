@@ -1,12 +1,12 @@
-import GlobalStyle from './GlobalStyle';
+import GlobalStyle from './lib/styles/GlobalStyle';
+
+import RootRoute from './routes';
 
 function App() {
   return (
     <div>
       <GlobalStyle />
-      <ul>
-        <li>test</li>
-      </ul>
+      <RootRoute />
     </div>
   );
 }
