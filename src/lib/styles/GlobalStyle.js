@@ -4,8 +4,9 @@ import { reset } from 'styled-reset';
 const GlobalStyle = createGlobalStyle`
  ${reset}
 
-  div {
-    color: red;
+  body {
+    background-color: #EEF2F8;
+    color: #1F2633;
   }
 `;
 
