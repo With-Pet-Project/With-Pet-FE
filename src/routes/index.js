@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import CommonLayoutPage from '../pages/CommonLayoutPage';
-import LandingPage from '../pages/LandingPage';
-import DiaryPage from '../pages/DiaryPage';
-import CommunityPage from '../pages/CommunityPage';
-import AccountsPage from '../pages/AccountsPage';
-import MyPage from '../pages/MyPage';
+import CommonLayoutPage from 'pages/CommonLayoutPage';
+import LandingPage from 'pages/LandingPage';
+import DiaryPage from 'pages/DiaryPage';
+import CommunityPage from 'pages/CommunityPage';
+import AccountsPage from 'pages/AccountsPage';
+import MyPage from 'pages/MyPage';
 
 function RootRoute() {
   return (
