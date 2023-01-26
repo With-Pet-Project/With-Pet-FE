@@ -1,7 +1,11 @@
-function HeaderContainer() {
-  return <div>HeaderContainer</div>;
+import './HeaderContainer.scss';
+
+function HeaderContainer({ children }) {
+  return <div className="common-header-container">{children}</div>;
 }
 
 export default HeaderContainer;
 
-// Container는 말 그대로 Container, item 할 때 Container입니다.
+// 여기서 Container는 말 그대로 Container, item 할 때 Container입니다.
+// (비지니스 로직 담는 컴포넌트 X)
+// (단순 레이아웃 O)

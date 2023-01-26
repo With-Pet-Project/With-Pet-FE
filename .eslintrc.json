@@ -24,6 +24,7 @@
       "components": [ "Link" ],
       "specialLink": [ "to" ]
     }],
+    "react/prop-types": "off",
     "no-unused-vars": "warn",
     "import/no-unresolved": "off",
     "prettier/prettier": ["error"]
