@@ -1,7 +1,7 @@
 import './HeaderContainer.scss';
 
 function HeaderContainer({ children }) {
-  return <div className="common-header-container">{children}</div>;
+  return <header className="common-header-container">{children}</header>;
 }
 
 export default HeaderContainer;
