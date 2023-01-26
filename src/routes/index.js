@@ -1,11 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import CommonLayoutPage from '../pages/CommonLayoutPage';
-import LandingPage from '../pages/LandingPage';
-import DiaryPage from '../pages/DiaryPage';
-import CommunityPage from '../pages/CommunityPage';
-import AccountsPage from '../pages/AccountsPage';
-import MyPage from '../pages/MyPage';
+import CommonLayoutPage from 'pages/CommonLayoutPage';
+import LandingPage from 'pages/LandingPage';
+import DiaryPage from 'pages/DiaryPage';
+import CommunityPage from 'pages/CommunityPage';
+import AccountsPage from 'pages/AccountsPage';
+import MyPage from 'pages/MyPage';
+import HospitalPage from 'pages/HospitalPage';
 
 function RootRoute() {
   return (
@@ -17,6 +18,7 @@ function RootRoute() {
           <Route path="community" element={<CommunityPage />} />
           <Route path="accounts" element={<AccountsPage />} />
           <Route path="mypage" element={<MyPage />} />
+          <Route path="hospital" element={<HospitalPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

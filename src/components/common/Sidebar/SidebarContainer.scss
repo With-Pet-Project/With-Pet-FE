@@ -1,0 +1,57 @@
+@import '../../../lib/styles/mediaQuery.scss';
+
+.side-navbar-container {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    margin: 0;
+    background-color: #FFFFFF;
+    width: 302px;
+    height: 100vh;
+    font-weight: 700;
+}
+
+.side-navbar-top-logo {
+    height: 176px;
+    border-bottom: 1px solid #E9EBF0;
+    box-sizing: border-box;
+    padding: 70px;
+    text-align: center;
+    font-size: 28px;
+
+    & .logo-img {
+        cursor: pointer;
+    }
+}
+
+.side-navbar-menu {
+    padding: 14px 21px;
+    height: 500px;
+
+    & ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    & ul li {
+        cursor: pointer;
+        height: 60px;
+        box-sizing: border-box;
+        padding: 18px;
+        border-radius: 9px;
+
+        &:hover {
+            background-color: #EEF2F8;
+        }
+    }
+
+    & ul span {
+        vertical-align: middle;
+    }
+}
+
+.side-navbar-menu-bottom {
+    border-top: 1px solid #E9EBF0;
+    height: 153px;
+}
