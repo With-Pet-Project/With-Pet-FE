@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
 
   a:visited, a:link {
     text-decoration: none;
+    color: inherit;
   }
 `;
 
