@@ -1,14 +1,23 @@
 @import '../../../lib/styles/mediaQuery.scss';
 
 .side-navbar-container {
-    display: flex;
     box-sizing: border-box;
-    flex-direction: column;
     margin: 0;
     background-color: #FFFFFF;
     width: 302px;
     height: 100vh;
     font-weight: 700;
+}
+
+.side-navbar-inner-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    box-sizing: border-box;
+    height: 100vh;
+    width: 302px;
+    flex-direction: column;
 }
 
 .side-navbar-top-logo {
@@ -53,5 +62,11 @@
 
 .side-navbar-menu-bottom {
     border-top: 1px solid #E9EBF0;
-    height: 153px;
+    height: 183px;
+
+    & ul {
+        box-sizing: border-box;
+        height: 100%;
+        padding: 20px 18px;
+    }
 }
