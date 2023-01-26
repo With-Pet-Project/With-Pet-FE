@@ -1,5 +1,7 @@
 import './SidebarContainer.scss';
 
+import { Link } from 'react-router-dom';
+
 function SidebarContainer() {
   return (
     <div className="side-navbar-container">
@@ -8,21 +10,31 @@ function SidebarContainer() {
       </div>
       <div className="side-navbar-menu">
         <ul>
-          <li>
-            <span>홈</span>
-          </li>
-          <li>
-            <span>다이어리</span>
-          </li>
-          <li>
-            <span>가계부</span>
-          </li>
-          <li>
-            <span>커뮤니티</span>
-          </li>
-          <li>
-            <span>병원찾기</span>
-          </li>
+          <Link to="/">
+            <li>
+              <span>홈</span>
+            </li>
+          </Link>
+          <Link to="/diary">
+            <li>
+              <span>다이어리</span>
+            </li>
+          </Link>
+          <Link to="/accounts">
+            <li>
+              <span>가계부</span>
+            </li>
+          </Link>
+          <Link to="/community">
+            <li>
+              <span>커뮤니티</span>
+            </li>
+          </Link>
+          <Link to="/">
+            <li>
+              <span>병원찾기</span>
+            </li>
+          </Link>
         </ul>
       </div>
       <div className="side-navbar-menu side-navbar-menu-bottom">
