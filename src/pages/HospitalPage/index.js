@@ -2,10 +2,12 @@ import HeaderContainer from '../../components/common/Header/HeaderContainer';
 
 function HospitalPage() {
   return (
-    <div>
-      <HeaderContainer>병원</HeaderContainer>
-      HospitalPage
-    </div>
+    <main>
+      <article>
+        <HeaderContainer>병원</HeaderContainer>
+        <section>HospitalPage</section>
+      </article>
+    </main>
   );
 }
 

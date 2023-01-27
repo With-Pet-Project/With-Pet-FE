@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function SidebarContainer() {
   return (
-    <div className="side-navbar-container">
+    <nav className="side-navbar-container">
       <div className="side-navbar-inner-container">
         <div className="side-navbar-top-logo">
           <div className="logo-img">Logo</div>
@@ -39,7 +39,7 @@ function SidebarContainer() {
           </ul>
         </div>
       </div>
-    </div>
+    </nav>
   );
 }
 
