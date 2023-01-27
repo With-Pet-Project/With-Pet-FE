@@ -1,10 +1,10 @@
-import HeaderContainer from '../../components/common/Header/HeaderContainer';
+import CommunityHeaderContainer from 'components/Community/CommunityHeaderContainer/CommunityHeaderContainer';
 
 function CommunityPage() {
   return (
     <main>
+      <CommunityHeaderContainer />
       <article>
-        <HeaderContainer>커뮤니티</HeaderContainer>
         <section>CommunityPage</section>
       </article>
     </main>
