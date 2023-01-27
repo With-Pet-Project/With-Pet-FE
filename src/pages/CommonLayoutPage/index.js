@@ -3,16 +3,16 @@ import styled from 'styled-components';
 
 import SidebarContainer from '../../components/common/Sidebar/SidebarContainer';
 
-const StyledDiv = styled.div`
+const Wrapper = styled.div`
   display: flex;
 `;
 
 function CommonLayoutPage() {
   return (
-    <StyledDiv className="common-page-root-div">
+    <Wrapper className="common-page-root-div">
       <SidebarContainer />
       <Outlet />
-    </StyledDiv>
+    </Wrapper>
   );
 }
 
