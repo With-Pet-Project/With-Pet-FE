@@ -2,10 +2,12 @@ import HeaderContainer from '../../components/common/Header/HeaderContainer';
 
 function AccountsPage() {
   return (
-    <div>
-      <HeaderContainer>가계부</HeaderContainer>
-      AccountsPage
-    </div>
+    <main>
+      <article>
+        <HeaderContainer>가계부</HeaderContainer>
+        <section>AccountsPage</section>
+      </article>
+    </main>
   );
 }
 

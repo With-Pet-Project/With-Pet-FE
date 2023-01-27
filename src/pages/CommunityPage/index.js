@@ -2,10 +2,12 @@ import HeaderContainer from '../../components/common/Header/HeaderContainer';
 
 function CommunityPage() {
   return (
-    <div>
-      <HeaderContainer>커뮤니티</HeaderContainer>
-      CommunityPage
-    </div>
+    <main>
+      <article>
+        <HeaderContainer>커뮤니티</HeaderContainer>
+        <section>CommunityPage</section>
+      </article>
+    </main>
   );
 }
 
