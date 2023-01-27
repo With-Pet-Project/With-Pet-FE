@@ -44,7 +44,9 @@
   }
 
   & ul li {
+    display: flex;
     cursor: pointer;
+    border-radius: 9px;
 
     &:hover {
       background-color: #eef2f8;
@@ -55,7 +57,6 @@
     padding: 18px;
     height: 100%;
     display: block;
-    border-radius: 9px;
   }
 
   & ul span {
