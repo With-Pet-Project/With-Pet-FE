@@ -1,8 +1,8 @@
-@import '/src/lib/styles/mediaQuery.scss';
+@import '/src/lib/styles/vars.scss';
 
 .common-header-container {
     box-sizing: border-box;
     border-bottom: 1px solid #D9D9D9;
-    height: 102px;
-    width: calc(100vw - 302px);
+    height: 150px;
+    width: 100%;
 }

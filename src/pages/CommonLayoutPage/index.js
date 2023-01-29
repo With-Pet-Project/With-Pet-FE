@@ -5,6 +5,10 @@ import SidebarContainer from '../../components/common/Sidebar/SidebarContainer';
 
 const Wrapper = styled.div`
   display: flex;
+
+  & main {
+    flex-grow: 1;
+  }
 `;
 
 function CommonLayoutPage() {
