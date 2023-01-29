@@ -9,6 +9,10 @@ const GlobalStyle = createGlobalStyle`
     color: #1F2633;
   }
 
+  body * {
+    box-sizing: border-box;
+  }
+
   a:visited, a:link {
     text-decoration: none;
     color: inherit;
