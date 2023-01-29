@@ -2,46 +2,82 @@ import './SidebarContainer.scss';
 
 import { Link } from 'react-router-dom';
 
+import LogoContainer from '../Logo/LogoContainer';
+import UserInfoContainer from '../UserInfo/UserInfoContainer';
+
 function SidebarContainer() {
   return (
     <nav className="side-navbar-container">
       <div className="side-navbar-inner-container">
-        <div className="side-navbar-top-logo">
-          <div className="logo-img">Logo</div>
+        <div className="side-navbar-top">
+          <div className="logo-box">
+            <LogoContainer />
+          </div>
+          <div className="user-info-box">
+            <UserInfoContainer />
+          </div>
         </div>
         <div className="side-navbar-menu">
           <ul>
             <li>
-              {/** img tag will be added */}
-              <Link to="/">홈</Link>
+              <Link to="/">
+                <div>
+                  <div className="side-navbar-menu-img" />
+                  <span>홈</span>
+                </div>
+              </Link>
             </li>
             <li>
-              {/** img tag will be added */}
-              <Link to="/diary">다이어리</Link>
+              <Link to="/diary">
+                <div>
+                  <div className="side-navbar-menu-img" />
+                  <span>다이어리</span>
+                </div>
+              </Link>
             </li>
             <li>
-              {/** img tag will be added */}
-              <Link to="/accounts">가계부</Link>
+              <Link to="/accounts">
+                <div>
+                  <div className="side-navbar-menu-img" />
+                  <span>가계부</span>
+                </div>
+              </Link>
             </li>
             <li>
-              {/** img tag will be added */}
-              <Link to="/community">커뮤니티</Link>
+              <Link to="/community">
+                <div>
+                  <div className="side-navbar-menu-img" />
+                  <span>커뮤니티</span>
+                </div>
+              </Link>
             </li>
             <li>
-              {/** img tag will be added */}
-              <Link to="/hospital">병원찾기</Link>
+              <Link to="/hospital">
+                <div>
+                  <div className="side-navbar-menu-img" />
+                  <span>병원찾기</span>
+                </div>
+              </Link>
             </li>
           </ul>
         </div>
         <div className="side-navbar-menu side-navbar-menu-bottom">
           <ul>
             <li>
-              {/** img tag will be added */}
-              <Link to="/mypage">마이 페이지</Link>
+              <Link to="/mypage">
+                <div>
+                  <div className="side-navbar-menu-img" />
+                  <span>마이 페이지</span>
+                </div>
+              </Link>
             </li>
             <li>
-              {/** img tag will be added */}
-              <Link to="/">로그아웃</Link>
+              <Link to="/">
+                <div>
+                  <div className="side-navbar-menu-img" />
+                  <span>로그아웃</span>
+                </div>
+              </Link>
             </li>
           </ul>
         </div>

@@ -1,0 +1,35 @@
+@import '/src/lib/styles/vars.scss';
+
+.user-info-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background-color: #F9FAFC;
+    border-radius: 10px;
+
+    & .user-img {
+        flex-basis: 55px;
+        height: 55px;
+        border: 1px solid gray;
+        border-radius: 100%;
+        background-color: gray;
+    }
+
+    & .user-nickname-email {
+        padding: 5px;
+        flex-grow: 1;
+        text-align: left;
+
+        & div:nth-child(1) span {
+            font-size: 14px;
+            line-height: 16.71px;
+        }
+
+        & div:nth-child(2) span {
+            font-size: 10px;
+            line-height: 11.93px;
+        }
+    }
+}
