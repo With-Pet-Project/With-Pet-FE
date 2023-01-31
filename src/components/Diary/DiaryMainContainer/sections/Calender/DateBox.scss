@@ -1,0 +1,33 @@
+.active {
+  background-color: #62ccab;
+  color: #fff;
+}
+
+.item {
+  position: relative;
+
+  .day {
+    left: 50%;
+    line-height: 2rem;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    float: right;
+    text-align: center;
+    border: 0 !important;
+  }
+  .hasData {
+    position: absolute;
+    border-radius: 50%;
+    background-color: #d9d9d9;
+    width: 8px;
+    height: 8px;
+    left: 64%;
+    top: 60%;
+    display: none;
+  }
+
+  .show {
+    display: block;
+  }
+}
