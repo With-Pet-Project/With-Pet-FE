@@ -1,36 +1,46 @@
 /* eslint-disable react/no-array-index-key */
+import { DAY_LIST } from 'constants';
+import DateBox from './DateBox';
 import './Calender.scss';
 
-function Calender({ yearMonth, handleMonthChange }) {
-  const { year, monthName } = yearMonth;
+function Calender({
+  yearMonth,
+  handleMonthChange,
+  handleSelectDate,
+  selectedDate,
+}) {
+  const { year, monthName, month, firstDayOfWeek, lastDay } = yearMonth;
 
-  const setCalender = () => {
-    const { month, firstDayOfWeek, lastDay } = yearMonth;
-
-    const firstDayOfWeekHtml = Array(firstDayOfWeek)
-      .fill(null)
-      .map((_, index) => (
-        <div className="item" key={`empty${index}`} id={`empty${index}`} />
-      ));
-
+  const getWeeksHtml = () => {
     const weeks = Array(lastDay)
       .fill(null)
       .map((_, index) => index + 1);
 
     const weeksHtml = weeks.map(day => {
       const id = `${year}-${month}-${day < 10 ? `0${day}` : day}`; // 이건 형태 고민해보기
-
       return (
-        <div key={id} className="item">
-          {day}
-        </div>
+        <DateBox
+          key={id}
+          date={day}
+          id={id}
+          handleSelectDate={handleSelectDate}
+          selectedDate={selectedDate}
+        />
       );
     });
-
-    return [...firstDayOfWeekHtml, ...weeksHtml];
+    return weeksHtml;
   };
 
-  const contentsHtml = setCalender();
+  const firstDayOfWeekHtml = Array(firstDayOfWeek)
+    .fill(null)
+    .map((_, index) => <div className="item" key={`empty${index}`} />);
+  const weeksHtml = getWeeksHtml();
+  const contentsHtml = [...firstDayOfWeekHtml, ...weeksHtml];
+  const dateHtml = DAY_LIST.map(day => (
+    <div className="item" key={day}>
+      {day}
+    </div>
+  ));
 
   return (
     <div className="calender">
@@ -48,15 +58,7 @@ function Calender({ yearMonth, handleMonthChange }) {
         </div>
       </div>
       <div className="body">
-        <div className="date">
-          <div className="item">Sun</div>
-          <div className="item">Mon</div>
-          <div className="item">Tue</div>
-          <div className="item">Wed</div>
-          <div className="item">Thur</div>
-          <div className="item">Fri</div>
-          <div className="item">Sat</div>
-        </div>
+        <div className="date">{dateHtml}</div>
         <div className="days">{contentsHtml}</div>
       </div>
     </div>

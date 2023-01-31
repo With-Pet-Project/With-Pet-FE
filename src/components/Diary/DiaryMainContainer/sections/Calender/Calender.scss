@@ -1,6 +1,6 @@
 .calender {
   * {
-    border: 1px solid gray;
+    // border: 1px solid gray;
   }
 
   display: flex;
@@ -12,13 +12,13 @@
   .header {
     display: flex;
     justify-content: space-between;
+    padding: 24px 0px 0px 24px;
 
     h2 {
       font-size: 28px;
     }
 
     .buttons {
-      margin-right: 30px;
       margin-bottom: 10px;
     }
 
@@ -41,6 +41,8 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: 50px auto;
+    padding-left: 5px;
+    margin-bottom: 50px;
 
     .date,
     .days {
@@ -54,11 +56,12 @@
       font-size: 17px;
       font-weight: 500;
       color: #868686;
+      font-family: 'Noto Sans', sans-serif;
+      margin-left: 10px;
     }
 
     .days > .item {
       text-align: right;
-      position: relative;
       color: #b7b7b7;
       font-size: 15px;
     }

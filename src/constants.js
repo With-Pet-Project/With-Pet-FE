@@ -15,6 +15,8 @@ export const MONTH_LIST = [
   'December',
 ];
 
+export const DAY_LIST = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
 export const getMonthYearDetails = date => {
   const monthIndex = date.getMonth();
   const monthName = MONTH_LIST[monthIndex];
@@ -25,9 +27,9 @@ export const getMonthYearDetails = date => {
   const dateObject = date;
   const firstDayOfWeek = new Date(year, monthIndex, 1).getDay();
   const lastDay = new Date(year, monthIndex + 1, 0).getDate();
-  // const dateTime = `${year}-${month}-${
-  //   date.getDate() < 10 ? `0${date.getDate()}` : `${date.getDate()}`
-  // }`;
+  const dateTime = `${year}-${month}-${
+    date.getDate() < 10 ? `0${date.getDate()}` : `${date.getDate()}`
+  }`;
   return {
     monthName,
     year,
@@ -37,7 +39,7 @@ export const getMonthYearDetails = date => {
     // monthIndex,
     month,
     // day,
-    // dateTime,
+    dateTime,
   };
 };
 
@@ -47,4 +49,13 @@ export const getNextYearMonth = (date, index) => {
   nextDate.setDate(1);
   nextDate.setMonth(newMonth);
   return getMonthYearDetails(nextDate);
+};
+
+export const toDateFormat = date => {
+  const month =
+    date.getMonth() < 10 ? `0${date.getMonth() + 1}` : `${date.getMonth() + 1}`;
+  const year = date.getFullYear().toString();
+  const day = date.getDate() < 10 ? `0${date.getDate()}` : `${date.getDate()}`;
+
+  return `${year}-${month}-${day}`;
 };
