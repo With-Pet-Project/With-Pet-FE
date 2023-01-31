@@ -5,8 +5,8 @@ import {
   getNextYearMonth,
   toDateFormat,
 } from 'constants';
-import Calender from '../Calender/Calender';
-import Challenge from '../Challenge/Challenge';
+import Calender from './Calender/Calender';
+import Challenge from './Challenge/Challenge';
 import './CenterSection.scss';
 
 function CenterSection() {

@@ -1,0 +1,31 @@
+.Challenge {
+  flex-grow: 1;
+  padding: 15px;
+  padding-left: 32px;
+  min-width: 390px;
+}
+
+.Challenge-title {
+  display: flex;
+  justify-content: space-between;
+
+  & div {
+    display: flex;
+    flex-grow: 1;
+    
+    p {
+      display: -webkit-inline-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      -webkit-line-clamp: 1;
+      padding: 0 10px;
+    }
+  }
+
+  & button {
+    min-width: 90px;
+    color: #ffffff;
+    background-color: #62ccab;
+    height: 30px;
+  }
+}
