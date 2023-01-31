@@ -1,12 +1,11 @@
-import HeaderContainer from '../../components/common/Header/HeaderContainer';
+import DiaryHeaderContainer from 'components/Diary/DiaryHeaderContainer/DiaryHeaderContainer';
+import DiaryMainContainer from 'components/Diary/DiaryMainContainer/DiaryMainContainer';
 
 function DiaryPage() {
   return (
     <main>
-      <article>
-        <HeaderContainer>다이어리</HeaderContainer>
-        <section>DiaryPage</section>
-      </article>
+      <DiaryHeaderContainer />
+      <DiaryMainContainer />
     </main>
   );
 }
