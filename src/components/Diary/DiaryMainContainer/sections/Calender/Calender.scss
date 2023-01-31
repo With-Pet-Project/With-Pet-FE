@@ -19,7 +19,7 @@
 
     .buttons {
       margin-right: 30px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     .buttons > button {
@@ -40,7 +40,7 @@
     height: 100%;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: 40px auto;
+    grid-template-rows: 50px auto;
 
     .date,
     .days {
@@ -60,6 +60,7 @@
       text-align: right;
       position: relative;
       color: #b7b7b7;
+      font-size: 15px;
     }
   }
 }

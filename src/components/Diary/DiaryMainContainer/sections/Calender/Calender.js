@@ -1,13 +1,50 @@
+/* eslint-disable react/no-array-index-key */
 import './Calender.scss';
 
-function Calender() {
+function Calender({ yearMonth, handleMonthChange }) {
+  const { year, monthName } = yearMonth;
+
+  const setCalender = () => {
+    const { month, firstDayOfWeek, lastDay } = yearMonth;
+
+    const firstDayOfWeekHtml = Array(firstDayOfWeek)
+      .fill(null)
+      .map((_, index) => (
+        <div className="item" key={`empty${index}`} id={`empty${index}`} />
+      ));
+
+    const weeks = Array(lastDay)
+      .fill(null)
+      .map((_, index) => index + 1);
+
+    const weeksHtml = weeks.map(day => {
+      const id = `${year}-${month}-${day < 10 ? `0${day}` : day}`; // 이건 형태 고민해보기
+
+      return (
+        <div key={id} className="item">
+          {day}
+        </div>
+      );
+    });
+
+    return [...firstDayOfWeekHtml, ...weeksHtml];
+  };
+
+  const contentsHtml = setCalender();
+
   return (
     <div className="calender">
       <div className="header">
-        <h2>January, 2023</h2>
+        <h2>
+          {monthName}, {year}
+        </h2>
         <div className="buttons">
-          <button type="button">←</button>
-          <button type="button">→</button>
+          <button type="button" onClick={() => handleMonthChange(-1)}>
+            ←
+          </button>
+          <button type="button" onClick={() => handleMonthChange(1)}>
+            →
+          </button>
         </div>
       </div>
       <div className="body">
@@ -20,22 +57,7 @@ function Calender() {
           <div className="item">Fri</div>
           <div className="item">Sat</div>
         </div>
-        <div className="days">
-          <div className="item">1</div>
-          <div className="item">2</div>
-          <div className="item">3</div>
-          <div className="item">4</div>
-          <div className="item">5</div>
-          <div className="item">6</div>
-          <div className="item">7</div>
-          <div className="item">8</div>
-          <div className="item">9</div>
-          <div className="item">10</div>
-          <div className="item">11</div>
-          <div className="item">12</div>
-          <div className="item">13</div>
-          <div className="item">14</div>
-        </div>
+        <div className="days">{contentsHtml}</div>
       </div>
     </div>
   );
