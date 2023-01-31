@@ -20,13 +20,17 @@
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/react-in-jsx-scope": "off",
-    "jsx-a11y/anchor-is-valid": [ "error", {
-      "components": [ "Link" ],
-      "specialLink": [ "to" ]
-    }],
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["to"]
+      }
+    ],
     "react/prop-types": "off",
     "no-unused-vars": "warn",
     "import/no-unresolved": "off",
-    "prettier/prettier": ["error"]
+    "prettier/prettier": ["error"],
+    "import/prefer-default-export": "off"
   }
 }
