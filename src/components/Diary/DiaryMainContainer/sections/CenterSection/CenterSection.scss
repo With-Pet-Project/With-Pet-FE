@@ -1,25 +1,21 @@
 @import '/src/lib/styles/vars.scss';
 
 .diary-center-section {
-    display: flex;
-    flex-basis: 420px;
+  display: flex;
+  // flex-basis: 420px;
 
-    & article {
-        border: 1px solid blue;
-        padding: 0 5px;
-        flex-basis: 44%;
-    }
+  // & article {
+  //   border: 1px solid blue;
+  //   padding: 0 5px;
+  //   flex-basis: 44%;
+  // }
 
-    & article>div {
-        display: flex;
-        justify-content: space-between;
-    }
+  // & article > div {
+  //   display: flex;
+  //   justify-content: space-between;
+  // }
 
-    & p {
-        line-height: 24px;
-    }
-}
-
-.diary-challenge {
-    flex-grow: 1;
+  // & p {
+  //   line-height: 24px;
+  // }
 }
