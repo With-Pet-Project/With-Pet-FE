@@ -3,7 +3,9 @@
 .side-navbar-container {
   margin: 0;
   background-color: #ffffff;
-  width: $sidebar-opened;
+  min-width: $sidebar-opened;
+  font-family: 'Pretendard';
+  font-style: normal;
   height: 100vh;
   font-weight: 700;
 }
