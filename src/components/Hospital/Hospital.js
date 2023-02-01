@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import { ERROR_MESSAGE } from 'constants/errorMessage';
+import HospitalMapSection from './HospitalMapSection/HospitalMapSection';
+
 // chrome://settings/content/location
 function Hospital() {
+  const { kakao } = window;
   const [location, setLocation] = useState(null);
+  const [keyword, setKeyword] = useState(null); // 전역적으로 값을 갖고 싶어서 사용했다. 맞는걸까
 
   const showLocation = ({ coords }) => {
     setLocation([coords.latitude, coords.longitude]);
@@ -34,8 +38,24 @@ function Hospital() {
   };
 
   if (!location) getLocation();
+  if (location) {
+    const geocoder = new kakao.maps.services.Geocoder();
+    const [lat, long] = location;
 
-  return <section>Hospital</section>;
+    const callback = (result, status) => {
+      if (status === kakao.maps.services.Status.OK) {
+        setKeyword(result[0].address.region_3depth_name);
+      }
+    };
+
+    geocoder.coord2Address(long, lat, callback);
+  }
+
+  return (
+    <section>
+      <HospitalMapSection keyword={keyword} />
+    </section>
+  );
 }
 
 export default Hospital;
