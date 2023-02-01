@@ -7,7 +7,7 @@ import {
 } from './Calender/hooks/date';
 import Calender from './Calender/Calender';
 import Challenge from './Challenge/Challenge';
-import './CenterSection.scss';
+import './ChallengeSection.scss';
 
 function ChallengeSection() {
   const [yearMonth, setYearMonth] = useState(getMonthYearDetails(TODAY));

@@ -1,17 +1,17 @@
 import './DiaryMainContainer.scss';
 
-import CenterSection from './sections/CenterSection/CenterSection';
-import WalkingSection from './sections/WalkingSection/WalkingSection';
-import WeightSection from './sections/WeightSection/WeightSection';
-import HealthSection from './sections/HealthSection/HealthSection';
-import SpecialNoteSection from './sections/SpecialNoteSection/SpecialNoteSection';
+import ChallengeSection from './ChallengeSection/ChallengeSection';
+import WalkingSection from './WalkingSection/WalkingSection';
+import WeightSection from './WeightSection/WeightSection';
+import HealthSection from './HealthSection/HealthSection';
+import SpecialNoteSection from './SpecialNoteSection/SpecialNoteSection';
 
 function DiaryMainContainer() {
   return (
     <div className="diary-main-container">
       <div className="diary-main-flex-container">
         <div className="diary-main-left-section">
-          <CenterSection />
+          <ChallengeSection />
           <HealthSection />
         </div>
         <div className="diary-main-right-section">
