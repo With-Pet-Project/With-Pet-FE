@@ -7,36 +7,35 @@ function Calender({
   yearMonth,
   handleMonthChange,
   handleSelectDate,
-  selectedDate,
+  selectDate,
 }) {
   const { year, monthName, month, firstDayOfWeek, lastDay } = yearMonth;
 
-  const getWeeksHtml = () => {
-    const weeks = Array(lastDay)
+  const getRestDayOfWeekHtml = () => {
+    const days = Array(lastDay)
       .fill(null)
       .map((_, index) => index + 1);
 
-    const weeksHtml = weeks.map(day => {
+    return days.map(day => {
       const id = `${year}-${month}-${day < 10 ? `0${day}` : day}`; // 이건 형태 고민해보기
       return (
         <DateBox
           key={id}
-          date={day}
+          day={day}
           id={id}
           handleSelectDate={handleSelectDate}
-          selectedDate={selectedDate}
+          selectDate={selectDate}
         />
       );
     });
-    return weeksHtml;
   };
 
   const firstDayOfWeekHtml = Array(firstDayOfWeek)
     .fill(null)
     .map((_, index) => <div className="item" key={`empty${index}`} />);
-  const weeksHtml = getWeeksHtml();
-  const contentsHtml = [...firstDayOfWeekHtml, ...weeksHtml];
-  const dateHtml = DAY_LIST.map(day => (
+  const restDayOfWeekHtml = getRestDayOfWeekHtml();
+  const daysHtml = [...firstDayOfWeekHtml, ...restDayOfWeekHtml];
+  const dayOfWeekHtml = DAY_LIST.map(day => (
     <div className="item" key={day}>
       {day}
     </div>
@@ -58,8 +57,8 @@ function Calender({
         </div>
       </div>
       <div className="body">
-        <div className="date">{dateHtml}</div>
-        <div className="days">{contentsHtml}</div>
+        <div className="dayOfWeek">{dayOfWeekHtml}</div>
+        <div className="days">{daysHtml}</div>
       </div>
     </div>
   );
