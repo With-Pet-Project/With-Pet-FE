@@ -1,11 +1,11 @@
-import DiaryHeaderContainer from 'components/Diary/DiaryHeaderContainer/DiaryHeaderContainer';
-import DiaryMainContainer from 'components/Diary/DiaryMainContainer/DiaryMainContainer';
+import DiaryHeader from 'components/Diary/DiaryHeader/DiaryHeader';
+import DiaryMain from 'components/Diary/DiaryMain/DiaryMain';
 
 function DiaryPage() {
   return (
     <main>
-      <DiaryHeaderContainer />
-      <DiaryMainContainer />
+      <DiaryHeader />
+      <DiaryMain />
     </main>
   );
 }

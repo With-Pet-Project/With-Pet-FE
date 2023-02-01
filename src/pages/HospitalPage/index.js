@@ -1,10 +1,10 @@
-import HeaderContainer from '../../components/common/Header/HeaderContainer';
+import Header from '../../components/common/Header/Header';
 
 function HospitalPage() {
   return (
     <main>
       <article>
-        <HeaderContainer>병원</HeaderContainer>
+        <Header>병원</Header>
         <section>HospitalPage</section>
       </article>
     </main>

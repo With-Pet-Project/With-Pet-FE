@@ -1,6 +1,6 @@
-import './LogoContainer.scss';
+import './Logo.scss';
 
-function LogoContainer() {
+function Logo() {
   return (
     <div className="logo-container">
       <div>logo</div>
@@ -12,4 +12,4 @@ function LogoContainer() {
   );
 }
 
-export default LogoContainer;
+export default Logo;

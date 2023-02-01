@@ -1,9 +1,9 @@
-import CommunityHeaderContainer from 'components/Community/CommunityHeaderContainer/CommunityHeaderContainer';
+import CommunityHeader from 'components/Community/CommunityHeader/CommunityHeader';
 
 function CommunityPage() {
   return (
     <main>
-      <CommunityHeaderContainer />
+      <CommunityHeader />
       <article>
         <section>CommunityPage</section>
       </article>
