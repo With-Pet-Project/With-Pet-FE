@@ -1,24 +1,24 @@
 import { useState } from 'react';
+import { TODAY } from 'constants';
 import {
-  TODAY,
   getMonthYearDetails,
   getNextYearMonth,
   toDateFormat,
-} from 'constants';
+} from './Calender/hooks/date';
 import Calender from './Calender/Calender';
 import Challenge from './Challenge/Challenge';
 import './CenterSection.scss';
 
 function CenterSection() {
   const [yearMonth, setYearMonth] = useState(getMonthYearDetails(TODAY));
-  const [selectedDate, setSelectedDate] = useState(toDateFormat(TODAY));
+  const [selectDate, setSelectDate] = useState(toDateFormat(TODAY));
 
   const handleMonthChange = index => {
     setYearMonth(prevDate => getNextYearMonth(prevDate.dateObject, index));
   };
 
   const handleSelectDate = selected => {
-    setSelectedDate(selected);
+    setSelectDate(selected);
   };
 
   return (
@@ -27,7 +27,7 @@ function CenterSection() {
         yearMonth={yearMonth}
         handleMonthChange={handleMonthChange}
         handleSelectDate={handleSelectDate}
-        selectedDate={selectedDate}
+        selectDate={selectDate}
       />
       <Challenge />
     </section>

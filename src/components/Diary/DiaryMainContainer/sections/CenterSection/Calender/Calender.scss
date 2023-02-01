@@ -45,12 +45,12 @@
     padding-left: 5px;
     margin-bottom: 50px;
 
-    .date,
+    .dayOfWeek,
     .days {
       display: contents;
     }
 
-    .date > .item {
+    .dayOfWeek > .item {
       justify-items: center;
       align-items: center;
       display: inline-grid;

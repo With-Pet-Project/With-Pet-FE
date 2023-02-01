@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import './DateBox.scss';
 
-function DateBox({ id, date, handleSelectDate, selectedDate }) {
-  const showHasDataIcon = selectedDate !== id;
+function DateBox({ id, day, handleSelectDate, selectDate }) {
+  const showHasDataIcon = selectDate !== id;
 
   return (
     <div
@@ -11,8 +11,8 @@ function DateBox({ id, date, handleSelectDate, selectedDate }) {
       className="item"
       onClick={() => handleSelectDate(id)}
     >
-      <div className={`day ${selectedDate === id ? 'active' : ''}`}>{date}</div>
-      <div className={`hasData ${showHasDataIcon ? 'show' : ''}`} />
+      <div className={`day ${selectDate === id ? 'active' : ''}`}>{day}</div>
+      <div className={`hasDataIcon ${showHasDataIcon ? 'show' : ''}`} />
     </div>
   );
 }
