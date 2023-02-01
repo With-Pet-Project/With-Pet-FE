@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TODAY } from 'constants';
+import { TODAY } from 'constants/date';
 import {
   getMonthYearDetails,
   getNextYearMonth,
