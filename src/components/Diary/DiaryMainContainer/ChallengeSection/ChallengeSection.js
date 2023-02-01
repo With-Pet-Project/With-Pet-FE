@@ -7,9 +7,9 @@ import {
 } from './Calender/hooks/date';
 import Calender from './Calender/Calender';
 import Challenge from './Challenge/Challenge';
-import './CenterSection.scss';
+import './ChallengeSection.scss';
 
-function CenterSection() {
+function ChallengeSection() {
   const [yearMonth, setYearMonth] = useState(getMonthYearDetails(TODAY));
   const [selectDate, setSelectDate] = useState(toDateFormat(TODAY));
 
@@ -34,4 +34,4 @@ function CenterSection() {
   );
 }
 
-export default CenterSection;
+export default ChallengeSection;
