@@ -1,30 +1,30 @@
-import './CommunityHeaderContainer.scss';
+import './CommunityHeader.scss';
 import styled from 'styled-components';
 
 import { useState } from 'react';
 
-import HeaderContainer from 'components/common/Header/HeaderContainer';
-import SearchContainer from 'components/Community/Search/SearchContainer';
+import Header from 'components/common/Header/Header';
+import Search from 'components/Community/Search/Search';
 
 const TitleDiv = styled.div`
   display: ${({ focus }) => (focus ? 'none' : 'block')};
 `;
 
-function CommunityHeaderContainer() {
+function CommunityHeader() {
   const [focus, setFocus] = useState(false);
 
   const isFocus = () => setFocus(!focus);
 
   return (
-    <HeaderContainer>
+    <Header>
       <div className="community-header-container">
         <TitleDiv className="community-Header-title" focus={focus}>
           커뮤니티
         </TitleDiv>
-        <SearchContainer focus={focus} isFocus={isFocus} />
+        <Search focus={focus} isFocus={isFocus} />
       </div>
-    </HeaderContainer>
+    </Header>
   );
 }
 
-export default CommunityHeaderContainer;
+export default CommunityHeader;
