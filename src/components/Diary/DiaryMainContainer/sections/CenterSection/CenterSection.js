@@ -9,7 +9,7 @@ import Calender from './Calender/Calender';
 import Challenge from './Challenge/Challenge';
 import './CenterSection.scss';
 
-function CenterSection() {
+function ChallengeSection() {
   const [yearMonth, setYearMonth] = useState(getMonthYearDetails(TODAY));
   const [selectedDate, setSelectedDate] = useState(toDateFormat(TODAY));
 
@@ -34,4 +34,4 @@ function CenterSection() {
   );
 }
 
-export default CenterSection;
+export default ChallengeSection;

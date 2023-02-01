@@ -1,0 +1,20 @@
+@import '/src/lib/styles/vars.scss';
+
+.goal-item {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #dbdbdb;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: $semi-wide) {
+    .goal-item-title {
+
+        h2 {
+            font-size: 15px !important;
+        }
+    }
+}
