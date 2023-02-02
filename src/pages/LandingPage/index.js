@@ -1,10 +1,10 @@
-import HeaderContainer from '../../components/common/Header/HeaderContainer';
+import Header from '../../components/common/Header/Header';
 
 function LandingPage() {
   return (
     <main>
       <article>
-        <HeaderContainer>홈</HeaderContainer>
+        <Header>홈</Header>
         <section>LandingPage</section>
       </article>
     </main>

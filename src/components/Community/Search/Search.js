@@ -1,4 +1,4 @@
-import './SearchContainer.scss';
+import './Search.scss';
 import styled from 'styled-components';
 
 const SearchInput = styled.input`
@@ -17,7 +17,7 @@ const SearchInput = styled.input`
   }
 `;
 
-function SearchContainer({ isFocus, focus }) {
+function Search({ isFocus, focus }) {
   return (
     <div className="search-input-container">
       <SearchInput
@@ -31,5 +31,5 @@ function SearchContainer({ isFocus, focus }) {
   );
 }
 
-export default SearchContainer;
+export default Search;
 // 검색창

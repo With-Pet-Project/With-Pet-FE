@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
-import SidebarContainer from '../../components/common/Sidebar/SidebarContainer';
+import Sidebar from '../../components/common/Sidebar/Sidebar';
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 function CommonLayoutPage() {
   return (
     <Wrapper className="common-page-root-div">
-      <SidebarContainer />
+      <Sidebar />
       <Outlet />
     </Wrapper>
   );

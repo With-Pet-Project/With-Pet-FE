@@ -1,20 +1,20 @@
-import './SidebarContainer.scss';
+import './Sidebar.scss';
 
 import { Link } from 'react-router-dom';
 
-import LogoContainer from '../Logo/LogoContainer';
-import UserInfoContainer from '../UserInfo/UserInfoContainer';
+import Logo from '../Logo/Logo';
+import UserInfo from '../UserInfo/UserInfo';
 
-function SidebarContainer() {
+function Sidebar() {
   return (
     <nav className="side-navbar-container">
       <div className="side-navbar-inner-container">
         <div className="side-navbar-top">
           <div className="logo-box">
-            <LogoContainer />
+            <Logo />
           </div>
           <div className="user-info-box">
-            <UserInfoContainer />
+            <UserInfo />
           </div>
         </div>
         <div className="side-navbar-menu">
@@ -86,4 +86,4 @@ function SidebarContainer() {
   );
 }
 
-export default SidebarContainer;
+export default Sidebar;

@@ -1,10 +1,10 @@
-import HeaderContainer from '../../components/common/Header/HeaderContainer';
+import Header from '../../components/common/Header/Header';
 
 function AccountsPage() {
   return (
     <main>
       <article>
-        <HeaderContainer>가계부</HeaderContainer>
+        <Header>가계부</Header>
         <section>AccountsPage</section>
       </article>
     </main>

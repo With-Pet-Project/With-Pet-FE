@@ -1,6 +1,6 @@
-import './UserInfoContainer.scss';
+import './UserInfo.scss';
 
-function UserInfoContainer() {
+function UserInfo() {
   return (
     <div className="user-info-container">
       <div className="user-img" />
@@ -16,4 +16,4 @@ function UserInfoContainer() {
   );
 }
 
-export default UserInfoContainer;
+export default UserInfo;
