@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { ERROR_MESSAGE } from 'constants/errorMessage';
 import HospitalMapSection from './HospitalMapSection/HospitalMapSection';
-
+import './Hospital.scss';
 // chrome://settings/content/location
+// 여기서 어쩌면 location만 보내주고 나머지 처리는 안에서 해도 ㄱㅊ할듯???
 function Hospital() {
   const { kakao } = window;
   const [location, setLocation] = useState(null);
   const [keyword, setKeyword] = useState(null); // 전역적으로 값을 갖고 싶어서 사용했다. 맞는걸까
+  const { GEOLOCATION: GEOLOCATION_ERROR } = ERROR_MESSAGE;
 
   const showLocation = ({ coords }) => {
     setLocation([coords.latitude, coords.longitude]);
@@ -16,13 +18,13 @@ function Hospital() {
   const showError = error => {
     switch (error.code) {
       case error.PERMISSION_DENIED:
-        throw new Error(ERROR_MESSAGE.PERMISSION_DENIED); // 나중에 좌표 넣어줘서 처리해주기
+        throw new Error(GEOLOCATION_ERROR.PERMISSION_DENIED); // 나중에 좌표 넣어줘서 처리해주기
       case error.POSITION_UNAVAILABLE:
-        throw new Error(ERROR_MESSAGE.POSITION_UNAVAILABLE);
+        throw new Error(GEOLOCATION_ERROR.POSITION_UNAVAILABLE);
       case error.TIMEOUT:
-        throw new Error(ERROR_MESSAGE.POSITION_UNAVAILABLE);
+        throw new Error(GEOLOCATION_ERROR.POSITION_UNAVAILABLE);
       case error.UNKNOWN_ERROR:
-        throw new Error(ERROR_MESSAGE.UNKNOWN_ERROR);
+        throw new Error(GEOLOCATION_ERROR.UNKNOWN_ERROR);
       default:
     }
   };
@@ -52,8 +54,8 @@ function Hospital() {
   }
 
   return (
-    <section>
-      <HospitalMapSection keyword={keyword} />
+    <section className="hospital-section">
+      <HospitalMapSection keyword={keyword} location={location} />
     </section>
   );
 }
