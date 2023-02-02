@@ -46,7 +46,9 @@ function Hospital() {
 
     const callback = (result, status) => {
       if (status === kakao.maps.services.Status.OK) {
-        setKeyword(result[0].address.region_3depth_name);
+        setKeyword(
+          `${result[0].address.region_1depth_name} ${result[0].address.region_2depth_name} ${result[0].address.region_3depth_name}`,
+        );
       }
     };
 
