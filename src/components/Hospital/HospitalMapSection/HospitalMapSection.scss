@@ -157,3 +157,13 @@
   cursor: default;
   color: #777;
 }
+
+.reset-button {
+  padding: 10px;
+  border: 1px solid;
+  background: #fff;
+  position: relative;
+  left: 40%;
+  top: -12%;
+  z-index: 100;
+}

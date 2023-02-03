@@ -1,38 +1,27 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable camelcase */
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useMemo } from 'react';
 import './HospitalMapSection.scss';
 import { ERROR_MESSAGE } from 'constants/errorMessage';
-import { useKeyword } from './hooks/useKeyword';
-import { displayInfowindow } from './map/infoWindow';
-import { addMarker, removeMarker, addEventMarker } from './map/marker';
-import { getListItem, removeAllChildNods } from './map/list';
-import { displayPagination } from './map/pagination';
+import { displayInfowindow } from '../hooks/map/infoWindow';
+import { addMarker, removeMarker, addEventMarker } from '../hooks/map/marker';
+import { getListItem, removeAllChildNods } from '../hooks/map/list';
+import { displayPagination } from '../hooks/map/pagination';
 
-function HospitalMapSection({ location }) {
-  const keyword = useKeyword(location);
+function HospitalMapSection({ location, keyword, setNextLocation }) {
   const [map, setMap] = useState(null);
+  const [infowindow, setInfowindow] = useState(null);
+  const [servicePlace, setServicePlace] = useState(null);
+  const [changedLocation, setChangedLocation] = useState(null);
   const list = useRef(null);
   const menu = useRef(null);
   const paginationContainer = useRef(null);
   const mapContainer = useRef(null);
   const { kakao } = window;
   const { KAKAO_MAP: KAKAO_MAP_ERROR } = ERROR_MESSAGE;
-  let infowindow; // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
-
-  useEffect(() => {
-    if (keyword) {
-      const [lat, long] = location;
-      const mapOption = {
-        center: new kakao.maps.LatLng(lat, long), // 지도의 중심좌표
-        level: 3, // 지도의 확대 레벨
-      };
-
-      setMap(new kakao.maps.Map(mapContainer.current, mapOption)); // 지도 생성
-    }
-  }, [location, keyword, kakao.maps.LatLng, kakao.maps.Map]);
 
   const displayPlaces = places => {
-    const fragment = document.createDocumentFragment();
+    const $fragment = document.createDocumentFragment();
     const bounds = new kakao.maps.LatLngBounds();
 
     removeAllChildNods(list); // 검색 결과 목록에 추가된 항목들을 제거합니다
@@ -44,26 +33,24 @@ function HospitalMapSection({ location }) {
       const placePosition = new kakao.maps.LatLng(y, x);
       const marker = addMarker(placePosition, index, map); // 마커 설정
       bounds.extend(placePosition); // position을 지정
-      const itemEl = getListItem(index, place); // 검색 결과 항목 Element를 생성합니다
+      const $item = getListItem(index, place); // 검색 결과 항목 Element를 생성합니다
       addEventMarker(marker, place_name, infowindow, map);
       // 목록 아이템 마우스 이벤트
-
-      itemEl.onmouseout = () => {
+      $item.onmouseout = () => {
         infowindow.close();
       };
-      itemEl.onmouseover = () => {
+      $item.onmouseover = () => {
         displayInfowindow(infowindow, marker, place_name, map); // 인포 윈도우 보이기 설정
       };
-
-      fragment.appendChild(itemEl);
+      $fragment.appendChild($item);
     });
 
-    list.current.appendChild(fragment);
+    list.current.appendChild($fragment);
     menu.current.scrollTop = 0;
     map.setBounds(bounds); // 지도 위치 지정
   };
 
-  const placesSearchCB = (data, status, pagination) => {
+  function placesSearchCB(data, status, pagination) {
     if (status === kakao.maps.services.Status.ZERO_RESULT)
       throw new Error(KAKAO_MAP_ERROR.ZERO_RESULT);
     if (status === kakao.maps.services.Status.ERROR) {
@@ -76,13 +63,41 @@ function HospitalMapSection({ location }) {
       // 페이지 번호를 표출합니다
       displayPagination(pagination, paginationContainer);
     }
+  }
+
+  useEffect(() => {
+    if (location && keyword) {
+      console.log(location, keyword);
+      const [lat, long] = location;
+      const mapOption = {
+        center: new kakao.maps.LatLng(lat, long), // 지도의 중심좌표
+        level: 3, // 지도의 확대 레벨
+      };
+      setMap(new kakao.maps.Map(mapContainer.current, mapOption)); // 지도 생성
+      setInfowindow(new kakao.maps.InfoWindow({ zIndex: 1 })); // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
+      setServicePlace(new kakao.maps.services.Places()); // 장소 검색 객체를 생성
+    }
+  }, [location, keyword]);
+
+  const addMapEvent = () => {
+    kakao.maps.event.addListener(map, 'dragend', () => {
+      const latlng = map.getCenter();
+      console.log(latlng.getLat(), latlng.getLng());
+      setChangedLocation([latlng.getLat(), latlng.getLng()]);
+    });
   };
 
-  if (map) {
-    const ps = new kakao.maps.services.Places(); // 장소 검색 객체를 생성
-    infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
-    ps.keywordSearch(`${keyword} 동물병원`, placesSearchCB); // 키워드로 정보 검색
-  }
+  useMemo(() => {
+    if (!servicePlace) return;
+    servicePlace.keywordSearch(`${keyword}`, placesSearchCB);
+    addMapEvent();
+  }, [servicePlace]);
+
+  const handleChangeLocation = () => {
+    const [lat, lang] = changedLocation;
+    console.log(lat, lang);
+    setNextLocation(lat, lang);
+  };
 
   return (
     <div className="map_wrap">
@@ -91,6 +106,15 @@ function HospitalMapSection({ location }) {
         <ul id="placesList" ref={list} />
         <div id="pagination" ref={paginationContainer} />
       </div>
+      {changedLocation && (
+        <button
+          type="button"
+          className="reset-button"
+          onClick={handleChangeLocation}
+        >
+          현재위치에서 재검색
+        </button>
+      )}
     </div>
   );
 }
