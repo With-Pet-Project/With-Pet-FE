@@ -15,6 +15,11 @@ function Challenge() {
       </div>
       <AchievementRate />
       <GoalsList />
+      <div className="Challenge-modal-Button">
+        <button type="button">
+          <span>챌린지 목록</span>
+        </button>
+      </div>
     </div>
   );
 }
