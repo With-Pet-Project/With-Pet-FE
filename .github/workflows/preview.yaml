@@ -4,8 +4,8 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 on:
   push:
-    branches-ignore:  # production branch 이외의 브랜치 push하면 preview deploy 자동 생성
-      - production 
+    branches-ignore: [ "production" ]
+    
 jobs:
   Deploy-Preview: # 자동 배포 
     runs-on: ubuntu-latest
