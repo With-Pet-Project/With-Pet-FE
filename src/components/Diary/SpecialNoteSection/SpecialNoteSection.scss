@@ -1,0 +1,22 @@
+.SpecialNote {
+    & > div:first-child {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    & button {
+        background-color: #ffffff;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+        color: #62CCAB;
+    }
+}
+
+.SpecialNote-textArea {
+    width: 100%;
+    height: 80%;
+    background: #f2f2f2;
+    border-radius: 10px;
+    margin: 10px 0;
+}

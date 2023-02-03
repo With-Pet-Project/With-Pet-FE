@@ -68,6 +68,7 @@
   }
 
   & section:last-child {
+    display: block;
     margin-bottom: 0;
     flex-grow: 1;
   }
@@ -102,6 +103,7 @@
 
   .diary-main-right-section {
     flex-direction: row;
+    min-height: 185px;
     margin: 10px 0;
 
     & section {
