@@ -4,10 +4,7 @@
 name: Cypress CI(E2E)
 
 on: 
-  # deployment_status
-  push:
-    branches:
-      - AAAAAAAAAAAAAAAAAAA
+  deployment_status # preview 혹은 production 배포 완료 후, 그에 대한 E2E test 자동실행
 
 jobs: 
   E2E:
@@ -19,9 +16,10 @@ jobs:
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
     - name: Run Cypress
-      uses: cypress-io/github-action@v5 # use the explicit version number
+      uses: cypress-io/github-action@v5
       with:
-        browser: chrome  # cypress cloude에서 testing영상을 녹화하고 싶다면 record: true 추가
-      env:
-        CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
+        browser: chrome
+        record: false # cypress cloud에서 record영상을 저장하는 코드
+      env: # Cypress 환경 변수 등록
+        CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }} 
         CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
