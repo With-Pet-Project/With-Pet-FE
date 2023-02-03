@@ -2,7 +2,6 @@
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
 name: Cypress CI(E2E)
-
 on: [ "deployment_status" ] # preview 혹은 production 배포 완료 후, 그에 대한 E2E test 자동실행
 
 jobs: 
@@ -18,7 +17,7 @@ jobs:
       uses: cypress-io/github-action@v5
       with:
         browser: chrome
-        record: false # cypress cloud에서 record영상을 저장하는 코드
-      env: # Cypress 환경 변수 등록
+        record: false
+      env:
         CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }} 
         CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
