@@ -10,6 +10,36 @@
     align-items: center;
 }
 
+.goal-checkBox {
+    cursor: pointer;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    margin: 0 15px;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+}
+
+.three-horizontal-dots {
+    color: #62ccab;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    width: 38px;
+    height: 38px;
+    border: 1px solid #dbdbdb;
+    border-radius: 10px;
+    margin: 0 20px 0 auto;
+    
+    & span {
+        display: block;
+        margin-left: 3.5px;
+        margin-top: -3px;
+    }
+}
+
 @media screen and (max-width: $semi-wide) {
     .goal-item-title {
 

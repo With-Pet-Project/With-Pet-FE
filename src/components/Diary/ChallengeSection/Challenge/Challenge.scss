@@ -29,3 +29,15 @@
     height: 30px;
   }
 }
+
+.Challenge-modal-Button {
+  text-align: right;
+  margin: -10px 0 0;
+
+  & button {
+    background-color: #ffffff;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+  }
+}

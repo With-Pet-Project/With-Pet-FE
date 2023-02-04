@@ -1,0 +1,45 @@
+.Health-category {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 23%;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid #DBDBDB;
+    padding: 20px;
+}
+
+.Health-category-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    & h3 {
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 17.9px;
+    }
+
+    & em {
+        font-family: 'Noto Sans' !important;
+        font-style: normal !important;
+        font-weight: 600;
+        font-size: 28px;
+        line-height: 38px;
+        color: #252525;
+    }
+
+    & span {
+        font-family: 'Noto Sans';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 25px;
+    }
+}
+
+.Health-category-img {
+    width: 46px;
+    height: 46px;
+    border-radius: 100%;
+    background-color: #E2E2E2;
+}
