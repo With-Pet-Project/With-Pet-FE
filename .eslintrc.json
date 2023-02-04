@@ -5,11 +5,11 @@
   },
   "extends": [
     "react-app",
-    "react-app/jest"
+    "react-app/jest",
     "airbnb",
     "airbnb/hooks",
     "plugin:prettier/recommended",
-    "plugin:cypress/recommended"
+    "plugin:cypress/recommended",
     "plugin:testing-library/react",
     "plugin:jest-dom/recommended",
   ],
