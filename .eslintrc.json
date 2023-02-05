@@ -11,7 +11,7 @@
     "plugin:prettier/recommended",
     "plugin:cypress/recommended",
     "plugin:testing-library/react",
-    "plugin:jest-dom/recommended",
+    "plugin:jest-dom/recommended"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -33,6 +33,7 @@
     ],
     "react/prop-types": "off",
     "no-unused-vars": "warn",
+    "import/no-extraneous-dependencies": "warn",
     "import/no-unresolved": "off",
     "prettier/prettier": ["error"],
     "import/prefer-default-export": "off"

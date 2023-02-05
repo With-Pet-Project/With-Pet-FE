@@ -1,0 +1,1 @@
+## Testing을 위한 Mock Server 폴더입니다. 경로가 바뀌면 안돼요.
