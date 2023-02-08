@@ -38,6 +38,7 @@
     "prettier/prettier": ["error"],
     "import/prefer-default-export": "off",
     "no-plusplus": "off",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-props-no-spreading": "off"
   }
 }
