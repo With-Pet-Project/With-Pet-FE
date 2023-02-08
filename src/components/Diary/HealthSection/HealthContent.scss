@@ -1,5 +1,8 @@
+@import '/src/lib/styles/vars.scss';
+
 .Health-category {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     flex-basis: 23%;
     height: 100%;
@@ -8,9 +11,8 @@
     padding: 20px;
 }
 
-.Health-category-text {
+.Health-category-top {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
 
     & h3 {
@@ -18,6 +20,20 @@
         font-weight: 500;
         line-height: 17.9px;
     }
+}
+
+.Health-circle-img {
+    width: 46px;
+    height: 46px;
+    border-radius: 100%;
+    background-color: #E2E2E2;
+}
+
+.Health-category-bottom {
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+    text-align: left;
 
     & em {
         font-family: 'Noto Sans' !important;
@@ -33,13 +49,31 @@
         font-style: normal;
         font-weight: 600;
         font-size: 18px;
-        line-height: 25px;
+        line-height: 48px;
+    }
+
+    & label {
+        display: block;
+        margin: -24px 3px 0 auto;
+        width: 28px;
+        font-family: 'Noto Sans';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 18px;
     }
 }
 
-.Health-category-img {
-    width: 46px;
-    height: 46px;
-    border-radius: 100%;
-    background-color: #E2E2E2;
+
+@media screen and (max-width: $semi-wide) {
+    .Health-category {
+        flex-basis: 48%;
+        margin-bottom: 15px;
+    }
+}
+
+@media screen and (min-width: $semi-wide) {
+    .Health-category {
+        width: 22%;
+    }
 }
