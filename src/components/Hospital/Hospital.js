@@ -6,6 +6,7 @@ import './Hospital.scss';
 
 function Hospital() {
   const [location, setLocation] = useState(null);
+  const [mapOption, setMapOption] = useState(null);
   const keyword = useKeyword(location);
 
   const showLocation = ({ coords }) => {
@@ -22,16 +23,14 @@ function Hospital() {
     }
   }, []);
 
-  const setNextLocation = (lat, lang) => {
-    setLocation([lat, lang]);
-  };
-
   return (
     <section className="hospital-section">
       <HospitalMapSection
         location={location}
         keyword={keyword}
-        setNextLocation={setNextLocation}
+        mapOption={mapOption}
+        setLocation={setLocation}
+        setMapOption={setMapOption}
       />
     </section>
   );

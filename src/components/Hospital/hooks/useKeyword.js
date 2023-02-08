@@ -13,7 +13,7 @@ export const useKeyword = location => {
       if (status === kakao.maps.services.Status.OK) {
         const { address } = result[0];
         setKeyword(
-          `${address.region_1depth_name} ${address.region_2depth_name} ${address.region_3depth_name}  동물병원`,
+          `${address.region_1depth_name} ${address.region_2depth_name} ${address.region_3depth_name} 동물병원`,
         );
       }
     };
