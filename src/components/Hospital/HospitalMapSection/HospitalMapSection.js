@@ -8,7 +8,13 @@ import { addMarker, removeMarker, addEventMarker } from '../hooks/map/marker';
 import { getListItem, removeAllChildNods } from '../hooks/map/list';
 import { displayPagination } from '../hooks/map/pagination';
 
-function HospitalMapSection({ location, keyword, setNextLocation }) {
+function HospitalMapSection({
+  location,
+  keyword,
+  mapOption,
+  setLocation,
+  setMapOption,
+}) {
   const [map, setMap] = useState(null);
   const [infowindow, setInfowindow] = useState(null);
   const [servicePlace, setServicePlace] = useState(null);
@@ -47,7 +53,7 @@ function HospitalMapSection({ location, keyword, setNextLocation }) {
 
     list.current.appendChild($fragment);
     menu.current.scrollTop = 0;
-    map.setBounds(bounds); // 지도 위치 지정
+    if (!mapOption) map.setBounds(bounds); // 지도 위치 지정
   };
 
   function placesSearchCB(data, status, pagination) {
@@ -56,7 +62,6 @@ function HospitalMapSection({ location, keyword, setNextLocation }) {
     if (status === kakao.maps.services.Status.ERROR) {
       throw new Error(KAKAO_MAP_ERROR.ERROR);
     }
-
     if (status === kakao.maps.services.Status.OK) {
       // 정상적으로 검색이 완료됐으면 검색 목록과 마커를 표출합니다
       displayPlaces(data);
@@ -67,13 +72,13 @@ function HospitalMapSection({ location, keyword, setNextLocation }) {
 
   useEffect(() => {
     if (location && keyword) {
-      console.log(location, keyword);
       const [lat, long] = location;
-      const mapOption = {
-        center: new kakao.maps.LatLng(lat, long), // 지도의 중심좌표
-        level: 3, // 지도의 확대 레벨
-      };
-      setMap(new kakao.maps.Map(mapContainer.current, mapOption)); // 지도 생성
+      setMap(
+        new kakao.maps.Map(
+          mapContainer.current,
+          mapOption || { center: new kakao.maps.LatLng(lat, long) },
+        ),
+      ); // 지도 생성
       setInfowindow(new kakao.maps.InfoWindow({ zIndex: 1 })); // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
       setServicePlace(new kakao.maps.services.Places()); // 장소 검색 객체를 생성
     }
@@ -82,30 +87,53 @@ function HospitalMapSection({ location, keyword, setNextLocation }) {
   const addMapEvent = () => {
     kakao.maps.event.addListener(map, 'dragend', () => {
       const latlng = map.getCenter();
-      console.log(latlng.getLat(), latlng.getLng());
       setChangedLocation([latlng.getLat(), latlng.getLng()]);
     });
   };
 
   useMemo(() => {
     if (!servicePlace) return;
-    servicePlace.keywordSearch(`${keyword}`, placesSearchCB);
+    const [lat, long] = location;
+
+    let keywordMapOption = {
+      location: new kakao.maps.LatLng(lat, long),
+      SORT_BY: 'DISTANCE',
+    };
+
+    if (mapOption) {
+      const bounds = new kakao.maps.LatLngBounds(
+        mapOption.swLatLng,
+        mapOption.neLatLng,
+      );
+      keywordMapOption = { ...keywordMapOption, bounds };
+    }
+
+    servicePlace.keywordSearch(`${keyword}`, placesSearchCB, keywordMapOption);
     addMapEvent();
   }, [servicePlace]);
 
   const handleChangeLocation = () => {
     const [lat, lang] = changedLocation;
-    console.log(lat, lang);
-    setNextLocation(lat, lang);
+    setLocation([lat, lang]);
+    setMapOption({
+      center: map.getCenter(),
+      level: map.getLevel(),
+      swLatLng: map.getBounds().getSouthWest(),
+      neLatLng: map.getBounds().getNorthEast(),
+    });
+
+    setChangedLocation(null);
   };
 
   return (
     <div className="map_wrap">
       <div id="map" className="map" ref={mapContainer} />
-      <div id="menu_wrap" className="bg_white" ref={menu}>
-        <ul id="placesList" ref={list} />
-        <div id="pagination" ref={paginationContainer} />
-      </div>
+      {location && (
+        <div id="menu_wrap" className="bg_white" ref={menu}>
+          <ul id="placesList" ref={list} />
+          <div id="pagination" ref={paginationContainer} />
+        </div>
+      )}
       {changedLocation && (
         <button
           type="button"
