@@ -36,7 +36,7 @@ function Sidebar() {
               </Link>
             </li>
             <li>
-              <Link to="/accounts">
+              <Link to="/account">
                 <div>
                   <div className="side-navbar-menu-img" />
                   <span>가계부</span>
