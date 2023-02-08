@@ -8,15 +8,12 @@ function GoalsList() {
     <div className="Goals-List">
       <ul>
         {goals &&
-          goals.map((goal, idx) => {
-            if (idx <= 2) {
-              return (
-                <li>
-                  <Goal goal={goal} key={goal.id} />
-                </li>
-              );
-            }
-            return null;
+          goals.slice(0, 3).map(goal => {
+            return (
+              <li key={goal.id}>
+                <Goal goal={goal} />
+              </li>
+            );
           })}
       </ul>
     </div>
