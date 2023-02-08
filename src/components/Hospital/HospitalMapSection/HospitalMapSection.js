@@ -128,10 +128,12 @@ function HospitalMapSection({
   return (
     <div className="map_wrap">
       <div id="map" className="map" ref={mapContainer} />
-      <div id="menu_wrap" className="bg_white" ref={menu}>
-        <ul id="placesList" ref={list} />
-        <div id="pagination" ref={paginationContainer} />
-      </div>
+      {location && (
+        <div id="menu_wrap" className="bg_white" ref={menu}>
+          <ul id="placesList" ref={list} />
+          <div id="pagination" ref={paginationContainer} />
+        </div>
+      )}
       {changedLocation && (
         <button
           type="button"
