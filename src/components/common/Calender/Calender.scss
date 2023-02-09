@@ -13,10 +13,12 @@
   .header {
     display: flex;
     justify-content: space-between;
-    padding: 24px 0px 0px 24px;
+    padding: 24px 0px 0px 32px;
 
     h2 {
       font-size: 28px;
+      font-weight: 600;
+      font-family: 'Noto Sans';
     }
 
     .buttons {
@@ -42,7 +44,7 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: 50px auto;
-    padding-left: 5px;
+    padding-left: 20px;
     margin-bottom: 50px;
 
     .dayOfWeek,

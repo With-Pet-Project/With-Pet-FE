@@ -1,6 +1,6 @@
 import './Sidebar.scss';
 
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import Logo from '../Logo/Logo';
 import UserInfo from '../UserInfo/UserInfo';
@@ -20,44 +20,44 @@ function Sidebar() {
         <div className="side-navbar-menu">
           <ul>
             <li>
-              <Link to="/">
+              <NavLink to="/">
                 <div>
                   <div className="side-navbar-menu-img" />
                   <span>홈</span>
                 </div>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/diary">
+              <NavLink to="/diary">
                 <div>
                   <div className="side-navbar-menu-img" />
                   <span>다이어리</span>
                 </div>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/accounts">
+              <NavLink to="/account">
                 <div>
                   <div className="side-navbar-menu-img" />
                   <span>가계부</span>
                 </div>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/community">
+              <NavLink to="/community">
                 <div>
                   <div className="side-navbar-menu-img" />
                   <span>커뮤니티</span>
                 </div>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/hospital">
+              <NavLink to="/hospital">
                 <div>
                   <div className="side-navbar-menu-img" />
                   <span>병원찾기</span>
                 </div>
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
