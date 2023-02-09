@@ -53,19 +53,19 @@
     display: inline-block;
     vertical-align: middle;
     cursor: pointer;
-    padding: 0 10px;
-    border-radius: 9px;
     font-size: 14px;
     height: 50px;
-
-    &:hover {
-      background-color: #62ccab;
-    }
   }
 
   & ul li a {
     height: 100%;
     display: block;
+    padding: 0 10px;
+    border-radius: 9px;
+
+    &:hover {
+      background-color: #62ccab;
+    }
   }
 
   & ul li a > div {

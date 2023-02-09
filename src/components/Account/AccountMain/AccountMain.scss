@@ -1,0 +1,22 @@
+.account-container {
+  * {
+    // border: 1px solid gray;
+  }
+
+  width: 100%;
+  height: 100%;
+}
+
+.add-account-btn {
+  width: 75px;
+  height: 75px;
+  background: #62ccab;
+  box-shadow: 0px 10px 18px rgba(137, 137, 137, 0.25);
+  border-radius: 100px;
+  color: #fff;
+  font-size: 28px;
+  position: relative;
+  top: -5%;
+  float: right;
+  right: 5%;
+}
