@@ -1,10 +1,9 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import TotalAccountSection from '../TotalAccountSection/TotalAccountSection';
 import TodayAccountSection from '../TodayAccountSection/TodayAccountSection';
-import Modal from './Modal';
+import AddAccount from './AddAccount/AddAccount';
 import './AccountMain.scss';
 
 function AccountMain() {
@@ -12,7 +11,10 @@ function AccountMain() {
 
   const openModal = () => {
     setIsOpenModal(true);
-    console.log(isOpenModal);
+  };
+
+  const closeModal = () => {
+    setIsOpenModal(false);
   };
 
   return (
@@ -22,7 +24,7 @@ function AccountMain() {
       <button type="button" className="add-account-btn" onClick={openModal}>
         <FontAwesomeIcon icon={faPlus} size="1x" />
       </button>
-      <Modal isOpen={isOpenModal} setIsOpenModal={setIsOpenModal} />
+      <AddAccount isOpenModal={isOpenModal} closeModal={closeModal} />
     </section>
   );
 }
