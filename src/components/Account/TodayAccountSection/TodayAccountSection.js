@@ -1,7 +1,13 @@
+import { ACCOUNT_LIST } from 'constants/account';
 import TodayAccountItem from './TodayAccountItem/TodayAccountItem';
 import './TodayAccountSection.scss';
 
 function TodayAccountSection() {
+  const todayAccountItemHtml = Object.entries(ACCOUNT_LIST).map(
+    ([key, value]) => (
+      <TodayAccountItem key={key} name={key} price="10000" color={value} />
+    ),
+  );
   return (
     <div className="today-account">
       <div className="title-wrapper">
@@ -16,13 +22,7 @@ function TodayAccountSection() {
             <span className="unit">원</span>
           </div>
         </div>
-        <ul className="today-consumption-list">
-          <TodayAccountItem />
-          <TodayAccountItem />
-          <TodayAccountItem />
-          <TodayAccountItem />
-          <TodayAccountItem />
-        </ul>
+        <ul className="today-consumption-list">{todayAccountItemHtml}</ul>
       </div>
     </div>
   );

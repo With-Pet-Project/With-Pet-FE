@@ -1,7 +1,18 @@
 import './AddAccount.scss';
+import { ACCOUNT_LIST } from 'constants/account';
 import Modal from '../../../common/Modal/Modal';
 
 function AddAccount({ isOpenModal, closeModal }) {
+  const inputHtml = Object.entries(ACCOUNT_LIST).map(([key, _]) => (
+    <div key={key}>
+      <span className="label">{key}</span>
+      <div className="input-wrapper">
+        <input type="text" />
+        <span className="unit">원</span>
+      </div>
+    </div>
+  ));
+
   return (
     isOpenModal && (
       <Modal closeModal={closeModal}>
@@ -10,31 +21,7 @@ function AddAccount({ isOpenModal, closeModal }) {
           <p>오늘의 소비를 입력해 주세요 !</p>
         </header>
         <form className="add-account-form">
-          <span className="label">사료/간식</span>
-          <div className="input-wrapper">
-            <input type="text" id="food" />
-            <span className="unit">원</span>
-          </div>
-          <span className="label">사료/간식</span>
-          <div className="input-wrapper">
-            <input type="text" id="food" />
-            <span className="unit">원</span>
-          </div>
-          <span className="label">사료/간식</span>
-          <div className="input-wrapper">
-            <input type="text" id="food" />
-            <span className="unit">원</span>
-          </div>
-          <span className="label">사료/간식</span>
-          <div className="input-wrapper">
-            <input type="text" id="food" />
-            <span className="unit">원</span>
-          </div>
-          <span className="label">사료/간식</span>
-          <div className="input-wrapper">
-            <input type="text" id="food" />
-            <span className="unit">원</span>
-          </div>
+          {inputHtml}
           <div className="button-wrapper">
             <button type="button" className="cancel-btn" onClick={closeModal}>
               취소

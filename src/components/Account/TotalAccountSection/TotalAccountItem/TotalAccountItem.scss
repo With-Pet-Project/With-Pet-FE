@@ -1,5 +1,5 @@
 .total-consumption-item {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 
   .item {
     display: flex;
@@ -27,12 +27,5 @@
     background: #f2f2f2;
     border-radius: 100px;
     height: 20px;
-
-    .inner {
-      height: 100%;
-      width: 40%;
-      background-color: #b2a8d8;
-      border-radius: inherit;
-    }
   }
 }
