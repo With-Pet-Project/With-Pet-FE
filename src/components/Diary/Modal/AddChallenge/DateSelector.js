@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 function DateSelector() {
   const date = new Date();
   const [month, setMonth] = useState(date.getMonth() + 1);
-  const [day, setDay] = useState(date.getDay());
+  const [day, setDay] = useState(date.getDate());
   const [days, setDays] = useState([]);
 
   const handleMonthChange = e => {
