@@ -1,10 +1,10 @@
 import './Challenge.scss';
 
+import AddChallenge from 'components/Diary/Modal/AddChallenge';
+import ChallengeList from 'components/Diary/Modal/ChallengeList';
 import AchievementRate from './AchievementRate/AchievementRate';
 import GoalsList from './Goals/GoalsList';
 import { useModalController } from './context/modalController';
-
-import AddChallenge from './Modal/AddChallenge';
 
 function Challenge() {
   const {
@@ -33,6 +33,7 @@ function Challenge() {
         </button>
       </div>
       {openAddChallenge && <AddChallenge />}
+      {openChallengeList && <ChallengeList />}
     </div>
   );
 }

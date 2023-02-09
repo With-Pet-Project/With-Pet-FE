@@ -4,53 +4,31 @@ import { useEffect, useState } from 'react';
 
 function DateSelector() {
   const date = new Date();
-  const [year, setYear] = useState([]);
   const [month, setMonth] = useState(date.getMonth() + 1);
-
-  const [selectedYear, setSelectedYear] = useState();
-
-  const getYearList = () => {
-    const curYear = date.getFullYear();
-    return curYear;
-  };
-
-  const handleYearChange = e => {
-    setSelectedYear(e.target.value);
-  };
+  const [day, setDay] = useState(date.getDay());
+  const [days, setDays] = useState([]);
 
   const handleMonthChange = e => {
     setMonth(e.target.value);
   };
 
-  useEffect(() => {
-    const curYear = getYearList();
-    const years = [];
-    for (let i = 0; i < 10; i++) {
-      years.push(curYear + i);
-    }
-    setYear([...years]);
-  }, []);
+  const handleDayChange = e => {
+    setDay(e.target.value);
+  };
 
   useEffect(() => {
-    setSelectedYear(year[0]);
-  }, [year]);
+    const year = date.getFullYear();
+    const lastDay = new Date(year, month, 0).getDate();
+    const tmp = [];
+
+    for (let i = 1; i <= lastDay; i++) {
+      tmp.push(i);
+    }
+    setDays([...tmp]);
+  }, [month]);
 
   return (
     <div className="date-select">
-      <div>
-        <label htmlFor="year-select" />
-        <select
-          value={selectedYear}
-          id="year-select"
-          onChange={handleYearChange}
-        >
-          {year.map(y => (
-            <option key={y} value={y}>
-              {y}년
-            </option>
-          ))}
-        </select>
-      </div>
       <div>
         <label htmlFor="month-select" />
         <select value={month} id="month-select" onChange={handleMonthChange}>
@@ -66,6 +44,16 @@ function DateSelector() {
           <option value="10">10월</option>
           <option value="11">11월</option>
           <option value="12">12월</option>
+        </select>
+      </div>
+      <div>
+        <label htmlFor="day-select" />
+        <select value={day} id="day-select" onChange={handleDayChange}>
+          {days.map(d => (
+            <option key={d} value={d}>
+              {String(d).padStart(2, '0')}일
+            </option>
+          ))}
         </select>
       </div>
     </div>

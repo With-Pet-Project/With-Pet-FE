@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { useRef } from 'react';
-import { useModalController } from '../context/modalController';
+import { useModalController } from '../ChallengeSection/Challenge/context/modalController';
 
 const Modal = styled.div`
   position: fixed;
@@ -14,7 +14,6 @@ const Modal = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 4px 18px rgba(137, 137, 137, 0.25);
 `;
 
 const ModalContent = styled.div`
@@ -22,6 +21,7 @@ const ModalContent = styled.div`
   padding: 1em;
   border-radius: 0.5em;
   margin: auto;
+  box-shadow: 0px 4px 18px rgba(137, 137, 137, 0.25);
 `;
 
 function ModalWrapper({ children }) {

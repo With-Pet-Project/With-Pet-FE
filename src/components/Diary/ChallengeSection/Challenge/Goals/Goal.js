@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import CheckBox from './CheckBox,';
 import ThreeHorizontalDots from './ThreeHorizontalDots';
 
-function Goal({ goal }) {
+function Goal({ goal, isInModal = false }) {
   return (
     <div className="goal-item">
       <CheckBox goal={goal} />
