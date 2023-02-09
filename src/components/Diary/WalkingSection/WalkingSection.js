@@ -8,7 +8,7 @@ function WalkingSection() {
         <p>이번달 반려견과 산책한 총 킬로미터는?</p>
         <em>6.3 km</em>
       </div>
-      <div className="right-section-circle-img" />
+      <div className="circle-img" />
     </section>
   );
 }

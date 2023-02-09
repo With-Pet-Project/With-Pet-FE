@@ -10,6 +10,8 @@ import Calender from 'components/common/Calender/Calender';
 import Challenge from './Challenge/Challenge';
 import './ChallengeSection.scss';
 
+import { ModalControllerProvider } from './Challenge/context/modalController';
+
 function ChallengeSection() {
   const [yearMonth, setYearMonth] = useState(getMonthYearDetails(TODAY));
   const [selectDate, setSelectDate] = useState(toDateFormat(TODAY));
@@ -30,7 +32,9 @@ function ChallengeSection() {
         handleSelectDate={handleSelectDate}
         selectDate={selectDate}
       />
-      <Challenge />
+      <ModalControllerProvider>
+        <Challenge />
+      </ModalControllerProvider>
     </section>
   );
 }

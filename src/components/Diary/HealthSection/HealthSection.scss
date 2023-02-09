@@ -1,8 +1,8 @@
 @import '/src/lib/styles/vars.scss';
 
-.diary-health-section {
-    flex-basis: 234px;
+.Health-section {
     flex-grow: 1;
+    min-height: 234px;
 
     & > div:first-child {
         display: flex;
@@ -14,14 +14,21 @@
             font-weight: 400;
             font-size: 20px;
             line-height: 24px;
-            color: #62ccab;
         }
     }
 }
 
 .Health-content-container {
     display: flex;
+    flex-wrap: wrap;
     margin: 10px 0 0;
     justify-content: space-between;
     height: 126px;
+}
+
+
+@media screen and (max-width: $semi-wide) { 
+    .Health-section {
+        min-height: 360px;
+    }
 }

@@ -1,22 +1,34 @@
 import './GoalsList.scss';
+import styled from 'styled-components';
 import goals from 'lib/mocks/goals.json';
 
 import Goal from './Goal';
 
-function GoalsList() {
+const GoalItem = styled.li`
+  height: ${({ isInModal }) => (isInModal ? 'none' : '30%')};
+`;
+
+function GoalsList({ isInModal = false }) {
   return (
     <div className="Goals-List">
       <ul>
         {goals &&
-          goals.map((goal, idx) => {
-            if (idx <= 2) {
-              return (
-                <li>
-                  <Goal goal={goal} key={goal.id} />
-                </li>
-              );
-            }
-            return null;
+          !isInModal &&
+          goals.slice(0, 3).map(goal => {
+            return (
+              <GoalItem key={goal.id}>
+                <Goal goal={goal} />
+              </GoalItem>
+            );
+          })}
+        {goals &&
+          isInModal &&
+          goals.map(goal => {
+            return (
+              <GoalItem key={goal.id} isInModal={isInModal}>
+                <Goal goal={goal} isInModal />
+              </GoalItem>
+            );
           })}
       </ul>
     </div>

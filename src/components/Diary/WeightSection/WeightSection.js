@@ -6,7 +6,7 @@ function WeightSection() {
         <p>이번달 반려견의 평균 기록 몸무게는?</p>
         <em>6.3 kg</em>
       </div>
-      <div className="right-section-circle-img" />
+      <div className="circle-img" />
     </section>
   );
 }
