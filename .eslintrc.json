@@ -4,10 +4,14 @@
     "es2021": true
   },
   "extends": [
+    "react-app",
+    "react-app/jest",
     "airbnb",
     "airbnb/hooks",
     "plugin:prettier/recommended",
-    "plugin:cypress/recommended"
+    "plugin:cypress/recommended",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -16,7 +20,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "plugins": ["react", "testing-library", "jest-dom"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/react-in-jsx-scope": "off",
@@ -29,8 +33,18 @@
     ],
     "react/prop-types": "off",
     "no-unused-vars": "warn",
+    "import/no-extraneous-dependencies": "warn",
     "import/no-unresolved": "off",
     "prettier/prettier": ["error"],
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "no-plusplus": "off",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-props-no-spreading": "off",
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "labelAttributes": ["htmlFor"]
+      }
+    ]
   }
 }

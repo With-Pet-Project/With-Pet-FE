@@ -40,10 +40,10 @@
   }
 }
 
-.diary-main-left-section {
+.Challenge-Health-section {
   display: flex;
   flex-direction: column;
-  flex-basis: calc(87% - 20px);
+  flex-basis: calc(78% - 20px);
   margin: 0 10px;
 
   & section:first-child {
@@ -55,7 +55,7 @@
   }
 }
 
-.diary-main-right-section {
+.Walking-Weight-SpecialNote {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
@@ -80,7 +80,7 @@
     height: 100%;
   }
 
-  .right-section-circle-img {
+  .circle-img {
     align-self: flex-end;
     width: 80px;
     height: 80px;
@@ -101,9 +101,9 @@
     width: 100%;
   }
 
-  .diary-main-right-section {
+  .Walking-Weight-SpecialNote {
     flex-direction: row;
-    min-height: 185px;
+    min-height: 200px;
     margin: 10px 0;
 
     & section {
@@ -114,7 +114,7 @@
       margin: 10px;
     }
 
-    .right-section-circle-img {
+    .circle-img {
         align-self: flex-end;
         width: 60px;
         min-width: 60px;
@@ -135,5 +135,11 @@
             font-size: 17px;
             min-width: 80px;
         }
+    }
+
+    .Walking-Weight-SpecialNote {
+      flex-direction: row;
+      min-height: 250px;
+      margin: 10px 0;
     }
 }

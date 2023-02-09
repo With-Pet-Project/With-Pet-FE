@@ -1,0 +1,27 @@
+
+{
+	"code" : 200,
+	"message" : "정상적으로 조회되었습니다.",
+	"data":{
+		"health_cares":[
+			{
+				"pet_id":1,
+				"date": "2022-10-31",
+				"walk_distance":1000,
+				"weight":3.49,
+				"drink_amount":3.21,
+				"feed_amount":2,
+				"diary":"아침 9시에 산책하고 10시에 미용했다."
+			},
+			{
+				"pet_id":2,
+				"date": "2022-12-02",
+				"walk_distance":200,
+				"weight":3.49,
+				"drink_amount":3.21,
+				"feed_amount":2,
+				"diary":""
+				}
+		]
+  }
+}

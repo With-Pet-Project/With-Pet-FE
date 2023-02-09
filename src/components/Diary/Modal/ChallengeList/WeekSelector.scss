@@ -1,0 +1,37 @@
+.week-select-box {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  margin: 7px 0;
+  
+  & > div {
+    flex-basis: calc(50% - 10px);
+    height: inherit;
+  }
+
+  & label {
+    display: block;
+    font-size: 13.5px;
+    margin: -26px 0 0 10px;
+  }
+
+  & select {
+    cursor: pointer;
+    width: 100%;
+    height: inherit;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    border: 1px solid #dbdbdb;
+    border-radius: 10px;
+  }
+
+  & > .week-select-item:nth-child(1) select {
+    padding-left: 47px;
+  }
+
+  & > .week-select-item:nth-child(2) select {
+    padding-left: 20px;
+  }
+}

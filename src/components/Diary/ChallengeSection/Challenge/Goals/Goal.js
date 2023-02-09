@@ -1,41 +1,32 @@
 import './Goal.scss';
 import styled from 'styled-components';
 
-import { useState } from 'react';
+import CheckBox from './CheckBox,';
+import ThreeHorizontalDots from './ThreeHorizontalDots';
 
-const CheckBox = styled.label`
-  border: 1px solid ${({ check }) => (check ? '#62ccab' : '#dbdbdb')};
-  background-color: ${({ check }) => (check ? '#62ccab' : '#FFFFFF')};
+const GoalItem = styled.div`
+  padding-left: ${({ isInModal }) => (isInModal ? '20px' : '0')};
+  background: ${({ isInModal, percent }) =>
+    isInModal
+      ? `linear-gradient(to right, #62ccab ${percent}%, #fff ${percent}%)`
+      : '#fff'};
 `;
 
-const Icon = styled.svg`
-  fill: none;
-  stroke: white;
-  stroke-width: 2px;
-  margin-top: -15px;
-`;
-
-function Goal({ goal }) {
-  const [checked, setChecked] = useState(false);
-
-  const isChecked = () => setChecked(!checked);
-
+function Goal({ goal, isInModal = false }) {
+  const percent = 0.25;
   return (
-    <div className="goal-item">
-      <CheckBox htmlFor={goal.id} className="goal-checkBox" check={checked}>
-        <input type="checkbox" id={goal.id} onClick={isChecked} />
-        <Icon viewBox="0 0 24 24">
-          <polyline points="19 7 10 17 5 12" />
-        </Icon>
-      </CheckBox>
+    <GoalItem
+      className="goal-item"
+      isInModal={isInModal}
+      percent={percent * 100}
+    >
+      {!isInModal && <CheckBox goal={goal} />}
       <div className="goal-item-title">
         <h2>{goal.title}</h2>
         <p>주 {goal.times}회 달성 목표</p>
       </div>
-      <div className="three-horizontal-dots">
-        <span>. . .</span>
-      </div>
-    </div>
+      <ThreeHorizontalDots />
+    </GoalItem>
   );
 }
 
