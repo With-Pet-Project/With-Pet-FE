@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import { TODAY } from 'constants/date';
-import Calender from 'components/Diary/ChallengeSection/Calender/Calender';
+import Calender from 'components/common/Calender/Calender';
 import {
   getMonthYearDetails,
   getNextYearMonth,
   toDateFormat,
-} from 'components/Diary/ChallengeSection/Calender/hooks/date';
+} from 'components/common/Calender/hooks/date';
 import 'components/Diary/ChallengeSection/ChallengeSection.scss';
 import './TotalAccountSection.scss';
 import ConsumptionItem from './ConsumptionItem/ConsumptionItem';
 
 function TotalAccountSection() {
-  // calender를 선언할 때 중복코드가 생긴다. 컴포넌트화가 잘 못된것 같다
+  // calender를 선언할 때 중복코드가 생긴다. 컴포넌트화가 잘 못된걸까?
   const [yearMonth, setYearMonth] = useState(getMonthYearDetails(TODAY));
   const [selectDate, setSelectDate] = useState(toDateFormat(TODAY));
 
