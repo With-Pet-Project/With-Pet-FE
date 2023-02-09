@@ -1,3 +1,4 @@
+import TodayAccountItem from './TodayAccountItem/TodayAccountItem';
 import './TodayAccountSection.scss';
 
 function TodayAccountSection() {
@@ -16,56 +17,11 @@ function TodayAccountSection() {
           </div>
         </div>
         <ul className="today-consumption-list">
-          <li className="today-consumption-item">
-            <div className="item-title">
-              <div className="color" />
-              <span className="name">사료/간식</span>
-            </div>
-            <div className="item-price">
-              <span>0,000</span>
-              <span className="unit">원</span>
-            </div>
-          </li>
-          <li className="today-consumption-item">
-            <div className="item-title">
-              <div className="color" />
-              <span className="name">사료/간식</span>
-            </div>
-            <div className="item-price">
-              <span>0,000</span>
-              <span className="unit">원</span>
-            </div>
-          </li>
-          <li className="today-consumption-item">
-            <div className="item-title">
-              <div className="color" />
-              <span className="name">사료/간식</span>
-            </div>
-            <div className="item-price">
-              <span>0,000</span>
-              <span className="unit">원</span>
-            </div>
-          </li>
-          <li className="today-consumption-item">
-            <div className="item-title">
-              <div className="color" />
-              <span className="name">사료/간식</span>
-            </div>
-            <div className="item-price">
-              <span>0,000</span>
-              <span className="unit">원</span>
-            </div>
-          </li>
-          <li className="today-consumption-item">
-            <div className="item-title">
-              <div className="color" />
-              <span className="name">사료/간식</span>
-            </div>
-            <div className="item-price">
-              <span>0,000</span>
-              <span className="unit">원</span>
-            </div>
-          </li>
+          <TodayAccountItem />
+          <TodayAccountItem />
+          <TodayAccountItem />
+          <TodayAccountItem />
+          <TodayAccountItem />
         </ul>
       </div>
     </div>
