@@ -1,15 +1,16 @@
 import styled from 'styled-components';
+import { getComma } from 'utils/account';
 import './TodayAccountItem.scss';
 
-function TodayAccountItem({ name, price, color }) {
+function TodayAccountItem({ name, price = 0, lightColor, darkColor }) {
   return (
     <li className="today-consumption-item">
       <div className="item-title">
-        <ColorSign borderColor={color[0]} bgColor={color[1]} />
+        <ColorSign borderColor={darkColor} bgColor={lightColor} />
         <span className="name">{name}</span>
       </div>
-      <div className="item-price">
-        <span>0,000</span>
+      <div className="today-item-price">
+        <span>{getComma(price)}</span>
         <span className="unit">원</span>
       </div>
     </li>

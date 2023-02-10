@@ -3,7 +3,7 @@
   width: 126px;
   height: 110px;
   border-radius: 10px;
-  padding: 20px 20px 25px 18px;
+  padding: 20px 20px 25px 15px;
 
   .item-title {
     display: flex;
@@ -18,16 +18,19 @@
     }
   }
 
-  .item-price {
+  .today-item-price {
     color: #555555;
     font-family: 'Noto Sans';
     font-size: 22px;
     font-weight: 500;
+    display: flex;
+    justify-content: right;
+    align-items: end;
+  }
 
-    .unit {
-      font-family: 'Noto Sans';
-      font-size: 14px;
-      margin-left: 13px;
-    }
+  .unit {
+    font-family: 'Noto Sans';
+    font-size: 14px;
+    margin-left: 8px;
   }
 }

@@ -9,11 +9,12 @@ const fetchAccount = async () => {
   return consumptions;
 };
 
-export const useFetchAllAccount = () => {
+export const useFetchAllAccount = (year, month) => {
   // userId, TODAY
   const fallback = [];
-  const { data: consumptions = fallback } = useQuery([queryKeys.account], () =>
-    fetchAccount(),
+  const { data: consumptions = fallback } = useQuery(
+    [queryKeys.account, year, month],
+    () => fetchAccount(),
   );
   return consumptions;
 };

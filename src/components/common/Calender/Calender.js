@@ -11,7 +11,6 @@ function Calender({
   data,
 }) {
   const { year, monthName, month, firstDayOfWeek, lastDay } = yearMonth;
-
   const getRestDayOfWeekHtml = () => {
     const days = Array(lastDay)
       .fill(null)
@@ -26,7 +25,7 @@ function Calender({
           id={id}
           handleSelectDate={handleSelectDate}
           selectDate={selectDate}
-          dataLength={data[day].length}
+          data={data[day]}
         />
       );
     });

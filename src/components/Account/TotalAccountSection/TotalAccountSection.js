@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import { TODAY } from 'constants/date';
 import Calender from 'components/common/Calender/Calender';
-import {
-  getMonthYearDetails,
-  getNextYearMonth,
-  toDateFormat,
-} from 'components/common/Calender/hooks/date';
 import 'components/Diary/ChallengeSection/ChallengeSection.scss';
 import { ACCOUNT_LIST } from 'constants/account';
 import './TotalAccountSection.scss';
 import TotalAccountItem from './TotalAccountItem/TotalAccountItem';
 
-function TotalAccountSection({ accountData }) {
+function TotalAccountSection({
+  yearMonth,
+  handleMonthChange,
+  accountData,
+  selectDate,
+  handleSelectDate,
+}) {
   const totalAccountItemHtml = Object.entries(ACCOUNT_LIST).map(
     ([key, value]) => (
       <TotalAccountItem
@@ -23,17 +24,14 @@ function TotalAccountSection({ accountData }) {
       />
     ),
   );
-  // calender를 선언할 때 중복코드가 생긴다. 컴포넌트화가 잘 못된걸까?
-  const [yearMonth, setYearMonth] = useState(getMonthYearDetails(TODAY));
-  const [selectDate, setSelectDate] = useState(toDateFormat(TODAY));
 
-  const handleMonthChange = index => {
-    setYearMonth(prevDate => getNextYearMonth(prevDate.dateObject, index));
-  };
+  // const handleMonthChange = index => {
+  //   setYearMonth(prevDate => getNextYearMonth(prevDate.dateObject, index));
+  // };
 
-  const handleSelectDate = selected => {
-    setSelectDate(selected);
-  };
+  // const handleSelectDate = selected => {
+  //   setSelectDate(selected);
+  // };
 
   return (
     <div className="total-account">
@@ -42,7 +40,7 @@ function TotalAccountSection({ accountData }) {
           yearMonth={yearMonth}
           handleMonthChange={handleMonthChange}
           handleSelectDate={handleSelectDate}
-          selectDate={selectDate}
+          selectDate={selectDate.dateTime}
           data={accountData}
         />
       </div>

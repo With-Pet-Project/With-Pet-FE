@@ -2,10 +2,16 @@ import { ACCOUNT_LIST } from 'constants/account';
 import TodayAccountItem from './TodayAccountItem/TodayAccountItem';
 import './TodayAccountSection.scss';
 
-function TodayAccountSection() {
+function TodayAccountSection({ accountData }) {
   const todayAccountItemHtml = Object.entries(ACCOUNT_LIST).map(
-    ([key, value]) => (
-      <TodayAccountItem key={key} name={key} price="10000" color={value} />
+    ([key, { name, lightColor, darkColor }]) => (
+      <TodayAccountItem
+        key={key}
+        name={name}
+        price={accountData[key]}
+        lightColor={lightColor}
+        darkColor={darkColor}
+      />
     ),
   );
   return (

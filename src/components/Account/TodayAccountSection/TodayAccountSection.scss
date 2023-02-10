@@ -34,7 +34,7 @@
     display: flex;
 
     .today-total {
-      width: 250px;
+      width: 200px;
     }
 
     .total-title {
@@ -52,7 +52,7 @@
       color: #252525;
     }
 
-    .unit {
+    .total-price > .unit {
       margin-left: 2px;
       font-weight: 500;
       font-size: 18px;
