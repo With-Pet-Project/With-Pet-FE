@@ -4,6 +4,7 @@ import {
   getMonthYearDetails,
   getNextYearMonth,
   toDateFormat,
+  toDateObject,
 } from 'components/common/Calender/hooks/date';
 import Calender from 'components/common/Calender/Calender';
 
@@ -14,14 +15,20 @@ import { ModalControllerProvider } from './Challenge/context/modalController';
 
 function ChallengeSection() {
   const [yearMonth, setYearMonth] = useState(getMonthYearDetails(TODAY));
-  const [selectDate, setSelectDate] = useState(toDateFormat(TODAY));
+  const [selectDate, setSelectDate] = useState(getMonthYearDetails(TODAY));
+  // const [selectDate, setSelectDate] = useState(toDateFormat(TODAY));
 
   const handleMonthChange = index => {
     setYearMonth(prevDate => getNextYearMonth(prevDate.dateObject, index));
   };
 
+  // const handleSelectDate = selected => {
+  //   setSelectDate(selected);
+  // };
+
   const handleSelectDate = selected => {
-    setSelectDate(selected);
+    const nextDate = toDateObject(selected);
+    setSelectDate(getMonthYearDetails(nextDate));
   };
 
   return (
@@ -30,7 +37,8 @@ function ChallengeSection() {
         yearMonth={yearMonth}
         handleMonthChange={handleMonthChange}
         handleSelectDate={handleSelectDate}
-        selectDate={selectDate}
+        selectDate={selectDate.dateTime}
+        data={[]}
       />
       <ModalControllerProvider>
         <Challenge />

@@ -3,9 +3,6 @@ import './DateBox.scss';
 
 function DateBox({ id, day, handleSelectDate, selectDate, data = [] }) {
   const showHasDataIcon = selectDate !== id && data.length > 0;
-  // console.log(selectDate);
-  // console.log(id);
-  // console.log(data);
   return (
     <div
       role="button"

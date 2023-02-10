@@ -13,25 +13,19 @@ function TotalAccountSection({
   selectDate,
   handleSelectDate,
 }) {
+  // console.log(accountData);
+  // 여기나 이 이전에서 토탈 구하기
   const totalAccountItemHtml = Object.entries(ACCOUNT_LIST).map(
-    ([key, value]) => (
+    ([key, { name, darkColor }]) => (
       <TotalAccountItem
         key={key}
-        name={key}
+        name={name}
         price="10000"
         percent="40%"
-        color={value[0]}
+        color={darkColor}
       />
     ),
   );
-
-  // const handleMonthChange = index => {
-  //   setYearMonth(prevDate => getNextYearMonth(prevDate.dateObject, index));
-  // };
-
-  // const handleSelectDate = selected => {
-  //   setSelectDate(selected);
-  // };
 
   return (
     <div className="total-account">

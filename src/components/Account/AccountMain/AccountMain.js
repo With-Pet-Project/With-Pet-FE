@@ -14,14 +14,14 @@ import AddAccount from './AddAccount/AddAccount';
 import { useFetchAllAccount } from '../hooks/useAccount';
 import './AccountMain.scss';
 
+// reactquery 로딩 추가하기
 function AccountMain() {
   const [selectDate, setSelectDate] = useState(getMonthYearDetails(TODAY));
   const [yearMonth, setYearMonth] = useState(getMonthYearDetails(TODAY));
   const [isOpenModal, setIsOpenModal] = useState(false);
 
-  console.log(selectDate);
+  // console.log(selectDate);
   const accountData = useFetchAllAccount(yearMonth.year, yearMonth.month);
-  // console.log(accountData);
 
   const openModal = () => {
     setIsOpenModal(true);
@@ -42,14 +42,16 @@ function AccountMain() {
 
   return (
     <section className="account-container">
-      <TotalAccountSection
-        yearMonth={yearMonth}
-        accountData={accountData}
-        selectDate={selectDate}
-        handleSelectDate={handleSelectDate}
-        handleMonthChange={handleMonthChange}
-      />
-      {accountData[selectDate.day] && (
+      {accountData && (
+        <TotalAccountSection
+          yearMonth={yearMonth}
+          accountData={accountData}
+          selectDate={selectDate}
+          handleSelectDate={handleSelectDate}
+          handleMonthChange={handleMonthChange}
+        />
+      )}
+      {accountData && (
         <TodayAccountSection accountData={accountData[selectDate.day]} />
       )}
       <button type="button" className="add-account-btn" onClick={openModal}>
