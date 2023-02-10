@@ -4,9 +4,13 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import TotalAccountSection from '../TotalAccountSection/TotalAccountSection';
 import TodayAccountSection from '../TodayAccountSection/TodayAccountSection';
 import AddAccount from './AddAccount/AddAccount';
+import { useFetchAllAccount } from '../hooks/useAccount';
 import './AccountMain.scss';
 
 function AccountMain() {
+  const accounts = useFetchAllAccount();
+  console.log(accounts);
+
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const openModal = () => {

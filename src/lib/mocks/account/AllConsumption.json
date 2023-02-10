@@ -1,0 +1,48 @@
+{
+  "code": 200,
+  "message": "정상적으로 조회되었습니다.",
+  "data": {
+    "consumptions": [
+      {
+        "id": 1,
+        "pet_id": 2,
+        "feed": 1000,
+        "toy": 2000,
+        "hospital": 3000,
+        "beauty": 4000,
+        "etc": 5000,
+        "date": "2023-02-10"
+      },
+      {
+        "id": 2,
+        "pet_id": 4,
+        "feed": 10000,
+        "toy": 20000,
+        "hospital": 30000,
+        "beauty": 40000,
+        "etc": 50000,
+        "date": "2023-02-10"
+      },
+      {
+        "id": 3,
+        "pet_id": 4,
+        "feed": 10000,
+        "toy": 0,
+        "hospital": 0,
+        "beauty": 0,
+        "etc": 0,
+        "date": "2023-02-09"
+      },
+      {
+        "id": 4,
+        "pet_id": 4,
+        "feed": 10000,
+        "toy": 10000,
+        "hospital": 20000,
+        "beauty": 0,
+        "etc": 0,
+        "date": "2023-01-31"
+      }
+    ]
+  }
+}
