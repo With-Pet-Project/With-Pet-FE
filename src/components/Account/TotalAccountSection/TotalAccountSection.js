@@ -11,7 +11,7 @@ import { ACCOUNT_LIST } from 'constants/account';
 import './TotalAccountSection.scss';
 import TotalAccountItem from './TotalAccountItem/TotalAccountItem';
 
-function TotalAccountSection() {
+function TotalAccountSection({ accountData }) {
   const totalAccountItemHtml = Object.entries(ACCOUNT_LIST).map(
     ([key, value]) => (
       <TotalAccountItem
@@ -43,6 +43,7 @@ function TotalAccountSection() {
           handleMonthChange={handleMonthChange}
           handleSelectDate={handleSelectDate}
           selectDate={selectDate}
+          data={accountData}
         />
       </div>
       <div className="total-consumption">

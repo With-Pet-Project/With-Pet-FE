@@ -8,8 +8,8 @@ import { useFetchAllAccount } from '../hooks/useAccount';
 import './AccountMain.scss';
 
 function AccountMain() {
-  const accounts = useFetchAllAccount();
-  console.log(accounts);
+  const accountData = useFetchAllAccount();
+  console.log(accountData);
 
   const [isOpenModal, setIsOpenModal] = useState(false);
 
@@ -23,7 +23,7 @@ function AccountMain() {
 
   return (
     <section className="account-container">
-      <TotalAccountSection />
+      <TotalAccountSection accountData={accountData} />
       <TodayAccountSection />
       <button type="button" className="add-account-btn" onClick={openModal}>
         <FontAwesomeIcon icon={faPlus} size="1x" />
