@@ -1,9 +1,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import './DateBox.scss';
 
-function DateBox({ id, day, handleSelectDate, selectDate }) {
-  const showHasDataIcon = selectDate !== id;
-
+function DateBox({ id, day, handleSelectDate, selectDate, data = [] }) {
+  const showHasDataIcon = selectDate !== id && data.length > 0;
   return (
     <div
       role="button"

@@ -1,0 +1,36 @@
+.today-consumption-item {
+  border: 1px solid #dbdbdb;
+  width: 126px;
+  height: 110px;
+  border-radius: 10px;
+  padding: 20px 20px 25px 15px;
+
+  .item-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .name {
+      color: #434343;
+      font-weight: 500;
+      font-size: 0.8rem;
+      padding-left: 5px;
+    }
+  }
+
+  .today-item-price {
+    color: #555555;
+    font-family: 'Noto Sans';
+    font-size: 22px;
+    font-weight: 500;
+    display: flex;
+    justify-content: right;
+    align-items: end;
+  }
+
+  .unit {
+    font-family: 'Noto Sans';
+    font-size: 14px;
+    margin-left: 8px;
+  }
+}

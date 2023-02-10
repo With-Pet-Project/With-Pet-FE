@@ -8,9 +8,9 @@ function Calender({
   handleMonthChange,
   handleSelectDate,
   selectDate,
+  data,
 }) {
   const { year, monthName, month, firstDayOfWeek, lastDay } = yearMonth;
-
   const getRestDayOfWeekHtml = () => {
     const days = Array(lastDay)
       .fill(null)
@@ -25,6 +25,7 @@ function Calender({
           id={id}
           handleSelectDate={handleSelectDate}
           selectDate={selectDate}
+          data={data[day]}
         />
       );
     });
@@ -32,7 +33,7 @@ function Calender({
 
   const firstDayOfWeekHtml = Array(firstDayOfWeek)
     .fill(null)
-    .map((_, index) => <div className="item" key={`empty${index}`} />);
+    .map((_, index) => <div key={`empty${index}`} />);
   const restDayOfWeekHtml = getRestDayOfWeekHtml();
   const daysHtml = [...firstDayOfWeekHtml, ...restDayOfWeekHtml];
   const dayOfWeekHtml = DAY_LIST.map(day => (

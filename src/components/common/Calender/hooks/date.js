@@ -6,7 +6,7 @@ export const getMonthYearDetails = date => {
   const month =
     date.getMonth() < 10 ? `0${date.getMonth() + 1}` : `${date.getMonth() + 1}`;
   const year = date.getFullYear().toString();
-  // const day = date.getDate().toString();
+  const day = date.getDate().toString();
   const dateObject = date;
   const firstDayOfWeek = new Date(year, monthIndex, 1).getDay();
   const lastDay = new Date(year, monthIndex + 1, 0).getDate();
@@ -21,7 +21,7 @@ export const getMonthYearDetails = date => {
     lastDay,
     // monthIndex,
     month,
-    // day,
+    day,
     dateTime,
   };
 };
@@ -40,4 +40,10 @@ export const toDateFormat = date => {
   const year = date.getFullYear().toString();
   const day = date.getDate() < 10 ? `0${date.getDate()}` : `${date.getDate()}`;
   return `${year}-${month}-${day}`;
+};
+
+export const toDateObject = date => {
+  // console.log(date);
+  const [year, month, day] = date.split('-');
+  return new Date(year, month - 1, day);
 };
