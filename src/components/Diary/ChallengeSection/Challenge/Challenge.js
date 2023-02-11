@@ -2,17 +2,17 @@ import './Challenge.scss';
 
 import AddChallenge from 'components/Diary/Modal/AddChallenge';
 import ChallengeList from 'components/Diary/Modal/ChallengeList';
+import { useState } from 'react';
+import Modal from 'components/common/Modal/Modal';
 import AchievementRate from './AchievementRate/AchievementRate';
 import GoalsList from './Goals/GoalsList';
-import { useModalController } from './context/modalController';
 
 function Challenge() {
-  const {
-    openAddChallenge,
-    isOpenAddChallenge,
-    openChallengeList,
-    isOpenChallengeList,
-  } = useModalController();
+  const [addChallenge, setAddChallenge] = useState(false);
+  const [challengeList, setChallengeList] = useState(false);
+
+  const isOpenAddChallenge = () => setAddChallenge(!addChallenge);
+  const isOpenChallengeList = () => setChallengeList(!challengeList);
 
   return (
     <div className="Challenge">
@@ -32,8 +32,16 @@ function Challenge() {
           <span>챌린지 목록</span>
         </button>
       </div>
-      {openAddChallenge && <AddChallenge />}
-      {openChallengeList && <ChallengeList />}
+      {addChallenge && (
+        <Modal closeModal={isOpenAddChallenge}>
+          <AddChallenge isOpenModal={isOpenAddChallenge} />
+        </Modal>
+      )}
+      {challengeList && (
+        <Modal closeModal={isOpenChallengeList}>
+          <ChallengeList />
+        </Modal>
+      )}
     </div>
   );
 }

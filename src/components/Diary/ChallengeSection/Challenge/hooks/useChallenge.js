@@ -14,7 +14,6 @@ export const useChallenge = () => {
     queryKey: [challenge.key],
     queryFn: getAllOfChallenges,
   });
-  console.log(challenges);
 
   return { error, isError, isLoading, challenges };
 };
