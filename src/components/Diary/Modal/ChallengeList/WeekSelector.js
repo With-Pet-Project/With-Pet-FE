@@ -2,7 +2,7 @@ import './WeekSelector.scss';
 import styled from 'styled-components';
 
 import { useState, useEffect } from 'react';
-import * as utils from '../utils';
+import * as utils from 'utils/diary';
 
 function WeekSelector() {
   const date = new Date();
