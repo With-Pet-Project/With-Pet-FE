@@ -1,8 +1,9 @@
 /* eslint-disable no-console */
 import { render, screen } from '@testing-library/react';
-import { Queryclient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import React from 'react';
 
-const queryTestClient = new Queryclient({
+const queryTestClient = new QueryClient({
   defaultOptions: {
     queries: {
       retry: false,
@@ -15,12 +16,16 @@ const queryTestClient = new Queryclient({
   },
 });
 
-const renderWithQueryClient = (ui, client) => {
-  const queryClient = client ?? queryTestClient();
-
-  return render(
-    <QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>,
+function ReactQueryProvider({ children }) {
+  return (
+    <QueryClientProvider client={queryTestClient}>
+      {children}
+    </QueryClientProvider>
   );
+}
+
+const renderWithQueryClient = (ui, options) => {
+  return render(ui, { wrapper: ReactQueryProvider, ...options });
 };
 
 export { renderWithQueryClient as render };
