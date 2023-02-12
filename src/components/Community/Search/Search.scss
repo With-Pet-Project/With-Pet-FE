@@ -1,6 +1,10 @@
 @import '/src/lib/styles/vars.scss';
 
-.search-input-container {
+.community-search {
     display: flex;
     width: 100%;
+    min-height: 70px;
+
+    border-bottom: 1px solid #dbdbdb;
+    border-radius: 10px 10px 0px 0px;
 }
