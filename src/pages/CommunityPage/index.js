@@ -1,12 +1,9 @@
-import CommunityHeader from 'components/Community/CommunityHeader/CommunityHeader';
+import CommunityMain from 'components/Community/CommunityMain';
 
 function CommunityPage() {
   return (
     <main>
-      <CommunityHeader />
-      <article>
-        <section>CommunityPage</section>
-      </article>
+      <CommunityMain />
     </main>
   );
 }
