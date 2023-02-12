@@ -2,7 +2,7 @@
 /* eslint-disable camelcase */
 import { useEffect, useState, useRef, useMemo } from 'react';
 import './HospitalMapSection.scss';
-import { ERROR_MESSAGE } from 'constants/errorMessage';
+import { ERROR_MESSAGE } from 'lib/constants/errorMessage';
 import { displayInfowindow } from '../hooks/map/infoWindow';
 import { addMarker, removeMarker, addEventMarker } from '../hooks/map/marker';
 import { getListItem, removeAllChildNods } from '../hooks/map/list';

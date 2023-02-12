@@ -64,12 +64,12 @@ function Sidebar() {
         <div className="side-navbar-menu side-navbar-menu-bottom">
           <ul>
             <li>
-              <Link to="/mypage">
+              <NavLink to="/mypage">
                 <div>
                   <div className="side-navbar-menu-img" />
                   <span>마이 페이지</span>
                 </div>
-              </Link>
+              </NavLink>
             </li>
             <li>
               <Link to="/">
