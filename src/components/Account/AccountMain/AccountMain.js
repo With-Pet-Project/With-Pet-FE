@@ -20,8 +20,8 @@ function AccountMain() {
   const [yearMonth, setYearMonth] = useState(getMonthYearDetails(TODAY));
   const [isOpenModal, setIsOpenModal] = useState(false);
 
-  // console.log(selectDate);
   const accountData = useFetchAllAccount(yearMonth.year, yearMonth.month);
+  // console.log(accountData);
 
   const openModal = () => {
     setIsOpenModal(true);
