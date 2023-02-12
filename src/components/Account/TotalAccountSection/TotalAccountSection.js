@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { TODAY } from 'constants/date';
+import { TODAY } from 'lib/constants/date';
 import Calender from 'components/common/Calender/Calender';
 import 'components/Diary/ChallengeSection/ChallengeSection.scss';
-import { ACCOUNT_LIST } from 'constants/account';
+import { ACCOUNT_LIST } from 'lib/constants/account';
 import './TotalAccountSection.scss';
 import TotalAccountItem from './TotalAccountItem/TotalAccountItem';
 

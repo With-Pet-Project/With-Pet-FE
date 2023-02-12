@@ -1,8 +1,8 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
-import { ERROR_MESSAGE } from 'constants/errorMessage';
-import { DEFAULT_LOCATION } from 'constants/map';
+import { ERROR_MESSAGE } from 'lib/constants/errorMessage';
+import { DEFAULT_LOCATION } from 'lib/constants/map';
 import HospitalMapSection from './HospitalMapSection/HospitalMapSection';
 import { useKeyword } from './hooks/useKeyword';
 import './Hospital.scss';

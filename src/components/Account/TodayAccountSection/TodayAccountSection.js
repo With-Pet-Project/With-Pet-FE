@@ -1,5 +1,5 @@
-import { getComma } from 'utils/account';
-import { ACCOUNT_LIST } from 'constants/account';
+import { getComma } from 'lib/utils/account';
+import { ACCOUNT_LIST } from 'lib/constants/account';
 import TodayAccountItem from './TodayAccountItem/TodayAccountItem';
 import './TodayAccountSection.scss';
 

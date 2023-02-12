@@ -1,5 +1,5 @@
 import './AddAccount.scss';
-import { ACCOUNT_LIST } from 'constants/account';
+import { ACCOUNT_LIST } from 'lib/constants/account';
 import Modal from '../../../common/Modal/Modal';
 
 function AddAccount({ isOpenModal, closeModal }) {

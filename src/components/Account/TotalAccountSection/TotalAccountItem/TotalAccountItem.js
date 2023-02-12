@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import './TotalAccountItem.scss';
-import { getComma } from 'utils/account';
+import { getComma } from 'lib/utils/account';
 
 function TotalAccountItem({ name, price, percent, color }) {
   return (
