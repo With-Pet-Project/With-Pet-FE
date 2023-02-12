@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 // Mocking Service Worker
 import { rest } from 'msw';
-import { BASE_URL } from 'constants/baseURL';
+import { BASE_URL } from 'lib/constants/baseURL';
 import HealthCareGet from 'lib/mocks/healthcare/healthcareGet.json';
 import HealthCarePost from 'lib/mocks/healthcare/healthcarePost.json';
 

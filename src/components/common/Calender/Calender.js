@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import { DAY_LIST } from 'constants/date';
+import { DAY_LIST } from 'lib/constants/date';
 import DateBox from './DateBox';
 import './Calender.scss';
 
