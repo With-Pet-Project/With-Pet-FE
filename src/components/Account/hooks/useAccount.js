@@ -1,6 +1,6 @@
 // !:나중에 분기하고 정리하기
 import { useQuery } from '@tanstack/react-query';
-import { queryKeys } from 'reactQuery/queryKeys';
+import { queryKeys } from 'lib/reactQuery/queryKeys';
 
 const fetchAccount = async () => {
   const { consumptions } = await fetch('/consumption')

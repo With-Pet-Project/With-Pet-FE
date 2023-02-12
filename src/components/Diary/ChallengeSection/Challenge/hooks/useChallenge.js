@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { queryKeys } from 'reactQuery/queryKeys';
+import { queryKeys } from 'lib/reactQuery/queryKeys';
 import { getAllOfChallenges } from 'lib/APIs/challenge';
 
 export const useChallenge = () => {

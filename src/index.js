@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import { worker } from 'lib/mockServer/worker';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { worker } from './mockServer/worker';
 
 if (process.env.NODE_ENV === 'development') {
   worker.start();
