@@ -1,6 +1,23 @@
 @import '/src/lib/styles/vars.scss';
 
-.search-input-container {
+.community-search-container {
     display: flex;
-    width: 100%;
+    height: 70px;
+    padding: 0 25px; 
+    border-radius: 10px 10px 0 0;
 }
+
+.community-result-container {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    width: calc(100vw - 251px);
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+  }
+  
+  .community-search-result {
+    width: 100%;
+    height: 280px;
+    background-color: #FFFFFF;
+  }

@@ -1,0 +1,23 @@
+.search-input {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  align-items: center;
+  flex-grow: 1;
+
+  & input {
+    flex-grow: 1;
+    max-width: 930px;
+    height: 43px;
+    background: #EEF0F3;
+    padding-left: 16px;
+    border: 1px solid #DBDBDB;
+    border-radius: 100px;
+    margin-right: -30px;
+    outline: none;
+
+    &:focus {
+      border: 1px solid #62CCAB;
+    }
+  }
+}

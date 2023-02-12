@@ -1,35 +1,32 @@
 import './Search.scss';
 import styled from 'styled-components';
 
-const SearchInput = styled.input`
-  height: 100%;
-  width: ${({ focus }) => (focus ? '100%' : '20%')};
-  min-width: 260px;
-  border-radius: 10px;
-  box-sizing: border-box;
-  margin-left: auto;
-  border: 1px solid #9ea3bc;
-  font-size: 20px;
-  padding: 10px 20px;
+import { useState } from 'react';
+import TagList from './Tags/TagList';
+import Input from './Input/Input';
 
-  &:focus {
-    outline: none;
-  }
+const SearchForm = styled.form`
+  border-bottom: 1px solid ${({ focus }) => (focus ? '#fff' : '#dbdbdb')};
 `;
 
-function Search({ isFocus, focus }) {
+function Search() {
+  const [inputFocus, setInputFocus] = useState(false);
+
+  const isFocus = () => setInputFocus(true);
+  const isBlur = () => setInputFocus(false);
+
   return (
-    <div className="search-input-container">
-      <SearchInput
-        onFocus={isFocus}
-        onBlur={isFocus}
-        focus={focus}
-        placeholder={focus ? '검색어를 입력하세요' : '검색'}
-      />
-      {/** label tag will be added */}
-    </div>
+    <SearchForm className="community-search-container" focus={inputFocus}>
+      {!inputFocus && <TagList />}
+      <Input isFocus={isFocus} isBlur={isBlur} />
+      {inputFocus && (
+        <div className="community-result-container">
+          <div className="community-search-result" />
+          <div className="community-result-background" />
+        </div>
+      )}
+    </SearchForm>
   );
 }
 
 export default Search;
-// 검색창
