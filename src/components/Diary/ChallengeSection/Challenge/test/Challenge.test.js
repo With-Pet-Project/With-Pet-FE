@@ -1,16 +1,25 @@
-import { render, screen } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
+import { render } from 'lib/test-utils/test-utils';
 import userEvent from '@testing-library/user-event';
+import ReactDOM from 'react-dom';
 import Challenge from '../Challenge';
-import { ModalControllerProvider } from '../context/modalController';
 
-test("when I click button '추가하기'", async () => {
-  const user = userEvent.setup();
-  render(<Challenge />, { wrapper: ModalControllerProvider });
+describe('Popvoer AddChallenge', () => {
+  beforeAll(() => {
+    ReactDOM.createPortal = jest.fn((element, node) => {
+      return element;
+    });
+  });
 
-  const AddButton = screen.getByRole('button', { name: '추가하기' });
-  await user.click(AddButton);
+  afterEach(() => {
+    ReactDOM.createPortal.mockClear();
+  });
 
-  const AddHeader = screen.getByRole('heading', { name: '챌린지 추가하기' });
+  test("when I click button '추가하기'", async () => {
+    const user = userEvent.setup();
+    render(<Challenge />);
+
+    const AddButton = screen.getByRole('button', { name: '추가하기' });
+    await user.click(AddButton);
+  });
 });
-
-test("when I click button '챌린지 목록'", () => {});

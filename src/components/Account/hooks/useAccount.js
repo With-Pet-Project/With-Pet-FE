@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
-import { queryKeys } from 'reactQuery/queryKeys';
+import { queryKeys } from 'lib/reactQuery/queryKeys';
 import axios from 'axios';
 import {
   getMonthYearDetails,
   getNextYearMonth,
 } from 'components/common/Calender/hooks/date';
-import { TODAY } from 'constants/date';
+import { TODAY } from 'lib/constants/date';
 
 export const fetchAccount = async (year, month) => {
   const { consumptions } = await axios

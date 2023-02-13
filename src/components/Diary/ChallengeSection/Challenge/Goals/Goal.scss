@@ -15,6 +15,23 @@ input[type="checkbox"] {
     appearance: none;
 }
 
+.goal-item-title {
+    h2 {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 24px;
+        min-width: 60px;
+    }
+
+    p {
+        display: inline-block;
+        margin-top: 4px;
+        color: #949494;
+        font-size: 12px;
+        line-height: 20px;
+    }
+}
+
 @media screen and (max-width: $semi-wide) {
     .goal-item-title {
 

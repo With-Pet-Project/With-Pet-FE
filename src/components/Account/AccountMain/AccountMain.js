@@ -6,7 +6,7 @@ import {
   toDateObject,
   getNextYearMonth,
 } from 'components/common/Calender/hooks/date';
-import { TODAY } from 'constants/date';
+import { TODAY } from 'lib/constants/date';
 import TotalAccountSection from '../TotalAccountSection/TotalAccountSection';
 import TodayAccountSection from '../TodayAccountSection/TodayAccountSection';
 import AddAccount from './AddAccount/AddAccount';

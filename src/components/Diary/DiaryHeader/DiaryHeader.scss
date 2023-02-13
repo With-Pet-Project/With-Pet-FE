@@ -1,0 +1,57 @@
+.diary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  height: 100%;
+  padding: 0 1em;
+  margin: 0 auto;
+}
+
+.pet-info {
+  display: flex;
+  height: 50%;
+
+  & h2 {
+    color: #f2f2f2;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 38px;
+    margin: 0 0 10px;
+  }
+
+  & span {
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+    color: #f2f2f2;
+  }
+
+  & .pet-profile-img {
+    width:70px;
+    height: 70px;
+    background-color: #e2e2e2;
+    border-radius: 100px;
+  }
+
+  & .pet-name-birthday {
+    margin: 0 15px;
+  }
+
+  & .pet-profile-mini-img {
+    width: 30px;
+    height: 30px;
+    background: #e2e2e2;
+    border-radius: 10px;
+  }
+}
+
+.add-pet-button {
+  & button {
+    width: 145px;
+    height: 24px;
+    color: white;
+    background: linear-gradient(90deg, #55B9C5 0%, #62CCAB 100%);
+  }
+}

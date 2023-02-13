@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getComma } from 'utils/account';
+import { getComma } from 'lib/utils/account';
 import './ShowTodayItem.scss';
 
 function ShowTodayItem({ name, price = 0, lightColor, darkColor }) {
