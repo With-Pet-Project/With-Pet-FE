@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
-import { TODAY } from 'constants/date';
 import { getComma } from 'utils/account';
+import { ACCOUNT_LIST, DEFAULT_TOTAL_LIST } from 'constants/account';
 import Calender from 'components/common/Calender/Calender';
-import 'components/Diary/ChallengeSection/ChallengeSection.scss';
-import { ACCOUNT_LIST } from 'constants/account';
-import './TotalAccountSection.scss';
 import TotalAccountItem from './TotalAccountItem/TotalAccountItem';
+import './TotalAccountSection.scss';
 
 function TotalAccountSection({
   yearMonth,
@@ -14,9 +12,7 @@ function TotalAccountSection({
   selectDate,
   handleSelectDate,
 }) {
-  // console.log(accountData);
-  // 여기나 이 이전에서 토탈 구하기
-  const [totalData, setTotalData] = useState({});
+  const [totalData, setTotalData] = useState({ ...DEFAULT_TOTAL_LIST });
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
@@ -31,14 +27,9 @@ function TotalAccountSection({
         });
         return acc;
       },
-      {
-        feed: 0,
-        toy: 0,
-        hospital: 0,
-        beauty: 0,
-        etc: 0,
-      },
+      { ...DEFAULT_TOTAL_LIST },
     );
+
     const newTotalPrice = Object.entries(newTotalData).reduce(
       (acc, [_, value]) => acc + value,
       0,
@@ -53,8 +44,8 @@ function TotalAccountSection({
       <TotalAccountItem
         key={key}
         name={name}
-        price="10000"
-        percent="40%"
+        price={totalData[`${key}`]}
+        percent={(totalData[`${key}`] / totalPrice) * 100}
         color={darkColor}
       />
     ),
@@ -75,8 +66,7 @@ function TotalAccountSection({
         <h2>이번달 총 지출</h2>
         <ul>{totalAccountItemHtml}</ul>
         <div className="total-price">
-          {/* <span>{getComma(total)}</span> */}
-          <span>0</span>
+          <span>{getComma(totalPrice)}</span>
           <span className="unit">원</span>
         </div>
       </div>
