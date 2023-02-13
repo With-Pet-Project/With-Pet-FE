@@ -1,47 +1,51 @@
-import { getComma } from 'lib/utils/account';
-import { ACCOUNT_LIST } from 'lib/constants/account';
-import TodayAccountItem from './TodayAccountItem/TodayAccountItem';
+import { useState } from 'react';
 import './TodayAccountSection.scss';
+import ShowTodayAccount from './ShowTodayAccount/ShowTodayAccount';
+import EditTodayAccount from './EditTodayAccount/EditTodayAccount';
+// 중복되지않는 밑에만 바꾸면 되는뎅... 넘 하나의 컴포넌트를 다 갈아버렸나??
+// 일단 해보고 리펙토링 해보기
 
 function TodayAccountSection({ accountData = [] }) {
-  const getTotal = () => {
-    if (accountData.length <= 0) return 0;
+  const [isEdit, setIsEdit] = useState(false);
 
-    return Object.entries(ACCOUNT_LIST).reduce((acc, [key, _]) => {
-      const hasKey = Object.keys(accountData[0]).includes(key);
-      if (!hasKey) return acc;
-      return acc + accountData[0][key];
-    }, 0);
+  const handleEditClick = bool => {
+    setIsEdit(bool);
   };
 
-  const todayAccountItemHtml = Object.entries(ACCOUNT_LIST).map(
-    ([key, { name, lightColor, darkColor }]) => (
-      <TodayAccountItem
-        key={key}
-        name={name}
-        price={accountData.length > 0 ? accountData[0][key] : 0}
-        lightColor={lightColor}
-        darkColor={darkColor}
-      />
-    ),
+  const BtnHtml = isEdit ? (
+    <button
+      className="edit-btn"
+      type="button"
+      onClick={() => handleEditClick(false)}
+    >
+      완료
+    </button>
+  ) : (
+    <button
+      className="edit-btn"
+      type="button"
+      onClick={() => handleEditClick(true)}
+    >
+      편집
+    </button>
+  );
+
+  const todayContentHtml = isEdit ? (
+    <EditTodayAccount accountData={accountData} />
+  ) : (
+    <ShowTodayAccount accountData={accountData} />
   );
 
   return (
     <div className="today-account">
       <div className="title-wrapper">
         <h2>오늘의 소비</h2>
-        <button type="button">편집</button>
-      </div>
-      <div className="content-wrapper">
-        <div className="today-total">
-          <span className="total-title">전체 소비</span>
-          <div className="total-price">
-            <span>{getComma(getTotal())}</span>
-            <span className="unit">원</span>
-          </div>
+        <div>
+          <button type="button">모두삭제</button>
+          {BtnHtml}
         </div>
-        <ul className="today-consumption-list">{todayAccountItemHtml}</ul>
       </div>
+      {todayContentHtml}
     </div>
   );
 }

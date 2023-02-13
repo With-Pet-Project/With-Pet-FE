@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+/* 
+나중에 selectbox 디자인 나오면 수정하기
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-left: 11px;
+} */

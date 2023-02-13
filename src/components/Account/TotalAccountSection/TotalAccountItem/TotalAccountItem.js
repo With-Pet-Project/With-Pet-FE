@@ -8,7 +8,7 @@ function TotalAccountItem({ name, price, percent, color }) {
       <div className="item">
         <span className="name">{name}</span>
         <div className="price">
-          <span>{getComma(10000)}</span>
+          <span>{getComma(price)}</span>
           <span className="unit">원</span>
         </div>
       </div>
@@ -23,7 +23,9 @@ export default TotalAccountItem;
 
 const RangeBar = styled.div`
   height: 100%;
-  width: ${props => props.percent};
+  width: 0%;
+  width: ${props => `${props.percent}%`};
   background-color: ${props => props.color};
   border-radius: inherit;
+  transition: width 0.5s;
 `;
