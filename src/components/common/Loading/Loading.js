@@ -7,7 +7,7 @@ function Loading() {
 
   const hideCss = isFetching || isMutating ? '' : 'hide';
 
-  return <div className={hideCss}>{/* <p>Loading...</p> */}</div>;
+  return <div className={hideCss}>{/* <p>Loading...!</p> */}</div>;
 }
 
 export default Loading;
