@@ -23,9 +23,10 @@ function AddAccount({ isOpenModal, closeModal }) {
         <form className="add-account-form">
           <div>
             <span className="label">펫 선택</span>
-            <div className="input-wrapper">
-              <input type="text" />
-            </div>
+            <select name="펫" className="select-wrapper">
+              <option className="select-items">뽀삐</option>
+              <option className="select-items">나비</option>
+            </select>
           </div>
           {inputHtml}
           <div className="button-wrapper">
