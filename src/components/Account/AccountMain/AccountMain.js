@@ -13,7 +13,6 @@ import AddAccount from './AddAccount/AddAccount';
 import { useFetchAllAccount, useMonthYear } from '../hooks/useAccount';
 import './AccountMain.scss';
 
-// reactquery 로딩 추가하기
 function AccountMain() {
   const [selectDate, setSelectDate] = useState(getMonthYearDetails(TODAY));
   const [yearMonth, setYearMonth] = useMonthYear();
@@ -54,7 +53,11 @@ function AccountMain() {
       <button type="button" className="add-account-btn" onClick={openModal}>
         <FontAwesomeIcon icon={faPlus} size="1x" />
       </button>
-      <AddAccount isOpenModal={isOpenModal} closeModal={closeModal} />
+      <AddAccount
+        isOpenModal={isOpenModal}
+        closeModal={closeModal}
+        selectDate={selectDate.dateTime}
+      />
     </section>
   );
 }

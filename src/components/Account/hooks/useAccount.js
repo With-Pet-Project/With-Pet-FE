@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
 import { queryKeys } from 'reactQuery/queryKeys';
 import axios from 'axios';
 import {
   getMonthYearDetails,
-  toDateObject,
   getNextYearMonth,
 } from 'components/common/Calender/hooks/date';
 import { TODAY } from 'constants/date';
@@ -18,7 +17,6 @@ export const fetchAccount = async (year, month) => {
 };
 
 export const useFetchAllAccount = (year, month) => {
-  // userId,
   const fallback = [];
   const { data: consumptions = fallback } = useQuery(
     [queryKeys.account, year, month],
@@ -39,4 +37,31 @@ export const useMonthYear = () => {
   }, [yearMonth, queryClient]);
 
   return [yearMonth, setYearMonth];
+};
+
+const addAccount = ({ petId, feed, toy, hospital, beauty, etc, date }) => {
+  console.log({ petId, feed, toy, hospital, beauty, etc, date });
+  // await axios.post(`/co`)
+  axios
+    .post('/consumption', { petId, feed, toy, hospital, beauty, etc, date })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+export const useAddAccount = () => {
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation(
+    ({ petId, feed, toy, hospital, beauty, etc, date }) =>
+      addAccount({ petId, feed, toy, hospital, beauty, etc, date }),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries([queryKeys.account]);
+      },
+    },
+  );
+  return mutate;
 };

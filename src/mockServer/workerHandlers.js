@@ -1,9 +1,7 @@
 import { rest } from 'msw';
-import getFebData from 'lib/mocks/account/getFebData.json';
-import getJanData from 'lib/mocks/account/getJanData.json';
-import getMarData from 'lib/mocks/account/getMarData.json';
-
-const todos = ['먹기', '자기', '놀기'];
+import getFebData from 'lib/mocks/account/getFebData';
+import getJanData from 'lib/mocks/account/getJanData';
+import getMarData from 'lib/mocks/account/getMarData';
 
 export const workerHandlers = [
   // 소비 내역 전체를 조회합니다.
@@ -31,9 +29,33 @@ export const workerHandlers = [
     return res(ctx.status(200), ctx.json(result));
   }),
 
-  // 할일 추가
-  rest.post('/todos', (req, res, ctx) => {
-    todos.push(req.body);
+  rest.post('/consumption', (req, res, ctx) => {
+    const { petId, feed, toy, hospital, beauty, etc, date } = req.body;
+    const [, month, day] = date.split('-');
+
+    let json = {};
+    if (month === '02') {
+      json = getFebData;
+    }
+    if (month === '01') {
+      json = getJanData;
+    }
+    if (month === '03') {
+      json = getMarData;
+    }
+    json.data.consumptions[day] = [
+      {
+        id: 1,
+        pet_id: petId,
+        feed: Number(feed),
+        toy: Number(toy),
+        hospital: Number(hospital),
+        beauty: Number(beauty),
+        etc: Number(etc),
+        date: Number(date),
+      },
+    ];
+    // todos.push(req.body);
     return res(ctx.status(201));
   }),
 ];
