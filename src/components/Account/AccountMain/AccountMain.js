@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import {
   getMonthYearDetails,
-  toDateFormat,
   toDateObject,
   getNextYearMonth,
 } from 'components/common/Calender/hooks/date';
@@ -11,16 +10,13 @@ import { TODAY } from 'lib/constants/date';
 import TotalAccountSection from '../TotalAccountSection/TotalAccountSection';
 import TodayAccountSection from '../TodayAccountSection/TodayAccountSection';
 import AddAccount from './AddAccount/AddAccount';
-import { useFetchAllAccount } from '../hooks/useAccount';
+import { useFetchAllAccount, useMonthYear } from '../hooks/useAccount';
 import './AccountMain.scss';
 
-// reactquery 로딩 추가하기
 function AccountMain() {
   const [selectDate, setSelectDate] = useState(getMonthYearDetails(TODAY));
-  const [yearMonth, setYearMonth] = useState(getMonthYearDetails(TODAY));
+  const [yearMonth, setYearMonth] = useMonthYear();
   const [isOpenModal, setIsOpenModal] = useState(false);
-
-  // console.log(selectDate);
   const accountData = useFetchAllAccount(yearMonth.year, yearMonth.month);
 
   const openModal = () => {
@@ -57,7 +53,11 @@ function AccountMain() {
       <button type="button" className="add-account-btn" onClick={openModal}>
         <FontAwesomeIcon icon={faPlus} size="1x" />
       </button>
-      <AddAccount isOpenModal={isOpenModal} closeModal={closeModal} />
+      <AddAccount
+        isOpenModal={isOpenModal}
+        closeModal={closeModal}
+        selectDate={selectDate.dateTime}
+      />
     </section>
   );
 }

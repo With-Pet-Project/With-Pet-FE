@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { getComma } from 'lib/utils/account';
-import './TodayAccountItem.scss';
+import './ShowTodayItem.scss';
 
-function TodayAccountItem({ name, price = 0, lightColor, darkColor }) {
+function ShowTodayItem({ name, price = 0, lightColor, darkColor }) {
   return (
     <li className="today-consumption-item">
       <div className="item-title">
@@ -17,7 +17,7 @@ function TodayAccountItem({ name, price = 0, lightColor, darkColor }) {
   );
 }
 
-export default TodayAccountItem;
+export default ShowTodayItem;
 
 const ColorSign = styled.div`
   width: 24px;

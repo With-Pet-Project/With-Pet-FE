@@ -1,20 +1,67 @@
-// !:나중에 분기하고 정리하기
-import { useQuery } from '@tanstack/react-query';
+import { useState, useEffect } from 'react';
+import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
 import { queryKeys } from 'lib/reactQuery/queryKeys';
+import axios from 'axios';
+import {
+  getMonthYearDetails,
+  getNextYearMonth,
+} from 'components/common/Calender/hooks/date';
+import { TODAY } from 'lib/constants/date';
 
-const fetchAccount = async () => {
-  const { consumptions } = await fetch('/consumption')
-    .then(res => res.json())
+export const fetchAccount = async (year, month) => {
+  const { consumptions } = await axios
+    .get(`/consumption/${year}/${month}`)
+    .then(response => response.data)
     .then(({ data }) => data);
   return consumptions;
 };
 
 export const useFetchAllAccount = (year, month) => {
-  // userId, TODAY
   const fallback = [];
   const { data: consumptions = fallback } = useQuery(
     [queryKeys.account, year, month],
-    () => fetchAccount(),
+    () => fetchAccount(year, month),
   );
   return consumptions;
+};
+
+export const useMonthYear = () => {
+  const [yearMonth, setYearMonth] = useState(getMonthYearDetails(TODAY));
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
+    const { year, month } = getNextYearMonth(yearMonth.dateObject, -1);
+    queryClient.prefetchQuery([queryKeys.account, year, month], () =>
+      fetchAccount(year, month),
+    );
+  }, [yearMonth, queryClient]);
+
+  return [yearMonth, setYearMonth];
+};
+
+const addAccount = ({ petId, feed, toy, hospital, beauty, etc, date }) => {
+  console.log({ petId, feed, toy, hospital, beauty, etc, date });
+  // await axios.post(`/co`)
+  axios
+    .post('/consumption', { petId, feed, toy, hospital, beauty, etc, date })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+export const useAddAccount = () => {
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation(
+    ({ petId, feed, toy, hospital, beauty, etc, date }) =>
+      addAccount({ petId, feed, toy, hospital, beauty, etc, date }),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries([queryKeys.account]);
+      },
+    },
+  );
+  return mutate;
 };
