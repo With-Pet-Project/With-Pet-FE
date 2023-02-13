@@ -1,6 +1,50 @@
-function EditTodayItem () {
+.today-account-edit-item {
+  border: 1px solid #dbdbdb;
+  width: 126px;
+  height: 110px;
+  border-radius: 10px;
+  padding: 17px 15px 15px 15px;
 
+  .item-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
 
+    .name {
+      color: #434343;
+      font-weight: 500;
+      font-size: 0.8rem;
+      padding-left: 5px;
+    }
+  }
+
+  .today-item-price {
+    color: #555555;
+    font-family: 'Noto Sans';
+    font-size: 22px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    display: flex;
+    text-align: center;
+
+    .today-input {
+      width: 100%;
+      border-radius: 10px;
+      background-color: #f2f2f2;
+      border: 0;
+      height: 35px;
+      padding-left: 10px;
+      color: #555555;
+      font-size: 22px;
+    }
+  }
+
+  .unit {
+    font-family: 'Noto Sans';
+    font-size: 14px;
+    padding-right: 10px;
+  }
 }
-
-export default EditTodayItem;
