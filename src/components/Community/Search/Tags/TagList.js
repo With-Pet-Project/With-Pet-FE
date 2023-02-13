@@ -40,15 +40,15 @@ function TagList() {
   }, []);
 
   return (
-    <div
-      className="tag-container"
-      ref={scrollRef}
-      onMouseDown={onDragStart}
-      onMouseUp={onDragEnd}
-      onMouseMove={e => setTimeout(onDragMove(e), 200)}
-      role="option"
-    >
-      <div className="tag-slide">
+    <div className="tag-container" ref={scrollRef}>
+      <div
+        className="tag-slide"
+        onMouseDown={onDragStart}
+        onMouseUp={onDragEnd}
+        onMouseLeave={onDragEnd}
+        onMouseMove={e => setTimeout(onDragMove(e), 200)}
+        role="option"
+      >
         {ARTICLE_TAG_NAME.map((tag, idx) => (
           <Tag
             key={ARTICLE_QUERY_STRING[idx]}

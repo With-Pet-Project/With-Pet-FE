@@ -1,6 +1,5 @@
 import './CommunityMain.scss';
 
-import { useState } from 'react';
 import Search from './Search/Search';
 
 function CommunityMain() {

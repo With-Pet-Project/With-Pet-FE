@@ -17,11 +17,11 @@
 
 .tag-item {
   margin: 0 5px;
-  max-height: 60px;
 
   & button {
+    white-space: nowrap;
     min-width: 60px;
-
+    max-height: 41px;
     background: #FFFFFF;
 
     padding: 11px 15px;

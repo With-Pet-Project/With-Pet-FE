@@ -1,0 +1,31 @@
+.community-search-history {
+  width: 100%;
+  padding: 30px 10px 0;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 23px;
+
+  & h2 {
+    margin-bottom: 15px;
+    color: #252525;
+  }
+
+  & button {
+    margin: 5px 0 0;
+    padding: 0;
+    background-color: #fff;
+  }
+
+  & span {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    color: #252525;
+  }
+}
+
+.history-button {
+  display: flex;
+  justify-content: space-between;
+}
