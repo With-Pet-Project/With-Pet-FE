@@ -1,5 +1,6 @@
 function ModalContent({ children }) {
-  return <div className="modal">{children}</div>;
+  const { className, child } = children;
+  return <div className={`modal ${className}`}>{child}</div>;
 }
 
 export default ModalContent;
