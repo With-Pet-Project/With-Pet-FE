@@ -27,4 +27,5 @@ const RangeBar = styled.div`
   width: ${props => `${props.percent}%`};
   background-color: ${props => props.color};
   border-radius: inherit;
+  transition: width 0.5s;
 `;
