@@ -42,18 +42,13 @@
     border: 1.5px solid #62ccab;
   }
 
-  input {
+  .add-input {
     background-color: #f2f2f2;
     border-radius: 10px;
     height: 36px;
     border: 0;
     width: 100%;
     padding-left: 11px;
-  }
-
-  input:focus {
-    outline: none;
-    background-color: #fff;
   }
 
   .unit {

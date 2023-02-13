@@ -33,13 +33,18 @@
     .today-input {
       width: 100%;
       border-radius: 10px;
-      background-color: #f2f2f2;
+      background-color: inherit;
       border: 0;
       height: 35px;
       padding-left: 10px;
       color: #555555;
       font-size: 22px;
     }
+  }
+
+  .today-item-price:focus-within {
+    background-color: #fff;
+    border: 1.5px solid #62ccab;
   }
 
   .unit {

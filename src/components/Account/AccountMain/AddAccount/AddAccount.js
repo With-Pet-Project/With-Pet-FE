@@ -7,7 +7,7 @@ function AddAccount({ isOpenModal, closeModal }) {
     <div key={key}>
       <span className="label">{name}</span>
       <div className="input-wrapper">
-        <input type="text" />
+        <input type="text" className="add-input" />
         <span className="unit">원</span>
       </div>
     </div>
