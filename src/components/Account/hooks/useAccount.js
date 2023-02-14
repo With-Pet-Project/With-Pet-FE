@@ -84,3 +84,26 @@ export const useDeleteAccount = () => {
   });
   return mutate;
 };
+
+const updateAccount = values => {
+  console.log(values);
+  axios
+    .patch('/consumption', values)
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+export const useUpdateAccount = () => {
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation(values => updateAccount(values), {
+    onSuccess: () => {
+      queryClient.invalidateQueries([queryKeys.account]);
+    },
+  });
+
+  return mutate;
+};

@@ -1,9 +1,15 @@
+/* eslint-disable no-param-reassign */
 import { getComma } from 'lib/utils/account';
 import { ACCOUNT_LIST } from 'lib/constants/account';
 import EditTodayItem from '../EditTodayItem/EditTodayItem';
 import './EditTodayAccount.scss';
 
-function EditTodayAccount({ accountData }) {
+function EditTodayAccount({ accountData, accountValue }) {
+  const onChange = (event, type) => {
+    const { value } = event.target;
+    accountValue[type] = Number(value);
+  };
+
   const getTotal = () => {
     if (accountData.length <= 0) return 0;
 
@@ -18,10 +24,12 @@ function EditTodayAccount({ accountData }) {
     ([key, { name, lightColor, darkColor }]) => (
       <EditTodayItem
         key={key}
+        id={key}
         name={name}
         price={accountData.length > 0 ? accountData[0][key] : 0}
         lightColor={lightColor}
         darkColor={darkColor}
+        onChange={onChange}
       />
     ),
   );
@@ -35,7 +43,9 @@ function EditTodayAccount({ accountData }) {
           <span className="unit">원</span>
         </div>
       </div>
-      <ul className="today-consumption-list">{todayAccountItemHtml}</ul>
+      <form className="edit-account-form">
+        <ul className="today-consumption-list">{todayAccountItemHtml}</ul>
+      </form>
     </div>
   );
 }

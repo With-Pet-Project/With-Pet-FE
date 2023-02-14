@@ -2,7 +2,14 @@ import styled from 'styled-components';
 import { getComma } from 'lib/utils/account';
 import './EditTodayItem.scss';
 
-function EditTodayItem({ name, price = 0, lightColor, darkColor }) {
+function EditTodayItem({
+  id,
+  name,
+  price = 0,
+  lightColor,
+  darkColor,
+  onChange,
+}) {
   return (
     <li className="today-account-edit-item">
       <div className="item-title">
@@ -10,13 +17,16 @@ function EditTodayItem({ name, price = 0, lightColor, darkColor }) {
         <span className="name">{name}</span>
       </div>
       <div className="today-item-price">
-        <input className="today-input" placeholder="0,000" />
+        <input
+          onChange={event => onChange(event, id)}
+          className="today-input"
+          placeholder={getComma(price)}
+        />
         <span className="unit">원</span>
       </div>
     </li>
   );
 }
-
 export default EditTodayItem;
 
 const ColorSign = styled.div`
