@@ -65,7 +65,6 @@ export const useAddAccount = () => {
 };
 
 export const deleteAccount = id => {
-  console.log(id);
   axios
     .delete(`/consumption/${id}`)
     .then(response => {
@@ -74,4 +73,14 @@ export const deleteAccount = id => {
     .catch(error => {
       console.log(error);
     });
+};
+
+export const useDeleteAccount = () => {
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation(id => deleteAccount(id), {
+    onSuccess: () => {
+      queryClient.invalidateQueries([queryKeys.account]);
+    },
+  });
+  return mutate;
 };

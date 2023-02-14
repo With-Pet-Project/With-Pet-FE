@@ -1,21 +1,19 @@
 import { useState } from 'react';
 import './TodayAccountSection.scss';
-import { useMutation } from '@tanstack/react-query';
 import ShowTodayAccount from './ShowTodayAccount/ShowTodayAccount';
 import EditTodayAccount from './EditTodayAccount/EditTodayAccount';
 import useConfirm from '../hooks/useConfirm';
-import { deleteAccount } from '../hooks/useAccount';
+import { useDeleteAccount } from '../hooks/useAccount';
 // 중복되지않는 밑에만 바꾸면 되는뎅... 넘 하나의 컴포넌트를 다 갈아버렸나??
 // 일단 해보고 리펙토링 해보기
 
 function TodayAccountSection({ accountData = [] }) {
   const [isEdit, setIsEdit] = useState(false);
-  const deleteMutation = useMutation(id => deleteAccount(id));
+  const deleteAccount = useDeleteAccount();
 
   const onConfirm = () => {
     const { id } = accountData[0];
-    console.log(id);
-    deleteMutation.mutate(id);
+    deleteAccount(id);
     alert('삭제했습니다.');
   };
 
@@ -26,10 +24,6 @@ function TodayAccountSection({ accountData = [] }) {
   };
 
   const handleDelete = () => {
-    if (accountData.length === 0) {
-      alert('삭제할 데이터가 없습니다.');
-      return;
-    }
     confirmDelete();
   };
 
