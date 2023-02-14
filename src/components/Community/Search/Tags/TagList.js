@@ -36,8 +36,10 @@ function TagList() {
   };
 
   useEffect(() => {
-    setSearchParams({ tag: ARTICLE_QUERY_STRING[0] });
-  }, []);
+    if (!searchParams.get('tag')) {
+      setSearchParams({ tag: ARTICLE_QUERY_STRING[0] });
+    }
+  }, [searchParams]);
 
   return (
     <div className="tag-container" ref={scrollRef}>
