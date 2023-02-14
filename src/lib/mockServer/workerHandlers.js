@@ -4,7 +4,7 @@ import getJanData from 'lib/mocks/account/getJanData';
 import getMarData from 'lib/mocks/account/getMarData';
 import { BASE_URL } from 'lib/APIs/client';
 import {
-  ALL_OF_HALLENGES,
+  ALL_OF_CHALLENGES,
   ONE_CHALLENGE,
 } from 'lib/mocks/challenge/challengeGet';
 import {
@@ -72,7 +72,7 @@ export const workerHandlers = [
   /** -------------------------------------------------- */
   /** ---------------- Challenge ----------------------- */
   rest.get(`${BASE_URL}/challenge`, (req, res, ctx) => {
-    return res(ctx.json(ALL_OF_HALLENGES));
+    return res(ctx.json(ALL_OF_CHALLENGES));
   }),
 
   /** -------------------------------------------------- */

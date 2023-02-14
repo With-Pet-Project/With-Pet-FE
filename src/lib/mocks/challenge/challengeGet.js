@@ -1,4 +1,4 @@
-export const ALL_OF_HALLENGES = {
+export const ALL_OF_CHALLENGES = {
   // /challenge
   code: 200,
   message: '정상적으로 조회되었습니다.',

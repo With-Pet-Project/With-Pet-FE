@@ -2,6 +2,8 @@ export const ARTICLE_LIST_PAGE_ONE = {
   code: 200,
   message: '게시글 목록 조회 성공',
   data: {
+    pageNum: 1,
+    isLast: false,
     articlesList: [
       {
         articleId: 1,
@@ -123,6 +125,8 @@ export const ARTICLE_LIST_PAGE_TWO = {
   code: 200,
   message: '게시글 목록 조회 성공',
   data: {
+    pageNum: 2,
+    isLast: false,
     articlesList: [
       {
         articleId: 1,
@@ -244,6 +248,8 @@ export const ARTICLE_LIST_PAGE_THREE = {
   code: 200,
   message: '게시글 목록 조회 성공',
   data: {
+    pageNum: 3,
+    isLast: true,
     articlesList: [
       {
         articleId: 1,

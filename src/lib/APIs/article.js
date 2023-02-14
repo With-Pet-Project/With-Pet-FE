@@ -1,13 +1,13 @@
 import CLIENT from './client';
 
-export const getArticleList = async (pageParam, tag, city, filter = null) => {
-  const response = await CLIENT.get('/article', {
+export const getArticleList = async (pageParam, { queryKey }) => {
+  const data = await CLIENT.get('/article', {
     params: {
-      tag,
-      filter,
+      tag: queryKey[2],
+      city: queryKey[3],
+      filter: queryKey[4],
       pageNum: pageParam,
-      city,
     },
   });
-  return response;
+  return data;
 };
