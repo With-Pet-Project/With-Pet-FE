@@ -7,6 +7,11 @@ import {
   ALL_OF_HALLENGES,
   ONE_CHALLENGE,
 } from 'lib/mocks/challenge/challengeGet';
+import {
+  ARTICLE_LIST_PAGE_ONE,
+  ARTICLE_LIST_PAGE_TWO,
+  ARTICLE_LIST_PAGE_THREE,
+} from 'lib/mocks/article/articleGet';
 
 export const workerHandlers = [
   // 소비 내역 전체를 조회합니다.
@@ -68,5 +73,25 @@ export const workerHandlers = [
   /** ---------------- Challenge ----------------------- */
   rest.get(`${BASE_URL}/challenge`, (req, res, ctx) => {
     return res(ctx.json(ALL_OF_HALLENGES));
+  }),
+
+  /** -------------------------------------------------- */
+  /** ---------------- Article ----------------------- */
+  rest.get(`${BASE_URL}/article`, (req, res, ctx) => {
+    const { pageNum } = req.params;
+
+    if (pageNum === 1) {
+      return res(ctx.json(ARTICLE_LIST_PAGE_ONE));
+    }
+
+    if (pageNum === 2) {
+      return res(ctx.json(ARTICLE_LIST_PAGE_TWO));
+    }
+
+    if (pageNum === 3) {
+      return res(ctx.json(ARTICLE_LIST_PAGE_THREE));
+    }
+
+    return res(ctx.json(ARTICLE_LIST_PAGE_ONE));
   }),
 ];

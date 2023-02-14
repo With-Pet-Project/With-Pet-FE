@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
-import HistoryList from '../History/HistoryList';
+import HistoryList from './History/HistoryList';
 
 const SearchContainer = styled.div`
   flex-direction: ${({ focus }) => (focus ? 'column' : 'row')};
