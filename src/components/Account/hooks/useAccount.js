@@ -40,8 +40,6 @@ export const useMonthYear = () => {
 };
 
 const addAccount = ({ petId, feed, toy, hospital, beauty, etc, date }) => {
-  console.log({ petId, feed, toy, hospital, beauty, etc, date });
-  // await axios.post(`/co`)
   axios
     .post('/consumption', { petId, feed, toy, hospital, beauty, etc, date })
     .then(response => {
@@ -64,4 +62,16 @@ export const useAddAccount = () => {
     },
   );
   return mutate;
+};
+
+export const deleteAccount = id => {
+  console.log(id);
+  axios
+    .delete(`/consumption/${id}`)
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    });
 };

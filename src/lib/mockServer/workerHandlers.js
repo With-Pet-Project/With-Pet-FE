@@ -60,7 +60,13 @@ export const workerHandlers = [
         date: Number(date),
       },
     ];
-    // todos.push(req.body);
+    return res(ctx.status(201));
+  }),
+
+  rest.delete('/consumption/:id', (req, res, ctx) => {
+    // 2월만 가능
+    const { id } = req.params;
+    getFebData.data.consumptions[id] = [];
     return res(ctx.status(201));
   }),
 
