@@ -40,6 +40,7 @@ function AddAccount({ isOpenModal, closeModal, selectDate }) {
           <div>
             <span className="label">펫 선택</span>
             <select name="petId" className="select-wrapper">
+              <span>👇</span>
               <option value={Math.random()} className="select-items">
                 뽀삐
               </option>
