@@ -40,8 +40,6 @@ export const useMonthYear = () => {
 };
 
 const addAccount = ({ petId, feed, toy, hospital, beauty, etc, date }) => {
-  console.log({ petId, feed, toy, hospital, beauty, etc, date });
-  // await axios.post(`/co`)
   axios
     .post('/consumption', { petId, feed, toy, hospital, beauty, etc, date })
     .then(response => {
@@ -63,5 +61,49 @@ export const useAddAccount = () => {
       },
     },
   );
+  return mutate;
+};
+
+export const deleteAccount = id => {
+  axios
+    .delete(`/consumption/${id}`)
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+export const useDeleteAccount = () => {
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation(id => deleteAccount(id), {
+    onSuccess: () => {
+      queryClient.invalidateQueries([queryKeys.account]);
+    },
+  });
+  return mutate;
+};
+
+const updateAccount = values => {
+  console.log(values);
+  axios
+    .patch('/consumption', values)
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+export const useUpdateAccount = () => {
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation(values => updateAccount(values), {
+    onSuccess: () => {
+      queryClient.invalidateQueries([queryKeys.account]);
+    },
+  });
+
   return mutate;
 };
