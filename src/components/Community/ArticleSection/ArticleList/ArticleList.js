@@ -11,7 +11,6 @@ function ArticleList() {
   const { ref, inView } = useInView();
 
   useEffect(() => {
-    console.log(data);
     if (inView && hasNextPage) {
       fetchNextPage();
     }
@@ -28,7 +27,7 @@ function ArticleList() {
           )),
         )}
       </ul>
-      <div ref={ref}>{inView}</div>
+      <div data-testid="inView" ref={ref} aria-label={`${inView}`} role="log" />
     </div>
   );
 }
