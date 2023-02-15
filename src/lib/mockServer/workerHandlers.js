@@ -9,7 +9,6 @@ import {
 } from 'lib/mocks/challenge/challengeGet';
 
 export const workerHandlers = [
-  // 소비 내역 전체를 조회합니다.
   rest.get('/consumption/:year/:month', (req, res, ctx) => {
     const { month } = req.params;
 
@@ -60,7 +59,20 @@ export const workerHandlers = [
         date: Number(date),
       },
     ];
-    // todos.push(req.body);
+    return res(ctx.status(201));
+  }),
+
+  rest.delete('/consumption/:id', (req, res, ctx) => {
+    // 2월만 가능
+    const { id } = req.params;
+    getFebData.data.consumptions[id] = [];
+    return res(ctx.status(201));
+  }),
+
+  rest.patch('/consumption', (req, res, ctx) => {
+    // 2월만 가능
+    const result = req.body;
+    getFebData.data.consumptions[result.id] = [{ ...result, pet_id: 4 }];
     return res(ctx.status(201));
   }),
 
