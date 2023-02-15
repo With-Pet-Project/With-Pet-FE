@@ -5,7 +5,7 @@ export const getArticleList = async (pageParam, { queryKey }) => {
     params: {
       tag: queryKey[2],
       city: queryKey[3],
-      filter: queryKey[4],
+      filter: queryKey[4], // priority
       pageNum: pageParam,
     },
   });

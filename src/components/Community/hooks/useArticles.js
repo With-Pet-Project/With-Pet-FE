@@ -2,7 +2,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { queryKeys } from 'lib/reactQuery/queryKeys';
 import { getArticleList } from 'lib/APIs/article';
 
-export const useArticles = (tag, city, criteria = null) => {
+export const useArticles = (tag, city, priority = null) => {
   const { article } = queryKeys;
 
   const {
@@ -15,9 +15,9 @@ export const useArticles = (tag, city, criteria = null) => {
     data,
     isLoading,
   } = useInfiniteQuery({
-    queryKey: [article.filters(tag, city, criteria)],
+    queryKey: [article.filters(tag, city, priority)],
     queryFn: ({ pageParam = 1 }) =>
-      getArticleList(pageParam, article.filters(tag, city, criteria)),
+      getArticleList(pageParam, article.filters(tag, city, priority)),
     getNextPageParam: lastPage =>
       !lastPage.data.data.isLast ? lastPage.data.data.pageNum + 1 : undefined,
   });
