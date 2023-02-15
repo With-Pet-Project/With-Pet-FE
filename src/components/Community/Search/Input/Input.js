@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-
+import { useInput } from 'components/common/hooks/useInput';
 import HistoryList from './History/HistoryList';
 
 const SearchContainer = styled.div`
@@ -26,12 +26,8 @@ const SearchInput = styled.input`
 `;
 
 function Input({ isFocus, focus, inputRef, searchRef }) {
-  const [value, setValue] = useState('');
+  const { value, setValue, handleChange } = useInput();
   const [history, setHistory] = useState([]); // 검색기록 관리 state
-
-  const inputChange = e => {
-    setValue(e.target.value);
-  };
 
   const clickHistory = h => {
     // 검색 기록 클릭
@@ -85,7 +81,7 @@ function Input({ isFocus, focus, inputRef, searchRef }) {
         autoComplete="off"
         focus={focus}
         onFocus={isFocus}
-        onChange={inputChange}
+        onChange={handleChange}
         value={value}
       />
       <FontAwesomeIcon icon={faMagnifyingGlass} />
