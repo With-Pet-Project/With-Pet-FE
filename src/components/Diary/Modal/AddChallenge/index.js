@@ -1,7 +1,7 @@
 import './AddChallenge.scss';
 import styled from 'styled-components';
-
 import { useState, useEffect } from 'react';
+import { useModal } from 'components/common/Modal/context/useModal';
 
 import DateSelector from './DateSelector';
 
@@ -13,7 +13,9 @@ const Button = styled.button`
   margin: 0 7px;
 `;
 
-function AddChallenge({ isOpenModal }) {
+function AddChallenge() {
+  const { closeModal } = useModal();
+
   const MAXIMUM_NUMBER_OF_TIMES = 10;
 
   const [times, setTimes] = useState([]);
@@ -79,7 +81,7 @@ function AddChallenge({ isOpenModal }) {
         </div>
       </div>
       <div className="add-Challenge-buttons">
-        <Button onClick={isOpenModal}>취소</Button>
+        <Button onClick={() => closeModal(AddChallenge)}>취소</Button>
         <Button>추가하기</Button>
       </div>
     </div>

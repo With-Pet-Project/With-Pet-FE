@@ -1,5 +1,4 @@
 import './Modal.scss';
-import { useMemo, useState } from 'react';
 import ReactDOM from 'react-dom';
 import Backdrop from './Backdrop';
 import ModalContent from './ModalContent';

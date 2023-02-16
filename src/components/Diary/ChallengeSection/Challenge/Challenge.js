@@ -2,17 +2,26 @@ import './Challenge.scss';
 
 import AddChallenge from 'components/Diary/Modal/AddChallenge';
 import ChallengeList from 'components/Diary/Modal/ChallengeList';
-import { useState } from 'react';
-import Modal from 'components/common/Modal/Modal';
+import { useModal } from 'components/common/Modal/context/useModal';
+
 import AchievementRate from './AchievementRate/AchievementRate';
 import GoalsList from './Goals/GoalsList';
 
 function Challenge() {
-  const [addChallenge, setAddChallenge] = useState(false);
-  const [challengeList, setChallengeList] = useState(false);
+  // const [addChallenge, setAddChallenge] = useState(false);
+  // const [challengeList, setChallengeList] = useState(false);
 
-  const isOpenAddChallenge = () => setAddChallenge(!addChallenge);
-  const isOpenChallengeList = () => setChallengeList(!challengeList);
+  // const isOpenAddChallenge = () => setAddChallenge(!addChallenge);
+  // const isOpenChallengeList = () => setChallengeList(!challengeList);
+  const { openModal } = useModal();
+
+  const openAddChallenge = () => {
+    openModal(AddChallenge);
+  };
+
+  const openChallengeList = () => {
+    openModal(ChallengeList);
+  };
 
   return (
     <div className="Challenge">
@@ -21,27 +30,17 @@ function Challenge() {
           <h2>챌린지</h2>
           <p>챌린지를 추가하고 달성해보세요 !</p>
         </div>
-        <button type="button" onClick={isOpenAddChallenge}>
+        <button type="button" onClick={openAddChallenge}>
           추가하기
         </button>
       </div>
       <AchievementRate />
       <GoalsList />
       <div className="Challenge-modal-Button">
-        <button type="button" onClick={isOpenChallengeList}>
+        <button type="button" onClick={openChallengeList}>
           <span>챌린지 목록</span>
         </button>
       </div>
-      {addChallenge && (
-        <Modal closeModal={isOpenAddChallenge}>
-          <AddChallenge isOpenModal={isOpenAddChallenge} />
-        </Modal>
-      )}
-      {challengeList && (
-        <Modal closeModal={isOpenChallengeList}>
-          <ChallengeList />
-        </Modal>
-      )}
     </div>
   );
 }
