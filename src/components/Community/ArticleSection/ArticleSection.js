@@ -1,6 +1,6 @@
 import './ArticleSection.scss';
 
-import Filter from './Filter/Filter';
+import Filter from 'components/common/Filter/Filter';
 import ArticleList from './ArticleList/ArticleList';
 
 function ArticleSection() {

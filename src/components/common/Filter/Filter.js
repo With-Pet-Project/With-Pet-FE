@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
+import FilterButton from './Button';
+
 const PriorityButton = styled.button`
   color: ${({ selected }) => (selected ? '#252525' : '#878888')};
 `;
@@ -30,9 +32,8 @@ function Filter() {
   return (
     <div className="search-filter">
       <div className="button-filter">
-        <button type="button">{firstDepth}</button>
-        <div className="button-border" />
-        <button type="button">{secondDepth}</button>
+        <FilterButton>{firstDepth}</FilterButton>
+        <FilterButton>{secondDepth}</FilterButton>
       </div>
       <div className="button-filter">
         <PriorityButton

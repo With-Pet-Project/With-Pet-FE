@@ -8,7 +8,10 @@ import { Link } from 'react-router-dom';
 import ArticleItem from './ArticleItem';
 
 function ArticleList() {
-  const { data, fetchNextPage, hasNextPage } = useArticles('ALL', '서울');
+  const { data, fetchNextPage, hasNextPage, isError, error } = useArticles(
+    'ALL',
+    '서울',
+  );
   const { ref, inView } = useInView();
 
   useEffect(() => {
