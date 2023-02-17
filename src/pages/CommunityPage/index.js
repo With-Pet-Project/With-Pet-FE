@@ -1,20 +1,11 @@
-import styled from 'styled-components';
+import MainWrapper from 'components/common/Wrapper/MainWrapper';
 import CommunityMain from 'components/Community/CommunityMain';
-
-const Main = styled.main`
-  &::before,
-  &::after {
-    display: block;
-    content: '';
-    height: 40px;
-  }
-`;
 
 function CommunityPage() {
   return (
-    <Main>
+    <MainWrapper>
       <CommunityMain />
-    </Main>
+    </MainWrapper>
   );
 }
 
