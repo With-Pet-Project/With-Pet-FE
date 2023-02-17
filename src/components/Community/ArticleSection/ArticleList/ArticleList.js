@@ -4,6 +4,7 @@ import './ArticleList.scss';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useArticles } from 'components/Community/hooks/useArticles';
+import { Link } from 'react-router-dom';
 import ArticleItem from './ArticleItem';
 
 function ArticleList() {
@@ -22,7 +23,9 @@ function ArticleList() {
         {data?.pages?.map(elem =>
           elem.data?.data?.articlesList?.map(article => (
             <li key={article.articleId}>
-              <ArticleItem article={article} />
+              <Link to={`${article.articleId}`}>
+                <ArticleItem article={article} />
+              </Link>
             </li>
           )),
         )}
