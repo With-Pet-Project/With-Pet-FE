@@ -1,7 +1,7 @@
 import './AddChallenge.scss';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
-import { useModal } from 'components/common/Modal/context/useModal';
+import { useModal } from 'components/common/Modal/context/ModalContext';
 
 import DateSelector from './DateSelector';
 
