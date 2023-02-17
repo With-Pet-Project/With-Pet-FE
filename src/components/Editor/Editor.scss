@@ -1,0 +1,40 @@
+.editor {
+  height: 100%;
+}
+
+.editor-title {
+  display: flex;
+  width: 100%;
+  padding: 15px;
+
+  & select {
+    padding: 10px;
+    outline: none;
+    margin-right: 10px;
+    border: 2px solid #ccc;
+  }
+
+  & input {
+    flex-grow: 1;
+    padding: 0 15px;
+    outline: none;
+    border: 2px solid #ccc;
+  }
+}
+
+.quill {
+  display: flex;
+  flex-direction: column;
+  padding: 0 15px;
+
+  & .ql-snow:first-child {
+    border-bottom: 2px solid #ccc;
+  }
+
+  & .ql-snow:nth-child(2) {
+    overflow: auto;
+    flex-grow: 1;
+    height: 500px;
+    border-bottom: 2px solid #ccc;
+  }
+}
