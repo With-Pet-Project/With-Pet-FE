@@ -5,4 +5,5 @@ export const vars = {
   wide: `1250px`,
   sidebarOpened: `250px`,
   sidebarClosed: `150px`,
+  backgroundYellow: `#ffe259`,
 };
