@@ -6,4 +6,5 @@ export const vars = {
   sidebarOpened: `250px`,
   sidebarClosed: `150px`,
   backgroundYellow: `#ffe259`,
+  backgroundGreen: `#62ccab`,
 };
