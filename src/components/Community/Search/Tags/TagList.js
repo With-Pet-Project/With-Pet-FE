@@ -11,12 +11,13 @@ function TagList() {
   const ARTICLE_TAG_NAME = Object.values(ARTICLE_TAG);
 
   const scrollRef = useRef();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [tag, setTag] = useState(ARTICLE_QUERY_STRING[0]);
+  const [searchParams, setSearchParams] = useSearchParams({ tag });
   const [isDrag, setIsDrag] = useState(false);
   const [startX, setStartX] = useState(0);
 
   const onClickTag = tagId => {
-    setSearchParams({ tag: tagId });
+    setTag(tagId);
   };
 
   const onDragStart = e => {
@@ -36,10 +37,16 @@ function TagList() {
   };
 
   useEffect(() => {
+    searchParams.set('tag', tag);
+    setSearchParams(searchParams);
+  }, [searchParams, setSearchParams, tag]);
+
+  useEffect(() => {
     if (!searchParams.get('tag')) {
-      setSearchParams({ tag: ARTICLE_QUERY_STRING[0] });
+      searchParams.set('tag', tag);
+      setSearchParams(searchParams);
     }
-  }, [searchParams]);
+  });
 
   return (
     <div className="tag-container" ref={scrollRef}>
@@ -51,10 +58,10 @@ function TagList() {
         onMouseMove={e => setTimeout(onDragMove(e), 200)}
         role="option"
       >
-        {ARTICLE_TAG_NAME.map((tag, idx) => (
+        {ARTICLE_TAG_NAME.map((t, idx) => (
           <Tag
             key={ARTICLE_QUERY_STRING[idx]}
-            tagName={tag}
+            tagName={t}
             tagId={ARTICLE_QUERY_STRING[idx]}
             onClickTag={onClickTag}
             params={searchParams.get('tag')}

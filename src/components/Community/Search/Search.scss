@@ -9,6 +9,7 @@
 
 .community-result-container {
   position: absolute;
+  z-index: 1;
   top: 0;
   right: 0px;
   width: 100vw; // calc(100vw - 251px);
