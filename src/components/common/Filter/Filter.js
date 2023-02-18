@@ -1,39 +1,55 @@
 import './Filter.scss';
-import { ADMIN_DISTRICT } from 'lib/constants/adminDistrict';
 import styled from 'styled-components';
-
+import { ADMIN_DISTRICT } from 'lib/constants/adminDistrict';
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-
-import FilterButton from './Button';
+import { useSearchParams, useLocation } from 'react-router-dom';
+import Selector from './Selector/Selector';
 
 const PriorityButton = styled.button`
   color: ${({ selected }) => (selected ? '#252525' : '#878888')};
 `;
 
 function Filter() {
-  const FISRT_DEPTH = Object.keys(ADMIN_DISTRICT);
-  const [firstDepth, setFirstDepth] = useState(FISRT_DEPTH[0]);
-  const [secondDepth, setSecondDepth] = useState(ADMIN_DISTRICT[firstDepth][0]);
   const [priority, setPriority] = useState('최신');
   const [searchParams, setSearchParams] = useSearchParams();
+  const [firstPlace, setFirstPlace] = useState(Object.keys(ADMIN_DISTRICT)[0]);
+  const [secondPlace, setSecondPlace] = useState(ADMIN_DISTRICT[firstPlace][0]);
+
+  const location = useLocation();
 
   const handlePriority = e => {
     setPriority(e.target.value);
   };
 
+  const handleFirstPlace = e => setFirstPlace(e.target.value);
+  const handleSecondPlace = e => setSecondPlace(e.target.value);
+
   useEffect(() => {
-    searchParams.set('firstDepth', firstDepth);
-    searchParams.set('secondDepth', secondDepth);
-    searchParams.set('priority', priority);
-    setSearchParams(searchParams);
-  }, [firstDepth, priority, secondDepth]);
+    // const param = new URLSearchParams(location.search);
+    // const tag = param.get('tag');
+    const tag = searchParams.get('tag');
+    if (tag) {
+      searchParams.set('tag', tag);
+      searchParams.set('priority', priority);
+      searchParams.set('firstPlace', firstPlace);
+      searchParams.set('secondPlace', secondPlace);
+      setSearchParams(searchParams);
+    }
+  }, [searchParams, setSearchParams, priority, firstPlace, secondPlace]);
+
+  useEffect(() => {
+    setSecondPlace(ADMIN_DISTRICT[firstPlace][0]);
+  }, [firstPlace]);
 
   return (
     <div className="search-filter">
       <div className="button-filter">
-        <FilterButton>{firstDepth}</FilterButton>
-        <FilterButton>{secondDepth}</FilterButton>
+        <Selector
+          firstPlace={firstPlace}
+          secondPlace={secondPlace}
+          handleFirstPlace={handleFirstPlace}
+          handleSecondPlace={handleSecondPlace}
+        />
       </div>
       <div className="button-filter">
         <PriorityButton
