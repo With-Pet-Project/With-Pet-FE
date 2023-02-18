@@ -6,10 +6,9 @@
   margin: 0;
   background-color: #ffffff;
   min-width: $sidebar-opened;
-  font-family: 'Pretendard';
-  font-style: normal;
+  font-family: 'TmoneyRoundWindNormal';
   height: 100vh;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .side-navbar-inner-container {
@@ -91,7 +90,6 @@
   & ul span {
     vertical-align: middle;
     margin-left: 10px;
-    font-weight: 500;
     font-size: 14px;
     line-height: 17px;
   }
