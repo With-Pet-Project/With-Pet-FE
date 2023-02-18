@@ -1,5 +1,6 @@
 import './AddChallenge.scss';
 import styled from 'styled-components';
+import { vars } from 'lib/styles/vars';
 import { useState, useEffect } from 'react';
 import { useModal } from 'components/common/Modal/context/useModal';
 
@@ -8,7 +9,7 @@ import DateSelector from './DateSelector';
 const Button = styled.button`
   width: 90px;
   height: 36px;
-  border: 1.5px solid #62ccab;
+  border: 1.5px solid ${vars.backgroundYellow};
   border-radius: 10px;
   margin: 0 7px;
 `;

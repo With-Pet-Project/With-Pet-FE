@@ -11,7 +11,7 @@
         font-weight: 400;
         font-size: 20px;
         line-height: 24px;
-        color: #62CCAB;
+        color: $background-yellow;
     }
 }
 
@@ -33,7 +33,7 @@
 
     &::-webkit-scrollbar-thumb {
         width: 7px;
-        background: #62CCAB;
+        background: $background-yellow;
         border-radius: 30px;
     }
 

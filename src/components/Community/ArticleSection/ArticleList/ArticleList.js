@@ -11,6 +11,8 @@ function ArticleList() {
   const { data, fetchNextPage, hasNextPage, isError, error } = useArticles(
     'ALL',
     '서울',
+    '강남구',
+    '인기',
   );
   const { ref, inView } = useInView();
 

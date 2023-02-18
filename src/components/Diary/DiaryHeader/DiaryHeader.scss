@@ -1,3 +1,5 @@
+@import '/src/lib//styles/vars.scss';
+
 .diary-header {
   display: flex;
   justify-content: space-between;
@@ -52,6 +54,6 @@
     width: 145px;
     height: 24px;
     color: white;
-    background: linear-gradient(90deg, #55B9C5 0%, #62CCAB 100%);
+    background: linear-gradient(90deg, #55B9C5 0%, $background-yellow 100%);
   }
 }

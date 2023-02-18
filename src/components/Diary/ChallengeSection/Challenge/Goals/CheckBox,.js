@@ -1,9 +1,12 @@
 import styled from 'styled-components';
+import { vars } from 'lib/styles/vars';
 import { useState } from 'react';
 
 const Check = styled.label`
-  border: 1px solid ${({ check }) => (check ? '#62ccab' : '#dbdbdb')};
-  background-color: ${({ check }) => (check ? '#62ccab' : '#FFFFFF')};
+  border: 1px solid
+    ${({ check }) => (check ? `${vars.backgroundYellow}` : '#dbdbdb')};
+  background-color: ${({ check }) =>
+    check ? `${vars.backgroundYellow}` : '#FFFFFF'};
 
   cursor: pointer;
   width: 38px;

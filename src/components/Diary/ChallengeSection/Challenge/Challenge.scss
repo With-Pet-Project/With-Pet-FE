@@ -1,3 +1,5 @@
+@import '/src/lib/styles/vars.scss';
+
 .Challenge {
   flex-grow: 1;
   padding: 15px;
@@ -25,7 +27,7 @@
   & button {
     min-width: 90px;
     color: #ffffff;
-    background-color: #62ccab;
+    background-color: $background-yellow;
     height: 30px;
   }
 }

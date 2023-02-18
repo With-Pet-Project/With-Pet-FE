@@ -1,4 +1,5 @@
 import './AchievementRate.scss';
+import { vars } from 'lib/styles/vars';
 
 import styled from 'styled-components';
 
@@ -12,7 +13,7 @@ const AchievementStick = styled.div`
   & div {
     height: 100%;
     width: ${({ rate }) => rate}%;
-    background-color: #62ccab;
+    background-color: ${vars.backgroundYellow};
     border-radius: inherit;
   }
 `;
