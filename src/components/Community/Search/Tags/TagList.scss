@@ -1,0 +1,44 @@
+@import 'lib/styles/vars.scss';
+
+.tag-container {
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.tag-slide {
+  display: flex;
+  align-items: center;
+}
+
+.tag-item {
+  margin: 0 5px;
+
+  & button {
+    white-space: nowrap;
+    min-width: 60px;
+    max-height: 41px;
+    background: #FFFFFF;
+
+    padding: 11px 15px;
+    border-radius: 100px;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+@media screen and (max-width: $normal) {
+  .tag-item {
+    & button {
+      padding: 8px 3px;
+      font-size: 12px;
+    }
+  }
+}

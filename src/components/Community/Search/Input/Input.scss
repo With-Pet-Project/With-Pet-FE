@@ -1,0 +1,43 @@
+.search-input {
+  display: flex;
+  position: relative;
+  z-index: 10;
+  align-items: center;
+  flex-grow: 1;
+
+  & label {
+    position: relative;
+    z-index: 10;
+    top: 30px;
+
+    min-height: 17px;
+    align-self: flex-start;
+    margin-left: 30px;
+
+    color: #878888;
+  }
+
+  & input {
+    width: 100%;
+    max-width: 930px;
+    height: 43px;
+    padding-left: 16px;
+    border-radius: 100px;
+    margin-right: -30px;
+    outline: none;
+
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 17px;
+  }
+}
+
+.community-search-history {
+  width: 100%;
+  padding: 30px 10px 0;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 23px;
+  color: #252525;
+}

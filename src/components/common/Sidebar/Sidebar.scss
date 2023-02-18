@@ -1,6 +1,8 @@
 @import '../../../lib/styles/vars.scss';
 
 .side-navbar-container {
+  position: relative;
+  z-index: 10;
   margin: 0;
   background-color: #ffffff;
   min-width: $sidebar-opened;
@@ -14,11 +16,15 @@
   position: fixed;
   top: 0;
   left: 0;
+
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  padding: 20px;
+
   width: $sidebar-opened;
+  height: 100vh;
+
+  padding: 20px;
+  border-right: 1px solid #dbdbdb;
   background-color: #ffffff;
 }
 

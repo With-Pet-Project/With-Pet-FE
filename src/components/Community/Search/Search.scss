@@ -1,6 +1,24 @@
 @import '/src/lib/styles/vars.scss';
 
-.search-input-container {
-    display: flex;
-    width: 100%;
+.community-search-container {
+  display: flex;
+  height: 70px;
+  padding: 0 25px; 
+  border-radius: 10px 10px 0 0;
+}
+
+.community-result-container {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0px;
+  width: 100vw; // calc(100vw - 251px);
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+  
+.community-result-background {
+  width: 100%;
+  height: 380px;
+  background-color: #FFFFFF;
 }

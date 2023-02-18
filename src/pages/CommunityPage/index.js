@@ -1,13 +1,11 @@
-import CommunityHeader from 'components/Community/CommunityHeader/CommunityHeader';
+import MainWrapper from 'components/common/Wrapper/MainWrapper';
+import CommunityMain from 'components/Community/CommunityMain';
 
 function CommunityPage() {
   return (
-    <main>
-      <CommunityHeader />
-      <article>
-        <section>CommunityPage</section>
-      </article>
-    </main>
+    <MainWrapper>
+      <CommunityMain />
+    </MainWrapper>
   );
 }
 

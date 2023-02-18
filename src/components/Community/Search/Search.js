@@ -1,35 +1,55 @@
 import './Search.scss';
 import styled from 'styled-components';
 
-const SearchInput = styled.input`
-  height: 100%;
-  width: ${({ focus }) => (focus ? '100%' : '20%')};
-  min-width: 260px;
-  border-radius: 10px;
-  box-sizing: border-box;
-  margin-left: auto;
-  border: 1px solid #9ea3bc;
-  font-size: 20px;
-  padding: 10px 20px;
+import { useState, useRef } from 'react';
+import TagList from './Tags/TagList';
+import Input from './Input/Input';
 
-  &:focus {
-    outline: none;
-  }
+const SearchForm = styled.form`
+  border-bottom: 1px solid ${({ focus }) => (focus ? '#fff' : '#dbdbdb')};
+  flex-direction: ${({ focus }) => (focus ? 'column' : 'row')};
 `;
 
-function Search({ isFocus, focus }) {
+function Search() {
+  const [inputFocus, setInputFocus] = useState(false);
+  const inputRef = useRef(); // search Input의 value를 가져와서 submit하기 위해서.
+  const searchRef = useRef(); // 검색창 바깥 클릭시, input focus 해제
+
+  const isFocus = () => setInputFocus(true);
+  const isBlur = e => {
+    if (!searchRef.current.contains(e.target)) {
+      setInputFocus(false);
+    }
+  };
+
+  const onSubmit = e => {
+    e.preventDefault();
+    // inputRef.current.value를  submit
+    console.log(inputRef.current.value);
+  };
+
   return (
-    <div className="search-input-container">
-      <SearchInput
-        onFocus={isFocus}
-        onBlur={isFocus}
-        focus={focus}
-        placeholder={focus ? '검색어를 입력하세요' : '검색'}
+    <SearchForm
+      className="community-search-container"
+      focus={inputFocus}
+      onSubmit={onSubmit}
+      onClick={isBlur}
+    >
+      {!inputFocus && <TagList />}
+      <Input
+        isFocus={isFocus}
+        isBlur={isBlur}
+        focus={inputFocus}
+        inputRef={inputRef}
+        searchRef={searchRef}
       />
-      {/** label tag will be added */}
-    </div>
+      {inputFocus && (
+        <div className="community-result-container">
+          <div className="community-result-background" />
+        </div>
+      )}
+    </SearchForm>
   );
 }
 
 export default Search;
-// 검색창

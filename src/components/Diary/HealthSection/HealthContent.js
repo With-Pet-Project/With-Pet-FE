@@ -18,7 +18,7 @@ const Input = styled.input`
   }
 
   @media screen and (max-width: ${vars.semiWide}) {
-    min-width: 101%;
+    width: 100%;
   }
 `;
 

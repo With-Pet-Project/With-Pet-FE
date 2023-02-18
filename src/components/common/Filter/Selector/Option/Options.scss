@@ -1,0 +1,16 @@
+.filter-options {
+  position: absolute;
+
+  background-color: #fff;
+  padding: 10px;
+  margin-top: 5px;
+  margin-left: 5px;
+  border: 2px solid #000;
+  border-radius: 10px;
+
+  & ul {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 400px;
+  }
+}

@@ -59,6 +59,14 @@ function Sidebar() {
                 </div>
               </NavLink>
             </li>
+            <li>
+              <NavLink to="/editor">
+                <div>
+                  <div className="side-navbar-menu-img" />
+                  <span>글쓰기</span>
+                </div>
+              </NavLink>
+            </li>
           </ul>
         </div>
         <div className="side-navbar-menu side-navbar-menu-bottom">

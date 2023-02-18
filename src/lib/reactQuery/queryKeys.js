@@ -8,4 +8,12 @@ export const queryKeys = createQueryKeyStore({
     key: key => ({ key }),
     id: id => ({ id }),
   },
+  article: {
+    filters: (tag, firstPlace, secondPlace, criteria) => [
+      tag,
+      firstPlace,
+      secondPlace,
+      criteria,
+    ],
+  },
 });
