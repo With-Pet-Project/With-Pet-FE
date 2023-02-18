@@ -5,7 +5,7 @@ import { useState } from 'react';
 import HealthContent from './HealthContent';
 
 const EditButton = styled.button`
-  color: ${({ edit }) => (edit ? '#62ccab' : '#000')};
+  color: ${({ edit }) => (edit ? '$backgroundYellow' : '#000')};
 `;
 
 function HealthSection() {

@@ -4,12 +4,12 @@ import styled from 'styled-components';
 import { useState } from 'react';
 
 const EditButton = styled.button`
-  color: ${({ edit }) => (edit ? '#62ccab' : '#000 !important')};
+  color: ${({ edit }) => (edit ? '$backgroundYellow' : '#000 !important')};
 `;
 
 const TextArea = styled.textarea`
   background-color: ${({ edit }) => (edit ? '#fff' : '#f2f2f2')};
-  border: ${({ edit }) => (edit ? '1px solid #62CCAB' : '0')};
+  border: ${({ edit }) => (edit ? '1px solid $backgroundYellow' : '0')};
 `;
 
 function SpecialNoteSection() {

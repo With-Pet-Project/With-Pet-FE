@@ -1,10 +1,13 @@
 /* eslint-disable no-unused-expressions */
 import styled from 'styled-components';
+import { vars } from 'lib/styles/vars';
 import { useEffect, useState } from 'react';
 
 const TagButton = styled.button`
-  border: 1px solid ${({ selected }) => (selected ? '#62ccab' : '#dbdbdb')};
-  color: ${({ selected }) => (selected ? '#62ccab' : '#878888')};
+  border: 1px solid
+    ${({ selected }) => (selected ? `${vars.backgroundYellow}` : '#dbdbdb')};
+  color: ${({ selected }) =>
+    selected ? `${vars.backgroundYellow}` : '#878888'};
 `;
 
 function Tag({ tagName, tagId, onClickTag, params }) {

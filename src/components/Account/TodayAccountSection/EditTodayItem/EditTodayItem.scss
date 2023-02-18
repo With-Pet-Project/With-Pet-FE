@@ -1,3 +1,5 @@
+@import '/src/lib/styles/vars.scss';
+
 .today-account-edit-item {
   border: 1px solid #dbdbdb;
   width: 126px;
@@ -44,7 +46,7 @@
 
   .today-item-price:focus-within {
     background-color: #fff;
-    border: 1.5px solid #62ccab;
+    border: 1.5px solid $background-yellow;
   }
 
   .unit {

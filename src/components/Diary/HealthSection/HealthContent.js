@@ -14,7 +14,7 @@ const Input = styled.input`
   &:focus {
     background-color: #fff;
     outline: none;
-    border: 1px solid #62ccab;
+    border: 1px solid $backgroundYellow;
   }
 
   @media screen and (max-width: ${vars.semiWide}) {

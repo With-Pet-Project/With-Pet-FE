@@ -1,3 +1,5 @@
+@import '/src/lib/styles/vars.scss';
+
 .add-account-modal {
   width: 350px;
   height: 665px;
@@ -14,6 +16,7 @@
     border: 0;
     color: #757575;
     height: 35px;
+    appearance: none;
     -webkit-appearance: none;
     padding: 0 10px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 24 24'%3E%3Cpath fill='%23757575' d='M18.71 8.21a1 1 0 0 0-1.42 0l-4.58 4.58a1 1 0 0 1-1.42 0L6.71 8.21a1 1 0 0 0-1.42 0 1 1 0 0 0 0 1.41l4.59 4.59a3 3 0 0 0 4.24 0l4.59-4.59a1 1 0 0 0 0-1.41Z'/%3E%3C/svg%3E");
@@ -45,7 +48,7 @@
 
   .input-wrapper:focus-within {
     background-color: #fff;
-    border: 1.5px solid #62ccab;
+    border: 1.5px solid $background-yellow;
   }
 
   .add-input {
@@ -75,13 +78,13 @@
   }
 
   .cancel-btn {
-    border: 1.5px solid #62ccab;
+    border: 1.5px solid $background-yellow;
     background-color: #fff;
   }
 
   .submit-btn {
     color: #fff;
-    background-color: #62ccab;
+    background-color: $background-yellow;
   }
 }
 

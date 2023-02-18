@@ -21,7 +21,7 @@ const SearchContainer = styled.div`
 `;
 
 const SearchInput = styled.input`
-  border: 1px solid ${({ focus }) => (focus ? '#62ccab' : '#dbdbdb')};
+  border: 1px solid ${({ focus }) => (focus ? '$backgroundYellow' : '#dbdbdb')};
   background: ${({ focus }) => (focus ? '#fff' : '#eef0f3')};
 `;
 

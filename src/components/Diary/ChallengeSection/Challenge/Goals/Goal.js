@@ -8,7 +8,7 @@ const GoalItem = styled.div`
   padding-left: ${({ isInModal }) => (isInModal ? '20px' : '0')};
   background: ${({ isInModal, percent }) =>
     isInModal
-      ? `linear-gradient(to right, #62ccab ${percent}%, #fff ${percent}%)`
+      ? `linear-gradient(to right, $backgroundYellow ${percent}%, #fff ${percent}%)`
       : '#fff'};
 `;
 
