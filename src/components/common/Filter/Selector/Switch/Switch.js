@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faV } from '@fortawesome/free-solid-svg-icons';
 
-import { useControlRef } from 'components/common/hooks/useControlRef';
+import { useOutsideDetection } from 'components/common/hooks/useOutsideDetection';
 import Options from '../Option/Options';
 
 const RotateArrow = styled.span`
@@ -14,7 +14,7 @@ const RotateArrow = styled.span`
 `;
 
 function FilterSwitch({ handleParameter, list, children }) {
-  const { open, isOpen, targetRef } = useControlRef();
+  const { open, isOpen, targetRef } = useOutsideDetection();
 
   return (
     <div className="filter-selector-button" ref={targetRef}>

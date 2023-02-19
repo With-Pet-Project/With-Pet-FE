@@ -8,7 +8,7 @@ import Hamburger from './Hamburger';
 import Logo from '../Logo/Logo';
 import UserInfo from '../UserInfo/UserInfo';
 
-import { useControlRef } from '../hooks/useControlRef';
+import { useOutsideDetection } from '../hooks/useOutsideDetection';
 
 const NavContainer = styled.nav`
   min-width: ${vars.sidebarClosed};
@@ -28,7 +28,7 @@ const Navigation = styled.div`
 `;
 
 function Sidebar() {
-  const { open, isOpen, targetRef } = useControlRef();
+  const { open, isOpen, targetRef } = useOutsideDetection();
 
   return (
     <NavContainer className="side-navbar-container" opened={open}>

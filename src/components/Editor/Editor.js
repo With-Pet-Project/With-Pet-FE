@@ -57,6 +57,7 @@ function Editor() {
         onChange={setValue}
         modules={modules}
         format={formats}
+        placeholder=""
       />
     </>
   );
