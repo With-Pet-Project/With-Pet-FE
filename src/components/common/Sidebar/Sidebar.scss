@@ -5,7 +5,7 @@
   z-index: 10;
   margin: 0;
   background-color: #ffffff;
-  min-width: $sidebar-opened;
+  min-width: $sidebar-closed;
   font-family: 'TmoneyRoundWindNormal';
   height: 100vh;
   font-weight: 800;
@@ -19,12 +19,12 @@
   display: flex;
   flex-direction: column;
 
-  width: $sidebar-opened;
-  height: 100vh;
+  // width: $sidebar-opened;
+  min-height: 100vh;
+  transition: .3s;
 
-  padding: 20px;
-  border-right: 1px solid #dbdbdb;
-  background-color: #ffffff;
+  padding: 10px 20px 20px;
+  background-color: $background-yellow;
 }
 
 .side-navbar-top {
@@ -47,6 +47,8 @@
   padding: 30px 0;
   flex-grow: 1;
   vertical-align: middle;
+  color: $fontColor-brown;
+  transition-delay: .3s;
 
   & ul {
     display: flex;
@@ -69,7 +71,7 @@
     border-radius: 9px;
 
     &:hover {
-      background-color: $background-yellow;
+      background-color: #fff;
     }
   }
 
@@ -96,10 +98,11 @@
 }
 
 .side-navbar-menu-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   border-top: 1px solid #e9ebf0;
-  flex-basis: 160px;
-  flex-grow: 0;
-  padding: 10px 0 0;
+  padding: 0;
 
   & ul {
     justify-content: center;

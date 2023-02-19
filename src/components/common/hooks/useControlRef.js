@@ -8,7 +8,8 @@ export function useControlRef() {
 
   useEffect(() => {
     const handleClickOutside = e => {
-      if (open && !targetRef?.current?.contains(e.target)) {
+      if (open && targetRef.current && !targetRef.current.contains(e.target)) {
+        console.log(targetRef.current.contains(e.target));
         setOpen(false);
       }
     };
