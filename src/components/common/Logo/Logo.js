@@ -1,13 +1,10 @@
 import './Logo.scss';
+import logo from 'lib/assets/아카이브/홈화면/logo.png';
 
 function Logo() {
   return (
     <div className="logo-container">
-      <div>logo</div>
-      <div>
-        <span>Withpet</span>
-      </div>
-      <div>Rect</div>
+      <img src={logo} alt="logo" />
     </div>
   );
 }

@@ -7,7 +7,11 @@
     height: 100%;
     padding: 10px 0;
 
-    & div:nth-child(1) {
+    & img {
+        width: 100%;
+    }
+
+/**    & div:nth-child(1) {
        flex-basis: 44px;
        height: 44px;
        background-color: $background-yellow;
@@ -29,4 +33,5 @@
         border-radius: 10px;
         height: 30px;
     }
+*/
 }
