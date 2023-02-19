@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faV } from '@fortawesome/free-solid-svg-icons';
 
-import { useState, useRef, useEffect } from 'react';
-
+import { useControlRef } from 'components/common/hooks/useControlRef';
 import Options from '../Option/Options';
 
 const RotateArrow = styled.span`
@@ -15,45 +14,18 @@ const RotateArrow = styled.span`
 `;
 
 function FilterSwitch({ handleParameter, list, children }) {
-  const [rotate, setRotate] = useState(false);
-  const optionRef = useRef();
-
-  const isRotate = () => {
-    setRotate(!rotate);
-  };
-
-  useEffect(() => {
-    const handleRotate = e => {
-      if (
-        rotate &&
-        optionRef.current &&
-        !optionRef.current.contains(e.target)
-      ) {
-        setRotate(false);
-      }
-    };
-
-    window.addEventListener('click', handleRotate);
-
-    return () => {
-      window.removeEventListener('click', handleRotate);
-    };
-  });
+  const { open, isOpen, targetRef } = useControlRef();
 
   return (
-    <div className="filter-selector-button" ref={optionRef}>
-      <button type="button" onClick={isRotate}>
-        <RotateArrow rotate={rotate}>
+    <div className="filter-selector-button" ref={targetRef}>
+      <button type="button" onClick={isOpen}>
+        <RotateArrow rotate={open}>
           <FontAwesomeIcon icon={faV} />
         </RotateArrow>
         <span>{children}</span>
       </button>
-      {rotate && (
-        <Options
-          handleParameter={handleParameter}
-          list={list}
-          close={isRotate}
-        />
+      {open && (
+        <Options handleParameter={handleParameter} list={list} close={isOpen} />
       )}
     </div>
   );
