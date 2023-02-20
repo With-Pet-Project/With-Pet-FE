@@ -16,9 +16,10 @@
   height: 50%;
 
   & h2 {
-    color: #f2f2f2;
-    font-weight: 600;
-    font-size: 32px;
+    color: $fontColor-black;
+    font-family: TmoneyRoundWindBold;
+    font-weight: 800;
+    font-size: 31px;
     line-height: 38px;
     margin: 0 0 10px;
   }
@@ -27,14 +28,21 @@
     font-weight: 400;
     font-size: 17px;
     line-height: 20px;
-    color: #f2f2f2;
+    color: $fontColor-gray;
+
+    margin-left: 2px;
   }
 
   & .pet-profile-img {
     width:70px;
     height: 70px;
-    background-color: #e2e2e2;
+    background-color: $background-yellow;
     border-radius: 100px;
+
+    & img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   & .pet-name-birthday {
@@ -42,18 +50,21 @@
   }
 
   & .pet-profile-mini-img {
+    margin-top: 5px;
+    margin-left: -8px;
     width: 30px;
     height: 30px;
-    background: #e2e2e2;
     border-radius: 10px;
   }
 }
 
 .add-pet-button {
   & button {
+    text-align: right;
+    font-family: 'TmoneyRoundWindNormal';
+    font-weight: 800;
     width: 145px;
     height: 24px;
-    color: white;
-    background: linear-gradient(90deg, #55B9C5 0%, $background-yellow 100%);
+    color: $fontColor-black;
   }
 }

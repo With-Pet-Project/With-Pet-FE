@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 const Check = styled.label`
   border: 1px solid
-    ${({ check }) => (check ? `${vars.backgroundYellow}` : '#dbdbdb')};
+    ${({ check }) => (check ? `${vars.backgroundGreen}` : '#dbdbdb')};
   background-color: ${({ check }) =>
     check ? `${vars.backgroundYellow}` : '#FFFFFF'};
 

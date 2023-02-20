@@ -2,6 +2,7 @@
 // 검색어 입력창
 import './Input.scss';
 import styled from 'styled-components';
+import { vars } from 'lib/styles/vars';
 
 import { useState, useEffect } from 'react';
 
@@ -21,7 +22,8 @@ const SearchContainer = styled.div`
 `;
 
 const SearchInput = styled.input`
-  border: 1px solid ${({ focus }) => (focus ? '$backgroundYellow' : '#dbdbdb')};
+  border: 1px solid
+    ${({ focus }) => (focus ? `${vars.backgroundYellow}` : '#dbdbdb')};
   background: ${({ focus }) => (focus ? '#fff' : '#eef0f3')};
 `;
 

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { vars } from 'lib/styles/vars';
 import { useState, useEffect } from 'react';
 import { useModal } from 'components/common/Modal/context/useModal';
+import DownArrow from '../DownArrow';
 
 import DateSelector from './DateSelector';
 
@@ -67,7 +68,6 @@ function AddChallenge() {
       <div className="add_Challenge-times">
         <h2>횟수</h2>
         <div className="times-select">
-          <label htmlFor="times-select" />
           <select
             value={currentTimes}
             id="times-select"
@@ -79,6 +79,7 @@ function AddChallenge() {
               </option>
             ))}
           </select>
+          <DownArrow htmlFor="times-select" />
         </div>
       </div>
       <div className="add-Challenge-buttons">
