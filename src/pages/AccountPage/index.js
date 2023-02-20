@@ -13,7 +13,7 @@ function AccountPage() {
   return (
     <main>
       <Article>
-        <AccountHeader />
+        {/* <AccountHeader /> */}
         <AccountMain />
       </Article>
     </main>
