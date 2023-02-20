@@ -130,27 +130,26 @@
     }
 
     .circle-img {
-        align-self: flex-end;
-        width: 60px;
-        min-width: 60px;
-        height: 60px;
-      }
+      align-self: flex-end;
+      width: 60px;
+      min-width: 60px;
+      height: 60px;
+    }
   }
 }
 
-
 @media screen and (max-width: $semi-wide) {
-    .diary-main-flex-container {
-        width: 75%;
-        min-width: 540px;
-    }
+  .diary-main-flex-container {
+    width: 75%;
+    min-width: 540px;
+  }
 
-    .diary-section-Padding {
-        h2 {
-            font-size: 17px;
-            min-width: 80px;
-        }
+  .diary-section-Padding {
+    h2 {
+      font-size: 17px;
+      min-width: 80px;
     }
+  }
 
     .Walking-Weight-SpecialNote {
       flex-direction: row;

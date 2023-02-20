@@ -1,10 +1,11 @@
-import './AddAccount.scss';
 import { ACCOUNT_LIST } from 'lib/constants/account';
-import Modal from '../../../common/Modal/Modal';
+import { useModal } from 'components/common/Modal/context/useModal';
 import { useAddAccount } from '../../hooks/useAccount';
+import './AddAccount.scss';
 
-function AddAccount({ isOpenModal, closeModal, selectDate }) {
+function AddAccount({ selectDate }) {
   const addAccount = useAddAccount();
+  const { closeModal } = useModal();
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -16,7 +17,7 @@ function AddAccount({ isOpenModal, closeModal, selectDate }) {
     const { value: beauty } = event.target.elements.beauty;
     const { value: etc } = event.target.elements.etc;
     addAccount({ petId, feed, toy, hospital, beauty, etc, date: selectDate });
-    closeModal();
+    closeModal(AddAccount);
   };
 
   const inputHtml = Object.entries(ACCOUNT_LIST).map(([key, { name }]) => (
@@ -30,37 +31,35 @@ function AddAccount({ isOpenModal, closeModal, selectDate }) {
   ));
 
   return (
-    isOpenModal && (
-      <Modal closeModal={closeModal} className="add-account-modal">
-        <header className="add-account-header">
-          <h2>오늘의 소비 입력</h2>
-          <p>오늘의 소비를 입력해 주세요 !</p>
-        </header>
-        <form className="add-account-form" onSubmit={handleSubmit}>
-          <div>
-            <span className="label">펫 선택</span>
-            <select name="petId" className="select-wrapper">
-              <span>👇</span>
-              <option value={Math.random()} className="select-items">
-                뽀삐
-              </option>
-              <option value={Math.random()} className="select-items">
-                나비
-              </option>
-            </select>
-          </div>
-          {inputHtml}
-          <div className="button-wrapper">
-            <button type="button" className="cancel-btn" onClick={closeModal}>
-              취소
-            </button>
-            <button type="submit" className="submit-btn">
-              입력완료
-            </button>
-          </div>
-        </form>
-      </Modal>
-    )
+    <div className="add-account-modal">
+      <header className="add-account-header">
+        <h2>오늘의 소비 입력</h2>
+        <p>오늘의 소비를 입력해 주세요 !</p>
+      </header>
+      <form className="add-account-form" onSubmit={handleSubmit}>
+        <div>
+          <span className="label">펫 선택</span>
+          <select name="petId" className="select-wrapper">
+            <span>👇</span>
+            <option value={Math.random()} className="select-items">
+              뽀삐
+            </option>
+            <option value={Math.random()} className="select-items">
+              나비
+            </option>
+          </select>
+        </div>
+        {inputHtml}
+        <div className="button-wrapper">
+          <button type="button" className="cancel-btn" onClick={closeModal}>
+            취소
+          </button>
+          <button type="submit" className="submit-btn">
+            입력완료
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 

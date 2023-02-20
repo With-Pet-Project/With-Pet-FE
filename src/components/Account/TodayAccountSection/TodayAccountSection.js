@@ -33,27 +33,31 @@ function TodayAccountSection({ accountData = [] }) {
 
   const handleDelete = () => {
     confirmDelete();
+    setIsEdit(false);
   };
 
   const handleEditSubmit = event => {
     event.preventDefault();
-    console.log(accountValue);
-    // 로직 고 !
     updateAccount(accountValue);
     setIsEdit(false);
   };
 
   const btnHtml = isEdit ? (
-    <button
-      className="edit-btn"
-      type="submit"
-      form="edit-account-form"
-      onClick={handleEditSubmit}
-    >
-      완료
-    </button>
+    <>
+      <button type="button" onClick={handleDelete}>
+        모두삭제
+      </button>
+      <button
+        className="edit-submit-btn"
+        type="submit"
+        form="edit-account-form"
+        onClick={handleEditSubmit}
+      >
+        완료
+      </button>
+    </>
   ) : (
-    <button className="edit-btn" type="button" onClick={() => setIsEdit(true)}>
+    <button type="button" onClick={() => setIsEdit(true)}>
       편집
     </button>
   );
@@ -68,14 +72,7 @@ function TodayAccountSection({ accountData = [] }) {
     <div className="today-account">
       <div className="title-wrapper">
         <h2>오늘의 소비</h2>
-        <div>
-          {accountData.length > 0 && (
-            <button type="button" onClick={handleDelete}>
-              모두삭제
-            </button>
-          )}
-          {accountData.length > 0 && btnHtml}
-        </div>
+        <div>{accountData.length > 0 && btnHtml}</div>
       </div>
       {todayContentHtml}
     </div>

@@ -1,8 +1,6 @@
 @import '/src/lib/styles/vars.scss';
 
 .today-account {
-  top: -7%;
-  position: relative;
   width: 954px;
   height: 194px;
   background: #ffffff;
@@ -18,7 +16,7 @@
     margin-bottom: 11px;
 
     h2 {
-      font-weight: 600;
+      font-family: TmoneyRoundWindBold;
       color: #252525;
       font-size: 20px;
     }
@@ -29,10 +27,12 @@
       font-weight: 400;
       border: 0;
       background: transparent;
+      font-family: 'Pretendard Variable';
+      font-variation-settings: 'wght' 400;
     }
 
-    .edit-btn {
-      color: $background-yellow;
+    .edit-submit-btn {
+      color: $point-blue;
     }
   }
 
@@ -53,15 +53,16 @@
     }
 
     .total-price {
-      font-weight: 600;
+      font-family: TmoneyRoundWindBold;
       font-size: 28px;
-      color: #252525;
+      color: $font-brown;
     }
 
     .total-price > .unit {
-      margin-left: 2px;
-      font-weight: 500;
-      font-size: 18px;
+      margin-left: 5px;
+      font-size: 16px;
+      font-family: 'Pretendard Variable';
+      font-variation-settings: 'wght' 550;
     }
   }
 }
