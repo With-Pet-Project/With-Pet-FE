@@ -25,32 +25,26 @@ export const useModal = () => {
 };
 
 const ModalWrapper = styled.div`
-  position: absolute;
+  position: fixed;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   z-index: 1;
   top: 0;
   right: 0;
-  width: 100%; // calc(100% - ${vars.sidebarOpened}); // ${vars.sidebarClosed}
+  width: calc(100% - ${vars.sidebarClosed}); // ${vars.sidebarClosed}
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
 `;
 
 const ModalContent = styled.div`
   position: sticky;
-  top: 50%;
-  transform: translateY(-50%);
   background: white;
   padding: 1em;
   border-radius: 0.5em;
   margin: auto;
   box-shadow: 0px 4px 18px rgba(137, 137, 137, 0.25);
-
-  @media screen and (max-width: ${vars.semiWide}) {
-    top: 50%;
-    transform: translateY(-70%);
-  }
 `;
 
 export function Modal() {
