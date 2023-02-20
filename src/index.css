@@ -3,7 +3,7 @@
 @font-face {
   font-family: TmoneyRoundWindBold;
   font-style: normal;
-  src: url('/src/lib/assets/font/TmoneyRoundWind/02_수동설치파일/02_ttf/TmoneyRoundWindExtraBold.ttf')
+  src: url('/src/lib/assets/font/TmoneyRoundWindExtraBold.otf')
     format('truetype');
 }
 
@@ -11,11 +11,10 @@
   font-family: TmoneyRoundWindNormal;
   font-weight: normal;
   font-style: normal;
-  src: url('/src/lib/assets/font/TmoneyRoundWind/02_수동설치파일/02_ttf/TmoneyRoundWindRegular.ttf')
-    format('truetype');
+  src: url('/src/lib/assets/font/TmoneyRoundWindRegular.otf') format('truetype');
 }
 
-body * {
+body {
   margin: 0;
   font-family: 'Pretendard Variable', Pretendard, TmoneyRoundWindNormal,
     -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue',
