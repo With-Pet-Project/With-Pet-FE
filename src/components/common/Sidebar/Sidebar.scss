@@ -67,7 +67,7 @@
   & ul li a {
     height: 100%;
     display: block;
-    padding: 0 10px;
+    padding: 0 15px;
     border-radius: 9px;
 
     &:hover {
@@ -83,15 +83,14 @@
   }
 
   & .side-navbar-menu-img {
-    flex-basis: 30px;
-    height: 30px;
-    background-color: #e2e2e2;
+    flex-basis: 22px;
+    height: 22px;
     border-radius: 10px;
   }
 
   & ul span {
     vertical-align: middle;
-    margin-left: 10px;
+    margin-left: 20px;
     font-size: 14px;
     line-height: 17px;
   }

@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-function Menu({ to, menuName }) {
+function Menu({ to, menuName, children }) {
   const activeStyle = {
     backgroundColor: '#fff',
   };
@@ -12,7 +12,7 @@ function Menu({ to, menuName }) {
         style={({ isActive }) => (isActive ? activeStyle : undefined)}
       >
         <div>
-          <div className="side-navbar-menu-img" />
+          <div className="side-navbar-menu-img">{children}</div>
           <span>{menuName}</span>
         </div>
       </NavLink>

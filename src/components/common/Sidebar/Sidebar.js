@@ -4,6 +4,13 @@ import styled from 'styled-components';
 
 import Menu from './Menu';
 import Hamburger from './Hamburger';
+import Home from './img/Home';
+import Diary from './img/Diary';
+import Community from './img/Community';
+import Account from './img/Account';
+import Hospital from './img/Hospital';
+import MyPage from './img/MyPage';
+import Logout from './img/Logout';
 
 import Logo from '../Logo/Logo';
 import UserInfo from '../UserInfo/UserInfo';
@@ -49,18 +56,32 @@ function Sidebar() {
           </div>
           <div className="side-navbar-menu">
             <ul>
-              <Menu to="/" menuName="홈" />
-              <Menu to="/diary" menuName="다이어리" />
-              <Menu to="/account" menuName="가계부" />
-              <Menu to="/community" menuName="커뮤니티" />
-              <Menu to="/hospital" menuName="내 주변 병원 찾기" />
+              <Menu to="/" menuName="홈">
+                <Home />
+              </Menu>
+              <Menu to="/diary" menuName="다이어리">
+                <Diary />
+              </Menu>
+              <Menu to="/account" menuName="가계부">
+                <Account />
+              </Menu>
+              <Menu to="/community" menuName="커뮤니티">
+                <Community />
+              </Menu>
+              <Menu to="/hospital" menuName="내 주변 병원 찾기">
+                <Hospital />
+              </Menu>
               <Menu to="/editor" menuName="글쓰기" />
             </ul>
           </div>
           <div className="side-navbar-menu side-navbar-menu-bottom">
             <ul>
-              <Menu to="/mypage" menuName="마이 페이지" />
-              <Menu to="/logout" menuName="로그아웃" />
+              <Menu to="/mypage" menuName="마이 페이지">
+                <MyPage />
+              </Menu>
+              <Menu to="/logout" menuName="로그아웃">
+                <Logout />
+              </Menu>
             </ul>
           </div>
         </Navigation>
