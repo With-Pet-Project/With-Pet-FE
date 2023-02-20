@@ -8,24 +8,24 @@
   padding: 17px 15px 15px 15px;
 
   .item-title {
+    padding: 5px 5px 0 5px;
     display: flex;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+    justify-content: space-between;
 
     .name {
-      color: #434343;
-      font-weight: 500;
-      font-size: 0.8rem;
+      font-variation-settings: 'wght' 550;
+      color: $font-brown;
+      font-size: 15px;
       padding-left: 5px;
     }
   }
 
   .today-item-price {
     color: #555555;
-    // font-family: 'Noto Sans';
-    font-size: 22px;
-    font-weight: 500;
     display: flex;
+    width: 100%;
     align-items: center;
     background-color: #f2f2f2;
     border-radius: 10px;
@@ -33,14 +33,19 @@
     text-align: center;
 
     .today-input {
+      color: $font-brown;
+      font-family: TmoneyRoundWindBold;
       width: 100%;
       border-radius: 10px;
       background-color: inherit;
       border: 0;
       height: 35px;
-      padding-left: 10px;
-      color: #555555;
+      padding-left: 5px;
       font-size: 18px;
+    }
+
+    .today-input::placeholder {
+      color: $font-brown;
     }
   }
 
@@ -50,8 +55,7 @@
   }
 
   .unit {
-    // font-family: 'Noto Sans';
     font-size: 14px;
-    padding-right: 10px;
+    padding-right: 5px;
   }
 }
