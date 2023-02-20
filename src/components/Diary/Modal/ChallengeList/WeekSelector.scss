@@ -1,4 +1,18 @@
+@import '/src/lib/styles/vars.scss';
+
+p {
+  margin-top: 13px !important;
+  font-weight: 400;
+  font-size: 12px !important; 
+  line-height: 14px;
+
+  color: $fontColor-gray;
+}
+
+
 .week-select-box {
+  font-family: 'TmoneyRoundWindNormal';
+
   display: flex;
   justify-content: space-between;
   height: 40px;
@@ -9,14 +23,9 @@
     height: inherit;
   }
 
-  & label {
-    display: block;
-    font-size: 13.5px;
-    margin: -26px 0 0 10px;
-  }
-
   & select {
     cursor: pointer;
+    font-size: 15px;
     width: 100%;
     height: inherit;
     appearance: none;
@@ -28,10 +37,25 @@
   }
 
   & > .week-select-item:nth-child(1) select {
-    padding-left: 47px;
+    padding-left: 50px;
+
+  }
+
+  & >.week-select-item:nth-child(1) {
+    span {
+      display: block;
+      font-size: 14px;
+      margin-top: -28px;
+      margin-left: 10px;
+    }
+
+    label {
+      margin-top: -16px;
+    }
   }
 
   & > .week-select-item:nth-child(2) select {
     padding-left: 20px;
+    margin-bottom: -5px;
   }
 }

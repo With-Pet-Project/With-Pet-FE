@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   display: flex;
 
   & main {
+    position: relative;
     flex-grow: 1;
   }
 `;

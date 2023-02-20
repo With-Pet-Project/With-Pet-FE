@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { vars } from 'lib/styles/vars';
 
 const Button = styled.button`
   display: flex;
-  color: $backgroundYellow;
+  color: ${vars.backgroundYellow};
   width: 38px;
   height: 38px;
   border: 1px solid #dbdbdb;

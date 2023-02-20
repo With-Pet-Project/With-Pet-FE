@@ -2,6 +2,8 @@
 import './DateSelector.scss';
 import { useEffect, useState } from 'react';
 
+import DownArrow from '../DownArrow';
+
 function DateSelector() {
   const date = new Date();
   const [month, setMonth] = useState(date.getMonth() + 1);
@@ -30,7 +32,6 @@ function DateSelector() {
   return (
     <div className="date-select">
       <div>
-        <label htmlFor="month-select" />
         <select value={month} id="month-select" onChange={handleMonthChange}>
           <option value="1">01월</option>
           <option value="2">02월</option>
@@ -45,9 +46,9 @@ function DateSelector() {
           <option value="11">11월</option>
           <option value="12">12월</option>
         </select>
+        <DownArrow htmlFor="month-select" />
       </div>
       <div>
-        <label htmlFor="day-select" />
         <select value={day} id="day-select" onChange={handleDayChange}>
           {days.map(d => (
             <option key={d} value={d}>
@@ -55,6 +56,7 @@ function DateSelector() {
             </option>
           ))}
         </select>
+        <DownArrow htmlFor="day-select" />
       </div>
     </div>
   );

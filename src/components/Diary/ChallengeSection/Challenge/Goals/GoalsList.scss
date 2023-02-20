@@ -1,3 +1,5 @@
+@import '/src/lib/styles/vars.scss';
+
 .Goals-List {
     margin: 20px 0;
     width: 100%;
@@ -10,7 +12,7 @@
     }
     
     &::-webkit-scrollbar-thumb {
-        background-color: #2d4edf;
+        background-color: $background-yellow; // #2d4edf;
         border-radius: 5px;
     }
 

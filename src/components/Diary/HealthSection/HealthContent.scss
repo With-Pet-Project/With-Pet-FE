@@ -15,25 +15,35 @@
     display: flex;
     justify-content: space-between;
 
+    & div:first-child {
+        height: 80%;
+
+        p {
+            display: inline-block;
+            margin-top: 10px;
+            white-space: nowrap;
+        }
+    }
+
     & h3 {
         font-size: 15px;
-        font-weight: 500;
+        font-weight: 800;
         line-height: 17.9px;
     }
 }
 
 .Health-circle-img {
-    width: 46px;
-    height: 46px;
+    width: 60px;
+    height: 60px;
     border-radius: 100%;
-    background-color: #E2E2E2;
+    margin-right: -16px;
 }
 
 .Health-category-bottom {
     width: 100%;
     height: 100%;
-    margin-top: 10px;
     text-align: left;
+    margin-top: -10px;
 
     & em {
         font-family: 'Noto Sans' !important;
@@ -61,6 +71,12 @@
         font-weight: 600;
         font-size: 18px;
         line-height: 18px;
+    }
+}
+
+@media screen and (max-width: $wide) {
+    .Health-circle-img {
+        margin: 0;
     }
 }
 

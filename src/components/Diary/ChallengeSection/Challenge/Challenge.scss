@@ -14,6 +14,13 @@
   & div {
     display: flex;
     flex-grow: 1;
+
+    h2 {
+      font-family: TmoneyRoundWindBold;
+      font-size: 20px;
+      line-height: 26px;
+      color: $fontColor-black;
+    }
     
     p {
       display: -webkit-inline-box;
@@ -26,7 +33,8 @@
 
   & button {
     min-width: 90px;
-    color: #ffffff;
+    font-weight: 400;
+    color: $fontColor-black;
     background-color: $background-yellow;
     height: 30px;
   }
@@ -34,11 +42,11 @@
 
 .Challenge-modal-Button {
   text-align: right;
-  margin: -10px 0 0;
+  margin: -15px -5px 0 0;
 
   & button {
     background-color: #ffffff;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 15px;
     line-height: 18px;
   }

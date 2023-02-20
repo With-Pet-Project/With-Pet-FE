@@ -1,8 +1,9 @@
 import './WeekSelector.scss';
-import styled from 'styled-components';
 
 import { useState, useEffect } from 'react';
 import * as utils from 'lib/utils/diary';
+
+import DownArrow from '../DownArrow';
 
 function WeekSelector() {
   const date = new Date();
@@ -51,7 +52,8 @@ function WeekSelector() {
             <option value="10">11</option>
             <option value="11">12</option>
           </select>
-          <label htmlFor="yearMonth-select">{year}. </label>
+          <span>{year}. </span>
+          <DownArrow htmlFor="yearMonth-select" />
         </div>
         <div className="week-select-item">
           <select value={week} id="week-select" onChange={handleChangeWeek}>
@@ -61,7 +63,7 @@ function WeekSelector() {
               </option>
             ))}
           </select>
-          <label htmlFor="week-select" />
+          <DownArrow htmlFor="week-select" />
         </div>
       </div>
     </div>

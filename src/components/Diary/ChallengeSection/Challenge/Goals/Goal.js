@@ -1,5 +1,6 @@
 import './Goal.scss';
 import styled from 'styled-components';
+import { vars } from 'lib/styles/vars';
 
 import CheckBox from './CheckBox,';
 import ThreeHorizontalDots from './ThreeHorizontalDots';
@@ -8,7 +9,7 @@ const GoalItem = styled.div`
   padding-left: ${({ isInModal }) => (isInModal ? '20px' : '0')};
   background: ${({ isInModal, percent }) =>
     isInModal
-      ? `linear-gradient(to right, $backgroundYellow ${percent}%, #fff ${percent}%)`
+      ? `linear-gradient(to right, ${vars.backgroundYellow} ${percent}%, #fff ${percent}%)`
       : '#fff'};
 `;
 

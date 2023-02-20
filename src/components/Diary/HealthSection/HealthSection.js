@@ -16,7 +16,7 @@ function HealthSection() {
   return (
     <section className="Health-section diary-section-Padding">
       <div>
-        <h2>건강 기록</h2>
+        <h2 className="section-title">건강 기록</h2>
         <EditButton type="button" onClick={isEdit} edit={edit}>
           {!edit ? <span>편집</span> : <span>저장</span>}
         </EditButton>
