@@ -7,6 +7,7 @@ import {
   getNextYearMonth,
 } from 'components/common/Calender/hooks/date';
 import { TODAY } from 'lib/constants/date';
+import FloatButton from 'components/common/FloatButton/FloatButton';
 import TotalAccountSection from '../TotalAccountSection/TotalAccountSection';
 import TodayAccountSection from '../TodayAccountSection/TodayAccountSection';
 import AddAccount from './AddAccount/AddAccount';
@@ -50,9 +51,9 @@ function AccountMain() {
       {accountData && (
         <TodayAccountSection accountData={accountData[selectDate.day]} />
       )}
-      <button type="button" className="add-account-btn" onClick={openModal}>
+      <FloatButton handleOnClick={openModal}>
         <FontAwesomeIcon icon={faPlus} size="1x" />
-      </button>
+      </FloatButton>
       <AddAccount
         isOpenModal={isOpenModal}
         closeModal={closeModal}

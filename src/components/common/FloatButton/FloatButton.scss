@@ -1,0 +1,15 @@
+@import '/src/lib/styles/vars.scss';
+
+.float-button {
+  width: 4rem;
+  height: 4rem;
+  background: $point-blue;
+  box-shadow: 0px 10px 18px rgba(137, 137, 137, 0.25);
+  border-radius: 100px;
+  color: #fff;
+  font-size: 28px;
+  position: relative;
+  bottom: 3%;
+  float: right;
+  right: 3%;
+}
