@@ -9,18 +9,24 @@
   }
 
   .name {
+    font-family: 'Pretendard Variable';
+    font-variation-settings: 'wght' 400;
     color: #949494;
     font-size: 12px;
   }
 
   .price {
-    color: #555555;
+    font-family: TmoneyRoundWindBold;
+    color: #74644f;
     font-size: 16px;
   }
 
   .unit {
+    font-family: 'Pretendard Variable';
+    font-variation-settings: 'wght' 550;
     margin-left: 2px;
     font-size: 12px;
+    color: #555555;
   }
 
   .range-wrapper {

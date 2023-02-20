@@ -30,8 +30,8 @@ function EditTodayItem({
 export default EditTodayItem;
 
 const ColorSign = styled.div`
-  width: 24px;
-  height: 24px;
-  border: 1px solid ${props => props.borderColor};
-  background-color: ${props => props.bgColor};
+  width: 16px;
+  height: 16px;
+  border-radius: 100px;
+  background-color: ${props => props.borderColor};
 `;

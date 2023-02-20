@@ -7,6 +7,8 @@ import {
   getNextYearMonth,
 } from 'components/common/Calender/hooks/date';
 import { TODAY } from 'lib/constants/date';
+import FloatButton from 'components/common/FloatButton/FloatButton';
+import { useModal } from 'components/common/Modal/context/useModal';
 import TotalAccountSection from '../TotalAccountSection/TotalAccountSection';
 import TodayAccountSection from '../TodayAccountSection/TodayAccountSection';
 import AddAccount from './AddAccount/AddAccount';
@@ -16,15 +18,11 @@ import './AccountMain.scss';
 function AccountMain() {
   const [selectDate, setSelectDate] = useState(getMonthYearDetails(TODAY));
   const [yearMonth, setYearMonth] = useMonthYear();
-  const [isOpenModal, setIsOpenModal] = useState(false);
   const accountData = useFetchAllAccount(yearMonth.year, yearMonth.month);
+  const { openModal } = useModal();
 
-  const openModal = () => {
-    setIsOpenModal(true);
-  };
-
-  const closeModal = () => {
-    setIsOpenModal(false);
+  const openAddAccount = () => {
+    openModal(AddAccount, { selectDate: selectDate.dateTime });
   };
 
   const handleSelectDate = selected => {
@@ -50,14 +48,9 @@ function AccountMain() {
       {accountData && (
         <TodayAccountSection accountData={accountData[selectDate.day]} />
       )}
-      <button type="button" className="add-account-btn" onClick={openModal}>
+      <FloatButton handleOnClick={openAddAccount}>
         <FontAwesomeIcon icon={faPlus} size="1x" />
-      </button>
-      <AddAccount
-        isOpenModal={isOpenModal}
-        closeModal={closeModal}
-        selectDate={selectDate.dateTime}
-      />
+      </FloatButton>
     </section>
   );
 }
