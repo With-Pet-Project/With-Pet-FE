@@ -1,32 +1,32 @@
 @import '/src/lib/styles/vars.scss';
 
 .logo-container {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    padding: 10px 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 10px 0;
 
-    & div:nth-child(1) {
-       flex-basis: 44px;
-       height: 44px;
-       background-color: $background-yellow;
-       border-radius: 10px;
-    }
+  & div:nth-child(1) {
+    flex-basis: 44px;
+    height: 44px;
+    background-color: $background-yellow;
+    border-radius: 10px;
+  }
 
-    & div:nth-child(2) {
-        flex-grow: 1;
-        font-family: 'Noto Sans';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 22px;
-        line-height: 30px;
-    }
+  & div:nth-child(2) {
+    flex-grow: 1;
+    // font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 30px;
+  }
 
-    & div:nth-child(3) {
-        flex-basis: 30px;
-        background-color: #E2E2E2;
-        border-radius: 10px;
-        height: 30px;
-    }
+  & div:nth-child(3) {
+    flex-basis: 30px;
+    background-color: #e2e2e2;
+    border-radius: 10px;
+    height: 30px;
+  }
 }

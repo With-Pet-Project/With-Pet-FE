@@ -1,8 +1,11 @@
+@import '/src/lib/styles/vars.scss';
+
 .calender {
   * {
     // border: 1px solid gray;
   }
 
+  font-family: TmoneyRoundWindNormal;
   display: flex;
   flex-direction: column;
   min-width: 390px;
@@ -17,8 +20,7 @@
 
     h2 {
       font-size: 28px;
-      font-weight: 600;
-      font-family: 'Noto Sans';
+      color: #252525;
     }
 
     .buttons {
@@ -26,11 +28,14 @@
     }
 
     .buttons > button {
+      background-color: $background-yellow;
       border: 0;
       width: 30px;
       height: 30px;
-      border-radius: 6px;
+      border-radius: 10px;
       cursor: pointer;
+      color: #fff;
+      font-size: 1rem;
     }
 
     .buttons > button:nth-child(2) {
@@ -59,7 +64,7 @@
       font-size: 17px;
       font-weight: 500;
       color: #868686;
-      font-family: 'Noto Sans', sans-serif;
+      // font-family: 'Noto Sans', sans-serif;
       margin-left: 10px;
     }
 
