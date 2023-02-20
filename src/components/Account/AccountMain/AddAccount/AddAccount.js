@@ -51,7 +51,11 @@ function AddAccount({ selectDate }) {
         </div>
         {inputHtml}
         <div className="button-wrapper">
-          <button type="button" className="cancel-btn" onClick={closeModal}>
+          <button
+            type="button"
+            className="cancel-btn"
+            onClick={() => closeModal(AddAccount)}
+          >
             취소
           </button>
           <button type="submit" className="submit-btn">
