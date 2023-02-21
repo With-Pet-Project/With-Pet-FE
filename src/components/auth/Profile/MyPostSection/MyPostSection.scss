@@ -1,3 +1,27 @@
 .MyPostSection {
-  // border: 1px solid;
+  padding-top: 30px;
+
+  .mypost-title {
+    margin-bottom: 41px;
+    font-size: 16px;
+    font-variation-settings: 'wght' 650;
+  }
+}
+
+.mypost-list {
+  * {
+    color: #878888;
+    display: block;
+    line-height: 23px;
+  }
+
+  .date,
+  .content {
+    margin-bottom: 30px;
+  }
+
+  .mypost {
+    border-bottom: 1px solid #dbdbdb;
+    margin: 30px 0;
+  }
 }
