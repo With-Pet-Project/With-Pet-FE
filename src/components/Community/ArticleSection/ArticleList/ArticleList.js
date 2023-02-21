@@ -1,4 +1,4 @@
-import { ARTICLE_LIST_PAGE_ONE } from 'lib/mocks/article/articleGet';
+// import { ARTICLE_LIST_PAGE_ONE } from 'lib/mocks/article/articleGet';
 import './ArticleList.scss';
 
 import { useEffect } from 'react';

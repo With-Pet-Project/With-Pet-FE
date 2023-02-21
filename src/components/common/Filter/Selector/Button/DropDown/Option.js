@@ -14,16 +14,13 @@ const Button = styled.button`
   margin: 5px !important;
 `;
 
-function Option({ value, handleParameter, close }) {
+function Option({ value, handleParameter, close, parameterName }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [selected, setSelected] = useState(false);
 
   useEffect(() => {
-    setSelected(
-      searchParams.get('firstPlace') === value ||
-        searchParams.get('secondPlace') === value,
-    );
-  }, [selected, searchParams, value]);
+    setSelected(searchParams.get(`${parameterName}`) === value);
+  }, [selected, searchParams, value, parameterName]);
 
   return (
     <div>

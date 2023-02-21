@@ -1,7 +1,7 @@
 import { ADMIN_DISTRICT } from 'lib/constants/adminDistrict';
-import FilterSwitch from './Switch/Switch';
+import Button from './Button/Button';
 
-function Selector({
+function LocationSelectors({
   handleFirstPlace,
   handleSecondPlace,
   firstPlace,
@@ -9,20 +9,22 @@ function Selector({
 }) {
   return (
     <div className="button-filter">
-      <FilterSwitch
+      <Button
+        parameterName="firstPlace"
         handleParameter={handleFirstPlace}
         list={Object.keys(ADMIN_DISTRICT)}
       >
         {firstPlace}
-      </FilterSwitch>
-      <FilterSwitch
+      </Button>
+      <Button
+        parameterName="secondPlace"
         handleParameter={handleSecondPlace}
         list={ADMIN_DISTRICT[firstPlace]}
       >
         {secondPlace}
-      </FilterSwitch>
+      </Button>
     </div>
   );
 }
 
-export default Selector;
+export default LocationSelectors;

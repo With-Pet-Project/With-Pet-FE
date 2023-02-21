@@ -1,7 +1,7 @@
 import './AddChallenge.scss';
 
 import { useState, useEffect } from 'react';
-import DownArrow from '../DownArrow';
+import DownArrow from 'components/common/SelectArrow/DownArrow';
 import ModalButtons from '../ModalButtons';
 
 import DateSelector from './DateSelector';

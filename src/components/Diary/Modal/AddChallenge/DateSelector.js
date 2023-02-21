@@ -2,7 +2,7 @@
 import './DateSelector.scss';
 import { useEffect, useState } from 'react';
 
-import DownArrow from '../DownArrow';
+import DownArrow from 'components/common/SelectArrow/DownArrow';
 
 function DateSelector() {
   const date = new Date();

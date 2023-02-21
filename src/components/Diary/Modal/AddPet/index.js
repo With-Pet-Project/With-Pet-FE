@@ -1,5 +1,5 @@
 import './AddPet.scss';
-import DownArrow from '../DownArrow';
+import DownArrow from 'components/common/SelectArrow/DownArrow';
 import ModalButtons from '../ModalButtons';
 
 const MONTH = [

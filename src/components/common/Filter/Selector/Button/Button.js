@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 import { useOutsideDetection } from 'components/common/hooks/useOutsideDetection';
-import Options from '../Option/Options';
+import Options from './DropDown/Options';
 
 const RotateArrow = styled.span`
   & svg {
@@ -16,7 +16,7 @@ const RotateArrow = styled.span`
   }
 `;
 
-function FilterSwitch({ handleParameter, list, children }) {
+function Button({ handleParameter, list, children, parameterName }) {
   const { open, isOpen, targetRef } = useOutsideDetection();
   const [params, setParams] = useSearchParams();
   const [buttonEnabled, setButtonEnabled] = useState(true);
@@ -37,10 +37,15 @@ function FilterSwitch({ handleParameter, list, children }) {
         <span>{buttonEnabled ? children : '해당없음'}</span>
       </button>
       {open && (
-        <Options handleParameter={handleParameter} list={list} close={isOpen} />
+        <Options
+          handleParameter={handleParameter}
+          list={list}
+          close={isOpen}
+          parameterName={parameterName}
+        />
       )}
     </div>
   );
 }
 
-export default FilterSwitch;
+export default Button;
