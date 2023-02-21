@@ -50,30 +50,6 @@
   }
 }
 
-.add-Challenge-buttons {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-
-  & button:first-child {
-    background-color: #fff;
-
-    &:hover {
-      background-color: $background-yellow;
-      color: white;
-    }
-  }
-
-  & button:last-child {
-    background-color: $background-yellow;
-    color: #fff;
-
-    &:hover {
-      background-color: #f3d124;
-    }
-  }
-}
-
 .times-select {
   width: 100%;
 
