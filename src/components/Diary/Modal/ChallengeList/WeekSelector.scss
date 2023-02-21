@@ -1,14 +1,13 @@
 @import '/src/lib/styles/vars.scss';
 
-p {
+.week-select > p {
   margin-top: 13px !important;
   font-weight: 400;
-  font-size: 12px !important; 
+  font-size: 12px !important;
   line-height: 14px;
 
   color: $fontColor-gray;
 }
-
 
 .week-select-box {
   font-family: 'TmoneyRoundWindNormal';
@@ -17,7 +16,7 @@ p {
   justify-content: space-between;
   height: 40px;
   margin: 7px 0;
-  
+
   & > div {
     flex-basis: calc(50% - 10px);
     height: inherit;
@@ -38,10 +37,9 @@ p {
 
   & > .week-select-item:nth-child(1) select {
     padding-left: 50px;
-
   }
 
-  & >.week-select-item:nth-child(1) {
+  & > .week-select-item:nth-child(1) {
     span {
       display: block;
       font-size: 14px;

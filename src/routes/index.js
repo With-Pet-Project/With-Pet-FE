@@ -7,7 +7,7 @@ import CommunityPage from 'pages/CommunityPage';
 import ArticlePage from 'pages/ArticlePage';
 import EditorPage from 'pages/EditorPage';
 import AccountPage from 'pages/AccountPage';
-import MyPage from 'pages/MyPage';
+import ProfilePage from 'pages/ProfilePage';
 import HospitalPage from 'pages/HospitalPage';
 import LogInPage from 'pages/LogInPage';
 
@@ -22,7 +22,7 @@ function RootRoute() {
           <Route path="community" element={<CommunityPage />} />
           <Route path="community/:articleId" element={<ArticlePage />} />
           <Route path="account" element={<AccountPage />} />
-          <Route path="mypage" element={<MyPage />} />
+          <Route path="profile" element={<ProfilePage />} />
           <Route path="hospital" element={<HospitalPage />} />
           <Route path="login" element={<LogInPage />} />
         </Route>
