@@ -1,24 +1,15 @@
 import styled from 'styled-components';
-import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 const PriorityButton = styled.button`
   color: ${({ selected }) => (selected ? '#252525' : '#878888')};
   font-weight: ${({ selected }) => (selected ? '800' : '400')};
 `;
 
-function PrioritySelector() {
-  const [priority, setPriority] = useState('최신');
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const handlePriority = e => {
-    setPriority(e.target.value);
-  };
-
-  useEffect(() => {
-    searchParams.set('priority', priority);
-    setSearchParams(searchParams);
-  }, [searchParams, setSearchParams, priority]);
+function PrioritySelector({ searchParams, setSearchParams, setPriority }) {
+  // const [searchParams, setSearchParams] = useSearchParams();
+  const handlePriority = e => setPriority(e.target.value);
 
   return (
     <div className="button-filter">

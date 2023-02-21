@@ -23,19 +23,26 @@ function ArticleList() {
   }, [inView]);
 
   return (
-    <div className="Article-list">
-      <ul>
-        {data?.pages?.map(elem =>
-          elem.data?.data?.articlesList?.map(article => (
-            <li key={article.articleId}>
-              <Link to={`${article.articleId}`}>
-                <ArticleItem article={article} />
-              </Link>
-            </li>
-          )),
-        )}
-      </ul>
-      <div data-testid="inView" ref={ref} aria-label={`${inView}`} role="log" />
+    <div className="article-section">
+      <div className="Article-list">
+        <ul>
+          {data?.pages?.map(elem =>
+            elem.data?.data?.articlesList?.map(article => (
+              <li key={article.articleId}>
+                <Link to={`${article.articleId}`}>
+                  <ArticleItem article={article} />
+                </Link>
+              </li>
+            )),
+          )}
+        </ul>
+        <div
+          data-testid="inView"
+          ref={ref}
+          aria-label={`${inView}`}
+          role="log"
+        />
+      </div>
     </div>
   );
 }
