@@ -71,7 +71,6 @@ function Sidebar() {
               <Menu to="/hospital" menuName="내 주변 병원 찾기">
                 <Hospital />
               </Menu>
-              <Menu to="/editor" menuName="글쓰기" />
             </ul>
           </div>
           <div className="side-navbar-menu side-navbar-menu-bottom">
