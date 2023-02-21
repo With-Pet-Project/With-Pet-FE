@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import './LogIn.scss';
+import Input from '../Input/Input';
 
 function LogIn() {
   return (
@@ -9,9 +10,9 @@ function LogIn() {
           <form className="login_form">
             <h3>로그인</h3>
             <label htmlFor="email">이메일</label>
-            <input type="text" id="email" />
+            <Input type="text" id="email" name="email" />
             <label htmlFor="password">비밀번호</label>
-            <input type="password" id="password" />
+            <Input type="password" id="password" />
             <div className="btn-wrapper">
               <div className="signin-wrapper">
                 <a href="#">비밀번호 재설정 하기</a>
