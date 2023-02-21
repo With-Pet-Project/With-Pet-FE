@@ -7,7 +7,7 @@ const TagButton = styled.button`
   border: 1px solid
     ${({ selected }) => (selected ? `${vars.backgroundYellow}` : '#dbdbdb')};
   color: ${({ selected }) =>
-    selected ? `${vars.backgroundYellow}` : '#878888'};
+    selected ? `${vars.fontColorBlack}` : `${vars.fontColorGray}`};
 `;
 
 function Tag({ tagName, tagId, onClickTag, params }) {

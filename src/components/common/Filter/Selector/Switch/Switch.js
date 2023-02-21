@@ -1,7 +1,10 @@
+/* eslint-disable no-unused-expressions */
 import styled from 'styled-components';
+import { useSearchParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faV } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 import { useOutsideDetection } from 'components/common/hooks/useOutsideDetection';
 import Options from '../Option/Options';
@@ -15,14 +18,23 @@ const RotateArrow = styled.span`
 
 function FilterSwitch({ handleParameter, list, children }) {
   const { open, isOpen, targetRef } = useOutsideDetection();
+  const [params, setParams] = useSearchParams();
+  const [buttonEnabled, setButtonEnabled] = useState(true);
+
+  useEffect(() => {
+    const p = params.get('tag');
+    p !== 'LOST' && p !== 'WALK' && p !== 'HOSPITAL'
+      ? setButtonEnabled(false)
+      : setButtonEnabled(true);
+  }, [params]);
 
   return (
     <div className="filter-selector-button" ref={targetRef}>
-      <button type="button" onClick={isOpen}>
+      <button type="button" onClick={isOpen} disabled={!buttonEnabled}>
         <RotateArrow rotate={open}>
-          <FontAwesomeIcon icon={faV} />
+          <FontAwesomeIcon icon={faAngleDown} />
         </RotateArrow>
-        <span>{children}</span>
+        <span>{buttonEnabled ? children : '해당없음'}</span>
       </button>
       {open && (
         <Options handleParameter={handleParameter} list={list} close={isOpen} />

@@ -2,11 +2,12 @@ import './Filter.scss';
 import styled from 'styled-components';
 import { ADMIN_DISTRICT } from 'lib/constants/adminDistrict';
 import { useEffect, useState } from 'react';
-import { useSearchParams, useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import Selector from './Selector/Selector';
 
 const PriorityButton = styled.button`
   color: ${({ selected }) => (selected ? '#252525' : '#878888')};
+  font-weight: ${({ selected }) => (selected ? '800' : '400')};
 `;
 
 function Filter() {
@@ -14,8 +15,6 @@ function Filter() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [firstPlace, setFirstPlace] = useState(Object.keys(ADMIN_DISTRICT)[0]);
   const [secondPlace, setSecondPlace] = useState(ADMIN_DISTRICT[firstPlace][0]);
-
-  const location = useLocation();
 
   const handlePriority = e => {
     setPriority(e.target.value);
