@@ -9,7 +9,7 @@ import Diary from './img/Diary';
 import Community from './img/Community';
 import Account from './img/Account';
 import Hospital from './img/Hospital';
-import MyPage from './img/MyPage';
+import Profile from './img/Profile';
 import Logout from './img/Logout';
 
 import Logo from '../Logo/Logo';
@@ -75,8 +75,8 @@ function Sidebar() {
           </div>
           <div className="side-navbar-menu side-navbar-menu-bottom">
             <ul>
-              <Menu to="/mypage" menuName="마이 페이지">
-                <MyPage />
+              <Menu to="/profile" menuName="마이 페이지">
+                <Profile />
               </Menu>
               <Menu to="/logout" menuName="로그아웃">
                 <Logout />

@@ -1,0 +1,94 @@
+@import '/src/lib/styles/vars.scss';
+
+.edit-profile-modal {
+  width: 350px;
+  height: 394px;
+  padding: 24px;
+  font-family: 'Pretendard Variable';
+
+  h2 {
+    font-variation-settings: 'wght' 650;
+    font-size: 20px;
+  }
+}
+
+.edit-profile-form {
+  margin-top: 49px;
+
+  * {
+    display: block;
+  }
+
+  .input-label {
+    font-variation-settings: 'wght' 550;
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: #434343;
+  }
+
+  .file-upload {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+
+    .image-submit-btn {
+      width: 60px;
+      height: 38px;
+      background-color: $background-yellow;
+      border-radius: 10px;
+      color: $fontColor-black;
+      text-align: center;
+      line-height: 38px;
+    }
+
+    .file-input {
+      position: absolute;
+      width: 0;
+      height: 0;
+      padding: 0;
+      overflow: hidden;
+      border: 0;
+    }
+
+    .file-label-input {
+      padding-left: 10px;
+      margin-right: 8px;
+    }
+  }
+
+  .nickname-available {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    color: $fontColor-black;
+    font-size: 12px;
+  }
+
+  .btn-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  button {
+    height: 36px;
+    width: 90px;
+  }
+
+  button:nth-child(1) {
+    margin-right: 20px;
+    border: 2px solid $background-yellow;
+    color: $fontColor-black;
+    background: #fff;
+  }
+
+  button:nth-child(2) {
+    color: $fontColor-black;
+    background: $background-yellow;
+  }
+
+  .active-input {
+    background-color: #fff !important;
+    border: 1.5px solid $background-yellow !important;
+  }
+}

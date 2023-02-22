@@ -1,0 +1,39 @@
+@import '/src/lib/styles/vars.scss';
+
+.MyInfoSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid #dbdbdb;
+
+  .profile-img {
+    background-color: $background-yellow;
+    border-radius: 100px;
+  }
+
+  .nickName {
+    margin-top: 17px;
+    color: #252525;
+    font-variation-settings: 'wght' 650;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .btn {
+    position: relative;
+    font-size: 14px;
+    background: transparent;
+  }
+
+  .Withdrawal-btn {
+    bottom: 80%;
+    left: 47%;
+    color: #878888;
+  }
+
+  .edit-profile-btn {
+    bottom: 20%;
+    left: 46%;
+    color: $fontColor-black;
+  }
+}

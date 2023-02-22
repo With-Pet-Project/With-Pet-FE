@@ -1,0 +1,119 @@
+@import '/src/lib/styles/vars.scss';
+
+.login_container {
+  width: 100%;
+  height: 100vh;
+
+  * {
+    font-family: 'Pretendard Variable';
+    font-variation-settings: 'wght' 500;
+  }
+
+  .login_bg {
+    background-image: url('../../../lib/assets/아카이브/login/bg_big_yellow.png'),
+      url('../../../lib/assets/아카이브/login/bg_small_white.png'),
+      url('../../../lib/assets/아카이브/login/bg_small_yellow.png');
+    background-position: left top, 2% 75%, right bottom;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    background-size: 62%, 13%, 15%;
+  }
+
+  .login_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form_wrapper {
+    width: 390px;
+    height: 487px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 18px rgba(137, 137, 137, 0.25);
+    border-radius: 10px;
+  }
+}
+
+.login_form {
+  padding: 39px 44px 30px 44px;
+
+  * {
+    display: block;
+  }
+
+  h3 {
+    font-family: 'TmoneyRoundWindBold';
+    color: #252525;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  label {
+    font-variation-settings: 'wght' 550;
+    margin-bottom: 12px;
+    color: #434343;
+  }
+
+  .btn-wrapper {
+    margin: 30px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  Input {
+    margin-bottom: 12px;
+  }
+
+  .signin-wrapper {
+    font-size: 13px;
+    color: $point-blue;
+
+    a:nth-child(1) {
+      margin-bottom: 5px;
+    }
+  }
+
+  .login-btn {
+    background-color: $background-yellow;
+    color: $fontColor-black;
+    font-size: 15px;
+    border-radius: 10px;
+    width: 69px;
+    height: 38px;
+  }
+
+  .hr-login {
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    color: #c2c2c2;
+    font-size: 13px;
+    margin-bottom: 30px;
+  }
+
+  .hr-login::before,
+  .hr-login::after {
+    content: '';
+    flex-grow: 1;
+    background: #c2c2c2;
+    height: 1px;
+  }
+
+  .hr-login::before {
+    margin-right: 8px;
+  }
+
+  .hr-login::after {
+    margin-left: 8px;
+  }
+
+  .kakao-login-btn {
+    width: 100%;
+    height: 45px;
+    background: url('../../../lib/assets/아카이브/login/kakao/normal/kakao_login_large_wide.png');
+    background-size: cover;
+  }
+}

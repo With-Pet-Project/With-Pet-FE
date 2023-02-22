@@ -1,4 +1,4 @@
-function MyPage() {
+function Profile() {
   return (
     <svg
       width="100%"
@@ -19,4 +19,4 @@ function MyPage() {
   );
 }
 
-export default MyPage;
+export default Profile;

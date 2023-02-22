@@ -5,6 +5,17 @@
   height: 100%;
   font-family: 'Pretendard Variable';
   font-variation-settings: 'wght' 400;
+  background-color: #f5f5f5;
+}
+
+.account_bg {
+  background-image: url('../../../lib/assets/아카이브/다이어리/image_00.png'),
+    url('../../../lib/assets/아카이브/다이어리/image_01.png');
+  background-position: left top, 115% 115%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  background-size: 62%, 30%;
 }
 
 .add-account-btn {
