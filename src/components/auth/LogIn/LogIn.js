@@ -1,4 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { KAKAO_OAUTH_URL } from 'lib/KakaoAPIs/client';
+
 import './LogIn.scss';
 import Input from '../Input/Input';
 
@@ -23,11 +25,13 @@ function LogIn() {
               </button>
             </div>
             <span className="hr-login">또는</span>
-            <button
-              type="button"
-              className="kakao-login-btn"
-              alt="카카오톡 로그인"
-            />
+            <a href={`${KAKAO_OAUTH_URL}`}>
+              <button
+                type="button"
+                className="kakao-login-btn"
+                alt="카카오톡 로그인"
+              />
+            </a>
           </form>
         </div>
       </div>

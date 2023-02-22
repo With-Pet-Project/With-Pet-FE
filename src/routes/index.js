@@ -10,6 +10,7 @@ import AccountPage from 'pages/AccountPage';
 import ProfilePage from 'pages/ProfilePage';
 import HospitalPage from 'pages/HospitalPage';
 import LogInPage from 'pages/LogInPage';
+import OAuthCallbackPage from 'pages/OAuthCallbackPage';
 
 function RootRoute() {
   return (
@@ -24,8 +25,9 @@ function RootRoute() {
           <Route path="account" element={<AccountPage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="hospital" element={<HospitalPage />} />
-          <Route path="login" element={<LogInPage />} />
         </Route>
+        <Route path="/login" element={<LogInPage />} />
+        <Route path="/login/oauth/callback" element={<OAuthCallbackPage />} />
       </Routes>
     </BrowserRouter>
   );

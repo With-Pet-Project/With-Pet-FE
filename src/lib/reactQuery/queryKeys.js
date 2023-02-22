@@ -16,4 +16,6 @@ export const queryKeys = createQueryKeyStore({
       criteria,
     ],
   },
+  oauth: code => code,
+  user: jwt => jwt,
 });
