@@ -2,6 +2,7 @@ import './Sidebar.scss';
 import { vars } from 'lib/styles/vars';
 import styled from 'styled-components';
 
+import { useState } from 'react';
 import Menu from './Menu';
 import Hamburger from './Hamburger';
 import Home from './img/Home';
@@ -35,16 +36,20 @@ const Navigation = styled.div`
 `;
 
 function Sidebar() {
-  const { open, isOpen, targetRef } = useOutsideDetection();
+  // const { open, isOpen, targetRef } = useOutsideDetection();
+  const [open, setOpen] = useState(false);
+  const isMouseOver = () => setOpen(true);
+  const isMouseLeave = () => setOpen(false);
 
   return (
     <NavContainer className="side-navbar-container" opened={open}>
       <InnerContainer
         className="side-navbar-inner-container"
         opened={open}
-        ref={targetRef}
+        onMouseOver={isMouseOver}
+        onMouseLeave={isMouseLeave}
       >
-        <Hamburger onClick={isOpen} opened={open} />
+        <Hamburger opened={open} />
         <Navigation opened={open}>
           <div className="side-navbar-top">
             <div className="logo-box">
