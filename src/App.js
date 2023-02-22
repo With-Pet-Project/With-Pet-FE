@@ -6,6 +6,7 @@ import GlobalStyle from './lib/styles/GlobalStyle';
 import RootRoute from './routes';
 import Loading from './components/common/Loading/Loading';
 import 'react-toastify/dist/ReactToastify.css';
+import 'components/common/Toast/toast.scss';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <GlobalStyle />
       {/* <Loading /> */}
       <RootRoute />
-      <ToastContainer limit={1} />
+      <ToastContainer className="toast-font" limit={1} />
       <ReactQueryDevtools />
     </QueryClientProvider>
   );

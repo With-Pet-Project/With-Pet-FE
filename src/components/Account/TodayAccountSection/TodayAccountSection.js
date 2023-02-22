@@ -26,7 +26,6 @@ function TodayAccountSection({ accountData = [] }) {
   const onConfirm = () => {
     const { id } = accountData[0];
     deleteAccount(id);
-    alert('삭제했습니다.');
   };
 
   const confirmDelete = useConfirm(onConfirm, '삭제하시겠습니까?');
