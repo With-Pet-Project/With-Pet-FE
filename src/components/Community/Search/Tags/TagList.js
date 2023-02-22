@@ -4,21 +4,22 @@ import './TagList.scss';
 import { ARTICLE_TAG } from 'lib/constants/articleTag';
 import { useRef, useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+// import { useGlobalSearchParams } from 'components/common/hooks/useGlobalSearchParams';
 import Tag from './Tag';
 
 function TagList() {
   const ARTICLE_QUERY_STRING = Object.keys(ARTICLE_TAG);
   const ARTICLE_TAG_NAME = Object.values(ARTICLE_TAG);
 
-  const scrollRef = useRef();
+  // searchParams = useGlobalSearchParams();
   const [tag, setTag] = useState(ARTICLE_QUERY_STRING[0]);
-  const [searchParams, setSearchParams] = useSearchParams({ tag });
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const handleTag = tagId => setTag(tagId);
+
+  const scrollRef = useRef();
   const [isDrag, setIsDrag] = useState(false);
   const [startX, setStartX] = useState(0);
-
-  const onClickTag = tagId => {
-    setTag(tagId);
-  };
 
   const onDragStart = e => {
     e.preventDefault();
@@ -41,13 +42,6 @@ function TagList() {
     setSearchParams(searchParams);
   }, [searchParams, setSearchParams, tag]);
 
-  useEffect(() => {
-    if (!searchParams.get('tag')) {
-      searchParams.set('tag', tag);
-      setSearchParams(searchParams);
-    }
-  });
-
   return (
     <div className="tag-container" ref={scrollRef}>
       <div
@@ -63,7 +57,7 @@ function TagList() {
             key={ARTICLE_QUERY_STRING[idx]}
             tagName={t}
             tagId={ARTICLE_QUERY_STRING[idx]}
-            onClickTag={onClickTag}
+            onClickTag={handleTag}
             params={searchParams.get('tag')}
           />
         ))}

@@ -1,0 +1,10 @@
+@import '/src/lib/styles/vars.scss';
+
+.tagList-button select {
+  
+  & option {
+    background-color: $background-yellow;
+    font-family: 'TmoneyRoundWindNormal';
+    // color: #fff;
+  }
+}

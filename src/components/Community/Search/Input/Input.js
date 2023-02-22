@@ -45,7 +45,7 @@ function Input({ isFocus, focus, inputRef, searchRef }) {
   };
 
   const isKeyDownEnter = () => {
-    // Enter누르면 검색어 저장
+    // Enter누르면 검색 및 검색어 저장
     return window.event.keyCode === 13 && value && !history.includes(value)
       ? setHistory([...history, value])
       : 0;
@@ -72,8 +72,9 @@ function Input({ isFocus, focus, inputRef, searchRef }) {
       ref={searchRef}
     >
       {focus && (
-        <label htmlFor="community-search">
-          {value.length ? '' : '검색어를 입력해주세요.'}
+        <label htmlFor="community-search" className="community-search-label">
+          <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" />
+          {value.length ? '' : <span>검색어를 입력해주세요.</span>}
         </label>
       )}
       <SearchInput
@@ -86,7 +87,7 @@ function Input({ isFocus, focus, inputRef, searchRef }) {
         onChange={handleChange}
         value={value}
       />
-      <FontAwesomeIcon icon={faMagnifyingGlass} />
+      {!focus && <FontAwesomeIcon icon={faMagnifyingGlass} />}
       {focus && (
         <HistoryList
           history={history}

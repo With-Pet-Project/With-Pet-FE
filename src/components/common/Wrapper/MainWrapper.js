@@ -21,9 +21,11 @@ const ContentWrapper = styled.div`
   margin: 0 auto;
 `;
 
-function MainWrapper({ children }) {
+function MainWrapper({ component = null, children }) {
+  // const { Component, props } = component;
   return (
     <Main>
+      {component && <component.Component {...component.props} />}
       <ContentWrapper>{children}</ContentWrapper>
     </Main>
   );

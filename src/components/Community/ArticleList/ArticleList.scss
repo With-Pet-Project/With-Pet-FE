@@ -1,3 +1,11 @@
+.article-section {
+  display: flex;
+  flex-direction: column;
+  
+  width: 100%;
+  min-height: 700px;
+}
+
 .Article-list {
   width: 100%;
 
@@ -97,14 +105,14 @@
   & button span {
     margin: 5px;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 23px;
-
     color: #878888;
   }
 
   & button svg {
     width: 24px;
     height: 24px;
+    margin-bottom: -5px;
   }
 }

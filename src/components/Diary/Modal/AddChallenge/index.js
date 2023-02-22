@@ -1,23 +1,12 @@
 import './AddChallenge.scss';
-import styled from 'styled-components';
-import { vars } from 'lib/styles/vars';
+
 import { useState, useEffect } from 'react';
-import { useModal } from 'components/common/Modal/context/useModal';
-import DownArrow from '../DownArrow';
+import DownArrow from 'components/common/SelectArrow/DownArrow';
+import ModalButtons from '../ModalButtons';
 
 import DateSelector from './DateSelector';
 
-const Button = styled.button`
-  width: 90px;
-  height: 36px;
-  border: 1.5px solid ${vars.backgroundYellow};
-  border-radius: 10px;
-  margin: 0 7px;
-`;
-
 function AddChallenge() {
-  const { closeModal } = useModal();
-
   const MAXIMUM_NUMBER_OF_TIMES = 10;
 
   const [times, setTimes] = useState([]);
@@ -82,10 +71,7 @@ function AddChallenge() {
           <DownArrow htmlFor="times-select" />
         </div>
       </div>
-      <div className="add-Challenge-buttons">
-        <Button onClick={() => closeModal(AddChallenge)}>취소</Button>
-        <Button>추가하기</Button>
-      </div>
+      <ModalButtons Component={AddChallenge} />
     </div>
   );
 }

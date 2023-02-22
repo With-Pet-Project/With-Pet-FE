@@ -1,11 +1,13 @@
+import Filter from './Filter/Filter';
 import Search from './Search/Search';
-import ArticleSection from './ArticleSection/ArticleSection';
+import ArticleList from './ArticleList/ArticleList';
 
 function CommunityMain() {
   return (
     <>
       <Search />
-      <ArticleSection />
+      <Filter />
+      <ArticleList />
     </>
   );
 }

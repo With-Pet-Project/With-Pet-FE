@@ -2,7 +2,12 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { queryKeys } from 'lib/reactQuery/queryKeys';
 import { getArticleList } from 'lib/APIs/article';
 
-export const useArticles = (tag, firstPlace, secondPlace, priority = null) => {
+export const useArticles = (
+  tag,
+  firstPlace = null,
+  secondPlace = null,
+  priority = null,
+) => {
   const { article } = queryKeys;
 
   const {

@@ -4,6 +4,8 @@ import { ARTICLE_TAG } from 'lib/constants/articleTag';
 
 import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
+import TagList from './Tag/TagList';
+import Location from './Location/Location';
 import 'react-quill/dist/quill.snow.css';
 
 const modules = {
@@ -42,14 +44,10 @@ function Editor() {
   const [value, setValue] = useState('');
 
   return (
-    <>
-      <div className="editor-title">
-        <select>
-          <option value="" selected disabled hidden>
-            태그 선택
-          </option>
-        </select>
-        <input type="text" className="editor-title-input" placeholder="제목" />
+    <form>
+      <div className="editor-filter-container">
+        <TagList />
+        <Location />
       </div>
       <ReactQuill
         theme="snow"
@@ -59,7 +57,7 @@ function Editor() {
         format={formats}
         placeholder=""
       />
-    </>
+    </form>
   );
 }
 

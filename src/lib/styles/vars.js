@@ -9,9 +9,11 @@ export const vars = {
 
   backgroundYellow: `#ffe259`,
   backgroundGreen: `#62ccab`,
+  backgroundGray: `#f2f2f2`,
 
   fontColorGray: `#949494`,
   fontColorBrown: `#695339`,
+  fontColorBlack: `#252525`,
 
   borderColorGray: `#dbdbdb`,
 };

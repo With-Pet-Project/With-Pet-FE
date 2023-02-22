@@ -1,5 +1,4 @@
 import MainWrapper from 'components/common/Wrapper/MainWrapper';
-
 import ArticleMain from 'components/Article/ArticleMain';
 
 function ArticlePage() {

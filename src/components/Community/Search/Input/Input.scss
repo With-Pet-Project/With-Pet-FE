@@ -1,3 +1,5 @@
+@import '/src/lib/styles/vars.scss';
+
 .search-input {
   display: flex;
   position: relative;
@@ -21,13 +23,13 @@
     width: 100%;
     max-width: 930px;
     height: 43px;
-    padding-left: 16px;
+    padding-left: 43px;
     border-radius: 100px;
     margin-right: -30px;
     outline: none;
 
     font-weight: 500;
-    font-size: 17px;
+    font-size: 16px;
     line-height: 17px;
   }
 }
@@ -40,4 +42,16 @@
   font-size: 14px;
   line-height: 23px;
   color: #252525;
+}
+
+.community-search-label {
+  span {
+    margin: 0 0 0 5px;
+  }
+}
+
+.search-icon {
+  color: $background-yellow;
+  margin-right: 10px;
+  margin-bottom: -1.3px;
 }
