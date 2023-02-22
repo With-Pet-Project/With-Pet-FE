@@ -26,7 +26,7 @@
     color: #434343;
   }
 
-  .file-update-form {
+  .file-upload {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -53,11 +53,6 @@
     }
 
     .file-label-input {
-      background-color: #f2f2f2;
-      width: 75%;
-      height: 36px;
-      border: 0;
-      border-radius: 10px;
       padding-left: 10px;
       margin-right: 8px;
     }
@@ -90,5 +85,10 @@
   button:nth-child(2) {
     color: $fontColor-black;
     background: $background-yellow;
+  }
+
+  .active-input {
+    background-color: #fff !important;
+    border: 1.5px solid $background-yellow !important;
   }
 }

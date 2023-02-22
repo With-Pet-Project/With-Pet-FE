@@ -1,8 +1,23 @@
+/* eslint-disable react/destructuring-assignment */
+import { forwardRef } from 'react';
 import './Input.scss';
 
-function Input(props) {
-  console.log(props);
-  return <input className="common-input" {...props} />;
+function Input(
+  { className, type, name, accept, onChange, onClick, disabled },
+  ref,
+) {
+  return (
+    <input
+      className={`common-input ${className}`}
+      type={type}
+      accept={accept}
+      name={name}
+      onChange={onChange}
+      onClick={onClick}
+      disabled={disabled}
+      ref={ref}
+    />
+  );
 }
 
-export default Input;
+export default forwardRef(Input);
