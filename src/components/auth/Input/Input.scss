@@ -1,0 +1,16 @@
+@import '/src/lib/styles/vars.scss';
+
+.common-input {
+  // margin-bottom: 12px;
+  background-color: #f2f2f2;
+  height: 36px;
+  width: 100%;
+  border-radius: 10px;
+  border: 0;
+  padding-left: 10px;
+}
+
+.common-input:focus {
+  background-color: #fff;
+  border: 1.5px solid $background-yellow;
+}

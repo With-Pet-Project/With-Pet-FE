@@ -2,7 +2,13 @@
 
 .add-account-modal {
   width: 350px;
-  height: 665px;
+  height: 660px;
+  padding: 24px;
+
+  * {
+    font-family: 'Pretendard Variable';
+    font-variation-settings: 'wght' 500;
+  }
 }
 
 .add-account-form {
@@ -30,7 +36,6 @@
   }
 
   .label {
-    // font-weight: 500;
     font-size: 16px;
     color: #434343;
     display: block;
@@ -44,6 +49,12 @@
     border-radius: 10px;
     background-color: #f2f2f2;
     width: 100%;
+  }
+
+  select:focus {
+    outline: none;
+    background-color: #fff;
+    border: 1.5px solid $background-yellow;
   }
 
   .input-wrapper:focus-within {
@@ -78,12 +89,13 @@
   }
 
   .cancel-btn {
-    border: 1.5px solid $background-yellow;
+    border: 2px solid $background-yellow;
+    color: $fontColor-black;
     background-color: #fff;
   }
 
   .submit-btn {
-    color: #fff;
+    color: $fontColor-black;
     background-color: $background-yellow;
   }
 }

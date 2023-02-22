@@ -41,7 +41,7 @@ const ModalWrapper = styled.div`
 const ModalContent = styled.div`
   position: sticky;
   background: white;
-  padding: 1em;
+  /* padding: 1em;	 */
   border-radius: 0.5em;
   margin: auto;
   box-shadow: 0px 4px 18px rgba(137, 137, 137, 0.25);
