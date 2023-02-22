@@ -3,31 +3,21 @@ import './Filter.scss';
 import { ADMIN_DISTRICT } from 'lib/constants/adminDistrict';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useCommunityParams } from 'components/common/hooks/useCommunityParams';
 
 import PrioritySelector from './Selector/PrioritySelector';
 import LocationSelectors from './Selector/LocationSelectors';
 
 function Filter() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [firstPlace, setFirstPlace] = useState(Object.keys(ADMIN_DISTRICT)[0]);
-  const [secondPlace, setSecondPlace] = useState(ADMIN_DISTRICT[firstPlace][0]);
-  const [priority, setPriority] = useState('최신');
-
-  useEffect(() => {
-    const tag = searchParams.get('tag');
-
-    if (tag) {
-      searchParams.set('tag', tag);
-      searchParams.set('firstPlace', firstPlace);
-      searchParams.set('secondPlace', secondPlace);
-      searchParams.set('priority', priority);
-      setSearchParams(searchParams);
-    }
-  }, [searchParams, setSearchParams, firstPlace, secondPlace, priority]);
-
-  useEffect(() => {
-    setSecondPlace(ADMIN_DISTRICT[firstPlace][0]);
-  }, [firstPlace]);
+  const {
+    searchParams,
+    setSearchParams,
+    firstPlace,
+    setFirstPlace,
+    secondPlace,
+    setSecondPlace,
+    setPriority,
+  } = useCommunityParams();
 
   return (
     <div className="search-filter">

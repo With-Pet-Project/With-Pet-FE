@@ -1,24 +1,40 @@
+@import '/src/lib/styles/vars.scss';
+
 .editor {
   height: 100%;
 }
 
-.editor-title {
+.editor-filter-container {
+  margin: 30px 17px;
   display: flex;
-  width: 100%;
-  padding: 15px;
 
-  & select {
-    padding: 10px;
+  & select, & button {
+    position: relative;
+    z-index: 1;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+
+    background-color: transparent;
+    
+    height: 21px;
+    border: 0;
     outline: none;
-    margin-right: 10px;
-    border: 2px solid #ccc;
+    padding-right: 30px;
+    padding-left: 3px;
+    margin: -5px 10px 0 0;
+
+    
+    color: #878787;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+
+    cursor: pointer;
   }
 
-  & input {
-    flex-grow: 1;
-    padding: 0 15px;
-    outline: none;
-    border: 2px solid #ccc;
+  & button {
+    margin-left: 10px;
   }
 }
 
