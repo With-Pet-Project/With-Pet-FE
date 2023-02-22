@@ -1,15 +1,40 @@
 @import '/src/lib/styles/vars.scss';
 
-.editor {
-  height: 100%;
+.article-form {
+  display: block;
+  padding: 0 20px;
+
+  input {
+    width: 100%;
+    font-size: 23px;
+
+    border: 0;
+    border-bottom: 1px solid $fontColor-gray;
+    outline: none;
+
+    padding-bottom: 15px;
+    margin: -20px 0 30px;
+  }
 }
 
 .editor-filter-container {
-  margin: 30px 17px;
+  margin: 30px 0;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-  & select, & button {
-    position: relative;
+  & select {
+    width: 110px;
+    text-align: center;
+  }
+
+  .tag-location-filter {
+    display: flex;
+  }
+}
+
+.tagList-button select, .Location-selector-button button {
+  position: relative;
     z-index: 1;
     appearance: none;
     -moz-appearance: none;
@@ -20,9 +45,9 @@
     height: 21px;
     border: 0;
     outline: none;
-    padding-right: 30px;
+    padding-right: 20px;
     padding-left: 3px;
-    margin: -5px 10px 0 0;
+    margin: -5px 3px 2px 0;
 
     
     color: #878787;
@@ -31,17 +56,20 @@
     line-height: 21px;
 
     cursor: pointer;
-  }
+}
 
+.Location-selector-button {
   & button {
-    margin-left: 10px;
+    width: 120px;
+    margin-left: 22px;
+    height: 21px;
   }
 }
 
 .quill {
   display: flex;
   flex-direction: column;
-  padding: 0 15px;
+  padding: 0;
 
   & .ql-snow:first-child {
     border-bottom: 2px solid #ccc;

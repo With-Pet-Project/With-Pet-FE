@@ -19,7 +19,6 @@ function DropDown({ open }) {
 
   const selectFirstPlace = e => {
     e.preventDefault();
-    console.log(e.target.value);
     setFirstPlace(e.target.value);
   };
 
