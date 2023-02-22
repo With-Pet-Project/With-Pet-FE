@@ -35,7 +35,7 @@ function AccountMain() {
   };
 
   return (
-    <section className="account-container">
+    <section className="account-container account_bg">
       {accountData && (
         <TotalAccountSection
           yearMonth={yearMonth}
