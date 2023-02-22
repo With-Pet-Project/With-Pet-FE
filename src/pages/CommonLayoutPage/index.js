@@ -15,11 +15,9 @@ const Wrapper = styled.div`
 `;
 
 function CommonLayoutPage() {
-  const { pathname } = document.location;
-  const showSidebar = pathname !== '/login';
   return (
     <Wrapper className="common-page-root-div">
-      {showSidebar && <Sidebar />}
+      <Sidebar />
       <ModalsProvider>
         <Outlet />
         <Modal />

@@ -1,0 +1,42 @@
+@import '/src/lib/styles/vars.scss';
+
+.error-fallback-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  * {
+    font-family: 'Pretendard Variable';
+    font-variation-settings: 'wght' 400;
+  }
+
+  .inner {
+    max-width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .title {
+    font-variation-settings: 'wght' 600;
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+  }
+
+  .content {
+    font-size: 2rem;
+    margin-bottom: 50px;
+  }
+
+  button {
+    background-color: $background-yellow;
+    color: $fontColor-black;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    width: 130px;
+    height: 55px;
+  }
+}

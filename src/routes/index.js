@@ -15,6 +15,7 @@ function RootRoute() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/login" element={<LogInPage />} />
         <Route path="/" element={<CommonLayoutPage />}>
           <Route index element={<LandingPage />} />
           <Route path="diary" element={<DiaryPage />} />
@@ -24,7 +25,6 @@ function RootRoute() {
           <Route path="account" element={<AccountPage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="hospital" element={<HospitalPage />} />
-          <Route path="login" element={<LogInPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
