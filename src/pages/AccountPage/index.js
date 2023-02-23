@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import AccountMain from 'components/Account/AccountMain/AccountMain';
+import Account from 'components/Account/Account';
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from 'components/common/ErrorFallback/ErrorFallback';
@@ -19,7 +19,7 @@ function AccountPage() {
       <Article>
         <Suspense>
           <ErrorBoundary FallbackComponent={ErrorFallback} onReset={reset}>
-            <AccountMain />
+            <Account />
           </ErrorBoundary>
         </Suspense>
       </Article>

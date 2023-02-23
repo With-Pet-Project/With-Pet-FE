@@ -9,14 +9,14 @@ import {
 import { TODAY } from 'lib/constants/date';
 import FloatButton from 'components/common/FloatButton/FloatButton';
 import { useModal } from 'components/common/Modal/context/useModal';
-import TotalAccountSection from '../TotalAccountSection/TotalAccountSection';
-import TodayAccountSection from '../TodayAccountSection/TodayAccountSection';
-import AddAccount from '../Modal/AddAccount/AddAccount';
-import { useFetchAllAccount } from '../hooks/useAccount';
-import { useMonthYear } from '../hooks/useMonthYear';
-import './AccountMain.scss';
+import TotalAccountSection from './TotalAccountSection/TotalAccountSection';
+import TodayAccountSection from './TodayAccountSection/TodayAccountSection';
+import AddAccount from './Modal/AddAccount/AddAccount';
+import { useFetchAllAccount } from './hooks/useAccount';
+import { useMonthYear } from './hooks/useMonthYear';
+import './Account.scss';
 
-function AccountMain() {
+function Account() {
   const [selectDate, setSelectDate] = useState(getMonthYearDetails(TODAY));
   const [yearMonth, setYearMonth] = useMonthYear();
   const accountData = useFetchAllAccount(yearMonth.year, yearMonth.month);
@@ -56,4 +56,4 @@ function AccountMain() {
   );
 }
 
-export default AccountMain;
+export default Account;
