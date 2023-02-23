@@ -3,13 +3,12 @@ import useConfirm from 'components/common/hooks/useConfirm';
 
 import ShowTodayAccount from './ShowTodayAccount/ShowTodayAccount';
 import EditTodayAccount from './EditTodayAccount/EditTodayAccount';
-import { useDeleteAccount, useUpdateAccount } from '../hooks/useAccount';
+import { useDeleteAccount } from '../hooks/useDeleteAccount';
+import { useUpdateAccount } from '../hooks/useUpdateAccount';
 import './TodayAccountSection.scss';
-// 1. 중복되지않는 밑에만 바꾸면 되는뎅... 넘 하나의 컴포넌트를 다 갈아버렸나??
-// 일단 해보고 리펙토링 해보기
-// 2. 굳이 useRef로 input value들을 가져와야 하나????
-// 지금은 그럴 필요가 없고 이렇게 json으로 구현해도 잘 가져와진다
-function TodayAccountSection({ accountData = [] }) {
+
+// api 적용 후 이부분 리펙토링
+function TodayAccountSection({ accountData }) {
   const [isEdit, setIsEdit] = useState(false);
   const deleteAccount = useDeleteAccount();
   const updateAccount = useUpdateAccount();
@@ -26,7 +25,6 @@ function TodayAccountSection({ accountData = [] }) {
   const onConfirm = () => {
     const { id } = accountData[0];
     deleteAccount(id);
-    alert('삭제했습니다.');
   };
 
   const confirmDelete = useConfirm(onConfirm, '삭제하시겠습니까?');

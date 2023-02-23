@@ -1,6 +1,9 @@
 import styled from 'styled-components';
-import AccountHeader from 'components/Account/AccountHeader/AccountHeader';
-import AccountMain from 'components/Account/AccountMain/AccountMain';
+import Account from 'components/Account/Account';
+import { Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorFallback from 'components/common/ErrorFallback/ErrorFallback';
+import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 
 const Article = styled.article`
   height: 100%;
@@ -10,11 +13,15 @@ const Article = styled.article`
 `;
 
 function AccountPage() {
+  const { reset } = useQueryErrorResetBoundary();
   return (
     <main>
       <Article>
-        {/* <AccountHeader /> */}
-        <AccountMain />
+        <Suspense>
+          <ErrorBoundary FallbackComponent={ErrorFallback} onReset={reset}>
+            <Account />
+          </ErrorBoundary>
+        </Suspense>
       </Article>
     </main>
   );

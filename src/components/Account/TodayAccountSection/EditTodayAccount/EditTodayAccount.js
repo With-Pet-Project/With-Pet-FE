@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { getComma } from 'lib/utils/account';
-import { ACCOUNT_LIST } from 'lib/constants/account';
+import { ACCOUNT_LIST } from '../../constant';
 import EditTodayItem from '../EditTodayItem/EditTodayItem';
 import './EditTodayAccount.scss';
 
@@ -21,13 +21,12 @@ function EditTodayAccount({ accountData, accountValue }) {
   };
 
   const todayAccountItemHtml = Object.entries(ACCOUNT_LIST).map(
-    ([key, { name, lightColor, darkColor }]) => (
+    ([key, { name, darkColor }]) => (
       <EditTodayItem
         key={key}
         id={key}
         name={name}
         price={accountData.length > 0 ? accountData[0][key] : 0}
-        lightColor={lightColor}
         darkColor={darkColor}
         onChange={onChange}
       />

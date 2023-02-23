@@ -6,16 +6,18 @@ import {
   toDateObject,
   getNextYearMonth,
 } from 'components/common/Calender/hooks/date';
-import { TODAY } from 'lib/constants/date';
 import FloatButton from 'components/common/FloatButton/FloatButton';
 import { useModal } from 'components/common/Modal/context/useModal';
-import TotalAccountSection from '../TotalAccountSection/TotalAccountSection';
-import TodayAccountSection from '../TodayAccountSection/TodayAccountSection';
-import AddAccount from '../Modal/AddAccount/AddAccount';
-import { useFetchAllAccount, useMonthYear } from '../hooks/useAccount';
-import './AccountMain.scss';
+import { TODAY } from '../common/Calender/constant';
+import { useFetchAllAccount } from './hooks/useAccount';
+import { useMonthYear } from './hooks/useMonthYear';
 
-function AccountMain() {
+import AddAccount from './Modal/AddAccount/AddAccount';
+import TotalAccountSection from './TotalAccountSection/TotalAccountSection';
+import TodayAccountSection from './TodayAccountSection/TodayAccountSection';
+import './Account.scss';
+
+function Account() {
   const [selectDate, setSelectDate] = useState(getMonthYearDetails(TODAY));
   const [yearMonth, setYearMonth] = useMonthYear();
   const accountData = useFetchAllAccount(yearMonth.year, yearMonth.month);
@@ -36,18 +38,14 @@ function AccountMain() {
 
   return (
     <section className="account-container account_bg">
-      {accountData && (
-        <TotalAccountSection
-          yearMonth={yearMonth}
-          accountData={accountData}
-          selectDate={selectDate}
-          handleSelectDate={handleSelectDate}
-          handleMonthChange={handleMonthChange}
-        />
-      )}
-      {accountData && (
-        <TodayAccountSection accountData={accountData[selectDate.day]} />
-      )}
+      <TotalAccountSection
+        yearMonth={yearMonth}
+        accountData={accountData}
+        selectDate={selectDate}
+        handleSelectDate={handleSelectDate}
+        handleMonthChange={handleMonthChange}
+      />
+      <TodayAccountSection accountData={accountData[selectDate.day]} />
       <FloatButton handleOnClick={openAddAccount}>
         <FontAwesomeIcon icon={faPlus} size="1x" />
       </FloatButton>
@@ -55,4 +53,4 @@ function AccountMain() {
   );
 }
 
-export default AccountMain;
+export default Account;

@@ -1,6 +1,7 @@
 import MainWrapper from 'components/common/Wrapper/MainWrapper';
 import CommunityMain from 'components/Community/CommunityMain';
 import EnterEditorButton from 'components/Community/EnterEditorButton';
+import { Suspense } from 'react';
 
 function CommunityPage() {
   const component = {
@@ -10,7 +11,9 @@ function CommunityPage() {
 
   return (
     <MainWrapper component={component}>
-      <CommunityMain />
+      <Suspense>
+        <CommunityMain />
+      </Suspense>
     </MainWrapper>
   );
 }

@@ -1,7 +1,8 @@
 import { getComma } from 'lib/utils/account';
-import { ACCOUNT_LIST } from 'lib/constants/account';
+import { ACCOUNT_LIST } from '../../constant';
 import ShowTodayItem from '../ShowTodayItem/ShowTodayItem';
 
+// 이부분은 api오면 다시 해봐야할것같다.
 function ShowTodayAccount({ accountData }) {
   const getTotal = () => {
     if (accountData.length <= 0) return 0;
@@ -14,12 +15,11 @@ function ShowTodayAccount({ accountData }) {
   };
 
   const todayAccountItemHtml = Object.entries(ACCOUNT_LIST).map(
-    ([key, { name, lightColor, darkColor }]) => (
+    ([key, { name, darkColor }]) => (
       <ShowTodayItem
         key={key}
         name={name}
         price={accountData.length > 0 ? accountData[0][key] : 0}
-        lightColor={lightColor}
         darkColor={darkColor}
       />
     ),

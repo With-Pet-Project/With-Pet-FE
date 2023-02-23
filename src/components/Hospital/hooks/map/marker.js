@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { MARKER_URL } from 'lib/constants/map';
+import { MARKER_URL } from '../../constant';
 import { displayInfowindow } from './infoWindow';
 
 export const markers = [];

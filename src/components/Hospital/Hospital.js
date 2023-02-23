@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
 import { ERROR_MESSAGE } from 'lib/constants/errorMessage';
-import { DEFAULT_LOCATION } from 'lib/constants/map';
+import { DEFAULT_LOCATION } from './constant';
 import HospitalMapSection from './HospitalMapSection/HospitalMapSection';
 import { useKeyword } from './hooks/useKeyword';
 import './Hospital.scss';
@@ -34,11 +34,7 @@ function Hospital() {
 
   useEffect(() => {
     if (navigator.geolocation) {
-      try {
-        navigator.geolocation.getCurrentPosition(showLocation, locationError);
-      } catch (error) {
-        console.log(error); // 나중에 분리하기
-      }
+      navigator.geolocation.getCurrentPosition(showLocation, locationError);
     }
   }, []);
 

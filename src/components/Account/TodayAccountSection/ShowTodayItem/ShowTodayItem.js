@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import { getComma } from 'lib/utils/account';
 import './ShowTodayItem.scss';
 
-function ShowTodayItem({ name, price = 0, lightColor, darkColor }) {
+function ShowTodayItem({ name, price = 0, darkColor }) {
   return (
     <li className="today-consumption-item">
       <div className="item-title">
-        <ColorSign borderColor={darkColor} bgColor={lightColor} />
+        <ColorSign borderColor={darkColor} />
         <span className="name">{name}</span>
       </div>
       <div className="today-item-price">
