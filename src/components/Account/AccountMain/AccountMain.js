@@ -12,7 +12,8 @@ import { useModal } from 'components/common/Modal/context/useModal';
 import TotalAccountSection from '../TotalAccountSection/TotalAccountSection';
 import TodayAccountSection from '../TodayAccountSection/TodayAccountSection';
 import AddAccount from '../Modal/AddAccount/AddAccount';
-import { useFetchAllAccount, useMonthYear } from '../hooks/useAccount';
+import { useFetchAllAccount } from '../hooks/useAccount';
+import { useMonthYear } from '../hooks/useMonthYear';
 import './AccountMain.scss';
 
 function AccountMain() {

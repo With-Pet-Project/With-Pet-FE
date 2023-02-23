@@ -1,6 +1,6 @@
 import { ACCOUNT_LIST } from 'lib/constants/account';
 import { useModal } from 'components/common/Modal/context/useModal';
-import { useAddAccount } from '../../hooks/useAccount';
+import { useAddAccount } from '../../hooks/useAddAccount';
 import './AddAccount.scss';
 
 function AddAccount({ selectDate }) {

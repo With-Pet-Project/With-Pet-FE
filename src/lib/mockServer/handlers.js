@@ -35,7 +35,7 @@ export const handlers = [
       result = { ...getMarData };
     }
 
-    return res(ctx.status(423), ctx.json(result));
+    return res(ctx.status(201), ctx.json(result));
   }),
 
   rest.post('/consumption', (req, res, ctx) => {

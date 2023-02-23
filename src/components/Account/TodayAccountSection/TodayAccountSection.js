@@ -3,7 +3,8 @@ import useConfirm from 'components/common/hooks/useConfirm';
 
 import ShowTodayAccount from './ShowTodayAccount/ShowTodayAccount';
 import EditTodayAccount from './EditTodayAccount/EditTodayAccount';
-import { useDeleteAccount, useUpdateAccount } from '../hooks/useAccount';
+import { useDeleteAccount } from '../hooks/useDeleteAccount';
+import { useUpdateAccount } from '../hooks/useUpdateAccount';
 import './TodayAccountSection.scss';
 // 1. 중복되지않는 밑에만 바꾸면 되는뎅... 넘 하나의 컴포넌트를 다 갈아버렸나??
 // 일단 해보고 리펙토링 해보기
