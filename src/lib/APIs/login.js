@@ -9,7 +9,7 @@ export const getKakaoUserLoginToken = async code => {
 export const getUserInfo = async jwt => {
   const response = await CLIENT.get(`/mypage`, {
     headers: {
-      Authorization: `Bearer${jwt}`,
+      Authorization: `Bearer ${jwt}`,
     },
   });
 
