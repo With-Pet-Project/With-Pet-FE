@@ -2,18 +2,11 @@ import styled from 'styled-components';
 import { getComma } from 'lib/utils/account';
 import './EditTodayItem.scss';
 
-function EditTodayItem({
-  id,
-  name,
-  price = 0,
-  lightColor,
-  darkColor,
-  onChange,
-}) {
+function EditTodayItem({ id, name, price = 0, darkColor, onChange }) {
   return (
     <li className="today-account-edit-item">
       <div className="item-title">
-        <ColorSign borderColor={darkColor} bgColor={lightColor} />
+        <ColorSign borderColor={darkColor} />
         <span className="name">{name}</span>
       </div>
       <div className="today-item-price">

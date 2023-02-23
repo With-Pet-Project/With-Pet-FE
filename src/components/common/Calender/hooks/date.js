@@ -1,4 +1,4 @@
-import { MONTH_LIST } from 'lib/constants/date';
+import { MONTH_LIST } from '../constant';
 
 export const getMonthYearDetails = date => {
   const monthIndex = date.getMonth();

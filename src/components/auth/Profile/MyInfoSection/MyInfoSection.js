@@ -1,6 +1,6 @@
 import './MyInfoSection.scss';
 import { useModal } from 'components/common/Modal/context/useModal';
-import profileImage from 'lib/assets/아카이브/강아지이미지/icon_01.png';
+import profileImage from 'lib/assets/images/dog/lg_icon.png';
 import EditProfile from '../EditProfile/EditProfile';
 
 function MyInfoSection() {

@@ -1,4 +1,4 @@
-import dog from 'lib/assets/아카이브/강아지이미지/icon_00.png';
+import dog from 'lib/assets/images/dog/md_icon.png';
 
 function PetInfo() {
   return (

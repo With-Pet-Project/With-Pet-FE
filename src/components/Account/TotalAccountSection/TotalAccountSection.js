@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getComma } from 'lib/utils/account';
-import { ACCOUNT_LIST, DEFAULT_TOTAL_LIST } from 'lib/constants/account';
 import Calender from 'components/common/Calender/Calender';
+import { ACCOUNT_LIST, DEFAULT_TOTAL_LIST } from '../constant';
 import TotalAccountItem from './TotalAccountItem/TotalAccountItem';
 import './TotalAccountSection.scss';
 

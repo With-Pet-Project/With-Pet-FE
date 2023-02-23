@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Header from '../../components/common/Header/Header';
 import Hospital from '../../components/Hospital/Hospital';
 
 const Article = styled.article`
@@ -13,7 +12,6 @@ function HospitalPage() {
   return (
     <main>
       <Article>
-        <Header>병원찾기</Header>
         <Hospital />
       </Article>
     </main>

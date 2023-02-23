@@ -1,5 +1,5 @@
 import './Logo.scss';
-import logo from 'lib/assets/아카이브/홈화면/logo.png';
+import logo from 'lib/assets/images/landing/logo.png';
 
 function Logo() {
   return (

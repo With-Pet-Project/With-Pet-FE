@@ -1,11 +1,11 @@
 /* eslint-disable react/no-array-index-key */
-import { DAY_LIST } from 'lib/constants/date';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronLeft,
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
 import DateBox from './DateBox';
+import { DAY_LIST } from './constant';
 import './Calender.scss';
 
 function Calender({
