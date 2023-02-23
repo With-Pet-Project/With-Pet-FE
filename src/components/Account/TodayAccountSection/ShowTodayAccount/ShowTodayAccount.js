@@ -1,5 +1,5 @@
 import { getComma } from 'lib/utils/account';
-import { ACCOUNT_LIST } from 'lib/constants/account';
+import { ACCOUNT_LIST } from '../../constant';
 import ShowTodayItem from '../ShowTodayItem/ShowTodayItem';
 
 function ShowTodayAccount({ accountData }) {

@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { getComma } from 'lib/utils/account';
-import { ACCOUNT_LIST } from 'lib/constants/account';
+import { ACCOUNT_LIST } from '../../constant';
 import EditTodayItem from '../EditTodayItem/EditTodayItem';
 import './EditTodayAccount.scss';
 

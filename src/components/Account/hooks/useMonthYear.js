@@ -5,7 +5,7 @@ import {
   getMonthYearDetails,
   getNextYearMonth,
 } from 'components/common/Calender/hooks/date';
-import { TODAY } from 'lib/constants/date';
+import { TODAY } from '../../common/Calender/constant';
 import { fetchAccount } from './useAccount';
 
 export const useMonthYear = () => {
