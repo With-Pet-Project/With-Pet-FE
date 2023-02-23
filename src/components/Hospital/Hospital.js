@@ -34,11 +34,7 @@ function Hospital() {
 
   useEffect(() => {
     if (navigator.geolocation) {
-      try {
-        navigator.geolocation.getCurrentPosition(showLocation, locationError);
-      } catch (error) {
-        console.log(error); // 나중에 분리하기
-      }
+      navigator.geolocation.getCurrentPosition(showLocation, locationError);
     }
   }, []);
 

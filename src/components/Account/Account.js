@@ -38,18 +38,14 @@ function Account() {
 
   return (
     <section className="account-container account_bg">
-      {accountData && (
-        <TotalAccountSection
-          yearMonth={yearMonth}
-          accountData={accountData}
-          selectDate={selectDate}
-          handleSelectDate={handleSelectDate}
-          handleMonthChange={handleMonthChange}
-        />
-      )}
-      {accountData && (
-        <TodayAccountSection accountData={accountData[selectDate.day]} />
-      )}
+      <TotalAccountSection
+        yearMonth={yearMonth}
+        accountData={accountData}
+        selectDate={selectDate}
+        handleSelectDate={handleSelectDate}
+        handleMonthChange={handleMonthChange}
+      />
+      <TodayAccountSection accountData={accountData[selectDate.day]} />
       <FloatButton handleOnClick={openAddAccount}>
         <FontAwesomeIcon icon={faPlus} size="1x" />
       </FloatButton>
