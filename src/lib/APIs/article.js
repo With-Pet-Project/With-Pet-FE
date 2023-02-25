@@ -1,10 +1,13 @@
+/* eslint-disable no-param-reassign */
 import CLIENT from './client';
 
-export const getArticleList = async (pageParam, { queryKey }) => {
-  let tag = queryKey[2];
-  let firstPlace = queryKey[3];
-  let secondPlace = queryKey[4];
-
+export const getArticleList = async (
+  pageParam,
+  tag,
+  firstPlace,
+  secondPlace,
+  criteria,
+) => {
   if (tag !== 'LOST' && tag !== 'WALK' && tag !== 'HOSPITAL') {
     firstPlace = null;
     secondPlace = null;
@@ -17,7 +20,7 @@ export const getArticleList = async (pageParam, { queryKey }) => {
       tag,
       firstPlace,
       secondPlace,
-      filter: queryKey[5], // priority
+      filter: criteria,
       pageNum: pageParam,
     },
   });
