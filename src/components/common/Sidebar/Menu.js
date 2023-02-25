@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-function Menu({ to, menuName, children }) {
+function Menu({ to, menuName, onClick = f => f, children }) {
   const activeStyle = {
     backgroundColor: '#fff',
   };
@@ -10,6 +10,7 @@ function Menu({ to, menuName, children }) {
       <NavLink
         to={to}
         style={({ isActive }) => (isActive ? activeStyle : undefined)}
+        onClick={onClick}
       >
         <div>
           <div className="side-navbar-menu-img">{children}</div>

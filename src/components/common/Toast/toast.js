@@ -26,4 +26,5 @@ export const TOAST_MESSAGE = {
   UPDATE_SUCCESS: '수정되었습니다',
   UPDATE_FAIL: '수정에 실패하였습니다.',
   CANNOT_GET_DATA: '데이터를 가져오지 못했습니다!',
+  LOGIN_FAIL: '로그인에 실패했습니다. 잠시 후 다시 시도해주세요.',
 };

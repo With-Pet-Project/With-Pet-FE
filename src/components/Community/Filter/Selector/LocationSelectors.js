@@ -1,7 +1,5 @@
 import { ADMIN_DISTRICT } from 'lib/constants/adminDistrict';
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import Button from './Button/Button';
+import Button from './DropDown/Button';
 
 function LocationSelectors({
   searchParams,
@@ -10,10 +8,6 @@ function LocationSelectors({
   secondPlace,
   setSecondPlace,
 }) {
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // const [firstPlace, setFirstPlace] = useState(Object.keys(ADMIN_DISTRICT)[0]);
-  // const [secondPlace, setSecondPlace] = useState(ADMIN_DISTRICT[firstPlace][0]);
-
   const handleFirstPlace = e => {
     setFirstPlace(e.target.value);
     searchParams.set('firstPlace', e.target.value);

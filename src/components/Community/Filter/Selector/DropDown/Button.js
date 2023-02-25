@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 import { useOutsideDetection } from 'components/common/hooks/useOutsideDetection';
-import Options from './DropDown/Options';
+import Options from './Options';
 
 const RotateArrow = styled.span`
   & svg {

@@ -4,10 +4,12 @@
   display: flex;
   // font-family: 'Pretendard';
   font-style: normal;
+  max-height: 420px;
 }
 
 @media screen and (max-width: $semi-wide) {
   .diary-center-section {
     flex-direction: column;
+    max-height: 980px;
   }
 }

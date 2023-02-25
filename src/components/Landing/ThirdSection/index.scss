@@ -1,0 +1,39 @@
+@import '/src/lib/styles/vars.scss';
+
+.landing-third-section {
+  min-height: 1200px;
+  padding: 100px 10%;
+  background-color: $background-light-yellow;
+
+  & h2 {
+    font-family: 'TmoneyRoundWindBold';
+    font-size: 28px;
+    line-height: 47px;
+    margin-bottom: 20px;
+  }
+
+  & p {
+    font-size: 17px;
+    line-height: 24px;
+    font-weight: 500;
+    color: $fontColor-deep-gray;
+
+    white-space: pre;
+  }
+}
+
+.landing-third-section-content {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 70px;
+
+  & article {
+    margin: 74px 0;
+    flex-basis: calc(50% - 20px);
+  }
+
+  & article img {
+    margin-top: 20px;
+    margin-left: -18px;
+  }
+}

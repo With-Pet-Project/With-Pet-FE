@@ -2,6 +2,9 @@ import './Sidebar.scss';
 import { vars } from 'lib/styles/vars';
 import styled from 'styled-components';
 
+import { useState } from 'react';
+import { useUser } from 'components/auth/hooks/useUser';
+import { useLogout } from 'components/auth/hooks/useLogout';
 import Menu from './Menu';
 import Hamburger from './Hamburger';
 import Home from './img/Home';
@@ -13,9 +16,9 @@ import Profile from './img/Profile';
 import Logout from './img/Logout';
 
 import Logo from '../Logo/Logo';
-import UserInfo from '../UserInfo/UserInfo';
+import UserInfo from './UserInfo/UserInfo';
 
-import { useOutsideDetection } from '../hooks/useOutsideDetection';
+// import { useOutsideDetection } from '../hooks/useOutsideDetection';
 
 const NavContainer = styled.nav`
   min-width: ${vars.sidebarClosed};
@@ -35,23 +38,29 @@ const Navigation = styled.div`
 `;
 
 function Sidebar() {
-  const { open, isOpen, targetRef } = useOutsideDetection();
+  // const { open, isOpen, targetRef } = useOutsideDetection();
+  const user = useUser();
+  const { logout } = useLogout();
+  const [open, setOpen] = useState(false);
+  const isMouseOver = () => setOpen(true);
+  const isMouseLeave = () => setOpen(false);
 
   return (
     <NavContainer className="side-navbar-container" opened={open}>
       <InnerContainer
         className="side-navbar-inner-container"
         opened={open}
-        ref={targetRef}
+        onMouseOver={isMouseOver}
+        onMouseLeave={isMouseLeave}
       >
-        <Hamburger onClick={isOpen} opened={open} />
+        <Hamburger opened={open} />
         <Navigation opened={open}>
           <div className="side-navbar-top">
             <div className="logo-box">
               <Logo />
             </div>
             <div className="user-info-box">
-              <UserInfo />
+              <UserInfo user={user} />
             </div>
           </div>
           <div className="side-navbar-menu">
@@ -75,12 +84,20 @@ function Sidebar() {
           </div>
           <div className="side-navbar-menu side-navbar-menu-bottom">
             <ul>
-              <Menu to="/profile" menuName="마이 페이지">
-                <Profile />
-              </Menu>
-              <Menu to="/logout" menuName="로그아웃">
-                <Logout />
-              </Menu>
+              {user ? (
+                <>
+                  <Menu to="/profile" menuName="마이 페이지">
+                    <Profile />
+                  </Menu>
+                  <Menu to="/" menuName="로그아웃" onClick={logout}>
+                    <Logout />
+                  </Menu>
+                </>
+              ) : (
+                <Menu to="/login" menuName="로그인">
+                  <Profile />
+                </Menu>
+              )}
             </ul>
           </div>
         </Navigation>

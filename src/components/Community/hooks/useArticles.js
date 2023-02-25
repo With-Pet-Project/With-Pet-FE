@@ -6,7 +6,7 @@ export const useArticles = (
   tag,
   firstPlace = null,
   secondPlace = null,
-  priority = null,
+  criteria = null,
 ) => {
   const { article } = queryKeys;
 
@@ -20,12 +20,9 @@ export const useArticles = (
     data,
     isLoading,
   } = useInfiniteQuery({
-    queryKey: [article.filters(tag, firstPlace, secondPlace, priority)],
+    queryKey: [article, tag, firstPlace, secondPlace, criteria],
     queryFn: ({ pageParam = 1 }) =>
-      getArticleList(
-        pageParam,
-        article.filters(tag, firstPlace, secondPlace, priority),
-      ),
+      getArticleList(pageParam, tag, firstPlace, secondPlace, criteria),
     getNextPageParam: lastPage =>
       !lastPage.data.data.isLast ? lastPage.data.data.pageNum + 1 : undefined,
   });

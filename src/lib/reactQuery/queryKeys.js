@@ -8,12 +8,12 @@ export const queryKeys = createQueryKeyStore({
     key: key => ({ key }),
     id: id => ({ id }),
   },
-  article: {
-    filters: (tag, firstPlace, secondPlace, criteria) => [
-      tag,
-      firstPlace,
-      secondPlace,
-      criteria,
-    ],
-  },
+  article: [],
+  oauth: code => ({ code }),
+  user: jwt => ({ jwt }),
 });
+
+export const QUERY_KEY = {
+  KakaoOAuth: 'kakaoOAuth',
+  UserInfo: 'userInfo',
+};

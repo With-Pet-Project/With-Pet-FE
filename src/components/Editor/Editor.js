@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import './Editor.scss';
-import { ARTICLE_TAG } from 'lib/constants/articleTag';
+import styled from 'styled-components';
+import { vars } from 'lib/styles/vars';
 
 import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
@@ -40,15 +41,42 @@ const formats = [
   'image',
 ];
 
+const SubmitButton = styled.button`
+  background-color: ${vars.backgroundYellow} !important;
+  border-radius: 10px;
+  border: 0;
+
+  width: 120px;
+  height: 36px;
+  margin-top: -15px;
+
+  // font-weight: 600;
+  font-family: 'Pretendard Variable';
+  font-variation-settings: 'wght' 500;
+  font-size: 18px;
+  line-height: 21px;
+`;
+
 function Editor() {
   const [value, setValue] = useState('');
+  const onSubmit = e => {
+    e.preventDefault();
+  };
 
   return (
-    <form>
+    <form className="article-form" onSubmit={onSubmit}>
       <div className="editor-filter-container">
-        <TagList />
-        <Location />
+        <div className="tag-location-filter">
+          <TagList />
+          <Location />
+        </div>
+        <SubmitButton type="submit">등록하기</SubmitButton>
       </div>
+      <input
+        type="text"
+        placeholder="제목을 입력해주세요"
+        aria-label="article title"
+      />
       <ReactQuill
         theme="snow"
         value={value}
