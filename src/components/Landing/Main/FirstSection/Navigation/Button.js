@@ -1,13 +1,11 @@
-import { Link } from 'react-router-dom';
-
-function Button({ link, imgSrc, text }) {
+function Button({ imgSrc, text, onClick }) {
   return (
-    <Link to={link}>
+    <button type="button" onClick={onClick}>
       <span>
         <img src={imgSrc} alt={text} />
       </span>
       <span>{text}</span>
-    </Link>
+    </button>
   );
 }
 

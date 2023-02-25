@@ -1,10 +1,11 @@
 import './index.scss';
+import { forwardRef } from 'react';
 
-function SecondSection() {
+const SecondSection = forwardRef((props, ref) => {
   return (
     <section className="landing-second-section">
       <div className="landing-second-section-background">
-        <div className="landing-second-section-title">
+        <div className="landing-second-section-title" ref={ref}>
           <h2>소중한 반려견을 위한 건강 다이어리</h2>
           <p>
             다이어리를 통해 주 단위로 챌린지를 추가하고, 반려견의 건강을 관리할
@@ -18,6 +19,6 @@ function SecondSection() {
       </div>
     </section>
   );
-}
+});
 
 export default SecondSection;

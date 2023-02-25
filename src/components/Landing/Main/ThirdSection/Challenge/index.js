@@ -1,5 +1,5 @@
 import './index.scss';
-import content from '../../../../lib/assets/images/landing/section/section03/image_00.png';
+import content from '../../../../../lib/assets/images/landing/section/section03/image_00.png';
 
 function Challenge() {
   return (

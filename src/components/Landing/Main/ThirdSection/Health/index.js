@@ -1,5 +1,5 @@
 import './index.scss';
-import content from '../../../../lib/assets/images/landing/section/section03/image_01.png';
+import content from '../../../../../lib/assets/images/landing/section/section03/image_01.png';
 
 function Health() {
   return (

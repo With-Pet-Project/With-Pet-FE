@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useUser } from 'components/auth/hooks/useUser';
 import Navigation from './Navigation/Navigation';
 
-function FirstSection() {
+function FirstSection({ moveToSecond, moveToThird }) {
   const user = useUser();
   const navigate = useNavigate();
   const gotoLogin = () => navigate('/login');
@@ -27,7 +27,7 @@ function FirstSection() {
             </button>
           )}
         </div>
-        <Navigation />
+        <Navigation moveToSecond={moveToSecond} moveToThird={moveToThird} />
       </div>
     </section>
   );

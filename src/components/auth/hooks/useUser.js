@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { getUserInfo } from 'lib/APIs/login';
 import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
 import { toast } from 'react-toastify';
