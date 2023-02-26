@@ -1,4 +1,4 @@
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable.css');
+@import './lib/assets/font/Pretendard-1.3.6/PretendardVariable-VF.css';
 
 @font-face {
   font-family: TmoneyRoundWindBold;
@@ -16,19 +16,4 @@
 
 body {
   margin: 0;
-}
-
-body * {
-  font-family: 'Pretendard Variable', 'Pretendard', 'TmoneyRoundWindNormal',
-    -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue',
-    'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans', 'Noto Sans KR',
-    'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-input:focus {
-  outline: none;
-  background-color: #fff;
 }
