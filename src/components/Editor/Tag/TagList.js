@@ -29,7 +29,9 @@ function TagList() {
           <option value={KEY[idx]}>{t}</option>
         ))}
       </select>
-      <DownArrow htmlFor="tag-selector" />
+      <div className="editor-down-arrow">
+        <DownArrow htmlFor="tag-selector" />
+      </div>
     </div>
   );
 }

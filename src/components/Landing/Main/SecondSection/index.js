@@ -3,9 +3,9 @@ import { forwardRef } from 'react';
 
 const SecondSection = forwardRef((props, ref) => {
   return (
-    <section className="landing-second-section">
+    <section className="landing-second-section" ref={ref}>
       <div className="landing-second-section-background">
-        <div className="landing-second-section-title" ref={ref}>
+        <div className="landing-second-section-title">
           <h2>소중한 반려견을 위한 건강 다이어리</h2>
           <p>
             다이어리를 통해 주 단위로 챌린지를 추가하고, 반려견의 건강을 관리할

@@ -7,7 +7,13 @@ import './Navigation.scss';
 
 import Button from './Button';
 
-function Navigation({ moveToSecond, moveToThird }) {
+function Navigation({
+  moveToSecond,
+  moveToThird,
+  moveToForth,
+  moveToFifth,
+  moveToSixth,
+}) {
   return (
     <nav className="landing-first-section-nav">
       <ul>
@@ -28,17 +34,28 @@ function Navigation({ moveToSecond, moveToThird }) {
           />
         </li>
         <li>
-          <Button link="/account" imgSrc={account} text="가계부" />
+          <Button
+            link="/account"
+            imgSrc={account}
+            text="가계부"
+            onClick={moveToForth}
+          />
         </li>
         <li>
           <Button
             link="/community"
             imgSrc={community}
             text="위치기반 커뮤니티"
+            onClick={moveToFifth}
           />
         </li>
         <li>
-          <Button link="/hospital" imgSrc={hospital} text="병원 찾기" />
+          <Button
+            link="/hospital"
+            imgSrc={hospital}
+            text="병원 찾기"
+            onClick={moveToSixth}
+          />
         </li>
       </ul>
     </nav>

@@ -5,7 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import { useUser } from 'components/auth/hooks/useUser';
 import Navigation from './Navigation/Navigation';
 
-function FirstSection({ moveToSecond, moveToThird }) {
+function FirstSection({
+  moveToSecond,
+  moveToThird,
+  moveToForth,
+  moveToFifth,
+  moveToSixth,
+}) {
   const user = useUser();
   const navigate = useNavigate();
   const gotoLogin = () => navigate('/login');
@@ -27,7 +33,13 @@ function FirstSection({ moveToSecond, moveToThird }) {
             </button>
           )}
         </div>
-        <Navigation moveToSecond={moveToSecond} moveToThird={moveToThird} />
+        <Navigation
+          moveToSecond={moveToSecond}
+          moveToThird={moveToThird}
+          moveToForth={moveToForth}
+          moveToFifth={moveToFifth}
+          moveToSixth={moveToSixth}
+        />
       </div>
     </section>
   );

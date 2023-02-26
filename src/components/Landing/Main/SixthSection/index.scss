@@ -1,0 +1,61 @@
+@import '/src/lib/styles/vars.scss';
+
+.landing-sixth-section {
+  padding: 200px 10%;
+  background-color: #fff;
+}
+
+.landing-sixth-section-background {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.landing-sixth-section-img {
+  display: flex;
+  justify-content: space-between;
+
+  & > div {
+    flex-basis: calc(50% - 30px);
+  }
+
+  & img {
+    width: 100%;
+  }
+}
+
+.landing-sixth-section-title {
+  margin: 0 0 49px;
+
+  & h2 {
+    font-family: 'TmoneyRoundWindBold';
+    font-size: 36px;
+    line-height: 47px;
+  }
+}
+
+@media screen and (max-width: $normal) {
+  .landing-sixth-section {
+    padding: 200px 50px;
+    background-color: #fff;
+  }
+
+  .landing-sixth-section-background {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: $narrow) {
+  .landing-sixth-section {
+    padding: 200px 10px;
+    background-color: #fff;
+  }
+
+  .landing-sixth-section-img {
+    display: flex;
+    flex-direction: column;
+    padding: 0 50px;
+  }
+}

@@ -23,7 +23,9 @@ function Location() {
       <button type="button" onClick={isOpen} disabled={!buttonEnabled}>
         <span>{buttonEnabled ? params.get('firstPlace') : '선택 불가'}</span>
       </button>
-      <DownArrow />
+      <div className="editor-down-arrow">
+        <DownArrow htmlFor="tag-selector" />
+      </div>
       <DropDown open={open} />
     </div>
   );

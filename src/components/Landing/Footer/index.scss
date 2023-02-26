@@ -1,0 +1,19 @@
+@import '/src/lib/styles/vars.scss';
+
+.landing-footer {
+  background-color: $background-brown;
+  height: 200px;
+
+  & > div {
+    width: 100%;
+    height: 100%;
+  }
+
+  & img {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    margin: auto;
+  }
+}

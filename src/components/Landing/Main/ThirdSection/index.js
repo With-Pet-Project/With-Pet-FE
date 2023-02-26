@@ -9,10 +9,10 @@ import title from '../../../../lib/assets/images/landing/section/section03/title
 
 const ThirdSection = forwardRef((props, ref) => {
   return (
-    <section className="landing-third-section">
+    <section className="landing-third-section" ref={ref}>
       <div className="landing-third-section-background">
-        <div className="landing-second-section-title">
-          <img src={title} alt="섹션3 타이틀" ref={ref} />
+        <div className="landing-third-section-title">
+          <img src={title} alt="섹션3 타이틀" />
         </div>
         <div className="landing-third-section-content">
           <div>
