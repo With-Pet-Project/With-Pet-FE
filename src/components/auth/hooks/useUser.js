@@ -16,7 +16,7 @@ export function useUser() {
     queryKey: [QUERY_KEY.UserInfo, jwt_token],
     queryFn: () => getUserInfo(jwt_token),
     onError: () => {
-      toast.error(TOAST_OPTION, TOAST_MESSAGE.LOGIN_FAIL);
+      toast.error(TOAST_MESSAGE.LOGIN_FAIL, TOAST_OPTION);
       logout();
       navigate('/', { replace: true });
     },
