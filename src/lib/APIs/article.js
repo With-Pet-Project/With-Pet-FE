@@ -26,3 +26,23 @@ export const getArticleList = async (
   });
   return data;
 };
+
+export const postArticle = async (jwt, tag, text, firstPlace, secondPlace) => {
+  const data = await CLIENT.post(
+    '/article',
+    {
+      title: '제목',
+      tag,
+      place1: firstPlace,
+      place2: secondPlace,
+      detailText: text,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    },
+  );
+
+  return data;
+};
