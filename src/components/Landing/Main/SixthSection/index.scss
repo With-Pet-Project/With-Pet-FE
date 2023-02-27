@@ -34,6 +34,14 @@
   }
 }
 
+@media screen and (max-width: $semi-wide) {
+  .landing-sixth-section-img {
+    display: flex;
+    flex-direction: column;
+    padding: 0 100px;
+  }
+}
+
 @media screen and (max-width: $normal) {
   .landing-sixth-section {
     padding: 200px 50px;
@@ -51,11 +59,5 @@
   .landing-sixth-section {
     padding: 200px 10px;
     background-color: #fff;
-  }
-
-  .landing-sixth-section-img {
-    display: flex;
-    flex-direction: column;
-    padding: 0 50px;
   }
 }
