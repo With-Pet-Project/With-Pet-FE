@@ -1,16 +1,17 @@
+@import '/src/lib/styles/vars.scss';
+
 .map {
   width: 100%;
   height: 100%;
   position: relative;
   overflow: hidden;
 }
-
 .map_wrap,
 .map_wrap * {
   margin: 0;
   padding: 0;
-  // font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
-  font-size: 12px;
+  font-family: 'Pretendard Variable';
+  font-variation-settings: 'wght' 500;
 }
 .map_wrap a,
 .map_wrap a:hover,
@@ -28,14 +29,30 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: 250px;
-  margin: 10px 0 30px 10px;
+  max-width: 250px;
+  margin: 10px 0 30px 70px;
   padding: 5px;
   overflow-y: auto;
-  background: rgba(255, 255, 255, 0.7);
   z-index: 1;
   font-size: 12px;
   border-radius: 10px;
+  background: #ffffff;
+  opacity: 0.85;
+  box-shadow: 1px 1px 2px rgba(41, 41, 41, 0.25),
+    4px 4px 20px rgba(0, 0, 0, 0.25), 0px 4px 18px rgba(137, 137, 137, 0.25);
+
+  @media (max-width: $normal) {
+    margin: 10px 0 30px 10px;
+    width: 210px;
+  }
+
+  @media (max-width: $narrow) {
+    margin: 10px 0 30px 70px;
+    top: 60%;
+    max-width: 100%;
+    width: 90vw;
+    margin: 0;
+  }
 }
 .bg_white {
   background: #fff;
@@ -61,43 +78,83 @@
 }
 #placesList .item {
   position: relative;
-  border-bottom: 1px solid #888;
   overflow: hidden;
   cursor: pointer;
+  margin-top: 15px;
   min-height: 65px;
+
+  @media (max-width: $narrow) {
+    margin-left: 10%;
+  }
 }
+#placesList .item::after {
+  content: '';
+  display: block;
+  width: 100%;
+  margin-right: 20px;
+  margin-left: 20px;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+#placesList .item:nth-child(1) {
+  margin-top: 10px;
+}
+
 #placesList .item span {
   display: block;
   margin-top: 4px;
+}
+#placesList .item h5 {
+  font-variation-settings: 'wght' 650;
+  // font-size: 15px;
+  font-size: 1rem;
+  margin-bottom: 8px;
 }
 #placesList .item h5,
 #placesList .item .info {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+
+  @media (max-width: $narrow) {
+  }
 }
 #placesList .item .info {
   padding: 10px 0 10px 55px;
+
+  @media (max-width: $normal) {
+    padding: 10px 0 5px 45px;
+  }
 }
-#placesList .info .gray {
-  color: #8a8a8a;
-}
+//!:
 #placesList .info .jibun {
-  padding-left: 26px;
-  background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png)
-    no-repeat;
+  margin-top: 8px;
+  color: #868686;
+  font-size: 13px;
+  @media (max-width: $normal) {
+    font-size: 12px;
+  }
 }
 #placesList .info .tel {
-  color: #009900;
+  color: #5d949c;
+  font-size: 13px;
+  margin-top: 7px;
+  margin-bottom: 19px;
+  @media (max-width: $normal) {
+    font-size: 12px;
+  }
 }
 #placesList .item .markerbg {
   float: left;
   position: absolute;
   width: 36px;
   height: 37px;
-  margin: 10px 0 0 10px;
+  margin: 10px 0 0 15px;
   background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
     no-repeat;
+  @media (max-width: $normal) {
+    margin: 10px 0 0 5px;
+  }
 }
 #placesList .item .marker_1 {
   background-position: 0 -10px;
@@ -151,19 +208,57 @@
 #pagination a {
   display: inline-block;
   margin-right: 10px;
+  color: #868686;
 }
 #pagination .on {
-  font-weight: bold;
   cursor: default;
-  color: #777;
+  color: #434343;
 }
 
 .reset-button {
-  padding: 10px;
-  border: 1px solid;
-  background: #fff;
-  position: relative;
+  background: $background-yellow;
+  color: $fontColor-black;
+  width: 226px;
+  height: 48px;
+  position: absolute;
   left: 40%;
-  top: -12%;
+  bottom: 10%;
   z-index: 100;
+  border-radius: 10px;
+  font-size: 20px;
+
+  @media (max-width: $normal) {
+    font-size: 15px;
+    width: 150px;
+    height: 40px;
+  }
+
+  @media (max-width: $narrow) {
+    left: calc(55% - 90px);
+    top: 5%;
+  }
+}
+
+.road_address_name {
+  font-size: 13px;
+  color: #434343;
+
+  @media (max-width: $normal) {
+    font-size: 12px;
+  }
+}
+
+.overlay {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  position: relative;
+  top: -60px;
+  box-shadow: 1px 1px 2px rgba(41, 41, 41, 0.25),
+    4px 4px 20px rgba(0, 0, 0, 0.25), 0px 4px 18px rgba(137, 137, 137, 0.25);
+  font-size: 0.85rem;
+}
+
+.hide {
+  display: none;
 }

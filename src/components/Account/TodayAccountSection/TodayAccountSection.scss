@@ -2,12 +2,15 @@
 
 .today-account {
   width: 954px;
-  height: 194px;
   background: #ffffff;
   box-shadow: 0px 4px 18px rgba(137, 137, 137, 0.25);
   border-radius: 10px;
   margin: 45px auto;
   padding: 24px 24px 25px 25px;
+
+  @media (max-width: $semi-wide) {
+    width: 90%;
+  }
 
   .title-wrapper {
     display: flex;
@@ -35,40 +38,4 @@
       color: $point-blue;
     }
   }
-
-  .content-wrapper {
-    display: flex;
-
-    .today-total {
-      width: 200px;
-    }
-
-    .total-title {
-      color: #949494;
-      font-weight: 400;
-      font-size: 12px;
-      margin-bottom: 7px;
-      display: inline-block;
-      margin-top: 25%;
-    }
-
-    .total-price {
-      font-family: TmoneyRoundWindBold;
-      font-size: 28px;
-      color: $font-brown;
-    }
-
-    .total-price > .unit {
-      margin-left: 5px;
-      font-size: 16px;
-      font-family: 'Pretendard Variable';
-      font-variation-settings: 'wght' 550;
-    }
-  }
-}
-
-.today-consumption-list {
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
 }

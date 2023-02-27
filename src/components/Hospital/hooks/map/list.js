@@ -10,7 +10,7 @@ export const getListItem = (index, places) => {
 		<h5>${places.place_name}</h5>
 		${
       places.road_address_name
-        ? `<span>${places.road_address_name}</span><span class="jibun gray">${places.address_name}</span>`
+        ? `<span class="road_address_name">${places.road_address_name}</span><span class="jibun gray">${places.address_name}</span>`
         : `<span>${places.address_name}</span>`
     }
 		<span class="tel">${places.phone}</span>

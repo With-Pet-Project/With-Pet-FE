@@ -1,0 +1,77 @@
+@import '/src/lib/styles/vars.scss';
+
+.today-account {
+  .content-wrapper {
+    display: flex;
+
+    @media (max-width: $semi-wide) {
+      width: 95%;
+    }
+
+    @media (max-width: $narrow) {
+      width: 100%;
+      flex-direction: column;
+    }
+
+    .today-total {
+      width: 200px;
+
+      @media (max-width: $semi-wide) {
+        width: 50%;
+      }
+
+      @media (max-width: $narrow) {
+        width: 100%;
+        text-align: end;
+        margin: 10px 0 30px 0;
+      }
+    }
+
+    .total-title {
+      color: #949494;
+      font-weight: 400;
+      font-size: 12px;
+      margin-bottom: 7px;
+      display: inline-block;
+      margin-top: 25%;
+
+      @media (max-width: $narrow) {
+        margin: 0;
+      }
+    }
+
+    .total-price {
+      font-family: TmoneyRoundWindBold;
+      font-size: 28px;
+      color: $font-brown;
+
+      @media (max-width: $narrow) {
+        font-size: 20px;
+      }
+    }
+
+    .total-price > .unit {
+      margin-left: 5px;
+      font-size: 16px;
+      font-family: 'Pretendard Variable';
+      font-variation-settings: 'wght' 550;
+    }
+  }
+}
+
+.today-consumption-list {
+  width: 100%;
+  display: flex;
+
+  @media (max-width: $semi-wide) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 145px);
+    grid-gap: 1rem;
+    justify-content: space-between;
+  }
+
+  @media (max-width: $narrow) {
+    display: flex;
+    flex-direction: column;
+  }
+}

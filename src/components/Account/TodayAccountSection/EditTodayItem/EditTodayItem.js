@@ -4,12 +4,12 @@ import './EditTodayItem.scss';
 
 function EditTodayItem({ id, name, price = 0, darkColor, onChange }) {
   return (
-    <li className="today-account-edit-item">
+    <li className="today-consumption-item">
       <div className="item-title">
         <ColorSign borderColor={darkColor} />
         <span className="name">{name}</span>
       </div>
-      <div className="today-item-price">
+      <div className="today-edit-price">
         <input
           onChange={event => onChange(event, id)}
           className="today-input"
