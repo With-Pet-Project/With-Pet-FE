@@ -1,6 +1,7 @@
 import { getComma } from 'lib/utils/account';
 import { ACCOUNT_LIST } from '../../constant';
 import ShowTodayItem from '../ShowTodayItem/ShowTodayItem';
+import '../TodayAccount.scss';
 
 // 이부분은 api오면 다시 해봐야할것같다.
 function ShowTodayAccount({ accountData }) {

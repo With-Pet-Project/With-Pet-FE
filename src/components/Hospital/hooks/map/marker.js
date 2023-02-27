@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
 import { MARKER_URL } from '../../constant';
-import { displayInfowindow } from './infoWindow';
 
 export const markers = [];
 
@@ -41,13 +40,14 @@ export const removeMarker = () => {
   markers.splice(0, markers.length);
 };
 
-export const addEventMarker = (marker, place_name, infowindow, map) => {
+export const addEventMarker = (marker, overlay, map) => {
   // 지도 안 마커 이벤트 세팅
+
   kakao.maps.event.addListener(marker, 'mouseover', () => {
-    displayInfowindow(infowindow, marker, place_name, map);
+    overlay.setMap(map);
   });
 
   kakao.maps.event.addListener(marker, 'mouseout', () => {
-    infowindow.close();
+    overlay.setMap(null);
   });
 };

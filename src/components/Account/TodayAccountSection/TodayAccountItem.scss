@@ -44,25 +44,4 @@
       padding: 0;
     }
   }
-
-  .today-item-price {
-    font-family: TmoneyRoundWindBold;
-    color: $font-brown;
-    font-size: 1.1rem;
-    font-weight: 500;
-    display: flex;
-    justify-content: right;
-    align-items: flex-end;
-
-    @media (max-width: $narrow) {
-      font-size: 13px;
-    }
-  }
-
-  .unit {
-    font-family: 'Pretendard Variable';
-    font-variation-settings: 'wght' 450;
-    font-size: 14px;
-    margin-left: 8px;
-  }
 }
