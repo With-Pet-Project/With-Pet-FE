@@ -1,0 +1,33 @@
+@import '/src/lib/styles/vars.scss';
+
+.diary-petList {
+  position: absolute;
+  z-index: 1;
+
+  background-color: #fff;
+  width: 220px;
+
+  box-shadow: 0px 4px 18px rgba(137, 137, 137, 0.25);
+  border-radius: 0px 0px 10px 10px;
+
+  & li {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    text-align: left;
+    height: 50px;
+
+    &:hover {
+      background-color: $background-yellow;
+    }
+  }
+
+  & li:last-child {
+    border-radius: inherit;
+  }
+
+  & span {
+    font-family: 'TmoneyRoundWindNormal';
+    font-weight: 800;
+  }
+}

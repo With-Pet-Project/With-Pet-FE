@@ -1,5 +1,7 @@
+import './AddPet.scss';
+
 import { useModal } from 'components/common/Modal/context/useModal';
-import PetModal from '../Modal/AddPet';
+import PetModal from '../../Modal/AddPet/AddPet';
 
 function AddPet() {
   const { openModal } = useModal();
