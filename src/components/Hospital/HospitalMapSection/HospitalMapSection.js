@@ -132,19 +132,21 @@ function HospitalMapSection({
     <div className="map_wrap">
       <div id="map" className="map" ref={mapContainer} />
       {location && (
-        <div id="menu_wrap" className="bg_white hide" ref={menu}>
-          <ul id="placesList" ref={list} />
-          <div id="pagination" ref={paginationContainer} />
-        </div>
-      )}
-      {changedLocation && (
-        <button
-          type="button"
-          className="reset-button"
-          onClick={handleChangeLocation}
-        >
-          현재위치에서 재검색
-        </button>
+        <>
+          {changedLocation && (
+            <button
+              type="button"
+              className="reset-button"
+              onClick={handleChangeLocation}
+            >
+              현재위치에서 재검색
+            </button>
+          )}
+          <div id="menu_wrap" className="bg_white hide" ref={menu}>
+            <ul id="placesList" ref={list} />
+            <div id="pagination" ref={paginationContainer} />
+          </div>
+        </>
       )}
     </div>
   );
