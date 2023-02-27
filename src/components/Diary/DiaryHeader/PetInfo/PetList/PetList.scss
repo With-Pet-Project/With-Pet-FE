@@ -12,6 +12,7 @@
 
   & li {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     padding-left: 10px;
     text-align: left;
@@ -29,5 +30,9 @@
   & span {
     font-family: 'TmoneyRoundWindNormal';
     font-weight: 800;
+  }
+
+  & button {
+    margin-right: 10px;
   }
 }

@@ -8,13 +8,10 @@ const Button = forwardRef(({ petInfoList, isOpen, children }, ref) => {
       className="pet-profile-list"
       ref={ref}
       onClick={isOpen}
+      disabled={petInfoList.length === 0}
     >
       <div className="pet-name-birthday">
-        <h2>
-          {petInfoList?.length
-            ? petInfoList[0].name
-            : '반려동물을 추가해주세요'}
-        </h2>
+        <h2>{petInfoList?.length ? petInfoList[0].name : '반려동물 없음'}</h2>
         {children}
         <span>
           {petInfoList?.length

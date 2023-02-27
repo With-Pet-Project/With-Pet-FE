@@ -27,3 +27,13 @@ export const getAllPetInfo = async (jwt, petId = null) => {
 
   return response;
 };
+
+export const deletePetInfo = async (jwt, petId) => {
+  const response = await CLIENT.delete(`/pet/${petId}`, {
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
+
+  return response;
+};
