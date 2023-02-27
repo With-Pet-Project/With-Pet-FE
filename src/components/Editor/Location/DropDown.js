@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { vars } from 'lib/styles/vars';
 
 import { ADMIN_DISTRICT } from 'lib/constants/adminDistrict';
-import { useCommunityParams } from 'components/common/hooks/useCommunityParams';
+import { useCommunityParams } from 'components/Community/hooks/useCommunityParams';
 
 import Option from './Option';
 
