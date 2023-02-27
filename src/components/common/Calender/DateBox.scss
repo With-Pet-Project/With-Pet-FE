@@ -33,6 +33,10 @@
     left: 60%;
     top: 60%;
     display: none;
+
+    @media (max-width: 500px) {
+      left: 52%;
+    }
   }
 
   .show {

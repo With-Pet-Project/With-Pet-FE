@@ -3,6 +3,7 @@ import { getComma } from 'lib/utils/account';
 import { ACCOUNT_LIST } from '../../constant';
 import EditTodayItem from '../EditTodayItem/EditTodayItem';
 import './EditTodayAccount.scss';
+import '../TodayAccount.scss';
 
 function EditTodayAccount({ accountData, accountValue }) {
   const onChange = (event, type) => {
