@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef, useMemo } from 'react';
 import './HospitalMapSection.scss';
 import { ERROR_MESSAGE } from 'lib/constants/errorMessage';
-import { displayInfowindow } from '../hooks/map/infoWindow';
+import { setCustomOverlay, getCustomOverlay } from '../hooks/map/customOverlay';
 import { addMarker, removeMarker, addEventMarker } from '../hooks/map/marker';
 import { getListItem, removeAllChildNods } from '../hooks/map/list';
 import { displayPagination } from '../hooks/map/pagination';
@@ -16,9 +16,9 @@ function HospitalMapSection({
   setMapOption,
 }) {
   const [map, setMap] = useState(null);
-  const [infowindow, setInfowindow] = useState(null);
   const [servicePlace, setServicePlace] = useState(null);
   const [changedLocation, setChangedLocation] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const list = useRef(null);
   const menu = useRef(null);
   const paginationContainer = useRef(null);
@@ -40,13 +40,16 @@ function HospitalMapSection({
       const marker = addMarker(placePosition, index, map); // 마커 설정
       bounds.extend(placePosition); // position을 지정
       const $item = getListItem(index, place); // 검색 결과 항목 Element를 생성합니다
-      addEventMarker(marker, place_name, infowindow, map);
+      setCustomOverlay(place_name, placePosition, map);
+      const overlay = getCustomOverlay();
+      addEventMarker(marker, overlay, map);
+
       // 목록 아이템 마우스 이벤트
       $item.onmouseout = () => {
-        infowindow.close();
+        overlay.setMap(null);
       };
       $item.onmouseover = () => {
-        displayInfowindow(infowindow, marker, place_name, map); // 인포 윈도우 보이기 설정
+        overlay.setMap(map);
       };
       $fragment.appendChild($item);
     });
@@ -67,6 +70,7 @@ function HospitalMapSection({
       displayPlaces(data);
       // 페이지 번호를 표출합니다
       displayPagination(pagination, paginationContainer);
+      menu.current.classList.remove('hide');
     }
   }
 
@@ -79,7 +83,6 @@ function HospitalMapSection({
           mapOption || { center: new kakao.maps.LatLng(lat, long) },
         ),
       ); // 지도 생성
-      setInfowindow(new kakao.maps.InfoWindow({ zIndex: 1 })); // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
       setServicePlace(new kakao.maps.services.Places()); // 장소 검색 객체를 생성
     }
   }, [location, keyword]);
@@ -129,7 +132,7 @@ function HospitalMapSection({
     <div className="map_wrap">
       <div id="map" className="map" ref={mapContainer} />
       {location && (
-        <div id="menu_wrap" className="bg_white" ref={menu}>
+        <div id="menu_wrap" className="bg_white hide" ref={menu}>
           <ul id="placesList" ref={list} />
           <div id="pagination" ref={paginationContainer} />
         </div>

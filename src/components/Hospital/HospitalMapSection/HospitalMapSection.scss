@@ -4,12 +4,12 @@
   position: relative;
   overflow: hidden;
 }
-
 .map_wrap,
 .map_wrap * {
   margin: 0;
   padding: 0;
-  // font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+  font-family: 'Pretendard Variable';
+  font-variation-settings: 'wght' 500;
   font-size: 12px;
 }
 .map_wrap a,
@@ -29,13 +29,16 @@
   left: 0;
   bottom: 0;
   width: 250px;
-  margin: 10px 0 30px 10px;
+  margin: 10px 0 30px 70px;
   padding: 5px;
   overflow-y: auto;
-  background: rgba(255, 255, 255, 0.7);
   z-index: 1;
   font-size: 12px;
   border-radius: 10px;
+  background: #ffffff;
+  opacity: 0.85;
+  box-shadow: 1px 1px 2px rgba(41, 41, 41, 0.25),
+    4px 4px 20px rgba(0, 0, 0, 0.25), 0px 4px 18px rgba(137, 137, 137, 0.25);
 }
 .bg_white {
   background: #fff;
@@ -61,14 +64,34 @@
 }
 #placesList .item {
   position: relative;
-  border-bottom: 1px solid #888;
+  // border-bottom: 1px solid #dbdbdb;
+  // border-bottom: 1px solid red;
   overflow: hidden;
   cursor: pointer;
+  margin-top: 15px;
   min-height: 65px;
 }
+#placesList .item::after {
+  content: '';
+  display: block;
+  width: 100%;
+  margin-right: 20px;
+  margin-left: 20px;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+#placesList .item:nth-child(1) {
+  margin-top: 10px;
+}
+
 #placesList .item span {
   display: block;
   margin-top: 4px;
+}
+#placesList .item h5 {
+  font-variation-settings: 'wght' 650;
+  font-size: 15px;
+  margin-bottom: 8px;
 }
 #placesList .item h5,
 #placesList .item .info {
@@ -79,23 +102,26 @@
 #placesList .item .info {
   padding: 10px 0 10px 55px;
 }
-#placesList .info .gray {
-  color: #8a8a8a;
-}
 #placesList .info .jibun {
-  padding-left: 26px;
-  background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png)
-    no-repeat;
+  margin-top: 8px;
+  color: #868686;
+  font-size: 13px;
+  // padding-left: 26px;
+  // background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png)
+  //   no-repeat;
 }
 #placesList .info .tel {
-  color: #009900;
+  color: #5d949c;
+  font-size: 13px;
+  margin-top: 7px;
+  margin-bottom: 19px;
 }
 #placesList .item .markerbg {
   float: left;
   position: absolute;
   width: 36px;
   height: 37px;
-  margin: 10px 0 0 10px;
+  margin: 10px 0 0 15px;
   background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
     no-repeat;
 }
@@ -166,4 +192,24 @@
   left: 40%;
   top: -12%;
   z-index: 100;
+}
+
+.road_address_name {
+  font-size: 13px;
+  color: #434343;
+}
+
+.overlay {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  position: relative;
+  top: -60px;
+  box-shadow: 1px 1px 2px rgba(41, 41, 41, 0.25),
+    4px 4px 20px rgba(0, 0, 0, 0.25), 0px 4px 18px rgba(137, 137, 137, 0.25);
+  font-size: 13px;
+}
+
+.hide {
+  display: none;
 }

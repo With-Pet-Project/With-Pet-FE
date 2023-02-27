@@ -20,7 +20,6 @@ describe('페이지 네비게이션', () => {
     cy.get('.side-navbar-menu').contains('커뮤니티').click();
     cy.location('pathname').should('eq', '/community');
     cy.get('.side-navbar-menu').contains('병원 찾기').click();
-
     cy.location('pathname').should('eq', '/hospital');
     cy.get('.side-navbar-menu').contains('로그인').click();
     cy.location('pathname').should('eq', '/login');
