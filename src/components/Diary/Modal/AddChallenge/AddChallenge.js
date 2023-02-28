@@ -46,11 +46,6 @@ function AddChallenge() {
             placeholder="10자 이내로 입력하세요"
           />
         </div>
-        <div className="add-Challenge-period">
-          <h2>날짜</h2>
-          <DateSelector />
-          <div className="period-select" />
-        </div>
       </div>
       <div className="add_Challenge-times">
         <h2>횟수</h2>

@@ -1,6 +1,6 @@
 import './Challenge.scss';
 
-import AddChallenge from 'components/Diary/Modal/AddChallenge';
+import AddChallenge from 'components/Diary/Modal/AddChallenge/AddChallenge';
 import ChallengeList from 'components/Diary/Modal/ChallengeList';
 import { useModal } from 'components/common/Modal/context/useModal';
 
