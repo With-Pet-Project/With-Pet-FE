@@ -1,13 +1,18 @@
 import './MyInfoSection.scss';
 import { useModal } from 'components/common/Modal/context/useModal';
 import profileImage from 'lib/assets/images/dog/lg_icon.png';
-import EditProfile from '../EditProfile/EditProfile';
+import EditProfile from '../../Modal/EditProfile/EditProfile';
+import Withdrawal from '../../Modal/Withdrawal/Withdrawal';
 
 function MyInfoSection() {
   const { openModal } = useModal();
 
   const handleEditProfile = () => {
     openModal(EditProfile);
+  };
+
+  const handleWithdrawal = () => {
+    openModal(Withdrawal);
   };
 
   return (
@@ -18,7 +23,11 @@ function MyInfoSection() {
         </div>
         <p className="nickName">강아지</p>
       </div>
-      <button type="button" className="Withdrawal-btn btn">
+      <button
+        type="button"
+        className="Withdrawal-btn btn"
+        onClick={handleWithdrawal}
+      >
         회원탈퇴
       </button>
       <button
