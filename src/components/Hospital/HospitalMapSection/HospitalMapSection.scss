@@ -148,58 +148,57 @@
   float: left;
   position: absolute;
   width: 36px;
-  height: 37px;
+  height: 43px;
   margin: 10px 0 0 15px;
-  background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
-    no-repeat;
+  background: url('../../../lib/assets/images/hospital/markers.png') no-repeat;
   @media (max-width: $normal) {
     margin: 10px 0 0 5px;
   }
 }
 #placesList .item .marker_1 {
-  background-position: 0 -10px;
+  background-position: -13px -15px;
 }
 #placesList .item .marker_2 {
-  background-position: 0 -56px;
+  background-position: -13px -65px;
 }
 #placesList .item .marker_3 {
-  background-position: 0 -102px;
+  background-position: -13px -113px;
 }
 #placesList .item .marker_4 {
-  background-position: 0 -148px;
+  background-position: -13px -162px;
 }
 #placesList .item .marker_5 {
-  background-position: 0 -194px;
+  background-position: -13px -210px;
 }
 #placesList .item .marker_6 {
-  background-position: 0 -240px;
+  background-position: -13px -260px;
 }
 #placesList .item .marker_7 {
-  background-position: 0 -286px;
+  background-position: -13px -310px;
 }
 #placesList .item .marker_8 {
-  background-position: 0 -332px;
+  background-position: -13px -358px;
 }
 #placesList .item .marker_9 {
-  background-position: 0 -378px;
+  background-position: -13px -407px;
 }
 #placesList .item .marker_10 {
-  background-position: 0 -423px;
+  background-position: -13px -455px;
 }
 #placesList .item .marker_11 {
-  background-position: 0 -470px;
+  background-position: -13px -505px;
 }
 #placesList .item .marker_12 {
-  background-position: 0 -516px;
+  background-position: -13px -555px;
 }
 #placesList .item .marker_13 {
-  background-position: 0 -562px;
+  background-position: -13px -603px;
 }
 #placesList .item .marker_14 {
-  background-position: 0 -608px;
+  background-position: -13px -650px;
 }
 #placesList .item .marker_15 {
-  background-position: 0 -654px;
+  background-position: -13px -700px;
 }
 #pagination {
   margin: 10px auto;
@@ -253,7 +252,7 @@
   border-radius: 10px;
   background-color: #fff;
   position: relative;
-  top: -60px;
+  top: -55px;
   box-shadow: 1px 1px 2px rgba(41, 41, 41, 0.25),
     4px 4px 20px rgba(0, 0, 0, 0.25), 0px 4px 18px rgba(137, 137, 137, 0.25);
   font-size: 0.85rem;

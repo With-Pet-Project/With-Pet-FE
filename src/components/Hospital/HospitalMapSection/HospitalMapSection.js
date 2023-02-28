@@ -18,7 +18,6 @@ function HospitalMapSection({
   const [map, setMap] = useState(null);
   const [servicePlace, setServicePlace] = useState(null);
   const [changedLocation, setChangedLocation] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
   const list = useRef(null);
   const menu = useRef(null);
   const paginationContainer = useRef(null);

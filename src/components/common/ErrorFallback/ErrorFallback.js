@@ -3,7 +3,7 @@ import './ErrorFallback.scss';
 
 function ErrorFallback({ error, resetErrorBoundary }) {
   // const { status } = error.response;
-  const status = error.response.status || 500;
+  const status = error ? error.response.status : 500;
   const navigate = useNavigate();
   // 접근 권한 없으면 사이드바 없애야되지않나
 
