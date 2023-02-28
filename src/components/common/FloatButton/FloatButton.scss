@@ -12,4 +12,10 @@
   bottom: 3%;
   float: right;
   right: 3%;
+
+  @media (max-width: $wide) {
+    width: 3rem;
+    height: 3rem;
+    font-size: 23px;
+  }
 }

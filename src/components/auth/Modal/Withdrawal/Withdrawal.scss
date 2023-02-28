@@ -1,0 +1,60 @@
+@import '/src/lib/styles/vars.scss';
+
+.withdrawal-wrapper {
+  width: 350px;
+  height: 300px;
+  padding: 24px;
+  font-family: 'Pretendard Variable';
+
+  h2 {
+    font-variation-settings: 'wght' 650;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  h5 {
+    font-variation-settings: 'wght' 550;
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #434343;
+  }
+
+  p {
+    line-height: 22px;
+    white-space: pre-wrap;
+    margin-bottom: 30px;
+  }
+
+  .accent {
+    display: block;
+    margin-top: 20px;
+    font-variation-settings: 'wght' 650;
+  }
+
+  .btn-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  button {
+    height: 36px;
+    width: 90px;
+  }
+
+  button:nth-child(1) {
+    margin-right: 20px;
+    border: 2px solid $background-yellow;
+    color: $fontColor-black;
+    background: #fff;
+  }
+
+  button:nth-child(2) {
+    color: $fontColor-black;
+    background: $background-yellow;
+  }
+
+  .active-input {
+    background-color: #fff !important;
+    border: 1.5px solid $background-yellow !important;
+  }
+}

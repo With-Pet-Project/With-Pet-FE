@@ -9,6 +9,10 @@
     font-family: 'Pretendard Variable';
     font-variation-settings: 'wght' 500;
   }
+
+  @media (max-width: $narrow) {
+    width: 230px;
+  }
 }
 
 .add-account-form {
@@ -85,6 +89,10 @@
     button {
       width: 90px;
       height: 36px;
+
+      @media (max-width: $narrow) {
+        width: 70px;
+      }
     }
   }
 

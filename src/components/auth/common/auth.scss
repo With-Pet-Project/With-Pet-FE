@@ -1,0 +1,32 @@
+@import '/src/lib/styles/vars.scss';
+
+.auth-form {
+  padding: 39px 44px 30px 44px;
+
+  * {
+    display: block;
+  }
+
+  .title {
+    font-family: 'TmoneyRoundWindBold';
+    color: #252525;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .label {
+    font-variation-settings: 'wght' 550;
+    margin-bottom: 12px;
+    color: #434343;
+  }
+
+  .button {
+    background-color: $background-yellow;
+    color: $fontColor-black;
+    font-size: 15px;
+    border-radius: 10px;
+    width: 69px;
+    height: 38px;
+  }
+}
