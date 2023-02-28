@@ -7,6 +7,11 @@ export const getTotalWeeks = month => {
   return totalWeeks;
 };
 
+export const whatWeek = (year, month, day) => {
+  const firstDay = new Date(year, Number(month) - 1, 1).getDay();
+  return Math.ceil((firstDay + Number(day)) / 7);
+};
+
 export const getStartAndEndDate = (month, week) => {
   let sunday = 0;
   const year = new Date().getFullYear();

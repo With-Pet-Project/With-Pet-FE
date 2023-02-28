@@ -1,15 +1,15 @@
 import './PetInfo.scss';
 
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
 import dog from 'lib/assets/images/dog/md_icon.png';
 import { useOutsideDetection } from 'components/common/hooks/useOutsideDetection';
-import { usePet } from '../hooks/usePet';
+import { usePet } from 'components/Diary/hooks/usePet';
+import { petIdContext } from 'components/Diary/context/PetContext';
 import Button from './Button/Button';
 import PetList from './PetList/PetList';
 
 function PetInfo() {
-  const [petIdParams, setPetIdParams] = useSearchParams();
+  const [petId, setPetId] = useContext(petIdContext);
   const [petIdx, setPetIdx] = useState(0);
   const petInfoList = usePet();
   const selectPet = idx => setPetIdx(idx);
@@ -17,13 +17,12 @@ function PetInfo() {
   const { isOpen, open, targetRef } = useOutsideDetection();
 
   useEffect(() => {
-    if (petInfoList.length) {
-      petIdParams.set('petId', petInfoList[petIdx].id);
+    if (petInfoList?.length > 0) {
+      setPetId(petInfoList[petIdx].id);
     } else {
-      petIdParams.set('petId', false);
+      setPetId(false);
     }
-    setPetIdParams(petIdParams);
-  }, [petIdx, petInfoList]);
+  }, [petId, setPetId, petInfoList, petIdx]);
   return (
     <div className="pet-info">
       <div className="pet-profile-img">

@@ -5,19 +5,21 @@ import { postAddChallenge } from 'lib/APIs/challenge';
 import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { TOAST_MESSAGE, TOAST_OPTION } from 'components/common/Toast/toast';
+import { useContext } from 'react';
+import { petIdContext } from '../context/PetContext';
 
 export function useAddChallenge() {
-  const [petIdParams, setPetIdParams] = useSearchParams();
+  const [petId, setPetId] = useContext(petIdContext);
   const queryClient = useQueryClient();
   const jwt_token = localStorage.getItem('jwt_token') || null;
-  const { Challenge } = QUERY_KEY;
+  const { DailyChallenge, WeeklyChallenge } = QUERY_KEY;
 
   const { mutate } = useMutation({
     mutationFn: ({ title, targetCnt }) =>
-      postAddChallenge(jwt_token, petIdParams.get('petId'), title, targetCnt),
+      postAddChallenge(jwt_token, petId, title, targetCnt),
     onSuccess: () => {
       toast.success(TOAST_MESSAGE.Add_SUCCESS, TOAST_OPTION);
-      // queryKey: [QUERY_KEY.Challenge, jwt] invalidateQuery
+      queryClient.invalidateQueries({ queryKey: [DailyChallenge, jwt_token] });
     },
     onError: () => {
       toast.error(TOAST_MESSAGE.ADD_FAIL, TOAST_OPTION);

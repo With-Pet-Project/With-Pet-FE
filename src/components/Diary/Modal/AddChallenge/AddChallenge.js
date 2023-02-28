@@ -1,11 +1,9 @@
 import './AddChallenge.scss';
 
-import { useAddChallenge } from 'components/Diary/ChallengeSection/hooks/useAddChallenge';
+import { useAddChallenge } from 'components/Diary/hooks/useAddChallenge';
 import { useState, useEffect } from 'react';
 import DownArrow from 'components/common/SelectArrow/DownArrow';
 import ModalButtons from '../ModalButtons';
-
-import DateSelector from './DateSelector';
 
 function AddChallenge() {
   const times = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
@@ -24,12 +22,8 @@ function AddChallenge() {
 
   const handleTimesChange = e => {
     setTargetCnt(e.target.value);
-    console.log(e.target.value);
   };
 
-  useEffect(() => {
-    console.log(targetCnt);
-  }, [targetCnt]);
   return (
     <div className="add-Challenge">
       <div className="add-Challenge-header">

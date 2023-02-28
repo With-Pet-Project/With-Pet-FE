@@ -2,7 +2,7 @@ import './GoalsList.scss';
 import styled from 'styled-components';
 import goals from 'lib/mocks/goals.json';
 
-import { useChallenge } from '../../hooks/useChallenge';
+import { useChallenge } from 'components/Diary/hooks/useChallenge';
 
 import Goal from './Goal';
 
@@ -11,37 +11,27 @@ const GoalItem = styled.li`
 `;
 
 function GoalsList({ isInModal = false }) {
-  const { isLoading, isError, error, challenges } = useChallenge();
-
-  if (isLoading) {
-    return <div>...Loading</div>;
-  }
-
-  if (isError) {
-    return <div>Sorry. The server is unstable. Error: {error} </div>;
-  }
+  const { daily } = useChallenge();
 
   return (
     <div className="Goals-List">
       <ul>
-        {challenges?.data?.data?.challenges &&
-          !isInModal &&
-          challenges?.data?.data?.challenges.slice(0, 3).map(goal => {
-            return (
-              <GoalItem key={goal.id}>
-                <Goal goal={goal} />
-              </GoalItem>
-            );
-          })}
-        {challenges?.data?.data?.challenges &&
-          isInModal &&
-          challenges?.data?.data?.challenges.map(goal => {
-            return (
-              <GoalItem key={goal.id} isInModal={isInModal}>
-                <Goal goal={goal} isInModal />
-              </GoalItem>
-            );
-          })}
+        {isInModal && (
+          <li>
+            <span>ㅇㅇㅇ</span>
+          </li>
+        )}
+        {!isInModal && daily?.length > 0 ? (
+          daily.map(c => (
+            <GoalItem key={c.challengId}>
+              <Goal isInModal={isInModal} goal={c} />
+            </GoalItem>
+          ))
+        ) : (
+          <GoalItem>
+            <span>챌린지가 없습니다.</span>
+          </GoalItem>
+        )}
       </ul>
     </div>
   );

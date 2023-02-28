@@ -1,7 +1,7 @@
 import './PetList.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { useRemovePet } from '../../hooks/useRemovePet';
+import { useRemovePet } from 'components/Diary/hooks/useRemovePet';
 
 function PetList({ petInfoList, selectPet, petIdx }) {
   const { mutate } = useRemovePet(selectPet, petIdx);
