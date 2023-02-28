@@ -7,6 +7,7 @@ export const vars = {
   sidebarOpened: `250px`,
   sidebarClosed: `90px`,
 
+  backgroundDisabledYellow: `#aa8e00`,
   backgroundYellow: `#ffe259`,
   backgroundGreen: `#62ccab`,
   backgroundGray: `#f2f2f2`,

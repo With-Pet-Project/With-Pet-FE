@@ -5,7 +5,7 @@ import { TODAY } from 'components/common/Calender/constant';
 export const dateContext = createContext();
 
 export function DateProvider({ children }) {
-  // const [yearMonth, setYearMonth] = useState(getMonthYearDetails(TODAY));
+  // selectDate.dateTime => YYYY-MM-DD
   const [selectDate, setSelectDate] = useState(getMonthYearDetails(TODAY));
 
   const value = useMemo(() => [selectDate, setSelectDate], [selectDate]);

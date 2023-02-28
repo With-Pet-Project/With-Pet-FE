@@ -1,3 +1,5 @@
+@import '/src/lib/styles/vars.scss';
+
 .date-select {
   margin: 10px 0;
   display: flex;
@@ -35,6 +37,7 @@
     cursor: pointer;
 
     &:focus {
+      border: 1px solid $background-yellow;
       outline: none;
     }
   }

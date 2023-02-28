@@ -8,11 +8,6 @@ import AchievementRate from './AchievementRate/AchievementRate';
 import GoalsList from './Goals/GoalsList';
 
 function Challenge() {
-  // const [addChallenge, setAddChallenge] = useState(false);
-  // const [challengeList, setChallengeList] = useState(false);
-
-  // const isOpenAddChallenge = () => setAddChallenge(!addChallenge);
-  // const isOpenChallengeList = () => setChallengeList(!challengeList);
   const { openModal } = useModal();
 
   const openAddChallenge = () => {

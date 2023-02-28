@@ -1,5 +1,6 @@
 import './AddChallenge.scss';
 
+import { useAddChallenge } from 'components/Diary/ChallengeSection/hooks/useAddChallenge';
 import { useState, useEffect } from 'react';
 import DownArrow from 'components/common/SelectArrow/DownArrow';
 import ModalButtons from '../ModalButtons';
@@ -7,11 +8,13 @@ import ModalButtons from '../ModalButtons';
 import DateSelector from './DateSelector';
 
 function AddChallenge() {
-  const MAXIMUM_NUMBER_OF_TIMES = 10;
+  const times = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+  const { mutate } = useAddChallenge();
 
-  const [times, setTimes] = useState([]);
-  const [currentTimes, setCurrentTimes] = useState(0);
+  const [targetCnt, setTargetCnt] = useState(1);
   const [title, setTtitle] = useState('');
+
+  const addChallenge = () => mutate({ title, targetCnt });
 
   const handleTitleChange = e => {
     if (e.target.value.length <= 10) {
@@ -20,18 +23,13 @@ function AddChallenge() {
   };
 
   const handleTimesChange = e => {
-    setCurrentTimes(e.target.value);
+    setTargetCnt(e.target.value);
+    console.log(e.target.value);
   };
 
   useEffect(() => {
-    const tmp = [];
-    for (let i = 1; i <= MAXIMUM_NUMBER_OF_TIMES; i++) {
-      tmp.push(i);
-    }
-
-    setTimes([...tmp]);
-  }, []);
-
+    console.log(targetCnt);
+  }, [targetCnt]);
   return (
     <div className="add-Challenge">
       <div className="add-Challenge-header">
@@ -58,20 +56,24 @@ function AddChallenge() {
         <h2>횟수</h2>
         <div className="times-select">
           <select
-            value={currentTimes}
+            value={targetCnt}
             id="times-select"
             onChange={handleTimesChange}
           >
             {times.map(t => (
               <option key={t} value={t}>
-                주 {t}회 달성
+                {t}회
               </option>
             ))}
           </select>
           <DownArrow htmlFor="times-select" />
         </div>
       </div>
-      <ModalButtons Component={AddChallenge} />
+      <ModalButtons
+        Component={AddChallenge}
+        disabled={title.length === 0}
+        mutate={addChallenge}
+      />
     </div>
   );
 }

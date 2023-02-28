@@ -5,7 +5,8 @@ export const getAllOfChallenges = async () => {
   return data;
 };
 
-export const postAddChallenge = async (jwt, petId, title, targetCnt = 1) => {
+export const postAddChallenge = async (jwt, petId, title, targetCnt) => {
+  console.log(title, targetCnt);
   const data = await CLIENT.post(
     `/pet/${petId}/challenge`,
     {

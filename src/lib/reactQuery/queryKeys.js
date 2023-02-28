@@ -18,4 +18,5 @@ export const QUERY_KEY = {
   UserInfo: 'userInfo',
   PetInfoList: 'petInfoList',
   PetInfoById: 'petInfoById',
+  Challenge: 'Challenge',
 };
