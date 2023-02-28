@@ -23,7 +23,7 @@ function LogIn() {
         <div className="btn-wrapper">
           <div className="signin-wrapper">
             <Link to="/confirm-password">비밀번호 재설정 하기</Link>
-            <a href="#">회원가입</a>
+            <Link to="/signup">회원가입</Link>
           </div>
           <button type="submit" className="login-btn button">
             로그인
