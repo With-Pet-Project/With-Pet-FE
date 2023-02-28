@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { PetIdProvider } from 'components/Diary/context/PetContext';
 import { ModalsProvider } from 'components/common/Modal/context/ModalContext';
 import { Modal } from 'components/common/Modal/context/useModal';
 
@@ -27,8 +28,10 @@ function CommonLayoutPage() {
       <Wrapper className="common-page-root-div">
         <Sidebar />
         <ModalsProvider>
-          <Outlet />
-          <Modal />
+          <PetIdProvider>
+            <Outlet />
+            <Modal />
+          </PetIdProvider>
         </ModalsProvider>
       </Wrapper>
     </ErrorBoundary>

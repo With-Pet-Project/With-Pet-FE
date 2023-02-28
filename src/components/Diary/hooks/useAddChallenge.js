@@ -2,7 +2,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
 import { postAddChallenge } from 'lib/APIs/challenge';
-import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { TOAST_MESSAGE, TOAST_OPTION } from 'components/common/Toast/toast';
 import { useContext } from 'react';

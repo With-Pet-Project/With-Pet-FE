@@ -17,7 +17,6 @@ const ButtonWrapper = styled.div`
 
   & button:disabled {
     cursor: not-allowed;
-    background-color: ${vars.backgroundDisabledYellow} !important;
   }
 
   & button:first-child {
