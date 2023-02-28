@@ -1,0 +1,32 @@
+.auth-container {
+  width: 100%;
+  height: 100vh;
+
+  * {
+    font-family: 'Pretendard Variable';
+    font-variation-settings: 'wght' 500;
+  }
+
+  .background {
+    background-image: url('../../../../lib/assets/images/login/bg_bg_yellow.png'),
+      url('../../../../lib/assets/images/login/bg_sm_white.png'),
+      url('../../../../lib/assets/images/login/bg_sm_yellow.png');
+    background-position: left top, 2% 75%, right bottom;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    background-size: 62%, 13%, 15%;
+  }
+
+  .auth-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

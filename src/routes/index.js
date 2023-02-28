@@ -10,6 +10,8 @@ import AccountPage from 'pages/AccountPage';
 import ProfilePage from 'pages/ProfilePage';
 import HospitalPage from 'pages/HospitalPage';
 import LogInPage from 'pages/LogInPage';
+import ResetPasswordPage from 'pages/ResetPasswordPage';
+import ConfirmPassword from 'pages/ConfirmPassword';
 import OAuthCallbackPage from 'pages/OAuthCallbackPage';
 
 function RootRoute() {
@@ -27,6 +29,8 @@ function RootRoute() {
           <Route path="hospital" element={<HospitalPage />} />
         </Route>
         <Route path="/login" element={<LogInPage />} />
+        <Route path="/confirm-password" element={<ConfirmPassword />} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/login/oauth/callback" element={<OAuthCallbackPage />} />
       </Routes>
     </BrowserRouter>

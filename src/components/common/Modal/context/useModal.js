@@ -9,6 +9,8 @@ export const useModal = () => {
   const { open, close } = useContext(ModalsDispatchContext);
   const modalList = useContext(ModalsStateContext);
 
+  console.log(modalList);
+  console.log(open);
   const openModal = (Component, props) => {
     open(Component, props);
   };

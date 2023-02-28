@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { Link } from 'react-router-dom';
 import { KAKAO_OAUTH_URL } from 'lib/KakaoAPIs/client';
 
 import './LogIn.scss';
-import Input from '../Input/Input';
+import Input from '../common/Input/Input';
 
 function LogIn() {
   return (
@@ -17,7 +18,7 @@ function LogIn() {
             <Input type="password" id="password" />
             <div className="btn-wrapper">
               <div className="signin-wrapper">
-                <a href="#">비밀번호 재설정 하기</a>
+                <Link to="/confirm-password">비밀번호 재설정 하기</Link>
                 <a href="#">회원가입</a>
               </div>
               <button type="submit" className="login-btn">

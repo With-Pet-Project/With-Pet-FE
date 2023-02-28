@@ -1,6 +1,6 @@
 import './EditProfile.scss';
 import { useRef } from 'react';
-import Input from 'components/auth/Input/Input';
+import Input from 'components/auth/common/Input/Input';
 
 function EditProfile() {
   const fileInput = useRef(null);
