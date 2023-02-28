@@ -28,7 +28,11 @@ export const getAllPetInfo = async jwt => {
   return response;
 };
 
-export const getSpecificPetInfo = async (jwt, petId) => {
+export const getPetInfoById = async (jwt, petId) => {
+  if (!petId) {
+    return false;
+  }
+
   const response = await CLIENT.get(`/pet/${petId}`, {
     headers: {
       Authorization: `Bearer ${jwt}`,
