@@ -1,0 +1,75 @@
+@import '/src/lib/styles/vars.scss';
+
+.pet-setting-wrapper {
+  width: 450px;
+  height: 430px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 18px rgba(137, 137, 137, 0.25);
+  border-radius: 10px;
+  font-family: 'Pretendard Variable';
+  padding: 24px;
+
+  .title {
+    font-size: 20px;
+    font-variation-settings: 'wght' 650;
+  }
+
+  .pet-list {
+    width: 100%;
+    margin-top: 22px;
+    height: 200px;
+    border-radius: 10px;
+    border: 2px solid $background-gray;
+    overflow-y: auto;
+    padding: 10px;
+
+    .pet-item {
+      width: 100%;
+      height: 30px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+      * {
+        display: block;
+        font-variation-settings: 'wght' 400;
+        font-size: 15px;
+      }
+
+      .pet-name {
+        width: 80px;
+        margin-right: 3%;
+      }
+
+      .pet-weight {
+        width: 80px;
+        margin-right: 3%;
+      }
+
+      .pet-bday {
+        width: 100px;
+        margin-right: 3%;
+      }
+
+      button {
+        color: $fontColor-black;
+        background: transparent;
+        font-variation-settings: 'wght' 500;
+      }
+    }
+  }
+
+  .btn-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+
+    .submit-btn {
+      width: 90px;
+      height: 36px;
+      color: $fontColor-black;
+      background-color: $background-yellow;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@import '/src/lib/styles/vars.scss';
+
+.pet-setting-wrapper {
+  .add-pet-form {
+    margin: 20px auto 0;
+
+    .pet-name {
+      width: 25%;
+      margin-right: 3%;
+    }
+    .pet-weight {
+      width: 20%;
+      margin-right: 3%;
+    }
+    .pet-bday {
+      width: 35%;
+      margin-right: 3%;
+      padding-right: 10px;
+    }
+    .add-pet-submit {
+      width: 11%;
+      height: 35px;
+      background: $background-yellow;
+    }
+  }
+}
