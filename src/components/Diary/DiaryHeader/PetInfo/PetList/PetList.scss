@@ -1,8 +1,10 @@
 @import '/src/lib/styles/vars.scss';
 
 .diary-petList {
-  position: absolute;
+  position: relative;
   z-index: 1;
+  margin-top: -25px;
+  margin-left: 15px;
 
   background-color: #fff;
   width: 220px;
@@ -33,6 +35,11 @@
   }
 
   & button {
-    margin-right: 10px;
+    margin: 0 5px;
+  }
+
+  & li button:first-child {
+    flex-grow: 1;
+    text-align: left;
   }
 }

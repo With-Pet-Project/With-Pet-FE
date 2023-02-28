@@ -18,8 +18,18 @@ export const postCreatePetInfo = async (name, initWeight, birthday, jwt) => {
   return response;
 };
 
-export const getAllPetInfo = async (jwt, petId = null) => {
-  const response = await CLIENT.get(petId ? `/pet/${petId}` : '/pet', {
+export const getAllPetInfo = async jwt => {
+  const response = await CLIENT.get('/pet', {
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
+
+  return response;
+};
+
+export const getSpecificPetInfo = async (jwt, petId) => {
+  const response = await CLIENT.get(`/pet/${petId}`, {
     headers: {
       Authorization: `Bearer ${jwt}`,
     },
