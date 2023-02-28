@@ -3,6 +3,7 @@ import { useModal } from 'components/common/Modal/context/useModal';
 import profileImage from 'lib/assets/images/dog/lg_icon.png';
 import EditProfile from '../../Modal/EditProfile/EditProfile';
 import Withdrawal from '../../Modal/Withdrawal/Withdrawal';
+import PetSetting from '../../Modal/PetSetting/PetSetting';
 
 function MyInfoSection() {
   const { openModal } = useModal();
@@ -13,6 +14,10 @@ function MyInfoSection() {
 
   const handleWithdrawal = () => {
     openModal(Withdrawal);
+  };
+
+  const handleEditPet = () => {
+    openModal(PetSetting);
   };
 
   return (
@@ -36,6 +41,13 @@ function MyInfoSection() {
         onClick={handleEditProfile}
       >
         프로필 편집
+      </button>
+      <button
+        type="button"
+        className="edit-pet-btn btn"
+        onClick={handleEditPet}
+      >
+        펫 편집
       </button>
     </div>
   );

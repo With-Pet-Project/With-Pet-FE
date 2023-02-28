@@ -16,7 +16,7 @@ function ConfirmPassword() {
   return (
     <Container>
       <form className="confirm-pwd-form auth-form" onSubmit={handleSubmit}>
-        <h3 className="title">비밀번호 재설정</h3>
+        <h3 className="title">본인 인증</h3>
         <label htmlFor="email" className="label">
           비밀번호를 찾고자하는 아이디를 입력하세요.
         </label>
