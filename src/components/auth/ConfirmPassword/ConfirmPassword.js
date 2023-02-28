@@ -20,7 +20,17 @@ function ConfirmPassword() {
         <label htmlFor="email" className="label">
           비밀번호를 찾고자하는 아이디를 입력하세요.
         </label>
-        <Input type="text" id="email" name="email" />
+        <div className="confirm-id-wrapper">
+          <Input
+            type="text"
+            id="email"
+            name="email"
+            className="id-confirm-input"
+          />
+          <button type="button" className="confirm-id-btn button">
+            인증
+          </button>
+        </div>
         <div className="btn-wrapper">
           <p>입력한 이메일에서 인증을 진행한 뒤 확인버튼을 눌러주세요.</p>
           <button type="submit" className="confirm-password-btn button">
