@@ -14,7 +14,7 @@ export function usePetById() {
 
   const { data } = useQuery({
     queryKey: [PetInfoById],
-    queryFn: () => getPetInfoById(petIdParams.get('petId')),
+    queryFn: () => getPetInfoById(jwt_token, petIdParams.get('petId')),
     onError: () => {
       toast.error(TOAST_MESSAGE.CANNOT_GET_DATA, TOAST_OPTION);
     },
