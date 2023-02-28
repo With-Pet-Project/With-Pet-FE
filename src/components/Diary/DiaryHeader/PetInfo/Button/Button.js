@@ -2,6 +2,14 @@ import './Button.scss';
 import { forwardRef } from 'react';
 
 const Button = forwardRef(({ petIdx, petInfoList, isOpen }, ref) => {
+  const getBirthDay = date => {
+    const birthday = date.split('-');
+
+    return `${birthday[0]}년 ${birthday[1]}월 ${birthday[2]}일 - ${
+      new Date().getFullYear() - Number(birthday[0])
+    }세`;
+  };
+
   return (
     <button
       type="button"
@@ -16,12 +24,7 @@ const Button = forwardRef(({ petIdx, petInfoList, isOpen }, ref) => {
         </h2>
         <span>
           {petInfoList?.length
-            ? `${petInfoList[petIdx].birthday.split('-')[0]}년 ${
-                petInfoList[petIdx].birthday.split('-')[1]
-              }월 ${petInfoList[petIdx].birthday.split('-')[2]}일 - ${
-                new Date().getFullYear() -
-                Number(petInfoList[petIdx].birthday.split('-')[0])
-              }세`
+            ? getBirthDay(petInfoList[petIdx].birthday)
             : '반려동물 없음'}
         </span>
       </div>

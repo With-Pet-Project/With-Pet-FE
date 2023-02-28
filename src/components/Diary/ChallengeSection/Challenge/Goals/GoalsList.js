@@ -2,7 +2,7 @@ import './GoalsList.scss';
 import styled from 'styled-components';
 import goals from 'lib/mocks/goals.json';
 
-import { useChallenge } from '../hooks/useChallenge';
+import { useChallenge } from '../../hooks/useChallenge';
 
 import Goal from './Goal';
 

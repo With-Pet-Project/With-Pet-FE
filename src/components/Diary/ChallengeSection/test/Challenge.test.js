@@ -2,7 +2,7 @@ import { screen, within } from '@testing-library/react';
 import { render } from 'lib/test-utils/test-utils';
 import userEvent from '@testing-library/user-event';
 import ReactDOM from 'react-dom';
-import Challenge from '../Challenge';
+import Challenge from '../Challenge/Challenge';
 
 describe('Popvoer AddChallenge', () => {
   beforeAll(() => {

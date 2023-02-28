@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import {
   getMonthYearDetails,
   getNextYearMonth,
@@ -7,12 +7,13 @@ import {
 import Calender from 'components/common/Calender/Calender';
 import { TODAY } from '../../common/Calender/constant';
 
+import { dateContext } from './context/DateContext';
 import Challenge from './Challenge/Challenge';
 import './ChallengeSection.scss';
 
 function ChallengeSection() {
   const [yearMonth, setYearMonth] = useState(getMonthYearDetails(TODAY));
-  const [selectDate, setSelectDate] = useState(getMonthYearDetails(TODAY));
+  const [selectDate, setSelectDate] = useContext(dateContext);
 
   const handleMonthChange = index => {
     setYearMonth(prevDate => getNextYearMonth(prevDate.dateObject, index));
