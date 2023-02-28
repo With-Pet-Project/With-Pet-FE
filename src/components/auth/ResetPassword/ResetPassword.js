@@ -1,12 +1,21 @@
 import '../common/auth.scss';
 import './ResetPassword.scss';
+import { useNavigate } from 'react-router-dom';
 import Container from '../common/Container/Container';
 import Input from '../common/Input/Input';
 
 function ResetPassword() {
+  const navigate = useNavigate();
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    alert('변경되었습니다. 로그인하세요');
+    navigate('/login');
+  };
+
   return (
     <Container>
-      <form className="reset-password-form auth-form">
+      <form className="reset-password-form auth-form" onSubmit={handleSubmit}>
         <h3 className="title">비밀번호 재설정</h3>
         <label htmlFor="email" className="label">
           새 비밀번호
