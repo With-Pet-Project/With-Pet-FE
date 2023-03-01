@@ -98,3 +98,25 @@ export const deleteRemoveChallenge = async (jwt, petId, challengeId) => {
 
   return data;
 };
+
+export const putEditChallenge = async (
+  jwt,
+  title,
+  targetCnt,
+  petId,
+  challengeId,
+) => {
+  const data = await CLIENT.put(
+    `/pet/${petId}/challenge/${challengeId}`,
+    {
+      title,
+      targetCnt,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    },
+  );
+  return data;
+};

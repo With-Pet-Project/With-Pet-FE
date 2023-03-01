@@ -1,18 +1,18 @@
-import './AddChallenge.scss';
-
-import { useAddChallenge } from 'components/Diary/hooks/useAddChallenge';
-import { useState, useEffect } from 'react';
+import './EditChallenge.scss';
+import { useModal } from 'components/common/Modal/context/useModal';
+import { useState } from 'react';
 import DownArrow from 'components/common/SelectArrow/DownArrow';
+import { useEditChallenge } from 'components/Diary/hooks/useEditChallenge';
 import ModalButtons from '../ModalButtons';
 
-function AddChallenge() {
+function EditChallenge({ challengeId }) {
   const times = [1, 2, 3, 4, 5, 6, 7];
-  const { mutate } = useAddChallenge();
 
   const [targetCnt, setTargetCnt] = useState(1);
   const [title, setTtitle] = useState('');
 
-  const addChallenge = () => mutate({ title, targetCnt });
+  // title, targetCnt, challengeId
+  const editChallenge = useEditChallenge();
 
   const handleTitleChange = e => {
     if (e.target.value.length <= 10) {
@@ -25,28 +25,26 @@ function AddChallenge() {
   };
 
   return (
-    <div className="add-Challenge">
-      <div className="add-Challenge-header">
-        <h1>챌린지 추가하기</h1>
-        <p>달성할 챌린지를 추가해주세요.</p>
+    <div className="edit-challenge">
+      <div className="edit-challenge-header">
+        <h2>챌린지 편집</h2>
+        <p>챌린지를 편집해주세요.</p>
       </div>
-      <div className="add-Challenge-detail">
-        <div className="add-Challenge-title">
-          <h2>타이틀</h2>
+      <div className="edit-challenge-body">
+        <div className="edit-challenge-input">
+          <h3>타이틀</h3>
           <input
             type="text"
+            placeholder="10자 이내로 입력해주세요"
             value={title}
             onChange={handleTitleChange}
-            placeholder="10자 이내로 입력하세요"
             maxLength={10}
           />
         </div>
-      </div>
-      <div className="add_Challenge-times">
-        <h2>횟수</h2>
-        <div className="times-select">
+        <div className="edit-challenge-select">
+          <h3>횟수</h3>
           <select
-            id="times-select"
+            id="edit-times-selector"
             value={targetCnt}
             onChange={handleTimesChange}
           >
@@ -56,16 +54,16 @@ function AddChallenge() {
               </option>
             ))}
           </select>
-          <DownArrow htmlFor="times-select" />
+          <DownArrow htmlFor="edit-times-selector" />
         </div>
       </div>
       <ModalButtons
-        Component={AddChallenge}
+        Component={EditChallenge}
         disabled={title.length === 0}
-        mutate={addChallenge}
+        mutate={() => editChallenge.mutate({ title, targetCnt, challengeId })}
       />
     </div>
   );
 }
 
-export default AddChallenge;
+export default EditChallenge;

@@ -32,17 +32,13 @@
 
   & button {
     border: 0 !important;
-    color: #757575;
     font-size: 12px;
     line-height: 14px;
     background-color: transparent !important;
-
-    &:hover {
-      color: #fff;
-    }
+    color: #757575 !important;
   }
 
   & span {
-    font-weight: 300;
+    font-weight: 300 !important;
   }
 }

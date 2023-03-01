@@ -84,7 +84,9 @@ function AddPet() {
             <div className="birthday-year">
               <select id="birthday-year" value={year} onChange={handleYear}>
                 {YEAR.map(y => (
-                  <option value={y}>{y}년</option>
+                  <option key={y} value={y}>
+                    {y}년
+                  </option>
                 ))}
               </select>
               <DownArrow htmlFor="birthday-year" />
@@ -92,7 +94,9 @@ function AddPet() {
             <div className="birthday-month">
               <select id="birthday-month" value={month} onChange={handleMonth}>
                 {MONTH.map((m, idx) => (
-                  <option value={idx + 1}>{m}월</option>
+                  <option key={m} value={idx + 1}>
+                    {m}월
+                  </option>
                 ))}
               </select>
               <DownArrow htmlFor="birthday-month" />
@@ -100,7 +104,9 @@ function AddPet() {
             <div className="birthday-day">
               <select id="birthday-day" value={day} onChange={handleDay}>
                 {numberOfDays.map((m, idx) => (
-                  <option value={idx + 1}>{m}일</option>
+                  <option key={m} value={idx + 1}>
+                    {m}일
+                  </option>
                 ))}
               </select>
               <DownArrow htmlFor="birthday-day" />
