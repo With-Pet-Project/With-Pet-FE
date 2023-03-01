@@ -10,21 +10,19 @@ import SpecialNoteSection from '../SpecialNoteSection/SpecialNoteSection';
 
 function DiaryMain() {
   return (
-    <DateProvider>
-      <div className="diary-main-container">
-        <div className="diary-main-flex-container">
-          <div className="Challenge-Health-section">
-            <ChallengeSection />
-            <HealthSection />
-          </div>
-          <div className="Walking-Weight-SpecialNote">
-            <WalkingSection />
-            <WeightSection />
-            <SpecialNoteSection />
-          </div>
+    <div className="diary-main-container">
+      <div className="diary-main-flex-container">
+        <div className="Challenge-Health-section">
+          <ChallengeSection />
+          <HealthSection />
+        </div>
+        <div className="Walking-Weight-SpecialNote">
+          <WalkingSection />
+          <WeightSection />
+          <SpecialNoteSection />
         </div>
       </div>
-    </DateProvider>
+    </div>
   );
 }
 

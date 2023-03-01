@@ -1,14 +1,16 @@
 import './Challenge.scss';
 
 import AddChallenge from 'components/Diary/Modal/AddChallenge/AddChallenge';
-import ChallengeList from 'components/Diary/Modal/ChallengeList';
+import ChallengeList from 'components/Diary/Modal/ChallengeList/ChallengeList';
 import { useModal } from 'components/common/Modal/context/useModal';
 
+import { useDailyChallenge } from 'components/Diary/hooks/useDailyChallenge';
 import AchievementRate from './AchievementRate/AchievementRate';
 import GoalsList from './Goals/GoalsList';
 
 function Challenge() {
   const { openModal } = useModal();
+  const { daily } = useDailyChallenge();
 
   const openAddChallenge = () => {
     openModal(AddChallenge);
@@ -29,8 +31,8 @@ function Challenge() {
           추가하기
         </button>
       </div>
-      <AchievementRate />
-      <GoalsList />
+      <AchievementRate queryData={daily} />
+      <GoalsList isInModal={false} queryData={daily} />
       <div className="Challenge-modal-Button">
         <button type="button" onClick={openChallengeList}>
           <span>챌린지 목록</span>

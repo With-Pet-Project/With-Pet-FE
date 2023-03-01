@@ -7,15 +7,15 @@ import { useSearchParams } from 'react-router-dom';
 import { whatWeek } from 'lib/utils/diary';
 import { petIdContext } from '../context/PetContext';
 
-export const useChallenge = () => {
-  const { DailyChallenge, WeeklyChallenge } = QUERY_KEY;
+export const useDailyChallenge = () => {
+  const { DailyChallenge } = QUERY_KEY;
   const jwt_token = localStorage.getItem('jwt_token') || null;
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [petId, setPetId] = useContext(petIdContext);
 
   const year = searchParams.get('year');
-  const month = searchParams.get('month');
+  const month = searchParams.get('month'); // 1 ~ 12
   const day = searchParams.get('day');
 
   const week = whatWeek(year, month, day);
@@ -36,7 +36,7 @@ export const useChallenge = () => {
         // window.location.replace('/');
       }
     },
-    enabled: !!petId && !!week,
+    enabled: !!petId && !!week && !!year && !!month && !!day,
   });
 
   const daily = dailyChallenge?.data.data;

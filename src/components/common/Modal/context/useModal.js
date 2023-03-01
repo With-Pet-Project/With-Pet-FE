@@ -3,8 +3,6 @@
 import styled from 'styled-components';
 import { vars } from 'lib/styles/vars';
 import { useContext, useRef } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
-import ModalErrorFallback from '../Fallback/Fallback';
 import { ModalsDispatchContext, ModalsStateContext } from './ModalContext';
 
 export const useModal = () => {
@@ -26,7 +24,7 @@ export const useModal = () => {
   };
 };
 
-const ModalWrapper = styled.div`
+export const ModalWrapper = styled.div`
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -40,7 +38,7 @@ const ModalWrapper = styled.div`
   background: rgba(0, 0, 0, 0.5);
 `;
 
-const ModalContent = styled.div`
+export const ModalContent = styled.div`
   position: sticky;
   background: white;
   // padding: 1em;
@@ -65,13 +63,7 @@ export function Modal() {
     return (
       <ModalWrapper key={index} onClick={close}>
         <ModalContent ref={el => (modalRef.current[index] = el)}>
-          {/** ErrorFallback ui 별도 생성 */}
-          <ErrorBoundary
-            fallbackCo={ModalErrorFallback}
-            onReset={() => window.location.reload()}
-          >
-            <Component {...props} />
-          </ErrorBoundary>
+          <Component {...props} />
         </ModalContent>
       </ModalWrapper>
     );

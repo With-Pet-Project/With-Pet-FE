@@ -9,6 +9,7 @@ import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from 'components/common/ErrorFallback/ErrorFallback';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
+import ModalErrorFallback from 'components/common/Modal/Fallback/Fallback';
 import Sidebar from '../../components/common/Sidebar/Sidebar';
 
 const Wrapper = styled.div`
@@ -30,7 +31,14 @@ function CommonLayoutPage() {
         <ModalsProvider>
           <PetIdProvider>
             <Outlet />
-            <Modal />
+            <Suspense>
+              <ErrorBoundary
+                FallbackComponent={ModalErrorFallback}
+                onReset={() => window.location.reload()}
+              >
+                <Modal />
+              </ErrorBoundary>
+            </Suspense>
           </PetIdProvider>
         </ModalsProvider>
       </Wrapper>

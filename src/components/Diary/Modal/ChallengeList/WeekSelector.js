@@ -5,20 +5,14 @@ import * as utils from 'lib/utils/diary';
 
 import DownArrow from 'components/common/SelectArrow/DownArrow';
 
-function WeekSelector() {
-  const date = new Date();
-  const [year, setYear] = useState(date.getFullYear());
-  const [month, setMonth] = useState(date.getMonth());
-  const [week, setWeek] = useState(1);
+function WeekSelector({
+  year,
+  month,
+  week,
+  handleChangeMonth,
+  handleChangeWeek,
+}) {
   const [totalWeeks, setTotalWeeks] = useState([]);
-
-  const handleChangeMonth = e => {
-    setMonth(e.target.value);
-  };
-
-  const handleChangeWeek = e => {
-    setWeek(e.target.value);
-  };
 
   useEffect(() => {
     const weeks = utils.getTotalWeeks(month);

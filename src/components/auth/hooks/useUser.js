@@ -20,7 +20,7 @@ export function useUser() {
       logout();
       navigate('/', { replace: true });
     },
-    enabled: !!jwt_token,
+    enabled: jwt_token !== null,
   });
 
   return userInfo?.data?.data;

@@ -14,7 +14,7 @@ const GoalItem = styled.div`
 `;
 
 function Goal({ goal, isInModal = false }) {
-  const percent = 0.25;
+  const percent = goal.achieveCnt / goal.targetCnt;
   return (
     <GoalItem
       className="goal-item"
@@ -24,7 +24,9 @@ function Goal({ goal, isInModal = false }) {
       {!isInModal && <CheckBox goal={goal} />}
       <div className="goal-item-title">
         <h2>{goal.title}</h2>
-        <p>주 {goal.targetCnt}회 달성 목표</p>
+        <p>
+          {goal.achieveCnt} / {goal.targetCnt}
+        </p>
       </div>
       <ThreeHorizontalDots />
     </GoalItem>

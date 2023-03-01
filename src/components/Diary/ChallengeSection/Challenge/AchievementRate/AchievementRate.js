@@ -1,5 +1,6 @@
 import './AchievementRate.scss';
 import { vars } from 'lib/styles/vars';
+import { useState, useEffect } from 'react';
 
 import styled from 'styled-components';
 
@@ -18,18 +19,27 @@ const AchievementStick = styled.div`
   }
 `;
 
-// 추후에 서버 data와 연동 필요
-const rate = 40;
+function AchievementRate({ queryData }) {
+  const [achievementRate, setAchievementRate] = useState(0);
 
-function AchievementRate() {
+  useEffect(() => {
+    if (queryData) {
+      const targetCnts = queryData.reduce((acc, cur) => acc + cur.targetCnt, 0);
+      const achieveCnts = queryData.reduce(
+        (acc, cur) => acc + cur.achieveCnt,
+        0,
+      );
+      setAchievementRate(Math.floor(achieveCnts / targetCnts));
+    }
+  }, [queryData]);
   return (
     <>
-      <AchievementStick rate={rate}>
+      <AchievementStick rate={achievementRate}>
         <div />
       </AchievementStick>
       <div className="rate-result-text">
         <span>전체 목표 달성률</span>
-        <span>{rate}%</span>
+        <span>{achievementRate}%</span>
       </div>
     </>
   );
