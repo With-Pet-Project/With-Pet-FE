@@ -1,6 +1,7 @@
 import CLIENT from './client';
 
 export const postCreatePetInfo = async (name, initWeight, birthday, jwt) => {
+  console.log(name, initWeight, birthday);
   const response = await CLIENT.post(
     '/pet',
     {

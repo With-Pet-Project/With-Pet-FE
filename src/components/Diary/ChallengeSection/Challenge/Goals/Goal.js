@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import { vars } from 'lib/styles/vars';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { useOutsideDetection } from 'components/common/hooks/useOutsideDetection';
 
 import CheckBox from './CheckBox,';
-import ThreeHorizontalDots from './ThreeHorizontalDots';
+import ThreeHorizontalDots from './Option/ThreeHorizontalDots';
 
 const GoalItem = styled.div`
   padding-left: ${({ isInModal }) => (isInModal ? '20px' : '0')};
@@ -16,6 +17,8 @@ const GoalItem = styled.div`
 `;
 
 function Goal({ goal, isInModal = false }) {
+  const { open, isOpen, targetRef } = useOutsideDetection();
+
   const percent = goal.achieveCnt / goal.targetCnt;
   return (
     <GoalItem
@@ -49,7 +52,12 @@ function Goal({ goal, isInModal = false }) {
           )}
         </p>
       </div>
-      <ThreeHorizontalDots />
+      <ThreeHorizontalDots
+        open={open}
+        isOpen={isOpen}
+        ref={targetRef}
+        goal={goal}
+      />
     </GoalItem>
   );
 }

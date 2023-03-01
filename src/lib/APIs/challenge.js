@@ -88,3 +88,13 @@ export const deleteUncheckChallenge = async (jwt, petId, challengeLogId) => {
 
   return data;
 };
+
+export const deleteRemoveChallenge = async (jwt, petId, challengeId) => {
+  const data = await CLIENT.delete(`/pet/${petId}/challenge/${challengeId}`, {
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
+
+  return data;
+};

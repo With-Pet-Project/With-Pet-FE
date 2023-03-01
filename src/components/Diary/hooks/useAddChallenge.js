@@ -11,7 +11,7 @@ export function useAddChallenge() {
   const [petId, setPetId] = useContext(petIdContext);
   const queryClient = useQueryClient();
   const jwt_token = localStorage.getItem('jwt_token') || null;
-  const { DailyChallenge, WeeklyChallenge } = QUERY_KEY;
+  const { DailyChallenge } = QUERY_KEY;
 
   const { mutate } = useMutation({
     mutationFn: ({ title, targetCnt }) =>
