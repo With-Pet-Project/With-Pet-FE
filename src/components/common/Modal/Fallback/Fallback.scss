@@ -1,0 +1,19 @@
+@import '/src/lib/styles/vars.scss';
+
+.diary-error-fallback {
+  width: 100%;
+  height: 300px;
+
+  text-align: center;
+  padding: 100px 0;
+
+  & p {
+    font-family: 'TmoneyRoundWindBold';
+  }
+
+  & button {
+    background-color: $background-yellow;
+    padding: 10px;
+    margin: 20px 0;
+  }
+}

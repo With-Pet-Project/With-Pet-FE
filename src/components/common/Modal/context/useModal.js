@@ -3,6 +3,8 @@
 import styled from 'styled-components';
 import { vars } from 'lib/styles/vars';
 import { useContext, useRef } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+import ModalErrorFallback from '../Fallback/Fallback';
 import { ModalsDispatchContext, ModalsStateContext } from './ModalContext';
 
 export const useModal = () => {
@@ -63,7 +65,13 @@ export function Modal() {
     return (
       <ModalWrapper key={index} onClick={close}>
         <ModalContent ref={el => (modalRef.current[index] = el)}>
-          <Component {...props} />
+          {/** ErrorFallback ui 별도 생성 */}
+          <ErrorBoundary
+            fallbackCo={ModalErrorFallback}
+            onReset={() => window.location.reload()}
+          >
+            <Component {...props} />
+          </ErrorBoundary>
         </ModalContent>
       </ModalWrapper>
     );
