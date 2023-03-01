@@ -15,7 +15,7 @@ function WeekSelector({
   const [totalWeeks, setTotalWeeks] = useState([]);
 
   useEffect(() => {
-    const weeks = utils.getTotalWeeks(month);
+    const weeks = utils.getTotalWeeks(Number(month) + 1);
     const tmp = [];
     for (let i = 1; i <= weeks; i++) {
       tmp.push(i);

@@ -32,12 +32,7 @@ function CommonLayoutPage() {
           <PetIdProvider>
             <Outlet />
             <Suspense>
-              <ErrorBoundary
-                FallbackComponent={ModalErrorFallback}
-                onReset={() => window.location.reload()}
-              >
-                <Modal />
-              </ErrorBoundary>
+              <Modal />
             </Suspense>
           </PetIdProvider>
         </ModalsProvider>

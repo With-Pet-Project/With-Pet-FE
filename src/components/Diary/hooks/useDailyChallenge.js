@@ -21,7 +21,14 @@ export const useDailyChallenge = () => {
   const week = whatWeek(year, month, day);
 
   const { data: dailyChallenge } = useQuery({
-    queryKey: [DailyChallenge, jwt_token, year, month, day, petId],
+    queryKey: [
+      DailyChallenge,
+      jwt_token,
+      Number(year),
+      Number(month),
+      Number(day),
+      petId,
+    ],
     queryFn: () =>
       getDailyChallenge(
         jwt_token,
@@ -39,7 +46,7 @@ export const useDailyChallenge = () => {
     enabled: !!petId && !!week && !!year && !!month && !!day,
   });
 
-  const daily = dailyChallenge?.data.data;
+  const daily = dailyChallenge?.data?.data;
 
   return { daily };
 };

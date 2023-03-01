@@ -1,6 +1,8 @@
 import './Goal.scss';
 import styled from 'styled-components';
 import { vars } from 'lib/styles/vars';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 
 import CheckBox from './CheckBox,';
 import ThreeHorizontalDots from './ThreeHorizontalDots';
@@ -21,11 +23,30 @@ function Goal({ goal, isInModal = false }) {
       isInModal={isInModal}
       percent={percent * 100}
     >
-      {!isInModal && <CheckBox goal={goal} />}
+      {!isInModal && goal.achieveCnt < goal.targetCnt && (
+        <CheckBox goal={goal} />
+      )}
+      {!isInModal && goal.achieveCnt >= goal.targetCnt && (
+        <FontAwesomeIcon
+          icon={faThumbsUp}
+          style={{
+            color: `${vars.backgroundYellow}`,
+            width: '38px',
+            margin: '0 15px',
+            fontSize: '28px',
+          }}
+        />
+      )}
       <div className="goal-item-title">
         <h2>{goal.title}</h2>
         <p>
-          {goal.achieveCnt} / {goal.targetCnt}
+          {goal.achieveCnt >= goal.targetCnt ? (
+            '이번주 목표 달성!!'
+          ) : (
+            <>
+              {goal.achieveCnt} / {goal.targetCnt}
+            </>
+          )}
         </p>
       </div>
       <ThreeHorizontalDots />

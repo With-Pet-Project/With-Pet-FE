@@ -48,7 +48,7 @@ function AddPet() {
             <div className="birthday-month">
               <select id="birthday-month">
                 {MONTH.map((m, idx) => (
-                  <option value={idx}>{m}월</option>
+                  <option value={idx + 1}>{m}월</option>
                 ))}
               </select>
               <DownArrow htmlFor="birthday-month" />

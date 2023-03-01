@@ -46,3 +46,45 @@ export const getWeeklyChallenge = async (jwt, petId, year, month, week) => {
 
   return data;
 };
+
+export const postCheckChallenge = async (
+  jwt,
+  petId,
+  challengeId,
+  year,
+  month,
+  day,
+  week,
+  date, // YYYY-MM-DD
+) => {
+  const data = await CLIENT.post(
+    `/pet/${petId}/challenge/${challengeId}/check/`,
+    {
+      year: `${year}`,
+      month: `${month}`,
+      day: `${day}`,
+      week: `${week}`,
+      date: `${date}`,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    },
+  );
+
+  return data;
+};
+
+export const deleteUncheckChallenge = async (jwt, petId, challengeLogId) => {
+  const data = await CLIENT.delete(
+    `/pet/${petId}/challenge/check/${challengeLogId}`,
+    {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    },
+  );
+
+  return data;
+};

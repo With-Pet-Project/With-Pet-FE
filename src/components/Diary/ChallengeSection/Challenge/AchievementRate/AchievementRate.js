@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import './AchievementRate.scss';
 import { vars } from 'lib/styles/vars';
 import { useState, useEffect } from 'react';
@@ -23,13 +24,17 @@ function AchievementRate({ queryData }) {
   const [achievementRate, setAchievementRate] = useState(0);
 
   useEffect(() => {
-    if (queryData) {
+    if (queryData?.length) {
       const targetCnts = queryData.reduce((acc, cur) => acc + cur.targetCnt, 0);
       const achieveCnts = queryData.reduce(
         (acc, cur) => acc + cur.achieveCnt,
         0,
       );
-      setAchievementRate(Math.floor(achieveCnts / targetCnts));
+      Math.floor((achieveCnts / targetCnts) * 100) > 100
+        ? setAchievementRate(100)
+        : setAchievementRate(Math.floor((achieveCnts / targetCnts) * 100));
+    } else {
+      setAchievementRate(0);
     }
   }, [queryData]);
   return (

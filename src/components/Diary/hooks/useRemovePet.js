@@ -23,13 +23,9 @@ export function useRemovePet(selectPet = f => f, petIdx = 0) {
       // update가 성공했을 경우의 상태 저장
       queryClient.setQueryData([PetInfoList, jwt_token], old => {
         selectPet(0);
-        return {
-          ...old,
-          data: {
-            ...old.data,
-            data: [...old.data.data.filter(pet => pet.id !== petId)],
-          },
-        };
+        let array = old.data.data;
+        array = old.data.data.filter(pet => pet.id !== petId);
+        return old;
       });
 
       return { prevState, prevPetIdx };

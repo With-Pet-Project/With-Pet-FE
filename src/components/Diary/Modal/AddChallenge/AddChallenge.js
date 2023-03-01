@@ -6,7 +6,7 @@ import DownArrow from 'components/common/SelectArrow/DownArrow';
 import ModalButtons from '../ModalButtons';
 
 function AddChallenge() {
-  const times = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+  const times = [1, 2, 3, 4, 5, 6, 7];
   const { mutate } = useAddChallenge();
 
   const [targetCnt, setTargetCnt] = useState(1);
