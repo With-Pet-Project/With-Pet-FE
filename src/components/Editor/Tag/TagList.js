@@ -24,7 +24,6 @@ function TagList() {
   return (
     <div className="tagList-button">
       <select onClick={handleTag} id="tag-selector">
-        <option value="ALL">태그 선택</option>
         {Object.values(ARTICLE_TAG).map((t, idx) => (
           <option value={KEY[idx]}>{t}</option>
         ))}

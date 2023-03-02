@@ -21,7 +21,7 @@ function Location() {
   return (
     <div className="Location-selector-button" ref={targetRef}>
       <button type="button" onClick={isOpen} disabled={!buttonEnabled}>
-        <span>{buttonEnabled ? params.get('firstPlace') : '선택 불가'}</span>
+        <span>{buttonEnabled ? params.get('firstPlace') : '해당없음'}</span>
       </button>
       <div className="editor-down-arrow">
         <DownArrow htmlFor="tag-selector" />

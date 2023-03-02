@@ -3,13 +3,12 @@ import './Editor.scss';
 import styled from 'styled-components';
 import { vars } from 'lib/styles/vars';
 
-import React, { useState, useMemo, useRef, useImperativeHandle } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import ReactQuill from 'react-quill';
+import { imageHandler } from './util/imageHandler';
 import TagList from './Tag/TagList';
 import Location from './Location/Location';
 import 'react-quill/dist/quill.snow.css';
-
-import { imageHandler } from './utils/imageHandler';
 
 const formats = [
   'header',
@@ -90,9 +89,9 @@ function Editor() {
         aria-label="article title"
       />
       <ReactQuill
-        ref={element => {
-          if (element !== null) {
-            QuillRef.current = element;
+        ref={el => {
+          if (el !== null) {
+            QuillRef.current = el;
           }
         }}
         theme="snow"
@@ -100,7 +99,7 @@ function Editor() {
         onChange={setValue}
         modules={modules}
         format={formats}
-        placeholder=""
+        placeholder="내용을 입력해주세요."
       />
     </form>
   );
