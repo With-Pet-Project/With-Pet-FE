@@ -26,6 +26,10 @@ function SignUp() {
     }
   };
 
+  const handleCancel = () => {
+    navigate('/login');
+  };
+
   return (
     <Container>
       <form className="signup-form auth-form" onSubmit={handleSubmit}>
@@ -47,7 +51,7 @@ function SignUp() {
         </label>
         <Input type="text" id="nickname" name="nickname" />
         <div className="btn-wrapper">
-          <button type="button" className=" button">
+          <button type="button" className=" button" onClick={handleCancel}>
             취소
           </button>
           <button type="submit" className="signup-btn button">

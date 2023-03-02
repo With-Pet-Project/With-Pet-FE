@@ -1,3 +1,4 @@
+import axios from 'axios';
 import CLIENT from './client';
 
 // 카카오 토큰 얻는 함수
@@ -21,6 +22,29 @@ export const getUserInfo = async jwt => {
       Authorization: `Bearer ${jwt}`,
     },
   });
+
+  return response;
+};
+
+export const localLogin = async (email, password) => {
+  const response = await CLIENT.post(
+    '/user',
+    {
+      email,
+      password,
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    },
+  ).catch(err => {
+    console.log(err);
+    alert('아이디 또는 비밀번호를 잘못 입력했습니다.');
+  });
+
+  const { token: accessToken } = response.data.body;
+  axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
 
   return response;
 };
