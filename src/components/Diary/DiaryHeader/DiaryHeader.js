@@ -1,8 +1,8 @@
 import './DiaryHeader.scss';
 import Header from 'components/common/Header/Header';
 
-import PetInfo from './PetInfo';
-import AddPet from './AddPet';
+import PetInfo from './PetInfo/PetInfo';
+import AddPet from './AddPet/AddPet';
 
 function DiaryHeader() {
   return (

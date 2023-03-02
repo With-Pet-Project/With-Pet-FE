@@ -1,0 +1,86 @@
+@import '/src/lib//styles//vars.scss';
+
+.landing-fifth-section {
+  padding: 200px 100px;
+}
+
+.landing-fifth-section-background {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+
+  max-width: 1200px;
+}
+
+.landing-fifth-section-img {
+  width: 600px;
+  & img {
+    width: 100%;
+  }
+}
+
+.landing-fifth-section-title {
+  width: 100%;
+  margin-top: 20px;
+
+  & img {
+    margin-left: 100px;
+  }
+}
+
+.landing-fifth-section-text {
+  margin: 0 auto 100px;
+
+  h2 {
+    width: 60%;
+    font-family: 'TmoneyRoundWindBold';
+    font-size: 36px;
+    line-height: 47px;
+    color: $fontColor-black;
+
+    margin: 100px auto 0;
+  }
+
+  p {
+    width: 60%;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 24px;
+    color: $fontColor-deep-gray;
+    letter-spacing: -1px;
+
+    margin: 26px auto 0;
+  }
+}
+
+@media screen and (max-width: $ultra-wide) {
+  .landing-fifth-section-background {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    width: 70vw;
+  }
+
+  .landing-fifth-section-title {
+    & img {
+      margin-left: 0;
+    }
+  }
+}
+
+@media screen and (max-width: $semi-wide) {
+  .landing-fifth-section {
+    padding: 200px 50px;
+  }
+  
+}
+
+@media screen and (max-width: $normal) {
+  .landing-fifth-section {
+    padding: 200px 10px;
+  }
+  
+  .landing-fifth-section-background {
+    width: 620px;
+  }
+}

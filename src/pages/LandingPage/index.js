@@ -1,28 +1,31 @@
-import RefContextProvider from 'components/Landing/context/RefProvider';
+import styled from 'styled-components';
+
 import { Suspense } from 'react';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import ErrorFallback from 'components/common/ErrorFallback/ErrorFallback';
 import { ErrorBoundary } from 'react-error-boundary';
 
-import FirstSection from 'components/Landing/FirstSection';
-import SecondSection from 'components/Landing/SecondSection';
-import ThirdSection from 'components/Landing/ThirdSection';
+import Main from 'components/Landing/Main';
+import Footer from 'components/Landing/Footer';
+
+const Wrapper = styled.div`
+  flex-grow: 1;
+`;
 
 function LandingPage() {
   const { reset } = useQueryErrorResetBoundary();
 
   return (
-    <main>
-      <Suspense>
-        <ErrorBoundary FallbackComponent={ErrorFallback} onReset={reset}>
-          <RefContextProvider>
-            <FirstSection />
-            <SecondSection />
-            <ThirdSection />
-          </RefContextProvider>
-        </ErrorBoundary>
-      </Suspense>
-    </main>
+    <Wrapper>
+      <main>
+        <Suspense>
+          <ErrorBoundary FallbackComponent={ErrorFallback} onReset={reset}>
+            <Main />
+          </ErrorBoundary>
+        </Suspense>
+      </main>
+      <Footer />
+    </Wrapper>
   );
 }
 

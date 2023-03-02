@@ -3,7 +3,7 @@ import './Filter.scss';
 import { ADMIN_DISTRICT } from 'lib/constants/adminDistrict';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useCommunityParams } from 'components/common/hooks/useCommunityParams';
+import { useCommunityParams } from '../hooks/useCommunityParams';
 
 import PrioritySelector from './Selector/PrioritySelector';
 import LocationSelectors from './Selector/LocationSelectors';

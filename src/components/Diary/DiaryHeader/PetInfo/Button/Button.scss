@@ -1,0 +1,16 @@
+.pet-profile-list {
+  display: flex;
+  
+  & .pet-profile-list-arrow {
+    display: inline-block;
+    margin-top: 8px;
+  }
+}
+
+.pet-name-birthday {
+  margin: 0 15px;
+
+  & span {
+    width: 178px;
+  }
+}

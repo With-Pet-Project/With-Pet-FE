@@ -9,6 +9,7 @@
     font-family: 'TmoneyRoundWindBold';
     font-size: 20px;
     line-height: 26px;
+    margin: 0 0 10px;
   }
 
   h3 {
@@ -27,6 +28,10 @@
     border-radius: 10px;
     padding-left: 10px;
     margin: 12px 0 0;
+
+    &:focus {
+      border: 1px solid $background-yellow;
+    }
   }
 }
 
@@ -35,11 +40,12 @@
   justify-content: space-between;
 
   & > div {
-    flex-basis: calc(50% - 10px);
+    flex-basis: calc(32% - 10px);
     margin: 12px 0 0;
   }
 
   select {
+    cursor: pointer;
     appearance: none;
     -moz-appeareance: none;
     -webkit-appearance: none;

@@ -15,6 +15,10 @@ const ButtonWrapper = styled.div`
     margin: 0 7px;
   }
 
+  & button:disabled {
+    cursor: not-allowed;
+  }
+
   & button:first-child {
     background-color: #fff;
 
@@ -34,7 +38,7 @@ const ButtonWrapper = styled.div`
   }
 `;
 
-function ModalButtons({ Component }) {
+function ModalButtons({ Component, mutate, disabled = true }) {
   const { closeModal } = useModal();
 
   return (
@@ -42,7 +46,16 @@ function ModalButtons({ Component }) {
       <button type="button" onClick={() => closeModal(Component)}>
         취소
       </button>
-      <button type="button">추가하기</button>
+      <button
+        type="button"
+        onClick={() => {
+          mutate();
+          closeModal(Component);
+        }}
+        disabled={disabled}
+      >
+        추가하기
+      </button>
     </ButtonWrapper>
   );
 }

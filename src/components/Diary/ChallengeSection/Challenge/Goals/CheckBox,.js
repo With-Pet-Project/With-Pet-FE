@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-expressions */
 import styled from 'styled-components';
 import { vars } from 'lib/styles/vars';
-import { useState } from 'react';
+import { useCheckChallenge } from 'components/Diary/hooks/useCheckChallenge';
+import { useUnCheckChallenge } from 'components/Diary/hooks/useUnCheckChallenge';
 
 const Check = styled.label`
   border: 1px solid
@@ -23,12 +25,16 @@ const Icon = styled.svg`
 `;
 
 function CheckBox({ goal }) {
-  const [checked, setChecked] = useState(false);
-
-  const isChecked = () => setChecked(!checked);
+  const check = useCheckChallenge();
+  const uncheck = useUnCheckChallenge();
+  const isChecked = () => {
+    goal.challengeLogId
+      ? uncheck.mutate(goal.challengeLogId)
+      : check.mutate(goal.challengeId);
+  };
 
   return (
-    <Check htmlFor={goal.id} check={checked}>
+    <Check htmlFor={goal.id} check={goal.challengeLogId}>
       <input type="checkbox" id={goal.id} onClick={isChecked} />
       <Icon viewBox="0 0 24 24">
         <polyline points="19 7 10 17 5 12" />

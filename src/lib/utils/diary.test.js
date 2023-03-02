@@ -25,9 +25,12 @@ test('Function getStartAndEndDate (Feb, last week)', () => {
 });
 
 test('Function getTotalWeeks', () => {
-  const JANUARY = getTotalWeeks(0);
+  const JANUARY = getTotalWeeks(1);
   expect(JANUARY).toBe(5);
 
-  const APRIL = getTotalWeeks(3);
-  expect(APRIL).toBe(6);
+  const FEB = getTotalWeeks(2);
+  expect(FEB).toBe(4);
+
+  const APRIL = getTotalWeeks(4);
+  expect(APRIL).toBe(5);
 });

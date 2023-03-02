@@ -24,7 +24,7 @@ export const useModal = () => {
   };
 };
 
-const ModalWrapper = styled.div`
+export const ModalWrapper = styled.div`
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -38,7 +38,7 @@ const ModalWrapper = styled.div`
   background: rgba(0, 0, 0, 0.5);
 `;
 
-const ModalContent = styled.div`
+export const ModalContent = styled.div`
   position: sticky;
   background: white;
   // padding: 1em;

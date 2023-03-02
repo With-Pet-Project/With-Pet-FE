@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import './Sidebar.scss';
 import { vars } from 'lib/styles/vars';
 import styled from 'styled-components';
@@ -68,7 +69,7 @@ function Sidebar() {
               <Menu to="/" menuName="홈">
                 <Home />
               </Menu>
-              <Menu to="/diary" menuName="다이어리">
+              <Menu to={user ? '/diary' : '/login'} menuName="다이어리">
                 <Diary />
               </Menu>
               <Menu to="/account" menuName="가계부">
@@ -89,9 +90,14 @@ function Sidebar() {
                   <Menu to="/profile" menuName="마이 페이지">
                     <Profile />
                   </Menu>
-                  <Menu to="/" menuName="로그아웃" onClick={logout}>
-                    <Logout />
-                  </Menu>
+                  <li>
+                    <button type="button" onClick={logout}>
+                      <div className="side-navbar-menu-img">
+                        <Logout />
+                      </div>
+                      <span>로그아웃</span>
+                    </button>
+                  </li>
                 </>
               ) : (
                 <Menu to="/login" menuName="로그인">

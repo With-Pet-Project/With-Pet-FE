@@ -1,0 +1,91 @@
+@import '/src/lib/styles/vars.scss';
+
+.landing-second-section {
+  min-height: 700px;
+  padding: 150px 0;
+}
+
+.landing-second-section-background {
+  padding: 30px 0;
+  min-height: 900px;
+  
+  background-image: url('../../../../lib/assets/images/landing/section/section02/image_00.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  & h2 {
+    text-align: center;
+    margin: 30px;
+
+    font-family: 'TmoneyRoundWindBold';
+    font-size: 36px;
+    line-height: 47px;
+  }
+
+  & p {
+    max-width: 607px;
+    margin: auto;
+    white-space: pre;
+    text-align: center;
+
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 24px;
+    color: $fontColor-deep-gray;
+  }
+}
+
+@media screen and (max-width: $wide) {
+  .landing-second-section-background {
+    min-height: 830px;
+    padding: 30px auto;
+
+    & h2 {
+      font-size: 32px;
+    }
+
+    & p {
+      font-size: 14px;
+    }
+  }
+}
+
+@media screen and (max-width: $semi-wide) {
+  .landing-second-section-background {
+    max-width: 80vw;
+    min-height: 550px;
+    padding: 0;
+    margin: 0 auto;
+
+    & h2 {
+      font-size: 30px;
+    }
+
+    & p {
+      font-size: 13px;
+    }
+  }
+}
+
+
+@media screen and (max-width: $normal) {
+  .landing-second-section-background {
+    max-width: 82vw;
+    min-height: 600px;
+    padding: 0;
+
+    & h2 {
+      margin: 30px auto;
+      font-size: 22px;
+    }
+
+    & p {
+      display: block;
+      margin: 20px auto;
+      font-size: 13px;
+      width: 280px;
+      white-space: pre-wrap;
+    }
+  }
+}

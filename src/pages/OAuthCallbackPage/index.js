@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import OAuthCallback from 'components/auth/OAuthCallback';
+import OAuthCallback from 'components/auth/OAuthCallback/OAuthCallback';
 
 const Wrapper = styled.div`
   width: 100%;
