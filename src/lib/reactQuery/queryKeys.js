@@ -20,4 +20,5 @@ export const QUERY_KEY = {
   PetInfoById: 'petInfoById',
   DailyChallenge: 'dailyChallenge',
   WeeklyChallenge: 'weeklyChallenge',
+  PetHealth: 'petHealth',
 };

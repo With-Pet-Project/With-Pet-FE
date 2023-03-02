@@ -3,6 +3,7 @@ import './HealthSection.scss';
 import styled from 'styled-components';
 import { useState } from 'react';
 import HealthContent from './HealthContent';
+import { useHealthInfo } from '../hooks/useHealthInfo';
 
 const EditButton = styled.button`
   color: ${({ edit }) => (edit ? '$backgroundYellow' : '#000')};
@@ -10,6 +11,7 @@ const EditButton = styled.button`
 
 function HealthSection() {
   const [edit, setEdit] = useState(false);
+  const data = useHealthInfo();
 
   const isEdit = () => setEdit(!edit);
 
