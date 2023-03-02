@@ -1,4 +1,4 @@
-import { getStartAndEndDate, getTotalWeeks } from './diary';
+import { getStartAndEndDate, getTotalWeeks } from '../util/diary';
 
 test('Function getStartAndEndDate (Feb, first week)', () => {
   // 2월 첫째주

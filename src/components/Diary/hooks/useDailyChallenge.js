@@ -4,7 +4,7 @@ import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
 import { getDailyChallenge } from 'lib/APIs/challenge';
 import { useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { whatWeek } from 'lib/utils/diary';
+import { whatWeek } from '../util/diary';
 import { petIdContext } from '../context/PetContext';
 
 export const useDailyChallenge = () => {

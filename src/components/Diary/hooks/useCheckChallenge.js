@@ -1,10 +1,10 @@
 /* eslint-disable camelcase */
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useSearchParams } from 'react-router-dom';
-import { postCheckChallenge, deleteUncheckChallenge } from 'lib/APIs/challenge';
+import { postCheckChallenge } from 'lib/APIs/challenge';
 import { useContext } from 'react';
-import { whatWeek } from 'lib/utils/diary';
 import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
+import { whatWeek } from '../util/diary';
 import { petIdContext } from '../context/PetContext';
 
 export function useCheckChallenge() {

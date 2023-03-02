@@ -1,9 +1,8 @@
 import './WeekSelector.scss';
 
 import { useState, useEffect } from 'react';
-import * as utils from 'lib/utils/diary';
-
 import DownArrow from 'components/common/SelectArrow/DownArrow';
+import * as utils from '../../util/diary';
 
 function WeekSelector({
   year,
