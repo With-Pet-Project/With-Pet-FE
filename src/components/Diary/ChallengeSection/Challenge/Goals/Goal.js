@@ -1,9 +1,12 @@
 import './Goal.scss';
 import styled from 'styled-components';
 import { vars } from 'lib/styles/vars';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { useOutsideDetection } from 'components/common/hooks/useOutsideDetection';
 
 import CheckBox from './CheckBox,';
-import ThreeHorizontalDots from './ThreeHorizontalDots';
+import ThreeHorizontalDots from './Option/ThreeHorizontalDots';
 
 const GoalItem = styled.div`
   padding-left: ${({ isInModal }) => (isInModal ? '20px' : '0')};
@@ -14,19 +17,47 @@ const GoalItem = styled.div`
 `;
 
 function Goal({ goal, isInModal = false }) {
-  const percent = 0.25;
+  const { open, isOpen, targetRef } = useOutsideDetection();
+
+  const percent = goal.achieveCnt / goal.targetCnt;
   return (
     <GoalItem
       className="goal-item"
       isInModal={isInModal}
       percent={percent * 100}
     >
-      {!isInModal && <CheckBox goal={goal} />}
+      {!isInModal && goal.achieveCnt < goal.targetCnt && (
+        <CheckBox goal={goal} />
+      )}
+      {!isInModal && goal.achieveCnt >= goal.targetCnt && (
+        <FontAwesomeIcon
+          icon={faThumbsUp}
+          style={{
+            color: `${vars.backgroundYellow}`,
+            width: '38px',
+            margin: '0 15px',
+            fontSize: '28px',
+          }}
+        />
+      )}
       <div className="goal-item-title">
         <h2>{goal.title}</h2>
-        <p>주 {goal.target_cnt}회 달성 목표</p>
+        <p>
+          {goal.achieveCnt >= goal.targetCnt ? (
+            '이번주 목표 달성!!'
+          ) : (
+            <>
+              {goal.achieveCnt} / {goal.targetCnt}
+            </>
+          )}
+        </p>
       </div>
-      <ThreeHorizontalDots />
+      <ThreeHorizontalDots
+        open={open}
+        isOpen={isOpen}
+        ref={targetRef}
+        goal={goal}
+      />
     </GoalItem>
   );
 }

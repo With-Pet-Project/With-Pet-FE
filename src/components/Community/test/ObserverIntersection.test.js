@@ -4,7 +4,7 @@ import {
   mockAllIsIntersecting,
   intersectionMockInstance,
 } from 'react-intersection-observer/test-utils';
-import ArticleList from '../ArticleSection/ArticleList/ArticleList';
+import ArticleList from '../ArticleList/ArticleList';
 
 test('check inView is true.', async () => {
   render(<ArticleList />);

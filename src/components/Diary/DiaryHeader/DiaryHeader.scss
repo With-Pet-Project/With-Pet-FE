@@ -11,53 +11,6 @@
   margin: 0 auto;
 }
 
-.pet-info {
-  display: flex;
-  height: 50%;
-
-  & h2 {
-    color: $fontColor-black;
-    font-family: TmoneyRoundWindBold;
-    font-weight: 800;
-    font-size: 31px;
-    line-height: 38px;
-    margin: 0 0 10px;
-  }
-
-  & span {
-    font-weight: 400;
-    font-size: 17px;
-    line-height: 20px;
-    color: $fontColor-gray;
-
-    margin-left: 2px;
-  }
-
-  & .pet-profile-img {
-    width:70px;
-    height: 70px;
-    background-color: $background-yellow;
-    border-radius: 100px;
-
-    & img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  & .pet-name-birthday {
-    margin: 0 15px;
-  }
-
-  & .pet-profile-mini-img {
-    margin-top: 5px;
-    margin-left: -8px;
-    width: 30px;
-    height: 30px;
-    border-radius: 10px;
-  }
-}
-
 .add-pet-button {
   & button {
     text-align: right;

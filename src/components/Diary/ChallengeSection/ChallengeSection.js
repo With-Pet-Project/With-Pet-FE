@@ -1,16 +1,22 @@
-import { useState } from 'react';
+/* eslint-disable no-unused-expressions */
+import { useState, useEffect } from 'react';
 import {
   getMonthYearDetails,
   getNextYearMonth,
   toDateObject,
 } from 'components/common/Calender/hooks/date';
 import Calender from 'components/common/Calender/Calender';
-import { TODAY } from '../../common/Calender/constant';
+import { useSearchParams } from 'react-router-dom';
 
+import { ErrorBoundary } from 'react-error-boundary';
+import ModalErrorFallback from 'components/common/Modal/Fallback/Fallback';
+
+import { TODAY } from '../../common/Calender/constant';
 import Challenge from './Challenge/Challenge';
 import './ChallengeSection.scss';
 
 function ChallengeSection() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [yearMonth, setYearMonth] = useState(getMonthYearDetails(TODAY));
   const [selectDate, setSelectDate] = useState(getMonthYearDetails(TODAY));
 
@@ -23,6 +29,14 @@ function ChallengeSection() {
     setSelectDate(getMonthYearDetails(nextDate));
   };
 
+  useEffect(() => {
+    const date = selectDate.dateTime.split('-');
+    searchParams.set('year', date[0]);
+    searchParams.set('month', date[1]);
+    searchParams.set('day', date[2]);
+    setSearchParams(searchParams);
+  }, [searchParams, setSearchParams, selectDate.dateTime]);
+
   return (
     <section className="diary-center-section">
       <Calender
@@ -32,7 +46,12 @@ function ChallengeSection() {
         selectDate={selectDate.dateTime}
         data={[]}
       />
-      <Challenge />
+      <ErrorBoundary
+        FallbackComponent={ModalErrorFallback}
+        onReset={() => window.location.reload()}
+      >
+        <Challenge />
+      </ErrorBoundary>
     </section>
   );
 }

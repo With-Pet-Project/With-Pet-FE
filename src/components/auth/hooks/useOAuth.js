@@ -6,7 +6,6 @@ import { useSearchParams } from 'react-router-dom';
 import { TOAST_MESSAGE, TOAST_OPTION } from 'components/common/Toast/toast';
 import { toast } from 'react-toastify';
 import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
-import { useUser } from './useUser';
 
 export function useOAuth() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -24,8 +23,6 @@ export function useOAuth() {
   if (jwt_token) {
     localStorage.setItem('jwt_token', jwt_token);
   }
-
-  useUser();
 
   return jwt_token;
 }

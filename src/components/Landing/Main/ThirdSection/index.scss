@@ -1,0 +1,92 @@
+@import '/src/lib/styles/vars.scss';
+
+.landing-third-section {
+  min-height: 1200px;
+  padding: 200px 10%;
+  background-color: $background-light-yellow;
+
+  & h2 {
+    font-family: 'TmoneyRoundWindBold';
+    font-size: 28px;
+    line-height: 47px;
+    margin-bottom: 20px;
+  }
+
+  & p {
+    font-size: 17px;
+    line-height: 24px;
+    font-weight: 500;
+    color: $fontColor-deep-gray;
+
+    white-space: pre;
+  }
+}
+
+.landing-third-section-background {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.landing-third-section-content {
+  width: 88%;
+  margin: 0 auto;
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & article {
+    margin: 74px 15px;
+    flex-basis: calc(45%);
+  }
+
+  & article img {
+    margin-top: 20px;
+    margin-left: -18px;
+    max-width: 610px;
+  }
+}
+
+@media screen and (max-width: $ultra-wide) {
+  .landing-third-section-content {
+    & > div {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
+@media screen and (max-width: $semi-wide) {
+  .landing-third-section-content {  
+    & article {
+      margin: 74px 0;
+    }
+
+    & article img {
+      max-width: 560px;
+
+      margin-top: 20px;
+      margin-left: -18px;
+    }
+  }
+}
+
+@media screen and (max-width: $normal) {
+  .landing-third-section {
+    padding: 200px 10px;
+  }
+
+  .landing-third-section-content {
+    & article {
+      margin: 74px 0;
+    }
+
+    & article img {
+      max-width: 500px;
+
+      margin-top: 20px;
+      margin-left: -18px;
+    }
+  }
+}

@@ -64,7 +64,7 @@
     height: 50px;
   }
 
-  & ul li a {
+  & ul li a, & ul li button {
     height: 100%;
     display: block;
     padding: 0 15px;
@@ -73,6 +73,16 @@
     &:hover {
       background-color: #fff;
     }
+  }
+
+  & ul li button {
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+  
+  & ul li button span {
+    font-family: 'TmoneyRoundWindBold';
   }
 
   & ul li a > div {

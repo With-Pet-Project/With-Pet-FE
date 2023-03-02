@@ -18,5 +18,5 @@ jobs:
         record: false
         wait-on: ${{ github.event.deployment_status.target_url }}
       env:
-        CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }} 
+        # CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }} 
         CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
