@@ -7,4 +7,8 @@ const CLIENT = axios.create({
   baseURL: BASE_URL,
 });
 
+CLIENT.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem(
+  'jwt_token',
+)}`;
+
 export default CLIENT;

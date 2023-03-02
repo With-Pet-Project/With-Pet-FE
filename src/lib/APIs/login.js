@@ -44,6 +44,7 @@ export const localLogin = async (email, password) => {
   });
 
   const { token: accessToken } = response.data.body;
+  localStorage.setItem('jwt_token', accessToken);
   axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
 
   return response;

@@ -6,8 +6,10 @@ import { KAKAO_OAUTH_URL } from 'lib/KakaoAPIs/client';
 import { localLogin } from 'lib/APIs/login';
 import Container from '../common/Container/Container';
 import Input from '../common/Input/Input';
+import { useAuth } from '../hooks/useAuth';
 
 function LogIn() {
+  const auth = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async event => {
@@ -16,6 +18,7 @@ function LogIn() {
     const { value: password } = event.target.password;
     // 유효성 검사
     const response = await localLogin(email, password);
+    // auth.signin(email, password);
 
     if (response?.status === 200) {
       // 토큰 처리

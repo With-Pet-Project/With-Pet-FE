@@ -11,6 +11,7 @@ export const queryKeys = createQueryKeyStore({
   article: [],
   oauth: code => ({ code }),
   user: jwt => ({ jwt }),
+  userTest: [],
 });
 
 export const QUERY_KEY = {
