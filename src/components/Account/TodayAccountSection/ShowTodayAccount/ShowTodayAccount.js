@@ -31,7 +31,7 @@ function ShowTodayAccount({ accountData }) {
       <div className="today-total">
         <span className="total-title">전체 소비</span>
         <div className="total-price">
-          <span>{getComma(getTotal())}</span>
+          <span className="price">{getComma(getTotal())}</span>
           <span className="unit">원</span>
         </div>
       </div>

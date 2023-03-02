@@ -66,7 +66,7 @@ function TotalAccountSection({
         <h2>이번달 총 지출</h2>
         <ul>{totalAccountItemHtml}</ul>
         <div className="total-price">
-          <span>{getComma(totalPrice)}</span>
+          <span className="price">{getComma(totalPrice)}</span>
           <span className="unit">원</span>
         </div>
       </div>

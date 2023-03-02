@@ -13,7 +13,7 @@ export const addMarker = (position, idx, map) => {
   const imgOptions = {
     spriteSize: new kakao.maps.Size(60, 691), // 스프라이트 이미지의 크기
     spriteOrigin: new kakao.maps.Point(0, idx * 44 + 10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
-    offset: new kakao.maps.Point(20, 33), // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+    offset: new kakao.maps.Point(20, 40), // 마커 좌표에 일치시킬 이미지 내에서의 좌표
   };
 
   const markerImage = new kakao.maps.MarkerImage(

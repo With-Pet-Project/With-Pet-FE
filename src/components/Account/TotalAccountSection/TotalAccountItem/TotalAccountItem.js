@@ -8,7 +8,7 @@ function TotalAccountItem({ name, price, percent, color }) {
       <div className="item">
         <span className="name">{name}</span>
         <div className="price">
-          <span>{getComma(price)}</span>
+          <span className="number">{getComma(price)}</span>
           <span className="unit">원</span>
         </div>
       </div>

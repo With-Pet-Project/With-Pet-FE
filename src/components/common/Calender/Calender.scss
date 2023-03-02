@@ -5,7 +5,6 @@
     // border: 1px solid #eaeaea;
   }
 
-  font-family: TmoneyRoundWindNormal;
   display: flex;
   flex-direction: column;
   min-width: 390px;
@@ -29,6 +28,7 @@
     }
 
     h2 {
+      font-family: TmoneyRoundWindNormal;
       font-size: 28px;
       color: #252525;
 
@@ -81,6 +81,7 @@
     }
 
     .dayOfWeek > .item {
+      font-family: TmoneyRoundWindNormal;
       justify-items: center;
       align-items: center;
       display: inline-grid;
@@ -95,6 +96,7 @@
     }
 
     .days > .item {
+      font-family: TmoneyRoundWindNormal;
       text-align: right;
       color: #b7b7b7;
       font-size: 15px;

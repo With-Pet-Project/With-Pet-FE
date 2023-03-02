@@ -41,7 +41,6 @@
     }
 
     .total-price {
-      font-family: TmoneyRoundWindBold;
       font-size: 28px;
       color: $font-brown;
 
@@ -49,11 +48,12 @@
         font-size: 20px;
       }
     }
-
+    .price {
+      font-family: TmoneyRoundWindBold;
+    }
     .total-price > .unit {
       margin-left: 5px;
       font-size: 16px;
-      font-family: 'Pretendard Variable';
       font-variation-settings: 'wght' 550;
     }
   }
