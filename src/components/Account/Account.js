@@ -9,7 +9,7 @@ import {
 import FloatButton from 'components/common/FloatButton/FloatButton';
 import { useModal } from 'components/common/Modal/context/useModal';
 import { TODAY } from '../common/Calender/constant';
-import { useFetchAllAccount } from './hooks/useAccount';
+import { useAccount } from './hooks/useAccount';
 import { useMonthYear } from './hooks/useMonthYear';
 
 import AddAccount from './Modal/AddAccount/AddAccount';
@@ -20,11 +20,10 @@ import './Account.scss';
 function Account() {
   const [selectDate, setSelectDate] = useState(getMonthYearDetails(TODAY));
   const [yearMonth, setYearMonth] = useMonthYear();
-  const accountData = useFetchAllAccount(yearMonth.year, yearMonth.month);
+  const accountData = useAccount(yearMonth.year, yearMonth.month);
   const { openModal } = useModal();
 
   const openAddAccount = () => {
-    console.log(selectDate);
     openModal(AddAccount, { selectDate });
   };
 
@@ -46,7 +45,10 @@ function Account() {
         handleSelectDate={handleSelectDate}
         handleMonthChange={handleMonthChange}
       />
-      <TodayAccountSection accountData={accountData[selectDate.day]} />
+      <TodayAccountSection
+        accountData={accountData[selectDate.day]}
+        yearMonth={yearMonth}
+      />
       <FloatButton handleOnClick={openAddAccount}>
         <FontAwesomeIcon icon={faPlus} size="1x" />
       </FloatButton>

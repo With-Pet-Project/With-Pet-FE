@@ -13,7 +13,6 @@ function FirstSection({
   moveToSixth,
 }) {
   const user = useUser();
-  console.log(user);
   const navigate = useNavigate();
   const gotoLogin = () => navigate('/login');
 
