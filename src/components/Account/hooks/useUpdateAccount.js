@@ -1,11 +1,27 @@
 import { useQueryClient, useMutation } from '@tanstack/react-query';
 import { queryKeys } from 'lib/reactQuery/queryKeys';
-import axios from 'axios';
 import { TOAST_OPTION, TOAST_MESSAGE } from 'components/common/Toast/toast';
 import { toast } from 'react-toastify';
+import CLIENT from 'lib/APIs/client';
+
+// const updateAccount = async values => {
+//   console.log(values);
+//   const { data } = await axios.patch('/consumption', values);
+//   return data;
+// };
 
 const updateAccount = async values => {
-  const { data } = await axios.patch('/consumption', values);
+  const jwt = localStorage.getItem('jwt_token') || null;
+  const { data } = await CLIENT.put(
+    `/pet/37/consumption/${values.id}`,
+    values,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${jwt}`,
+      },
+    },
+  );
   return data;
 };
 

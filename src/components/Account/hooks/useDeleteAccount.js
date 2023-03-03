@@ -1,11 +1,21 @@
 import { useQueryClient, useMutation } from '@tanstack/react-query';
 import { queryKeys } from 'lib/reactQuery/queryKeys';
-import axios from 'axios';
 import { TOAST_OPTION, TOAST_MESSAGE } from 'components/common/Toast/toast';
 import { toast } from 'react-toastify';
+import CLIENT from 'lib/APIs/client';
+
+// export const deleteAccount = async id => {
+//   const { data } = await axios.delete(`/consumption/${id}`);
+//   return data;
+// };
 
 export const deleteAccount = async id => {
-  const { data } = await axios.delete(`/consumption/${id}`);
+  const jwt = localStorage.getItem('jwt_token') || null;
+  const { data } = await CLIENT.delete(`/pet/37/consumption/${id}`, {
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
   return data;
 };
 

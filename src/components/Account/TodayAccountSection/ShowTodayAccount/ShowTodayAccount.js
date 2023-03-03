@@ -3,15 +3,16 @@ import { ACCOUNT_LIST } from '../../constant';
 import ShowTodayItem from '../ShowTodayItem/ShowTodayItem';
 import '../TodayAccount.scss';
 
-// 이부분은 api오면 다시 해봐야할것같다.
 function ShowTodayAccount({ accountData }) {
+  const { consumption } = accountData.length > 0 && accountData[0];
+
   const getTotal = () => {
     if (accountData.length <= 0) return 0;
 
     return Object.entries(ACCOUNT_LIST).reduce((acc, [key, _]) => {
-      const hasKey = Object.keys(accountData[0]).includes(key);
+      const hasKey = Object.keys(consumption).includes(key);
       if (!hasKey) return acc;
-      return acc + accountData[0][key];
+      return acc + consumption[key];
     }, 0);
   };
 
@@ -20,7 +21,7 @@ function ShowTodayAccount({ accountData }) {
       <ShowTodayItem
         key={key}
         name={name}
-        price={accountData.length > 0 ? accountData[0][key] : 0}
+        price={accountData.length > 0 ? consumption[key] : 0}
         darkColor={darkColor}
       />
     ),
@@ -31,7 +32,7 @@ function ShowTodayAccount({ accountData }) {
       <div className="today-total">
         <span className="total-title">전체 소비</span>
         <div className="total-price">
-          <span>{getComma(getTotal())}</span>
+          <span className="price">{getComma(getTotal())}</span>
           <span className="unit">원</span>
         </div>
       </div>

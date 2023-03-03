@@ -8,22 +8,16 @@ import { useUpdateAccount } from '../hooks/useUpdateAccount';
 import './TodayAccountSection.scss';
 
 // api 적용 후 이부분 리펙토링
-function TodayAccountSection({ accountData }) {
+function TodayAccountSection({ accountData, yearMonth }) {
   const [isEdit, setIsEdit] = useState(false);
   const deleteAccount = useDeleteAccount();
   const updateAccount = useUpdateAccount();
-
-  const accountValue = {
-    id: accountData.length > 0 && accountData[0].id,
-    feed: accountData.length > 0 && accountData[0].feed,
-    toy: accountData.length > 0 && accountData[0].toy,
-    hospital: accountData.length > 0 && accountData[0].hospital,
-    beauty: accountData.length > 0 && accountData[0].beauty,
-    etc: accountData.length > 0 && accountData[0].etc,
-  };
+  const { consumption } = accountData.length > 0 && accountData[0];
+  const accountValue = { ...consumption };
 
   const onConfirm = () => {
-    const { id } = accountData[0];
+    const { id } = consumption;
+    console.log(id);
     deleteAccount(id);
   };
 
@@ -36,7 +30,13 @@ function TodayAccountSection({ accountData }) {
 
   const handleEditSubmit = event => {
     event.preventDefault();
-    updateAccount(accountValue);
+    const { year, month } = yearMonth;
+    updateAccount({
+      ...accountValue,
+      year: Number(year),
+      month: Number(month),
+      week: 1,
+    });
     setIsEdit(false);
   };
 

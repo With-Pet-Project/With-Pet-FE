@@ -16,8 +16,22 @@ function AddAccount({ selectDate }) {
     const { value: hospital } = event.target.elements.hospital;
     const { value: beauty } = event.target.elements.beauty;
     const { value: etc } = event.target.elements.etc;
-    addAccount({ petId, feed, toy, hospital, beauty, etc, date: selectDate });
-    closeModal(AddAccount);
+
+    const { day, month, year } = selectDate;
+
+    addAccount({
+      petId,
+      feed,
+      toy,
+      hospital,
+      beauty,
+      etc,
+      day,
+      month,
+      year,
+    });
+
+    closeModal(AddAccount); // it's not working. but why?
   };
 
   const inputHtml = Object.entries(ACCOUNT_LIST).map(([key, { name }]) => (
