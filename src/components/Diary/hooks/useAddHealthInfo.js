@@ -26,7 +26,7 @@ export function useAddHealthInfo() {
     petId,
     Number(year),
     Number(month),
-    Number(day),
+    // Number(day),
   ];
 
   const healthInfo = {
@@ -53,39 +53,12 @@ export function useAddHealthInfo() {
         feedAmount,
         diary,
       }),
-    onMutate: async ({
-      walkDistance,
-      weight,
-      drinkAmount,
-      feedAmount,
-      diary = '',
-    }) => {
-      await queryClient.cancelQueries({ queryKey: [...petHealthKey] });
-      const prevState = queryClient.getQueryData([...petHealthKey]);
-      queryClient.setQueryData([...petHealthKey], old => [
-        ...old.data.data,
-        {
-          id: 1000,
-          walkDistance,
-          weight,
-          drinkAmount,
-          feedAmount,
-          diary,
-          year: Number(year),
-          month: Number(month),
-          week: whatWeek(Number(year), Number(month), Number(day)),
-          day: Number(day),
-        },
-      ]);
-    },
     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [...petHealthKey] });
       toast.success(TOAST_MESSAGE.Add_SUCCESS, TOAST_OPTION);
     },
     onError: () => {
       toast.error(TOAST_MESSAGE.ADD_FAIL, TOAST_OPTION);
-    },
-    onSettled: () => {
-      queryClient.invalidateQueries([...petHealthKey]);
     },
   });
   return addHealthInfo;

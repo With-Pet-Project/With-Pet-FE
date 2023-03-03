@@ -138,7 +138,12 @@ function HealthContent({
           </>
         ) : (
           <>
-            <Input type="text" id={category} onChange={onChange} />
+            <Input
+              type="text"
+              id={category}
+              onChange={onChange}
+              placeholder={value}
+            />
             <label htmlFor={category}>{unit}</label>
           </>
         )}

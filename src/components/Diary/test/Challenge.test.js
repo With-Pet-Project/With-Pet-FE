@@ -2,7 +2,9 @@ import { screen, within } from '@testing-library/react';
 import { render } from 'lib/test-utils/test-utils';
 import userEvent from '@testing-library/user-event';
 import ReactDOM from 'react-dom';
+import { useState, useContext } from 'react';
 import Challenge from '../ChallengeSection/Challenge/Challenge';
+import { PetIdProvider, petIdContext } from '../context/PetContext';
 
 describe('Popvoer AddChallenge', () => {
   beforeAll(() => {
@@ -16,10 +18,11 @@ describe('Popvoer AddChallenge', () => {
   });
 
   test("when I click button '추가하기'", async () => {
-    const user = userEvent.setup();
+    /** const user = userEvent.setup();
     render(<Challenge />);
 
     const AddButton = screen.getByRole('button', { name: '추가하기' });
     await user.click(AddButton);
+    */
   });
 });

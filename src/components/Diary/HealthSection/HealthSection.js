@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import './HealthSection.scss';
 
 import styled from 'styled-components';
@@ -5,6 +6,7 @@ import { useState, useEffect } from 'react';
 import HealthContent from './HealthContent';
 import { useHealthInfo } from '../hooks/useHealthInfo';
 import { useAddHealthInfo } from '../hooks/useAddHealthInfo';
+import { useEditHealthInfo } from '../hooks/useEditHealthInfo';
 
 const EditButton = styled.button`
   color: ${({ edit }) => (edit ? '$backgroundYellow' : '#000')};
@@ -13,6 +15,7 @@ const EditButton = styled.button`
 function HealthSection() {
   const data = useHealthInfo();
   const addHealthInfo = useAddHealthInfo();
+  const editHealthInfo = useEditHealthInfo();
 
   const [edit, setEdit] = useState(false);
   const [walk, setWalk] = useState();
@@ -22,22 +25,32 @@ function HealthSection() {
 
   const isEdit = () => {
     if (edit) {
-      addHealthInfo.mutate({
-        walkDistance: walk,
-        weight,
-        drinkAmount: drink,
-        feedAmount: feed,
-        diary: '',
-      });
+      !data
+        ? addHealthInfo.mutate({
+            walkDistance: walk,
+            weight,
+            drinkAmount: drink,
+            feedAmount: feed,
+            diary: '',
+          })
+        : editHealthInfo.mutate({
+            ...data,
+            id: data.id,
+            walkDistance: walk,
+            weight,
+            drinkAmount: drink,
+            feedAmount: feed,
+            diary: data.diary,
+          });
     }
 
     setEdit(!edit);
   };
 
-  const handleWalk = e => setWalk(e.target.value);
-  const handleWeight = e => setWeight(e.target.value);
-  const handleDrink = e => setDrink(e.target.value);
-  const handleFeed = e => setFeed(e.target.value);
+  const handleWalk = e => setWalk(parseFloat(e.target.value));
+  const handleWeight = e => setWeight(parseFloat(e.target.value));
+  const handleDrink = e => setDrink(parseFloat(e.target.value));
+  const handleFeed = e => setFeed(parseFloat(e.target.value));
 
   useEffect(() => {
     setWalk(data ? data.walkDistance : 0);

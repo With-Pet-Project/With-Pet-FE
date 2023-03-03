@@ -52,3 +52,27 @@ export const postHealthInfo = async (
 
   return response;
 };
+
+export const putEditHealthInfo = async (
+  jwt,
+  petId,
+  { id, walkDistance, weight, drinkAmount, feedAmount, diary },
+) => {
+  const response = CLIENT.put(
+    `/pet/${petId}/health/${id}`,
+    {
+      walkDistance,
+      weight,
+      drinkAmount,
+      feedAmount,
+      diary,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    },
+  );
+
+  return response;
+};
