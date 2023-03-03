@@ -1,6 +1,6 @@
 import Input from '../../../common/Input/Input';
 
-function EditPet({ setIsEdit }) {
+function EditPet({ setIsEdit, pet }) {
   const handleDelete = () => {
     alert('삭제하시겠습니까?');
   };
@@ -11,9 +11,13 @@ function EditPet({ setIsEdit }) {
 
   return (
     <li className="pet-item">
-      <Input type="text" placeholder="댕댕이" className="pet-name" />
-      <Input type="text" placeholder="1.4kg" className="pet-weight" />
-      <Input type="text" placeholder="2022-01-02" className="pet-bday" />
+      <Input type="text" placeholder={pet.name} className="pet-name" />
+      <Input
+        type="text"
+        placeholder={`${pet.initWeight}kg`}
+        className="pet-weight"
+      />
+      <Input type="text" placeholder={pet.birthday} className="pet-bday" />
       <button type="button" onClick={handleDelete}>
         삭제
       </button>
