@@ -24,7 +24,8 @@ function Account() {
   const { openModal } = useModal();
 
   const openAddAccount = () => {
-    openModal(AddAccount, { selectDate: selectDate.dateTime });
+    console.log(selectDate);
+    openModal(AddAccount, { selectDate });
   };
 
   const handleSelectDate = selected => {
