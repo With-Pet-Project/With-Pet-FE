@@ -22,7 +22,15 @@ const Input = styled.input`
   }
 `;
 
-function HealthContent({ category, text, value, unit, image = null, edit }) {
+function HealthContent({
+  category,
+  text,
+  value,
+  unit,
+  image = null,
+  edit,
+  onChange,
+}) {
   return (
     <div className="Health-category">
       <div className="Health-category-top">
@@ -130,7 +138,7 @@ function HealthContent({ category, text, value, unit, image = null, edit }) {
           </>
         ) : (
           <>
-            <Input type="text" id={category} />
+            <Input type="text" id={category} onChange={onChange} />
             <label htmlFor={category}>{unit}</label>
           </>
         )}

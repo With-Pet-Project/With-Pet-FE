@@ -28,7 +28,7 @@ export const getArticleList = async (
 };
 
 export const postArticle = async (jwt, tag, text, firstPlace, secondPlace) => {
-  const data = await CLIENT.post(
+  const response = await CLIENT.post(
     '/article',
     {
       title: '제목',
@@ -44,5 +44,5 @@ export const postArticle = async (jwt, tag, text, firstPlace, secondPlace) => {
     },
   );
 
-  return data;
+  return response;
 };

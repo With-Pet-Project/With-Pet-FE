@@ -16,11 +16,39 @@ export const getHealthInfo = async (jwt, petId, year, month) => {
 export const postHealthInfo = async (
   jwt,
   petId,
-  health,
-  walkDistance,
-  weight,
-  drinkAmount,
-  feedAmount,
+  {
+    walkDistance,
+    weight,
+    drinkAmount,
+    feedAmount,
+    diary,
+    year,
+    month,
+    week,
+    day,
+    date,
+  },
 ) => {
-  const response = await CLIENT.delete();
+  const response = await CLIENT.post(
+    `/pet/${petId}/health`,
+    {
+      walkDistance,
+      weight,
+      drinkAmount,
+      feedAmount,
+      diary,
+      year,
+      month,
+      week,
+      day,
+      date,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    },
+  );
+
+  return response;
 };
