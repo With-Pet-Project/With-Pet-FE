@@ -1,14 +1,13 @@
 import './Filter.scss';
 
-import { ADMIN_DISTRICT } from 'lib/constants/adminDistrict';
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useState } from 'react';
 import { useCommunityParams } from '../hooks/useCommunityParams';
 
 import PrioritySelector from './Selector/PrioritySelector';
 import LocationSelectors from './Selector/LocationSelectors';
 
 function Filter() {
+  const [priority, setPriority] = useState('최신');
   const {
     searchParams,
     setSearchParams,
@@ -16,8 +15,7 @@ function Filter() {
     setFirstPlace,
     secondPlace,
     setSecondPlace,
-    setPriority,
-  } = useCommunityParams();
+  } = useCommunityParams(priority, setPriority);
 
   return (
     <div className="search-filter">
