@@ -31,9 +31,20 @@ export function useHealthInfo() {
     enabled: !!petId && !!year && !!month,
   });
 
-  const dayInfo = petHealth?.data?.data?.filter(
+  const data = petHealth?.data?.data;
+
+  let dayInfo = data?.filter(
     d => d.year === year && d.month === month && d.day === day,
   );
+  dayInfo = dayInfo?.length ? dayInfo[0] : null;
 
-  return dayInfo?.length ? dayInfo[0] : null;
+  const avgWalkDist = data?.length
+    ? data.reduce((acc, cur) => acc + cur.walkDistance, 0) / data.length
+    : 0;
+
+  const avgWeight = data?.length
+    ? data.reduce((acc, cur) => acc + cur.weight, 0) / data.length
+    : 0;
+
+  return { dayInfo, avgWalkDist, avgWeight };
 }

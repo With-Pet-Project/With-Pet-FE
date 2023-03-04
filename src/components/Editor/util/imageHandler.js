@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import CLIENT from 'lib/APIs/client';
 
-export const imageHandler = QuillRef => {
+export const imageHandler = (QuillRef, imageList, setImageList) => {
   const input = document.createElement('input');
   const formData = new FormData();
 
@@ -23,7 +23,7 @@ export const imageHandler = QuillRef => {
         },
       });
       const url = res.data.data[0].content;
-      console.log(url);
+      setImageList([...imageList, url]);
       const range = QuillRef.current?.getEditor().getSelection()?.index;
 
       if (range !== null && range !== undefined) {

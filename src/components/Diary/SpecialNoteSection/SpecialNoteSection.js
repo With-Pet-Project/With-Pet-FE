@@ -14,7 +14,7 @@ const EditButton = styled.button`
 
 const TextArea = styled.textarea`
   background-color: ${({ edit }) => (edit ? '#fff' : '#f2f2f2')};
-  padding: 3px;
+  padding: 5px;
   border: ${({ edit }) => (edit ? `1px solid ${vars.backgroundYellow}` : '0')};
 `;
 

@@ -41,6 +41,7 @@ const SubmitButton = styled.button`
 `;
 
 function Editor() {
+  const [imgList, setImageList] = useState([]); // 프론트엔드에서 사용할 일은 없지만 서버쪽에서 요청한 데이터(img url 리스트)
   const [value, setValue] = useState('');
   const QuillRef = useRef();
 
@@ -67,7 +68,7 @@ function Editor() {
           [{ align: ['', 'center', 'right'] }],
         ],
         handlers: {
-          image: () => imageHandler(QuillRef),
+          image: () => imageHandler(QuillRef, imgList, setImageList),
         },
       },
     }),
