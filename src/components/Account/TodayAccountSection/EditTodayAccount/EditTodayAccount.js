@@ -6,6 +6,8 @@ import './EditTodayAccount.scss';
 import '../TodayAccount.scss';
 
 function EditTodayAccount({ accountData, accountValue }) {
+  const { consumption } = accountData.length > 0 && accountData[0];
+
   const onChange = (event, type) => {
     const { value } = event.target;
     accountValue[type] = Number(value);
@@ -15,9 +17,9 @@ function EditTodayAccount({ accountData, accountValue }) {
     if (accountData.length <= 0) return 0;
 
     return Object.entries(ACCOUNT_LIST).reduce((acc, [key, _]) => {
-      const hasKey = Object.keys(accountData[0]).includes(key);
+      const hasKey = Object.keys(consumption).includes(key);
       if (!hasKey) return acc;
-      return acc + accountData[0][key];
+      return acc + consumption[key];
     }, 0);
   };
 
@@ -27,7 +29,7 @@ function EditTodayAccount({ accountData, accountValue }) {
         key={key}
         id={key}
         name={name}
-        price={accountData.length > 0 ? accountData[0][key] : 0}
+        price={accountData.length > 0 ? consumption[key] : 0}
         darkColor={darkColor}
         onChange={onChange}
       />
@@ -39,7 +41,7 @@ function EditTodayAccount({ accountData, accountValue }) {
       <div className="today-total">
         <span className="total-title">전체 소비</span>
         <div className="total-price">
-          <span>{getComma(getTotal())}</span>
+          <span className="price">{getComma(getTotal())}</span>
           <span className="unit">원</span>
         </div>
       </div>

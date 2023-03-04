@@ -1,8 +1,8 @@
 import { useQueryClient, useMutation } from '@tanstack/react-query';
 import { queryKeys } from 'lib/reactQuery/queryKeys';
-import axios from 'axios';
 import { TOAST_OPTION, TOAST_MESSAGE } from 'components/common/Toast/toast';
 import { toast } from 'react-toastify';
+import CLIENT from 'lib/APIs/client';
 
 const addAccount = async ({
   petId,
@@ -11,25 +11,40 @@ const addAccount = async ({
   hospital,
   beauty,
   etc,
-  date,
+  day,
+  month,
+  year,
 }) => {
-  const { data } = await axios.post('/consumption', {
-    petId,
-    feed,
-    toy,
-    hospital,
-    beauty,
-    etc,
-    date,
-  });
+  const tempPetId = 37;
+  const jwt = localStorage.getItem('jwt_token') || null;
+  const { data } = await CLIENT.post(
+    `/pet/${tempPetId}/consumption`,
+    {
+      feed: Number(feed),
+      toy: Number(toy),
+      hospital: Number(hospital),
+      beauty: Number(beauty),
+      week: 1,
+      etc: Number(etc),
+      day: Number(day),
+      month: Number(month),
+      year: Number(year),
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+        'Content-Type': 'application/json',
+      },
+    },
+  );
   return data;
 };
-//  isLoading이 계속 false로 뜨고 간간히 됨
+
 export const useAddAccount = () => {
   const queryClient = useQueryClient();
   const { mutate } = useMutation(
-    ({ petId, feed, toy, hospital, beauty, etc, date }) =>
-      addAccount({ petId, feed, toy, hospital, beauty, etc, date }),
+    ({ petId, feed, toy, hospital, beauty, etc, day, month, year }) =>
+      addAccount({ petId, feed, toy, hospital, beauty, etc, day, month, year }),
     {
       useErrorBoundary: false,
       retry: 0,

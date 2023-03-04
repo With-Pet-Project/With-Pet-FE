@@ -31,8 +31,8 @@
 
   @media (max-width: $semi-wide) {
     margin: 0 auto;
-    padding-right: 10px;
-    padding-left: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
   }
 
   h2 {
@@ -54,6 +54,10 @@
       margin-left: 4px;
       font-family: Pretendard;
       font-weight: 600;
+    }
+
+    .price {
+      font-family: TmoneyRoundWindBold;
     }
 
     @media (max-width: $semi-wide) {

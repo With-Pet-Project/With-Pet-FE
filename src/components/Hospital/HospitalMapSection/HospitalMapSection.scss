@@ -43,7 +43,7 @@
 
   @media (max-width: $normal) {
     margin: 10px 0 30px 10px;
-    width: 210px;
+    width: 230px;
   }
 
   @media (max-width: $narrow) {
@@ -120,10 +120,10 @@
   }
 }
 #placesList .item .info {
-  padding: 10px 0 10px 55px;
+  padding: 10px 0 10px 62px;
 
   @media (max-width: $normal) {
-    padding: 10px 0 5px 45px;
+    padding: 10px 0 5px 50px;
   }
 }
 //!:
@@ -148,58 +148,58 @@
   float: left;
   position: absolute;
   width: 36px;
-  height: 37px;
+  height: 43px;
   margin: 10px 0 0 15px;
-  background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
+  background: url('../../../lib/assets/images/hospital/markers_clear.png')
     no-repeat;
   @media (max-width: $normal) {
-    margin: 10px 0 0 5px;
+    margin: 10px 0 0 10px;
   }
 }
 #placesList .item .marker_1 {
-  background-position: 0 -10px;
+  background-position: 0px 0px;
 }
 #placesList .item .marker_2 {
-  background-position: 0 -56px;
+  background-position: 0px -49px;
 }
 #placesList .item .marker_3 {
-  background-position: 0 -102px;
+  background-position: 0px -98px;
 }
 #placesList .item .marker_4 {
-  background-position: 0 -148px;
+  background-position: 0px -147px;
 }
 #placesList .item .marker_5 {
-  background-position: 0 -194px;
+  background-position: 0px -196px;
 }
 #placesList .item .marker_6 {
-  background-position: 0 -240px;
+  background-position: 0px -245px;
 }
 #placesList .item .marker_7 {
-  background-position: 0 -286px;
+  background-position: 0px -294px;
 }
 #placesList .item .marker_8 {
-  background-position: 0 -332px;
+  background-position: 0px -343px;
 }
 #placesList .item .marker_9 {
-  background-position: 0 -378px;
+  background-position: 0px -392px;
 }
 #placesList .item .marker_10 {
-  background-position: 0 -423px;
+  background-position: 0px -441px;
 }
 #placesList .item .marker_11 {
-  background-position: 0 -470px;
+  background-position: 0px -490px;
 }
 #placesList .item .marker_12 {
-  background-position: 0 -516px;
+  background-position: 0px -539px;
 }
 #placesList .item .marker_13 {
-  background-position: 0 -562px;
+  background-position: 0px -588px;
 }
 #placesList .item .marker_14 {
-  background-position: 0 -608px;
+  background-position: 0px -637px;
 }
 #placesList .item .marker_15 {
-  background-position: 0 -654px;
+  background-position: 0px -686px;
 }
 #pagination {
   margin: 10px auto;

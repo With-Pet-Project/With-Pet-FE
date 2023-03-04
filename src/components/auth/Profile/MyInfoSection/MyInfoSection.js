@@ -1,12 +1,15 @@
 import './MyInfoSection.scss';
 import { useModal } from 'components/common/Modal/context/useModal';
-import profileImage from 'lib/assets/images/dog/lg_icon.png';
+import profileDefaultImg from 'lib/assets/images/dog/lg_icon.png';
 import EditProfile from '../../Modal/EditProfile/EditProfile';
 import Withdrawal from '../../Modal/Withdrawal/Withdrawal';
 import PetSetting from '../../Modal/PetSetting/PetSetting';
+import { useUser } from '../../hooks/useUser';
 
 function MyInfoSection() {
   const { openModal } = useModal();
+  const user = useUser();
+  console.log(user);
 
   const handleEditProfile = () => {
     openModal(EditProfile);
@@ -24,9 +27,9 @@ function MyInfoSection() {
     <div className="MyInfoSection">
       <div className="myInfo">
         <div className="profile-img">
-          <img src={profileImage} alt="profile" />
+          <img src={user.profileImg || profileDefaultImg} alt="profile" />
         </div>
-        <p className="nickName">강아지</p>
+        <p className="nickName">{user.nickName}</p>
       </div>
       <button
         type="button"

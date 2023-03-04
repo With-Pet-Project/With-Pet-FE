@@ -15,15 +15,17 @@ function TotalAccountSection({
   const [totalData, setTotalData] = useState({ ...DEFAULT_TOTAL_LIST });
   const [totalPrice, setTotalPrice] = useState(0);
 
+  const getPercentage = (divider, total) => (divider / total) * 100;
+
   useEffect(() => {
     const newTotalData = Object.values(accountData).reduce(
       (acc, data) => {
         if (data.length === 0) return acc;
-
         Object.entries(ACCOUNT_LIST).forEach(([key, _]) => {
-          const hasKey = Object.keys(...data).includes(key);
+          const { consumption } = data[0];
+          const hasKey = Object.keys(consumption).includes(key);
           if (!hasKey) return;
-          acc[`${key}`] = acc[`${key}`] + data[0][key];
+          acc[`${key}`] = acc[`${key}`] + data[0].consumption[key];
         });
         return acc;
       },
@@ -45,7 +47,7 @@ function TotalAccountSection({
         key={key}
         name={name}
         price={totalData[`${key}`]}
-        percent={(totalData[`${key}`] / totalPrice) * 100}
+        percent={getPercentage(totalData[`${key}`], totalPrice)}
         color={darkColor}
       />
     ),
@@ -66,7 +68,7 @@ function TotalAccountSection({
         <h2>이번달 총 지출</h2>
         <ul>{totalAccountItemHtml}</ul>
         <div className="total-price">
-          <span>{getComma(totalPrice)}</span>
+          <span className="price">{getComma(totalPrice)}</span>
           <span className="unit">원</span>
         </div>
       </div>
