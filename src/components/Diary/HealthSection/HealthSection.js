@@ -12,15 +12,17 @@ import HealthContent from './HealthContent';
 import { useHealthInfo } from '../hooks/useHealthInfo';
 import { useAddHealthInfo } from '../hooks/useAddHealthInfo';
 import { useEditHealthInfo } from '../hooks/useEditHealthInfo';
+import { usePetById } from '../hooks/usePetById';
 
 const EditButton = styled.button`
   color: ${({ edit }) => (edit ? '$backgroundYellow' : '#000')};
 `;
 
 function HealthSection() {
-  const { dayInfo } = useHealthInfo();
+  const { dayInfo, avgWeight } = useHealthInfo();
   const addHealthInfo = useAddHealthInfo();
   const editHealthInfo = useEditHealthInfo();
+  const petInfo = usePetById();
 
   const [edit, setEdit] = useState(false);
   const [walk, setWalk] = useState();
@@ -77,7 +79,7 @@ function HealthSection() {
         <HealthContent
           category="산책기록"
           text="오늘의 산책량은"
-          value={dayInfo ? dayInfo.walkDistance : 0}
+          value={walk}
           unit="km"
           edit={edit}
           onChange={handleWalk}
@@ -86,7 +88,7 @@ function HealthSection() {
         <HealthContent
           category="몸무게"
           text="오늘의 몸무게는"
-          value={dayInfo ? dayInfo.weight : 0}
+          value={weight}
           unit="kg"
           edit={edit}
           onChange={handleWeight}
