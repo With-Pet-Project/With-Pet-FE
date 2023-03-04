@@ -19,7 +19,7 @@ const TextArea = styled.textarea`
 `;
 
 function SpecialNoteSection() {
-  const data = useHealthInfo();
+  const { dayInfo } = useHealthInfo();
   const addHealthInfo = useAddHealthInfo();
   const editHealthInfo = useEditHealthInfo();
   const [edit, setEdit] = useState(false);
@@ -29,7 +29,7 @@ function SpecialNoteSection() {
 
   const isEdit = () => {
     if (edit) {
-      !data
+      !dayInfo
         ? addHealthInfo.mutate({
             walkDistance: 0,
             weight: 0,
@@ -38,12 +38,12 @@ function SpecialNoteSection() {
             diary,
           })
         : editHealthInfo.mutate({
-            ...data,
-            id: data.id,
-            walkDistance: data.walk,
-            weight: data.weight,
-            drinkAmount: data.drinkAmount,
-            feedAmount: data.feedAmount,
+            ...dayInfo,
+            id: dayInfo.id,
+            walkDistance: dayInfo.walk,
+            weight: dayInfo.weight,
+            drinkAmount: dayInfo.drinkAmount,
+            feedAmount: dayInfo.feedAmount,
             diary,
           });
     }
@@ -52,8 +52,8 @@ function SpecialNoteSection() {
   };
 
   useEffect(() => {
-    setDiary(data?.diary || '');
-  }, [data]);
+    setDiary(dayInfo?.diary || '');
+  }, [dayInfo]);
 
   return (
     <section className="SpecialNote diary-section-Padding">

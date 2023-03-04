@@ -1,6 +1,11 @@
 /* eslint-disable no-unused-expressions */
 import './HealthSection.scss';
 
+import walkImg from 'lib/assets/images/diary/image_01.png';
+import weightImg from 'lib/assets/images/diary/image_00.png';
+import drinkImg from 'lib/assets/images/diary/image_04.png';
+import feedImg from 'lib/assets/images/diary/image_05.png';
+
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import HealthContent from './HealthContent';
@@ -13,7 +18,7 @@ const EditButton = styled.button`
 `;
 
 function HealthSection() {
-  const data = useHealthInfo();
+  const { dayInfo } = useHealthInfo();
   const addHealthInfo = useAddHealthInfo();
   const editHealthInfo = useEditHealthInfo();
 
@@ -25,7 +30,7 @@ function HealthSection() {
 
   const isEdit = () => {
     if (edit) {
-      !data
+      !dayInfo
         ? addHealthInfo.mutate({
             walkDistance: walk,
             weight,
@@ -34,30 +39,30 @@ function HealthSection() {
             diary: '',
           })
         : editHealthInfo.mutate({
-            ...data,
-            id: data.id,
+            ...dayInfo,
+            id: dayInfo.id,
             walkDistance: walk,
             weight,
             drinkAmount: drink,
             feedAmount: feed,
-            diary: data.diary,
+            diary: dayInfo.diary,
           });
     }
 
     setEdit(!edit);
   };
 
-  const handleWalk = e => setWalk(parseFloat(e.target.value));
-  const handleWeight = e => setWeight(parseFloat(e.target.value));
-  const handleDrink = e => setDrink(parseFloat(e.target.value));
-  const handleFeed = e => setFeed(parseFloat(e.target.value));
+  const handleWalk = e => setWalk(parseFloat(e.target.value).toFixed(2));
+  const handleWeight = e => setWeight(parseFloat(e.target.value).toFixed(2));
+  const handleDrink = e => setDrink(parseFloat(e.target.value).toFixed(2));
+  const handleFeed = e => setFeed(parseFloat(e.target.value).toFixed(2));
 
   useEffect(() => {
-    setWalk(data ? data.walkDistance : 0);
-    setWeight(data ? data.weight : 0);
-    setDrink(data ? data.drinkAmount : 0);
-    setFeed(data ? data.feedAmount : 0);
-  }, [data]);
+    setWalk(dayInfo ? dayInfo.walkDistance : 0);
+    setWeight(dayInfo ? dayInfo.weight : 0);
+    setDrink(dayInfo ? dayInfo.drinkAmount : 0);
+    setFeed(dayInfo ? dayInfo.feedAmount : 0);
+  }, [dayInfo]);
 
   return (
     <section className="Health-section diary-section-Padding">
@@ -72,34 +77,38 @@ function HealthSection() {
         <HealthContent
           category="산책기록"
           text="오늘의 산책량은"
-          value={data ? data.walkDistance : 0}
+          value={dayInfo ? dayInfo.walkDistance : 0}
           unit="km"
           edit={edit}
           onChange={handleWalk}
+          imgUrl={walkImg}
         />
         <HealthContent
           category="몸무게"
           text="오늘의 몸무게는"
-          value={data ? data.weight : 0}
+          value={dayInfo ? dayInfo.weight : 0}
           unit="kg"
           edit={edit}
           onChange={handleWeight}
+          imgUrl={weightImg}
         />
         <HealthContent
           category="음수량"
           text="오늘의 음수량은"
-          value={data ? data.drinkAmount : 0}
+          value={dayInfo ? dayInfo.drinkAmount : 0}
           unit="ml"
           edit={edit}
           onChange={handleDrink}
+          imgUrl={drinkImg}
         />
         <HealthContent
           category="사료/간식"
           text="오늘의 급여량은"
-          value={data ? data.feedAmount : 0}
+          value={dayInfo ? dayInfo.feedAmount : 0}
           unit="g"
           edit={edit}
           onChange={handleFeed}
+          imgUrl={feedImg}
         />
       </div>
     </section>

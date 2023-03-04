@@ -39,11 +39,15 @@ export function useHealthInfo() {
   dayInfo = dayInfo?.length ? dayInfo[0] : null;
 
   const avgWalkDist = data?.length
-    ? data.reduce((acc, cur) => acc + cur.walkDistance, 0) / data.length
+    ? parseFloat(
+        data.reduce((acc, cur) => acc + cur.walkDistance, 0) / data.length,
+      ).toFixed(2)
     : 0;
 
   const avgWeight = data?.length
-    ? data.reduce((acc, cur) => acc + cur.weight, 0) / data.length
+    ? parseFloat(
+        data.reduce((acc, cur) => acc + cur.weight, 0) / data.length,
+      ).toFixed(2)
     : 0;
 
   return { dayInfo, avgWalkDist, avgWeight };
