@@ -24,5 +24,5 @@ export function useOAuth() {
     localStorage.setItem('jwt_token', jwt_token);
   }
 
-  return jwt_token;
+  return jwt_token || null;
 }
