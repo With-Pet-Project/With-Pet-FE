@@ -13,11 +13,10 @@ export const getArticleList = async (
     firstPlace = null;
     secondPlace = null;
   }
-
+  console.log(lastArticleId);
   if (tag === 'ALL') {
     tag = null;
   }
-  console.log(tag, priority, firstPlace, secondPlace, lastArticleId, size);
   const data = await CLIENT.get(`/articles`, {
     params: {
       tag,
@@ -28,7 +27,6 @@ export const getArticleList = async (
       size,
     },
   });
-  console.log(data);
   return data;
 };
 
@@ -72,7 +70,7 @@ export const getReadArticleDetail = async articleId => {
   return response;
 };
 
-export const putEditArticle = async (
+export const patchEditArticle = async (
   jwt,
   tag,
   title,
@@ -85,7 +83,7 @@ export const putEditArticle = async (
     place1 = null;
     place2 = null;
   }
-  const response = await CLIENT.put(
+  const response = await CLIENT.patch(
     `/article/${articleId}`,
     {
       tag,
@@ -100,6 +98,35 @@ export const putEditArticle = async (
       },
     },
   );
+
+  return response;
+};
+
+export const postAddArticleLike = async (jwt, articleId) => {
+  const response = await CLIENT.post(
+    '/article_like',
+    {
+      articleId,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    },
+  );
+
+  return response;
+};
+
+export const deleteCanceArticlelLike = async (jwt, articleId) => {
+  const response = await CLIENT.delete('/article_like', {
+    data: {
+      articleId,
+    },
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
 
   return response;
 };

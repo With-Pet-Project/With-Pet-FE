@@ -7,7 +7,7 @@ import PrioritySelector from './Selector/PrioritySelector';
 import LocationSelectors from './Selector/LocationSelectors';
 
 function Filter() {
-  const [priority, setPriority] = useState('최신');
+  const [priority, setPriority] = useState('RECENT');
   const {
     searchParams,
     setSearchParams,

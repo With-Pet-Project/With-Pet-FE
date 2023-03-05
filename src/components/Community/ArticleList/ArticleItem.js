@@ -1,12 +1,19 @@
+import { Link } from 'react-router-dom';
+
+import dog from 'lib/assets/images/dog/md_icon.png';
 import { ARTICLE_TAG } from 'lib/constants/articleTag';
 
 function ArticleItem({ article }) {
+  const timeFormat = () => {
+    return new Date(article.createdTime).toLocaleDateString();
+  };
+
   return (
     <div className="Article-item">
       <div className="article-user-info">
         <img
           className="article-user-img"
-          src={article.profileImg}
+          src={article.profileImg || dog}
           alt={article.nickName}
           aria-label="user profile img"
         />
@@ -15,13 +22,18 @@ function ArticleItem({ article }) {
             <span>{article.nickName}</span>
           </div>
           <div>
-            <span>{article.createdTime}</span>
+            <span>{timeFormat()}</span>
           </div>
         </div>
       </div>
       <div className="article-content">
         <h2>반려견 산책 올바르게 하는 방법{/** article Title 추가 예정 */}</h2>
-        <p>{article.detail}</p>
+        <Link to={`/community/${article.articleId}`}>
+          <div
+            className="article-detail-text"
+            dangerouslySetInnerHTML={{ __html: article.detailText }}
+          />
+        </Link>
         <div className="article-tag">
           <span>{ARTICLE_TAG[article.tag]}</span>
         </div>

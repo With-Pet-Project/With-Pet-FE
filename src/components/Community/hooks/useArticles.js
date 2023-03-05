@@ -1,40 +1,33 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { queryKeys } from 'lib/reactQuery/queryKeys';
+import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
 import { getArticleList } from 'lib/APIs/article';
+import { useSearchParams } from 'react-router-dom';
 
-export const useArticles = (
-  tag,
-  firstPlace = null,
-  secondPlace = null,
-  criteria = null,
-) => {
-  const { article } = queryKeys;
+export const useArticles = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { Article } = QUERY_KEY;
 
-  const {
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-    isFetching,
-    isError,
-    error,
-    data,
-    isLoading,
-  } = useInfiniteQuery({
-    queryKey: [article, tag, firstPlace, secondPlace, criteria],
-    queryFn: ({ pageParam = 1 }) =>
-      getArticleList(pageParam, tag, firstPlace, secondPlace, criteria),
+  const tag = searchParams.get('tag');
+  const firstPlace = searchParams.get('firstPlace');
+  const secondPlace = searchParams.get('secondPlace');
+  const priority = searchParams.get('priority');
+
+  const { fetchNextPage, hasNextPage, data } = useInfiniteQuery({
+    queryKey: [Article, tag, firstPlace, secondPlace, priority],
+    queryFn: ({ lastArticleId = 0 }) =>
+      getArticleList(tag, priority, firstPlace, secondPlace, lastArticleId, 10),
     getNextPageParam: lastPage =>
-      !lastPage.data.data.isLast ? lastPage.data.data.pageNum + 1 : undefined,
+      lastPage.data.data.hasNext
+        ? lastPage.data.data.lastArticleId + 9
+        : undefined,
+    enabled: !!priority,
   });
+
+  const pages = data?.pages;
 
   return {
     fetchNextPage,
     hasNextPage,
-    isFetchingNextPage,
-    isFetching,
-    isError,
-    error,
-    data,
-    isLoading,
+    pages,
   };
 };
