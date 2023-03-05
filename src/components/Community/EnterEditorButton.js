@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import FloatButton from 'components/common/FloatButton/FloatButton';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from 'components/auth/hooks/useUser';
+import { toast } from 'react-toastify';
+import { TOAST_OPTION } from 'components/common/Toast/toast';
 
 const FloatButtonWrapper = styled.div`
   position: sticky;
@@ -14,9 +17,14 @@ const FloatButtonWrapper = styled.div`
 
 function EnterEditorButton() {
   const navigate = useNavigate();
+  const user = useUser();
 
   const gotoEditor = () => {
-    navigate('/editor');
+    if (user) {
+      navigate('/editor');
+    } else {
+      toast.warn('로그인 해주세요');
+    }
   };
 
   return (

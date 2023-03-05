@@ -3,12 +3,15 @@ import './Editor.scss';
 import styled from 'styled-components';
 import { vars } from 'lib/styles/vars';
 
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+
 import ReactQuill from 'react-quill';
 import { imageHandler } from './util/imageHandler';
 import TagList from './Tag/TagList';
 import Location from './Location/Location';
 import 'react-quill/dist/quill.snow.css';
+import { useCreateArticle } from './hooks/useCreateArticle';
 
 const formats = [
   'header',
@@ -38,22 +41,42 @@ const SubmitButton = styled.button`
   font-variation-settings: 'wght' 500;
   font-size: 18px;
   line-height: 21px;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 `;
 
 function Editor() {
-  const [imgList, setImageList] = useState([]); // 프론트엔드에서 사용할 일은 없지만 서버쪽에서 요청한 데이터(img url 리스트)
-  const [value, setValue] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [img, setImg] = useState(null); // 사용자가 이미지를 올렸다가 지웠을 경우, detailText와 imgList의 url들을
+  const [imgList, setImageList] = useState([]); // 대조하여 지워진 이미지인지 아닌지 구분해야 한다.
+
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
   const QuillRef = useRef();
 
+  // { title, text, imgUrl }
+  const { mutate } = useCreateArticle();
   const onSubmit = e => {
     e.preventDefault();
+    const checkUrl = imgList.map(i => ({
+      ...i,
+      existence: content.includes(i.content),
+    }));
+    mutate({ title, content, checkUrl });
   };
+  useEffect(() => {
+    if (img) {
+      setImageList([...imgList, { content: img }]);
+    }
+  }, [img]);
 
   const modules = useMemo(
     () => ({
       toolbar: {
         container: [
-          [{ header: [1, 2, 3, 4, 5, false] }],
+          [{ header: [1, 2, 3, 4, 5, 6, false] }],
           ['bold', 'italic', 'underline', 'strike', 'blockquote'],
           [
             { list: 'unordered' },
@@ -68,7 +91,7 @@ function Editor() {
           [{ align: ['', 'center', 'right'] }],
         ],
         handlers: {
-          image: () => imageHandler(QuillRef, imgList, setImageList),
+          image: () => imageHandler(QuillRef, setImg),
         },
       },
     }),
@@ -82,10 +105,21 @@ function Editor() {
           <TagList />
           <Location />
         </div>
-        <SubmitButton type="submit">등록하기</SubmitButton>
+        <SubmitButton
+          type="submit"
+          disabled={
+            !title.length ||
+            content.length < 17 ||
+            searchParams.get('tag') === 'ALL'
+          }
+        >
+          등록하기
+        </SubmitButton>
       </div>
       <input
         type="text"
+        value={title}
+        onChange={e => setTitle(e.target.value)}
         placeholder="제목을 입력해주세요"
         aria-label="article title"
       />
@@ -96,11 +130,11 @@ function Editor() {
           }
         }}
         theme="snow"
-        value={value}
-        onChange={setValue}
+        value={content}
+        onChange={setContent}
         modules={modules}
         format={formats}
-        placeholder="내용을 입력해주세요."
+        placeholder="10자 이상 입력해주세요."
       />
     </form>
   );

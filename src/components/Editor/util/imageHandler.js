@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import CLIENT from 'lib/APIs/client';
 
-export const imageHandler = (QuillRef, imageList, setImageList) => {
+export const imageHandler = (QuillRef, setImg) => {
   const input = document.createElement('input');
   const formData = new FormData();
 
@@ -14,6 +14,7 @@ export const imageHandler = (QuillRef, imageList, setImageList) => {
     if (file !== null) {
       formData.append('images', file[0]);
     }
+
     try {
       const jwt_token = localStorage.getItem('jwt_token');
       const res = await CLIENT.post('/image', formData, {
@@ -23,7 +24,7 @@ export const imageHandler = (QuillRef, imageList, setImageList) => {
         },
       });
       const url = res.data.data[0].content;
-      setImageList([...imageList, url]);
+
       const range = QuillRef.current?.getEditor().getSelection()?.index;
 
       if (range !== null && range !== undefined) {
@@ -36,6 +37,7 @@ export const imageHandler = (QuillRef, imageList, setImageList) => {
           `<img src=${url} alt="업로드 이미지" />`,
         );
       }
+      setImg(url);
       return { ...res.data.data, success: true };
     } catch (e) {
       return { ...e.response, success: false };

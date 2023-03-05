@@ -23,4 +23,5 @@ export const QUERY_KEY = {
   DailyChallenge: 'dailyChallenge',
   WeeklyChallenge: 'weeklyChallenge',
   PetHealth: 'petHealth',
+  Article: 'article',
 };
