@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import dog from 'lib/assets/images/dog/md_icon.png';
 import { ARTICLE_TAG } from 'lib/constants/articleTag';
 
+import { useArticleLike } from '../hooks/useArticleLike';
+
 function ArticleItem({ article }) {
+  const { mutate } = useArticleLike();
+
   const timeFormat = () => {
     return new Date(article.createdTime).toLocaleDateString();
   };
@@ -69,17 +73,27 @@ function ArticleItem({ article }) {
             </svg>
             <span>{article.likeCnt}</span>
           </button>
-          <button type="button">
+          <button
+            type="button"
+            onClick={() =>
+              mutate({
+                isAlike: article.articleLikeId,
+                articleId: article.articleId,
+              })
+            }
+          >
             <svg
               width="21"
               height="19"
               viewBox="0 0 21 19"
-              fill="none"
+              stroke="#FFE259"
+              fill="#FFE259"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M10.71 18.3702C10.31 18.7302 9.7 18.7302 9.3 18.3702L8.98 18.0802C7.21 16.4602 5.75 15.0702 4.6 13.8902C3.45 12.7102 2.53 11.6602 1.85 10.7402C1.17 9.81017 0.69 8.98018 0.41 8.23018C0.13 7.48018 0 6.72018 0 5.95018C0 4.45018 0.5 3.20018 1.51 2.19018C2.52 1.18018 3.76 0.680176 5.25 0.680176C6.2 0.680176 7.08 0.910176 7.89 1.36018C8.7 1.81018 9.4 2.46018 10 3.31018C10.7 2.41018 11.44 1.75018 12.23 1.32018C13.02 0.890176 13.86 0.680176 14.76 0.680176C16.24 0.680176 17.49 1.18018 18.5 2.19018C19.51 3.20018 20.01 4.45018 20.01 5.95018C20.01 6.72018 19.87 7.48018 19.6 8.23018C19.33 8.98018 18.85 9.82018 18.16 10.7402C17.47 11.6602 16.56 12.7202 15.41 13.8902C14.26 15.0602 12.8 16.4602 11.03 18.0802L10.71 18.3702Z"
-                fill="#FFE259"
+                stroke="#FFE259"
+                fill={article.articleLikeId ? '#FFFE259' : '#FFF'}
               />
             </svg>
             <span>{article.commentCnt}</span>

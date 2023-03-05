@@ -13,11 +13,11 @@ export const useArticles = () => {
   const priority = searchParams.get('priority');
 
   const { fetchNextPage, hasNextPage, data } = useInfiniteQuery({
-    queryKey: [Article, tag, firstPlace, secondPlace, priority],
+    queryKey: [Article, { tag, firstPlace, secondPlace, priority }],
     queryFn: ({ lastArticleId = 0 }) =>
       getArticleList(tag, priority, firstPlace, secondPlace, lastArticleId, 10),
     getNextPageParam: lastPage =>
-      lastPage.data.data.hasNext
+      lastPage?.data?.data.hasNext
         ? lastPage.data.data.lastArticleId + 9
         : undefined,
     enabled: !!priority,

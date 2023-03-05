@@ -4,7 +4,6 @@ import './ArticleList.scss';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useArticles } from 'components/Community/hooks/useArticles';
-import { Link } from 'react-router-dom';
 import ArticleItem from './ArticleItem';
 
 function ArticleList() {
