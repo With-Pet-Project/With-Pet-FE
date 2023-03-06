@@ -1,11 +1,16 @@
 import { useModal } from 'components/common/Modal/context/useModal';
-import './Withdrawal.scss';
+import { useDeleteUser } from '../../hooks/useDeleteUser';
+import './DeleteUser.scss';
 
-function Withdrawal() {
+function DeleteUser() {
   const { closeModal } = useModal();
+  const { mutate: deleteMutate } = useDeleteUser();
 
-  const modalClose = () => {
-    closeModal(Withdrawal);
+  const handleDelete = () => {
+    // 회원탈퇴로직
+    deleteMutate();
+    closeModal(DeleteUser);
+    // 로그인으로 ㄱㄱ
   };
 
   return (
@@ -21,13 +26,15 @@ function Withdrawal() {
         <span className="accent">정말로 탈퇴하시겠습니까?</span>
       </p>
       <div className="btn-wrapper">
-        <button type="button" onClick={modalClose}>
+        <button type="button" onClick={() => closeModal(DeleteUser)}>
           취소
         </button>
-        <button type="button">탈퇴</button>
+        <button type="button" onClick={handleDelete}>
+          탈퇴
+        </button>
       </div>
     </div>
   );
 }
 
-export default Withdrawal;
+export default DeleteUser;

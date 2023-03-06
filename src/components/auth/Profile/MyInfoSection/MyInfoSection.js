@@ -1,8 +1,10 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable react/no-this-in-sfc */
 import './MyInfoSection.scss';
 import { useModal } from 'components/common/Modal/context/useModal';
-import profileDefaultImg from 'lib/assets/images/dog/lg_icon.png';
+import FallbacktImg from 'lib/assets/images/dog/lg_icon.png';
 import EditProfile from '../../Modal/EditProfile/EditProfile';
-import Withdrawal from '../../Modal/Withdrawal/Withdrawal';
+import DeleteUser from '../../Modal/DeleteUser/DeleteUser';
 import PetSetting from '../../Modal/PetSetting/PetSetting';
 import { useUser } from '../../hooks/useUser';
 
@@ -15,8 +17,8 @@ function MyInfoSection() {
     openModal(EditProfile);
   };
 
-  const handleWithdrawal = () => {
-    openModal(Withdrawal);
+  const handleDeleteUser = () => {
+    openModal(DeleteUser);
   };
 
   const handleEditPet = () => {
@@ -27,14 +29,21 @@ function MyInfoSection() {
     <div className="MyInfoSection">
       <div className="myInfo">
         <div className="profile-img">
-          <img src={user.profileImg || profileDefaultImg} alt="profile" />
+          <img
+            src={user.profileImg || FallbacktImg}
+            alt="profile"
+            onError={({ target }) => {
+              target.onerror = null;
+              target.src = FallbacktImg;
+            }}
+          />
         </div>
         <p className="nickName">{user.nickName}</p>
       </div>
       <button
         type="button"
         className="Withdrawal-btn btn"
-        onClick={handleWithdrawal}
+        onClick={handleDeleteUser}
       >
         회원탈퇴
       </button>

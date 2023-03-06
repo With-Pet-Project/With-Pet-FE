@@ -13,6 +13,7 @@ function Input(
     disabled,
     placeholder,
     step,
+    onBlur,
   },
   ref,
 ) {
@@ -28,6 +29,7 @@ function Input(
       disabled={disabled}
       ref={ref}
       placeholder={placeholder}
+      onBlur={onBlur}
     />
   );
 }
