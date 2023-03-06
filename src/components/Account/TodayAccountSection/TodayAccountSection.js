@@ -17,7 +17,6 @@ function TodayAccountSection({ accountData, yearMonth, selectPet }) {
 
   const onConfirm = () => {
     const { id } = consumption;
-    console.log(id);
     deleteAccount({ id, petId: selectPet.id });
   };
 

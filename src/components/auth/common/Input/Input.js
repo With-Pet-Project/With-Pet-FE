@@ -3,7 +3,17 @@ import { forwardRef } from 'react';
 import './Input.scss';
 
 function Input(
-  { className, type, name, accept, onChange, onClick, disabled, placeholder },
+  {
+    className,
+    type,
+    name,
+    accept,
+    onChange,
+    onClick,
+    disabled,
+    placeholder,
+    step,
+  },
   ref,
 ) {
   return (
@@ -12,6 +22,7 @@ function Input(
       type={type}
       accept={accept}
       name={name}
+      step={step}
       onChange={onChange}
       onClick={onClick}
       disabled={disabled}
