@@ -6,7 +6,7 @@ export const getArticleList = async (
   priority,
   firstPlace,
   secondPlace,
-  lastArticleId,
+  pageParam,
   searchValue,
   size,
 ) => {
@@ -14,15 +14,7 @@ export const getArticleList = async (
     firstPlace = null;
     secondPlace = null;
   }
-  console.log(
-    tag,
-    priority,
-    firstPlace,
-    secondPlace,
-    lastArticleId,
-    searchValue,
-    size,
-  );
+
   if (tag === 'ALL') {
     tag = null;
   }
@@ -33,7 +25,7 @@ export const getArticleList = async (
       place1: firstPlace,
       place2: secondPlace,
       filter: priority,
-      lastArticleId,
+      lastArticleId: pageParam,
       param: searchValue,
       size,
     },
@@ -112,6 +104,16 @@ export const patchEditArticle = async (
   return response;
 };
 
+export const deleteArticle = async (jwt, articleId) => {
+  const response = await CLIENT.delete(`article/${articleId}`, {
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
+
+  return response;
+};
+
 export const postAddArticleLike = async (jwt, articleId) => {
   const response = await CLIENT.post(
     '/article_like',
@@ -128,7 +130,7 @@ export const postAddArticleLike = async (jwt, articleId) => {
   return response;
 };
 
-export const deleteCanceArticlelLike = async (jwt, articleId) => {
+export const deleteCancelArticlelLike = async (jwt, articleId) => {
   const response = await CLIENT.delete('/article_like', {
     data: {
       articleId,

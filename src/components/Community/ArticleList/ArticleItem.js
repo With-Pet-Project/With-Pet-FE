@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-
 import dog from 'lib/assets/images/dog/md_icon.png';
 import { ARTICLE_TAG } from 'lib/constants/articleTag';
 import { useArticleLike } from '../hooks/useArticleLike';
@@ -11,7 +10,10 @@ function ArticleItem({ article }) {
   );
 
   const timeFormat = () => {
-    return new Date(article.createdTime).toLocaleDateString();
+    const date = new Date(article.createdTime);
+    return `${date.getFullYear()}년 ${
+      date.getMonth() + 1
+    }월 ${date.getDate()}일`;
   };
 
   return (

@@ -1,15 +1,15 @@
 /* eslint-disable camelcase */
-import { useParams, useSearchParams } from 'react-router-dom';
+// import { useParams, useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { postAddArticleLike, deleteCanceArticlelLike } from 'lib/APIs/article';
-import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
+import { postAddArticleLike, deleteCancelArticlelLike } from 'lib/APIs/article';
+// import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
 import { toast } from 'react-toastify';
 import { TOAST_OPTION } from 'components/common/Toast/toast';
 
 export function useArticleLike(whetherLike, likeCnt) {
-  const queryClient = useQueryClient();
-  const [searchParams, setSearchParams] = useSearchParams();
+  // const queryClient = useQueryClient();
+  // const [searchParams, setSearchParams] = useSearchParams();
   const [isAlike, setIsAlike] = useState(whetherLike);
   const [likeCount, setLikeCount] = useState(likeCnt);
 
@@ -30,7 +30,7 @@ export function useArticleLike(whetherLike, likeCnt) {
     mutationFn: articleId =>
       !isAlike
         ? postAddArticleLike(jwt_token, articleId) // isAlike(boolean)에 따라서 좋아요 추가 또는 취소
-        : deleteCanceArticlelLike(jwt_token, articleId),
+        : deleteCancelArticlelLike(jwt_token, articleId),
     onMutate: async articleId => {
       // eslint-disable-next-line no-unused-expressions
       !isAlike ? setLikeCount(likeCount + 1) : setLikeCount(likeCount - 1);
@@ -76,8 +76,11 @@ export function useArticleLike(whetherLike, likeCnt) {
 
       return { prevArticleList }; */
     },
-    onError: (err, newArticleList, context) => {
-      toast.warning('로그인이 필요합니다.', TOAST_OPTION);
+    onError: () => {
+      toast.warning(
+        '서버가 원활하지 않거나 로그인이 필요합니다.',
+        TOAST_OPTION,
+      );
       // queryClient.setQueriesData([...key], context.prevArticleList);
       setIsAlike(whetherLike);
       setLikeCount(likeCnt);
@@ -87,5 +90,5 @@ export function useArticleLike(whetherLike, likeCnt) {
     },
   });
 
-  return { mutate, isAlike, setIsAlike, likeCount };
+  return { mutate, isAlike, likeCount };
 }

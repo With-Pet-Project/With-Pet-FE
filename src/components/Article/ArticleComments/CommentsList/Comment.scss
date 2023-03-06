@@ -1,0 +1,23 @@
+.article-comments-createdTime {
+  & span {
+    font-size: 11px;
+    line-height: 24px;
+
+    margin-left: 12px;
+  }
+}
+
+.comment-list-item-content {
+  width: 100%;
+  padding-left: 115px;
+  margin: 20px 0;
+
+  & p {
+    font-size: 14px;
+  }
+}
+
+.comment-delete-button {
+  width: 20px !important;
+  height: 20px !important;
+}
