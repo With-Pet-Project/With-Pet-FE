@@ -1,19 +1,46 @@
+/* eslint-disable no-unused-expressions */
 import './Search.scss';
 import styled from 'styled-components';
+import { vars } from 'lib/styles/vars';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useInput } from 'components/common/hooks/useInput';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { useArticles } from '../hooks/useArticles';
+import HistoryList from './History/HistoryList';
 import TagList from './Tags/TagList';
-import Input from './Input/Input';
 
 const SearchForm = styled.form`
   border-bottom: 1px solid ${({ focus }) => (focus ? '#fff' : '#dbdbdb')};
   flex-direction: ${({ focus }) => (focus ? 'column' : 'row')};
 `;
 
+const SearchContainer = styled.div`
+  flex-direction: ${({ focus }) => (focus ? 'column' : 'row')};
+  flex-grow: ${({ focus }) => (focus ? '0' : '1')};
+
+  & svg {
+    align-self: ${({ focus }) => (focus ? 'flex-end' : 'center')};
+    margin-top: ${({ focus }) => (focus ? '-30px' : '0')};
+  }
+`;
+
+const SearchInput = styled.input`
+  border: 1px solid
+    ${({ focus }) => (focus ? `${vars.backgroundYellow}` : '#dbdbdb')};
+  background: ${({ focus }) => (focus ? '#fff' : '#eef0f3')};
+  padding-left: ${({ focus }) => (focus ? '43px' : '20px')};
+`;
+
 function Search() {
+  const { value, setValue, handleChange } = useInput();
   const [inputFocus, setInputFocus] = useState(false);
+  const [history, setHistory] = useState([]); // 검색기록 관리 state
   const inputRef = useRef(); // search Input의 value를 가져와서 submit하기 위해서.
   const searchRef = useRef(); // 검색창 바깥 클릭시, input focus 해제
+
+  const { setSearchValue } = useArticles();
 
   const isFocus = () => setInputFocus(true);
   const isBlur = e => {
@@ -22,11 +49,39 @@ function Search() {
     }
   };
 
+  const clickHistory = h => {
+    // 검색 기록 클릭
+    setValue(h);
+    inputRef.current.focus();
+  };
+
+  const removeHistory = h => {
+    // 검색기록 삭제
+    const removedHistory = history.filter(elem => elem !== h);
+    setHistory(removedHistory);
+    inputRef.current.focus();
+  };
+
   const onSubmit = e => {
     e.preventDefault();
+    value && !history.includes(value) ? setHistory([...history, value]) : 0;
+    setSearchValue(value);
     // inputRef.current.value를  submit
     console.log(inputRef.current.value);
   };
+
+  useEffect(() => {
+    // localStorage에서 검색기록 가져오기
+    const searchHistory = localStorage.getItem('search');
+    searchHistory && setHistory(JSON.parse(searchHistory));
+  }, []);
+
+  useEffect(() => {
+    // localStorage에 검색기록 저장
+    history.length
+      ? localStorage.setItem('search', JSON.stringify(history))
+      : localStorage.setItem('search', JSON.stringify([]));
+  }, [history]);
 
   return (
     <SearchForm
@@ -36,13 +91,37 @@ function Search() {
       onClick={isBlur}
     >
       {!inputFocus && <TagList />}
-      <Input
-        isFocus={isFocus}
-        isBlur={isBlur}
+      <SearchContainer
+        className="search-input"
         focus={inputFocus}
-        inputRef={inputRef}
-        searchRef={searchRef}
-      />
+        ref={searchRef}
+      >
+        {inputFocus && (
+          <label htmlFor="community-search" className="community-search-label">
+            <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" />
+            {value.length ? '' : <span>검색어를 입력해주세요.</span>}
+          </label>
+        )}
+        <SearchInput
+          ref={inputRef}
+          id="community-search"
+          type="text"
+          autoComplete="off"
+          spellCheck={false}
+          focus={inputFocus}
+          onFocus={isFocus}
+          value={value}
+          onChange={handleChange}
+        />
+        {!inputFocus && <FontAwesomeIcon icon={faMagnifyingGlass} />}
+        {inputFocus && (
+          <HistoryList
+            history={history}
+            clickHistory={clickHistory}
+            removeHistory={removeHistory}
+          />
+        )}
+      </SearchContainer>
       {inputFocus && (
         <div className="community-result-container">
           <div className="community-result-background" />

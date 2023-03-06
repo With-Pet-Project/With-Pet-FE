@@ -4,15 +4,18 @@ import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { postAddArticleLike, deleteCanceArticlelLike } from 'lib/APIs/article';
 import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
+import { toast } from 'react-toastify';
+import { TOAST_OPTION } from 'components/common/Toast/toast';
 
-export function useArticleLike(article) {
+export function useArticleLike(whetherLike, likeCnt) {
   const queryClient = useQueryClient();
   const [searchParams, setSearchParams] = useSearchParams();
-  const [isAlike, setIsAlike] = useState(article.articleLikeId);
+  const [isAlike, setIsAlike] = useState(whetherLike);
+  const [likeCount, setLikeCount] = useState(likeCnt);
 
   const jwt_token = localStorage.getItem('jwt_token') || null;
 
-  const key = [
+  /**  const key = [
     QUERY_KEY.Article,
     {
       tag: searchParams.get('tag'),
@@ -20,7 +23,7 @@ export function useArticleLike(article) {
       secondPlace: searchParams.get('secondPlace'),
       priority: searchParams.get('priority'),
     },
-  ];
+  ]; */
 
   // Article, tag, firstPlace, secondPlace, priority
   const { mutate } = useMutation({
@@ -28,7 +31,10 @@ export function useArticleLike(article) {
       !isAlike
         ? postAddArticleLike(jwt_token, articleId) // isAlike(boolean)에 따라서 좋아요 추가 또는 취소
         : deleteCanceArticlelLike(jwt_token, articleId),
-    onSuccess: async articleId => {
+    onMutate: async articleId => {
+      // eslint-disable-next-line no-unused-expressions
+      !isAlike ? setLikeCount(likeCount + 1) : setLikeCount(likeCount - 1);
+      setIsAlike(!isAlike);
       /**
        * 무한스크롤에 optimistic update를 사용하면
        * 성공시, invalidateQuery로 인해 전체 리렌더링.
@@ -71,13 +77,15 @@ export function useArticleLike(article) {
       return { prevArticleList }; */
     },
     onError: (err, newArticleList, context) => {
+      toast.warning('로그인이 필요합니다.', TOAST_OPTION);
       // queryClient.setQueriesData([...key], context.prevArticleList);
-      setIsAlike(!isAlike);
+      setIsAlike(whetherLike);
+      setLikeCount(likeCnt);
     },
     onSettled: () => {
       // queryClient.invalidateQueries({ queryKey: [...key] });
     },
   });
 
-  return { mutate, isAlike, setIsAlike };
+  return { mutate, isAlike, setIsAlike, likeCount };
 }

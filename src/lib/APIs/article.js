@@ -7,16 +7,26 @@ export const getArticleList = async (
   firstPlace,
   secondPlace,
   lastArticleId,
+  searchValue,
   size,
 ) => {
   if (firstPlace === '지역 선택' || secondPlace === '지역 선택') {
     firstPlace = null;
     secondPlace = null;
   }
-  console.log(lastArticleId);
+  console.log(
+    tag,
+    priority,
+    firstPlace,
+    secondPlace,
+    lastArticleId,
+    searchValue,
+    size,
+  );
   if (tag === 'ALL') {
     tag = null;
   }
+
   const data = await CLIENT.get(`/articles`, {
     params: {
       tag,
@@ -24,6 +34,7 @@ export const getArticleList = async (
       place2: secondPlace,
       filter: priority,
       lastArticleId,
+      param: searchValue,
       size,
     },
   });
@@ -65,8 +76,7 @@ export const postCreateArticle = async (
 };
 
 export const getReadArticleDetail = async articleId => {
-  const response = await CLIENT.get(`/article/${articleId}`);
-
+  const response = await CLIENT.get(`/articles/${articleId}`);
   return response;
 };
 
