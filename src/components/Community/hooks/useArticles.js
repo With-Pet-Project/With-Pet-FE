@@ -19,22 +19,20 @@ export const useArticles = () => {
       Article,
       { tag, firstPlace, secondPlace, priority, searchValue },
     ],
-    queryFn: ({ lastArticleId = 0 }) =>
+    queryFn: ({ pageParam = 0 }) =>
       getArticleList(
         tag,
         priority,
         firstPlace,
         secondPlace,
-        lastArticleId,
+        pageParam,
         searchValue,
-        10,
+        5,
       ),
-    getNextPageParam: lastPage => {
-      // console.log(lastPage.data.data.lastArticleId);
-      return lastPage?.data?.data.hasNext
-        ? Number(lastPage.data.data.lastArticleId) + 9
-        : undefined;
-    },
+    getNextPageParam: lastPage =>
+      lastPage?.data?.data.hasNext
+        ? lastPage.data.data.lastArticleId
+        : undefined,
     enabled: !!priority,
   });
 

@@ -66,6 +66,21 @@ function Editor() {
     }));
     mutate({ title, content, checkUrl });
   };
+
+  const isValidLocation = () => {
+    const tag = searchParams.get('tag');
+    const place1 = searchParams.get('firstPlace');
+    const place2 = searchParams.get('secondPlcae');
+
+    if (
+      (tag === 'LOST' || tag === 'WALK' || tag === 'HOSPITAL') &&
+      (place1 === '지역 선택' || place2 === '지역 선택')
+    ) {
+      return true;
+    }
+    return false;
+  };
+
   useEffect(() => {
     if (img) {
       setImageList([...imgList, { content: img }]);
@@ -110,7 +125,8 @@ function Editor() {
           disabled={
             !title.length ||
             content.length < 17 ||
-            searchParams.get('tag') === 'ALL'
+            searchParams.get('tag') === 'ALL' ||
+            isValidLocation()
           }
         >
           등록하기

@@ -7,14 +7,6 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 import { postCreateArticle } from 'lib/APIs/article';
 
 export function useCreateArticle() {
-  /** jwt,
-    title,
-    tag,
-    text,
-    firstPlace,
-    secondPlace,
-    imgUrl,
-  */
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -23,6 +15,11 @@ export function useCreateArticle() {
   const tag = searchParams.get('tag');
   const firstPlace = searchParams.get('firstPlace');
   const secondPlace = searchParams.get('secondPlace');
+
+  const key = [
+    QUERY_KEY.Article,
+    { tag, firstPlace, secondPlace, priority: searchParams.get('priority') },
+  ];
 
   const { mutate } = useMutation({
     mutationFn: ({ title, content, checkUrl }) =>
@@ -36,6 +33,7 @@ export function useCreateArticle() {
         checkUrl,
       ),
     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [...key] });
       toast.success(TOAST_MESSAGE.Add_SUCCESS, TOAST_OPTION);
       navigate('/community', { replace: true });
     },
