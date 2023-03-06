@@ -15,6 +15,7 @@ import { useMonthYear } from './hooks/useMonthYear';
 import AddAccount from './Modal/AddAccount/AddAccount';
 import TotalAccountSection from './TotalAccountSection/TotalAccountSection';
 import TodayAccountSection from './TodayAccountSection/TodayAccountSection';
+import SelectPet from './SelectPet/SelectPet';
 import './Account.scss';
 
 function Account() {
@@ -38,6 +39,7 @@ function Account() {
 
   return (
     <section className="account-container account_bg">
+      <SelectPet />
       <TotalAccountSection
         yearMonth={yearMonth}
         accountData={accountData}
