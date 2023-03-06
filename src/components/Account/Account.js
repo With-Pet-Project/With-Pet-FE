@@ -20,8 +20,9 @@ import './Account.scss';
 
 function Account() {
   const [selectDate, setSelectDate] = useState(getMonthYearDetails(TODAY));
-  const [yearMonth, setYearMonth] = useMonthYear();
-  const accountData = useAccount(yearMonth.year, yearMonth.month);
+  const [selectPet, setSelectPet] = useState({ id: 'all', name: '전체보기' });
+  const [yearMonth, setYearMonth] = useMonthYear(selectPet.id);
+  const accountData = useAccount(yearMonth.year, yearMonth.month, selectPet.id);
   const { openModal } = useModal();
 
   const openAddAccount = () => {
@@ -39,7 +40,7 @@ function Account() {
 
   return (
     <section className="account-container account_bg">
-      <SelectPet />
+      <SelectPet selectPet={selectPet} setSelectPet={setSelectPet} />
       <TotalAccountSection
         yearMonth={yearMonth}
         accountData={accountData}
@@ -50,6 +51,7 @@ function Account() {
       <TodayAccountSection
         accountData={accountData[selectDate.day]}
         yearMonth={yearMonth}
+        selectPet={selectPet}
       />
       <FloatButton handleOnClick={openAddAccount}>
         <FontAwesomeIcon icon={faPlus} size="1x" />

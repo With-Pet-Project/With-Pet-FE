@@ -1,13 +1,14 @@
 @import '/src/lib/styles/vars.scss';
 
-.pet-account-list {
+.show-pet-account {
   width: 954px;
   margin: 63px auto 0;
+  height: 35px;
 
-  li {
+  .select-pet {
     display: flex;
     align-items: center;
-    cursor: pointer;
+    width: fit-content;
   }
 
   .pet-name {
@@ -15,10 +16,38 @@
     font-family: TmoneyRoundWindBold;
     font-size: 28px;
     color: $fontColor-black;
+    cursor: pointer;
   }
 
   .chevron {
     display: block;
-    margin-right: 27px;
+    padding-right: 27px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+}
+
+.select-pet-list {
+  background-color: #ffffff;
+  border: 1px solid #dbdbdb;
+  border-radius: 10px;
+  width: fit-content;
+  position: relative;
+  top: 5px;
+  z-index: 1;
+
+  li {
+    color: #757575;
+    font-size: 18px;
+    height: 45px;
+    width: 170px;
+    padding-left: 15px;
+    line-height: 45px;
+    border-bottom: 1px solid #dbdbdb;
+    cursor: pointer;
+  }
+
+  li:hover {
+    background-color: $background-yellow;
   }
 }

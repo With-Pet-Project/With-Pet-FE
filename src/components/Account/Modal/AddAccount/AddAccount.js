@@ -1,10 +1,12 @@
 import { useModal } from 'components/common/Modal/context/useModal';
+import { usePet } from 'components/Diary/hooks/usePet';
 import { useAddAccount } from '../../hooks/useAddAccount';
 import { ACCOUNT_LIST } from '../../constant';
 import './AddAccount.scss';
 
 function AddAccount({ selectDate }) {
   const addAccount = useAddAccount();
+  const pets = usePet();
   const { closeModal } = useModal();
 
   const handleSubmit = event => {
@@ -18,7 +20,6 @@ function AddAccount({ selectDate }) {
     const { value: etc } = event.target.elements.etc;
 
     const { day, month, year } = selectDate;
-
     addAccount({
       petId,
       feed,
@@ -33,6 +34,12 @@ function AddAccount({ selectDate }) {
 
     closeModal(AddAccount); // it's not working. but why?
   };
+
+  const petOptions = pets.map(pet => (
+    <option value={pet.id} className="select-items">
+      {pet.name}
+    </option>
+  ));
 
   const inputHtml = Object.entries(ACCOUNT_LIST).map(([key, { name }]) => (
     <div key={key}>
@@ -55,12 +62,7 @@ function AddAccount({ selectDate }) {
           <span className="label">펫 선택</span>
           <select name="petId" className="select-wrapper">
             <span>👇</span>
-            <option value={Math.random()} className="select-items">
-              뽀삐
-            </option>
-            <option value={Math.random()} className="select-items">
-              나비
-            </option>
+            {petOptions}
           </select>
         </div>
         {inputHtml}

@@ -15,10 +15,11 @@ const addAccount = async ({
   month,
   year,
 }) => {
-  const tempPetId = 37;
+  let id = petId;
+  if (petId === 'all') id = '37'; // 나중에 전체보기 api 나오면 수정하기
   const jwt = localStorage.getItem('jwt_token') || null;
   const { data } = await CLIENT.post(
-    `/pet/${tempPetId}/consumption`,
+    `/pet/${id}/consumption`,
     {
       feed: Number(feed),
       toy: Number(toy),
