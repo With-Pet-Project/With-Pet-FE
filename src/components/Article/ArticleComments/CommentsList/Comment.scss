@@ -9,7 +9,7 @@
 
 .comment-list-item-content {
   width: 100%;
-  padding-left: 100px;
+  padding-left: 65px;
   margin: 12px 0;
 
   & p {
@@ -17,7 +17,20 @@
   }
 }
 
+.comment-edit-delete-button {
+  margin-left: auto;
+
+  & button {
+    margin: 0 5px;
+  }
+}
+
 .comment-delete-button {
   width: 20px !important;
   height: 20px !important;
+}
+
+.comment-edit-button {
+  height: 20px !important;
+  width: 42px !important;
 }

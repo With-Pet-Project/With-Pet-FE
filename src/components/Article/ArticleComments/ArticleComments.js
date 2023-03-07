@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useArticleDetail } from '../hooks/useArticleDetail';
 import { useCreateComment } from '../hooks/useCreateComment';
 import CommentsList from './CommentsList/CommentsList';
+import CommentArea from './CommentArea/CommentArea';
 
 function ArticleComments() {
   const [comment, setComment] = useState('');
@@ -37,11 +38,9 @@ function ArticleComments() {
               <span>등록</span>
             </button>
           </div>
-          <textarea
-            className="comments-textarea"
-            value={comment}
-            onChange={handleCommentValue}
-            placeholder="댓글을 입력해주세요."
+          <CommentArea
+            comment={comment}
+            handleCommentValue={handleCommentValue}
           />
         </div>
       </form>

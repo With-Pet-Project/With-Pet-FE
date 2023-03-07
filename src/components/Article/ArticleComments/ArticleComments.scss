@@ -41,20 +41,3 @@
   font-weight: 600;
   color: $fontColor-black;
 }
-
-.comments-textarea {
-  resize: none;
-  outline: none;
-
-  width: 100%;
-  min-height: 100px;
-  padding: 10px;
-  border: 1px solid $borderColor-gray;
-  border-radius: 10px;
-
-  margin: 22px 0;
-
-  &:focus {
-    border: 1px solid $background-yellow;
-  }
-}

@@ -38,7 +38,7 @@ export const getReadChildComment = async commentId => {
 
 export const patchUpdateComment = async (jwt, commentId, content) => {
   const response = await CLIENT.patch(
-    `/comments/${commentId}?content=${content}`,
+    `/comment/${commentId}?content=${content}`,
     {},
     {
       headers: {
