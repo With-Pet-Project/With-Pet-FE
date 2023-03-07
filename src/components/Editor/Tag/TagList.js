@@ -23,7 +23,7 @@ function TagList() {
 
   return (
     <div className="tagList-button">
-      <select onClick={handleTag} id="tag-selector">
+      <select onClick={handleTag} id="tag-selector" aria-label="태그">
         {Object.values(ARTICLE_TAG).map((t, idx) =>
           idx >= 1 ? (
             <option key={t} value={KEY[idx]}>
