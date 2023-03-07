@@ -16,7 +16,7 @@ function UserInfo({ user = null }) {
               <span>{user.nickName}</span>
             </div>
             <div className="user-email">
-              <span>이메일</span>
+              <span>{user.email}</span>
             </div>
           </div>
         </>
