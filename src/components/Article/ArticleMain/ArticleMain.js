@@ -1,9 +1,9 @@
 import './ArticleMain.scss';
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import dog from 'lib/assets/images/dog/md_icon.png';
 import { ARTICLE_TAG } from 'lib/constants/articleTag';
 import { useArticleLike } from 'components/Community/hooks/useArticleLike';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useUser } from 'components/auth/hooks/useUser';
 import { useDeleteArticle } from '../hooks/useDeleteArticle';
 import { useArticleDetail } from '../hooks/useArticleDetail';
@@ -12,12 +12,13 @@ function ArticleMain() {
   const { articleId } = useParams();
   const { deleteArticleMutate } = useDeleteArticle();
   const user = useUser();
-
   const article = useArticleDetail();
   const { mutate, isAlike, likeCount } = useArticleLike(
     article.whetherLike,
     article.likeCnt,
   );
+
+  const navigate = useNavigate();
 
   const timeFormat = () => {
     const date = new Date(article.createdTime);
@@ -46,7 +47,11 @@ function ArticleMain() {
               >
                 <span>삭제</span>
               </button>
-              <button type="button" className="delete-button">
+              <button
+                type="button"
+                className="delete-button"
+                onClick={() => navigate(`/editor/${articleId}`)}
+              >
                 <span>편집</span>
               </button>
             </div>

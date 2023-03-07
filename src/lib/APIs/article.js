@@ -74,21 +74,15 @@ export const getReadArticleDetail = async articleId => {
 
 export const patchEditArticle = async (
   jwt,
-  tag,
   title,
   place1,
   place2,
   detailText,
   articleId,
 ) => {
-  if (tag !== 'LOST' && tag !== 'WALK' && tag !== 'HOSPITAL') {
-    place1 = null;
-    place2 = null;
-  }
   const response = await CLIENT.patch(
     `/article/${articleId}`,
     {
-      tag,
       title,
       place1,
       place2,

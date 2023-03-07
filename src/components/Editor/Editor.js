@@ -7,6 +7,7 @@ import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import ReactQuill from 'react-quill';
+import { useArticleDetail } from 'components/Article/hooks/useArticleDetail';
 import { imageHandler } from './util/imageHandler';
 import TagList from './Tag/TagList';
 import Location from './Location/Location';
@@ -56,15 +57,17 @@ function Editor() {
   const [content, setContent] = useState('');
   const QuillRef = useRef();
 
+  const articleDetail = useArticleDetail();
+
   // { title, text, imgUrl }
-  const { mutate } = useCreateArticle();
+  const { createArticleMutate } = useCreateArticle();
   const onSubmit = e => {
     e.preventDefault();
     const checkUrl = imgList.map(i => ({
       ...i,
       existence: content.includes(i.content),
     }));
-    mutate({ title, content, checkUrl });
+    createArticleMutate({ title, content, checkUrl });
   };
 
   const isValidLocation = () => {
@@ -80,6 +83,13 @@ function Editor() {
     }
     return false;
   };
+
+  useEffect(() => {
+    if (articleDetail) {
+      setImageList([...articleDetail.images]);
+      setContent(articleDetail.detailText);
+    }
+  }, []);
 
   useEffect(() => {
     if (img) {
