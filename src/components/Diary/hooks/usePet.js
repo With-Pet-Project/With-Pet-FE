@@ -17,7 +17,7 @@ export function usePet() {
       toast.error(TOAST_MESSAGE.CANNOT_GET_DATA, TOAST_OPTION);
       window.location.replace('/');
     },
-    staleTime: 1000 * 60 * 5,
+    staleTime: 1000 * 60 * 30,
   });
 
   return petInfoList?.data?.data.sort((a, b) => a.name - b.name);

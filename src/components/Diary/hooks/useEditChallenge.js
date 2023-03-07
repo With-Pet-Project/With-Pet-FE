@@ -19,14 +19,31 @@ export function useEditChallenge() {
   const month = Number(searchParams.get('month'));
   const day = Number(searchParams.get('day'));
 
-  const key = [QUERY_KEY.DailyChallenge, jwt_token, year, month, day, petId];
+  const dailyKey = [
+    QUERY_KEY.DailyChallenge,
+    jwt_token,
+    year,
+    month,
+    day,
+    petId,
+  ];
+
+  const weeklyKey = [
+    QUERY_KEY.WeeklyChallenge,
+    jwt_token,
+    petId,
+    year,
+    month,
+    day,
+  ];
 
   const editChallenge = useMutation({
     mutationFn: ({ title, targetCnt, challengeId }) =>
       putEditChallenge(jwt_token, title, targetCnt, petId, challengeId),
     onSuccess: () => {
       toast.success(TOAST_MESSAGE.UPDATE_SUCCESS, TOAST_OPTION);
-      queryClient.invalidateQueries({ queryKey: [...key] });
+      queryClient.invalidateQueries({ queryKey: [...dailyKey] });
+      queryClient.invalidateQueries({ queryKey: [...weeklyKey] });
     },
     onError: () => {
       toast.error(TOAST_MESSAGE.UPDATE_FAIL, TOAST_OPTION);

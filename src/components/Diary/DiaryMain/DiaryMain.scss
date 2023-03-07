@@ -15,6 +15,9 @@
   & section {
     background-color: #ffffff;
     border-radius: 10px;
+
+    box-shadow: 0px 4px 18px rgba(137, 137, 137, 0.25);
+    border-radius: 10px;
   }
 
   & .section-title {
@@ -93,6 +96,11 @@
       -webkit-box-orient: vertical !important;
       -webkit-line-clamp: 2 !important;
     }
+
+    & b,
+    & span {
+      font-family: 'TmoneyRoundWindBold';
+    }
   }
 
   .circle-img {
@@ -104,9 +112,9 @@
 }
 
 .diary-section-Padding {
-    padding: 24px;
-    font-family: 'Pretendard';
-    font-style: normal;
+  padding: 24px;
+  font-family: 'Pretendard';
+  font-style: normal;
 }
 
 @media screen and (max-width: $wide) {
@@ -151,19 +159,19 @@
     }
   }
 
-    .Walking-Weight-SpecialNote {
-      flex-direction: row;
-      min-height: 250px;
-      margin: 10px 0;
+  .Walking-Weight-SpecialNote {
+    flex-direction: row;
+    min-height: 250px;
+    margin: 10px 0;
 
-      & section {
-        flex-basis: calc(50% - 20px);
-      }
-
-      .circle-img {
-        align-self: flex-end;
-        width: 60px;
-        height: 60px
-      }
+    & section {
+      flex-basis: calc(50% - 20px);
     }
+
+    .circle-img {
+      align-self: flex-end;
+      width: 60px;
+      height: 60px;
+    }
+  }
 }

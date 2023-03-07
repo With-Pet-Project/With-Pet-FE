@@ -24,10 +24,17 @@ function TagList() {
   return (
     <div className="tagList-button">
       <select onClick={handleTag} id="tag-selector">
-        <option value="ALL">태그 선택</option>
-        {Object.values(ARTICLE_TAG).map((t, idx) => (
-          <option value={KEY[idx]}>{t}</option>
-        ))}
+        {Object.values(ARTICLE_TAG).map((t, idx) =>
+          idx >= 1 ? (
+            <option key={t} value={KEY[idx]}>
+              {t}
+            </option>
+          ) : (
+            <option key="태그 선택" value={KEY[idx]}>
+              태그 선택
+            </option>
+          ),
+        )}
       </select>
       <div className="editor-down-arrow">
         <DownArrow htmlFor="tag-selector" />

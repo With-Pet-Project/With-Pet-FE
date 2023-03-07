@@ -1,25 +1,18 @@
 /* eslint-disable camelcase */
-import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
-import { getPetInfoById } from 'lib/APIs/pet';
-import { useQuery } from '@tanstack/react-query';
-import { toast } from 'react-toastify';
-import { TOAST_MESSAGE, TOAST_OPTION } from 'components/common/Toast/toast';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { usePet } from './usePet';
 import { petIdContext } from '../context/PetContext';
 
 export function usePetById() {
+  // 개별 펫의 정보를 얻기 위해 server에 요청을 한번 더 보내는 것보다
+  // 로컬에서 query cache에 있는 값을 찾아오는게 이득
   const [petId, setPetId] = useContext(petIdContext);
+  const [petInfo, setPetInfo] = useState();
+  const petInfoList = usePet();
 
-  const jwt_token = localStorage.getItem('jwt_token') || null;
-  const { PetInfoById } = QUERY_KEY;
+  useEffect(() => {
+    setPetInfo(petInfoList?.find(pet => pet.id === petId));
+  }, [petId, petInfoList]);
 
-  const { data } = useQuery({
-    queryKey: [PetInfoById],
-    queryFn: () => getPetInfoById(jwt_token, petId),
-    onError: () => {
-      toast.error(TOAST_MESSAGE.CANNOT_GET_DATA, TOAST_OPTION);
-    },
-  });
-
-  return data;
+  return petInfo || null;
 }

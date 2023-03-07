@@ -1,11 +1,18 @@
+import { useHealthInfo } from '../hooks/useHealthInfo';
+import { usePetById } from '../hooks/usePetById';
+
 function WeightSection() {
+  const { avgWeight } = useHealthInfo();
+  // const petInfo = usePetById();
+
   return (
     <section className="diary-section diary-section-Padding">
       <div className="right-section-text-box">
         <h2 className="section-title">평균 몸무게</h2>
         <p>이번달 반려견의 평균 기록 몸무게는?</p>
         <em>
-          <b>6.3</b> <span>kg</span>
+          <b>{avgWeight || 0}</b>
+          <span>kg</span>
         </em>
       </div>
       <div className="circle-img">

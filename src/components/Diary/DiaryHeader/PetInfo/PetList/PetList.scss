@@ -35,12 +35,21 @@
   }
 
   & button {
-    margin: 0 5px;
+    margin: 0;
     height: 100%;
   }
 
   & li button:first-child {
     flex-grow: 1;
     text-align: left;
+  }
+
+  & li button:last-child {
+    padding: 0 10px;
+
+    & svg {
+      width: 18px;
+      height: 18px;
+    }
   }
 }

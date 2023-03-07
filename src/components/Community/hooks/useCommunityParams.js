@@ -2,11 +2,10 @@ import { ADMIN_DISTRICT } from 'lib/constants/adminDistrict';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-export function useCommunityParams() {
+export function useCommunityParams(priority = null, setPriority = null) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [firstPlace, setFirstPlace] = useState(Object.keys(ADMIN_DISTRICT)[0]);
   const [secondPlace, setSecondPlace] = useState(ADMIN_DISTRICT[firstPlace][0]);
-  const [priority, setPriority] = useState('최신');
 
   useEffect(() => {
     const tag = searchParams.get('tag');
@@ -20,7 +19,10 @@ export function useCommunityParams() {
         searchParams.set('firstPlace', firstPlace);
         searchParams.set('secondPlace', secondPlace);
       }
-      searchParams.set('priority', priority);
+
+      if (priority) {
+        searchParams.set('priority', priority);
+      }
       setSearchParams(searchParams);
     }
   }, [searchParams, setSearchParams, firstPlace, secondPlace, priority]);
@@ -36,7 +38,5 @@ export function useCommunityParams() {
     setFirstPlace,
     secondPlace,
     setSecondPlace,
-    priority,
-    setPriority,
   };
 }

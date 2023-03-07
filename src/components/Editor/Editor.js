@@ -3,13 +3,16 @@ import './Editor.scss';
 import styled from 'styled-components';
 import { vars } from 'lib/styles/vars';
 
-import React, { useState, useMemo, useRef, useImperativeHandle } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+
 import ReactQuill from 'react-quill';
+import { useArticleDetail } from 'components/Article/hooks/useArticleDetail';
+import { imageHandler } from './util/imageHandler';
 import TagList from './Tag/TagList';
 import Location from './Location/Location';
 import 'react-quill/dist/quill.snow.css';
-
-import { imageHandler } from './utils/imageHandler';
+import { useCreateArticle } from './hooks/useCreateArticle';
 
 const formats = [
   'header',
@@ -39,21 +42,66 @@ const SubmitButton = styled.button`
   font-variation-settings: 'wght' 500;
   font-size: 18px;
   line-height: 21px;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 `;
 
 function Editor() {
-  const [value, setValue] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [img, setImg] = useState(null); // 사용자가 이미지를 올렸다가 지웠을 경우, detailText와 imgList의 url들을
+  const [imgList, setImageList] = useState([]); // 대조하여 지워진 이미지인지 아닌지 구분해야 한다.
+
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
   const QuillRef = useRef();
 
+  const articleDetail = useArticleDetail();
+
+  // { title, text, imgUrl }
+  const { createArticleMutate } = useCreateArticle();
   const onSubmit = e => {
     e.preventDefault();
+    const checkUrl = imgList.map(i => ({
+      ...i,
+      existence: content.includes(i.content),
+    }));
+    createArticleMutate({ title, content, checkUrl });
   };
+
+  const isValidLocation = () => {
+    const tag = searchParams.get('tag');
+    const place1 = searchParams.get('firstPlace');
+    const place2 = searchParams.get('secondPlcae');
+
+    if (
+      (tag === 'LOST' || tag === 'WALK' || tag === 'HOSPITAL') &&
+      (place1 === '지역 선택' || place2 === '지역 선택')
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  useEffect(() => {
+    if (articleDetail) {
+      setImageList([...articleDetail.images]);
+      setContent(articleDetail.detailText);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (img) {
+      setImageList([...imgList, { content: img }]);
+    }
+  }, [img]);
 
   const modules = useMemo(
     () => ({
       toolbar: {
         container: [
-          [{ header: [1, 2, 3, 4, 5, false] }],
+          [{ header: [1, 2, 3, 4, 5, 6, false] }],
           ['bold', 'italic', 'underline', 'strike', 'blockquote'],
           [
             { list: 'unordered' },
@@ -68,7 +116,7 @@ function Editor() {
           [{ align: ['', 'center', 'right'] }],
         ],
         handlers: {
-          image: () => imageHandler(QuillRef),
+          image: () => imageHandler(QuillRef, setImg),
         },
       },
     }),
@@ -82,25 +130,37 @@ function Editor() {
           <TagList />
           <Location />
         </div>
-        <SubmitButton type="submit">등록하기</SubmitButton>
+        <SubmitButton
+          type="submit"
+          disabled={
+            !title.length ||
+            content.length < 17 ||
+            searchParams.get('tag') === 'ALL' ||
+            isValidLocation()
+          }
+        >
+          등록하기
+        </SubmitButton>
       </div>
       <input
         type="text"
+        value={title}
+        onChange={e => setTitle(e.target.value)}
         placeholder="제목을 입력해주세요"
         aria-label="article title"
       />
       <ReactQuill
-        ref={element => {
-          if (element !== null) {
-            QuillRef.current = element;
+        ref={el => {
+          if (el !== null) {
+            QuillRef.current = el;
           }
         }}
         theme="snow"
-        value={value}
-        onChange={setValue}
+        value={content}
+        onChange={setContent}
         modules={modules}
         format={formats}
-        placeholder=""
+        placeholder="10자 이상 입력해주세요."
       />
     </form>
   );

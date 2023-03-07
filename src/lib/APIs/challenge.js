@@ -1,12 +1,12 @@
 import CLIENT from './client';
 
 export const getAllOfChallenges = async () => {
-  const data = await CLIENT.get('/challenge');
-  return data;
+  const response = await CLIENT.get('/challenge');
+  return response;
 };
 
 export const postAddChallenge = async (jwt, petId, title, targetCnt) => {
-  const data = await CLIENT.post(
+  const response = await CLIENT.post(
     `/pet/${petId}/challenge`,
     {
       title,
@@ -19,11 +19,11 @@ export const postAddChallenge = async (jwt, petId, title, targetCnt) => {
     },
   );
 
-  return data;
+  return response;
 };
 
 export const getDailyChallenge = async (jwt, petId, year, month, day, week) => {
-  const data = await CLIENT.get(
+  const response = await CLIENT.get(
     `/pet/${petId}/challenge/daily?year=${year}&month=${month}&day=${day}&week=${week}`,
     {
       headers: {
@@ -31,11 +31,11 @@ export const getDailyChallenge = async (jwt, petId, year, month, day, week) => {
       },
     },
   );
-  return data;
+  return response;
 };
 
 export const getWeeklyChallenge = async (jwt, petId, year, month, week) => {
-  const data = await CLIENT.get(
+  const response = await CLIENT.get(
     `/pet/${petId}/challenge/weekly?year=${year}&month=${month}&week=${week}`,
     {
       headers: {
@@ -44,7 +44,7 @@ export const getWeeklyChallenge = async (jwt, petId, year, month, week) => {
     },
   );
 
-  return data;
+  return response;
 };
 
 export const postCheckChallenge = async (
@@ -57,7 +57,7 @@ export const postCheckChallenge = async (
   week,
   date, // YYYY-MM-DD
 ) => {
-  const data = await CLIENT.post(
+  const response = await CLIENT.post(
     `/pet/${petId}/challenge/${challengeId}/check/`,
     {
       year: `${year}`,
@@ -73,11 +73,11 @@ export const postCheckChallenge = async (
     },
   );
 
-  return data;
+  return response;
 };
 
 export const deleteUncheckChallenge = async (jwt, petId, challengeLogId) => {
-  const data = await CLIENT.delete(
+  const response = await CLIENT.delete(
     `/pet/${petId}/challenge/check/${challengeLogId}`,
     {
       headers: {
@@ -86,17 +86,20 @@ export const deleteUncheckChallenge = async (jwt, petId, challengeLogId) => {
     },
   );
 
-  return data;
+  return response;
 };
 
 export const deleteRemoveChallenge = async (jwt, petId, challengeId) => {
-  const data = await CLIENT.delete(`/pet/${petId}/challenge/${challengeId}`, {
-    headers: {
-      Authorization: `Bearer ${jwt}`,
+  const response = await CLIENT.delete(
+    `/pet/${petId}/challenge/${challengeId}`,
+    {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
     },
-  });
+  );
 
-  return data;
+  return response;
 };
 
 export const putEditChallenge = async (
@@ -106,7 +109,7 @@ export const putEditChallenge = async (
   petId,
   challengeId,
 ) => {
-  const data = await CLIENT.put(
+  const response = await CLIENT.put(
     `/pet/${petId}/challenge/${challengeId}`,
     {
       title,
@@ -118,5 +121,5 @@ export const putEditChallenge = async (
       },
     },
   );
-  return data;
+  return response;
 };

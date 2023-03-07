@@ -114,7 +114,7 @@ function AddPet() {
           </div>
         </div>
         <div className="add-Pet-input">
-          <h3>정보</h3>
+          <h3>몸무게</h3>
           <input
             type="text"
             placeholder="몸무게를 입력하세요."

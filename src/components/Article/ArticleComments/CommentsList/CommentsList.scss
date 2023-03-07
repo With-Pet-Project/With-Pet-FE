@@ -1,0 +1,14 @@
+@import '/src/lib/styles/vars.scss';
+
+.comments-list {
+  margin: 20px 40px;
+
+  & ul li {
+    padding: 20px 0;
+    border-bottom: 1px solid $borderColor-gray;
+  }
+
+  & ul li:first-child {
+    border-top: 1px solid $borderColor-gray;
+  }
+}
