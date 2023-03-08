@@ -2,23 +2,35 @@ import { useState } from 'react';
 import useConfirm from 'components/common/hooks/useConfirm';
 
 import ShowTodayAccount from './ShowTodayAccount/ShowTodayAccount';
+import { ACCOUNT_LIST } from '../constant';
 import EditTodayAccount from './EditTodayAccount/EditTodayAccount';
 import { useDeleteAccount } from '../hooks/useDeleteAccount';
 import { useUpdateAccount } from '../hooks/useUpdateAccount';
 import './TodayAccountSection.scss';
 
 // api 적용 후 이부분 리펙토링
-function TodayAccountSection({ accountData, yearMonth, selectPet }) {
+function TodayAccountSection({
+  calenderData,
+  accountData,
+  yearMonth,
+  selectPet,
+}) {
   const [isEdit, setIsEdit] = useState(false);
   const deleteAccount = useDeleteAccount();
   const updateAccount = useUpdateAccount();
-  const { consumption } = accountData.length > 0 && accountData[0];
-  const accountValue = { ...consumption };
+  // const { consumption } = accountData.length > 0 && accountData[0];
+  const accountValue = { ...calenderData };
 
   const onConfirm = () => {
-    const { id } = consumption;
+    const { id } = calenderData;
     deleteAccount({ id, petId: selectPet.id });
   };
+
+  const todayTotal =
+    Object.entries(ACCOUNT_LIST).reduce(
+      (acc, [key, _]) => acc + calenderData[key],
+      0,
+    ) || 0;
 
   const confirmDelete = useConfirm(onConfirm, '삭제하시겠습니까?');
 
@@ -60,17 +72,23 @@ function TodayAccountSection({ accountData, yearMonth, selectPet }) {
     </button>
   );
 
+  const hasData = Object.keys(calenderData).length > 0;
+
   const todayContentHtml = isEdit ? (
-    <EditTodayAccount accountData={accountData} accountValue={accountValue} />
+    <EditTodayAccount
+      accountData={calenderData}
+      todayTotal={todayTotal}
+      accountValue={accountValue}
+    />
   ) : (
-    <ShowTodayAccount accountData={accountData} />
+    <ShowTodayAccount accountData={calenderData} todayTotal={todayTotal} />
   );
 
   return (
     <div className="today-account">
       <div className="title-wrapper">
         <h2>오늘의 소비</h2>
-        <div>{accountData.length > 0 && btnHtml}</div>
+        <div>{hasData && selectPet.id !== 'all' && btnHtml}</div>
       </div>
       {todayContentHtml}
     </div>

@@ -4,12 +4,13 @@ import CLIENT from 'lib/APIs/client';
 
 const setCalenderFormat = (year, month) => {
   const lastDay = new Date(year, Number(month), 0).getDate();
-  return Array(lastDay)
+  const calender = Array(lastDay)
     .fill(null)
     .reduce((acc, _, index) => {
       acc[`${index + 1}`] = {};
       return acc;
     }, {});
+  return { ...calender };
 };
 
 const getCalender = (year, month, rawData, petId) => {
@@ -19,20 +20,20 @@ const getCalender = (year, month, rawData, petId) => {
     if (data.petId !== petId) return;
     calender[`${data.day}`] = { ...calender[`${data.day}`], ...data };
   });
-
   return calender;
 };
 
 const getAllCalender = (year, month, rawData) => {
   const calender = setCalenderFormat(year, month);
+  const hasData = (data, type) => (data[type] ? data[type] : 0);
 
   rawData.forEach(data => {
     calender[`${data.day}`] = {
-      beauty: calender[`${data.day}`].beauty || 0 + data.beauty,
-      etc: calender[`${data.day}`].etc || 0 + data.etc,
-      hospital: calender[`${data.day}`].hospital || 0 + data.hospital,
-      feed: calender[`${data.day}`].feed || 0 + data.feed,
-      toy: calender[`${data.day}`].toy || 0 + data.toy,
+      beauty: hasData(calender[`${data.day}`], 'beauty') + data.beauty,
+      etc: hasData(calender[`${data.day}`], 'etc') + data.etc,
+      hospital: hasData(calender[`${data.day}`], 'hospital') + data.hospital,
+      feed: hasData(calender[`${data.day}`], 'feed') + data.feed,
+      toy: hasData(calender[`${data.day}`], 'toy') + data.toy,
     };
   });
 
@@ -96,7 +97,7 @@ export const fetchAccount = async (year, month, petsId) => {
     },
   });
 
-  console.log(JSON.stringify(data.data, null, '\t'));
+  // console.log(JSON.stringify(data.data, null, '\t'));
   const result = makeAccountData(data.data, year, month, petsId);
   // console.log(JSON.stringify(result, null, '\t'));
   return result;

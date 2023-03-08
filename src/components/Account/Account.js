@@ -43,7 +43,7 @@ function Account() {
   };
 
   console.log(accountData);
-  console.log(selectPet);
+  console.log(accountData[selectPet.id].calender[selectDate.day]);
 
   return (
     <section className="account-container account_bg">
@@ -57,11 +57,12 @@ function Account() {
         handleSelectDate={handleSelectDate}
         handleMonthChange={handleMonthChange}
       />
-      {/* <TodayAccountSection
+      <TodayAccountSection
+        calenderData={accountData[selectPet.id].calender[selectDate.day]}
         accountData={accountData[selectDate.day]}
         yearMonth={yearMonth}
         selectPet={selectPet}
-      /> */}
+      />
       <FloatButton handleOnClick={openAddAccount}>
         <FontAwesomeIcon icon={faPlus} size="1x" />
       </FloatButton>

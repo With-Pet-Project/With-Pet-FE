@@ -21,7 +21,6 @@ export const useMonthYear = petsId => {
       [queryKeys.account, beforeYear, beforeMonth],
       () => fetchAccount(beforeYear, beforeMonth, petsId),
     );
-
     const { year: nextYear, month: nextMonth } = getNextYearMonth(
       yearMonth.dateObject,
       1,
@@ -29,7 +28,7 @@ export const useMonthYear = petsId => {
     queryClient.prefetchQuery([queryKeys.account, nextYear, nextMonth], () =>
       fetchAccount(nextYear, nextMonth, petsId),
     );
-  }, [yearMonth, queryClient]);
+  }, [yearMonth, queryClient, petsId]);
 
   return [yearMonth, setYearMonth];
 };
