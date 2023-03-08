@@ -40,7 +40,7 @@ function SpecialNoteSection() {
         : editHealthInfo.mutate({
             ...dayInfo,
             id: dayInfo.id,
-            walkDistance: dayInfo.walk,
+            walkDistance: dayInfo.walkDistance,
             weight: dayInfo.weight,
             drinkAmount: dayInfo.drinkAmount,
             feedAmount: dayInfo.feedAmount,
