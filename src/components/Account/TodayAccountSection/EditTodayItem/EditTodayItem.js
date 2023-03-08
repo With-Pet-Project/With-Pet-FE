@@ -13,7 +13,7 @@ function EditTodayItem({ id, name, price = 0, darkColor, onChange }) {
         <input
           onChange={event => onChange(event, id)}
           className="today-input"
-          placeholder={getComma(price)}
+          placeholder={price && getComma(price)}
         />
         <span className="unit">원</span>
       </div>

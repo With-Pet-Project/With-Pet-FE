@@ -7,6 +7,7 @@ import {
   getNextYearMonth,
 } from 'components/common/Calender/hooks/date';
 import FloatButton from 'components/common/FloatButton/FloatButton';
+import { usePet } from 'components/Diary/hooks/usePet';
 import { useModal } from 'components/common/Modal/context/useModal';
 import { TODAY } from '../common/Calender/constant';
 import { useAccount } from './hooks/useAccount';
@@ -15,12 +16,17 @@ import { useMonthYear } from './hooks/useMonthYear';
 import AddAccount from './Modal/AddAccount/AddAccount';
 import TotalAccountSection from './TotalAccountSection/TotalAccountSection';
 import TodayAccountSection from './TodayAccountSection/TodayAccountSection';
+import SelectPet from './SelectPet/SelectPet';
+
 import './Account.scss';
 
 function Account() {
   const [selectDate, setSelectDate] = useState(getMonthYearDetails(TODAY));
-  const [yearMonth, setYearMonth] = useMonthYear();
-  const accountData = useAccount(yearMonth.year, yearMonth.month);
+  const [selectPet, setSelectPet] = useState({ id: 'all', name: '전체보기' });
+  const pets = usePet();
+  const petsId = [...pets.map(pet => pet.id), 'all'];
+  const [yearMonth, setYearMonth] = useMonthYear(petsId);
+  const accountData = useAccount(yearMonth.year, yearMonth.month, petsId);
   const { openModal } = useModal();
 
   const openAddAccount = () => {
@@ -36,19 +42,26 @@ function Account() {
     setYearMonth(prevDate => getNextYearMonth(prevDate.dateObject, index));
   };
 
+  console.log(accountData);
+  console.log(selectPet);
+
   return (
     <section className="account-container account_bg">
+      <SelectPet selectPet={selectPet} setSelectPet={setSelectPet} />
       <TotalAccountSection
         yearMonth={yearMonth}
         accountData={accountData}
+        calenderData={accountData[selectPet.id].calender}
+        totals={accountData[selectPet.id].total}
         selectDate={selectDate}
         handleSelectDate={handleSelectDate}
         handleMonthChange={handleMonthChange}
       />
-      <TodayAccountSection
+      {/* <TodayAccountSection
         accountData={accountData[selectDate.day]}
         yearMonth={yearMonth}
-      />
+        selectPet={selectPet}
+      /> */}
       <FloatButton handleOnClick={openAddAccount}>
         <FontAwesomeIcon icon={faPlus} size="1x" />
       </FloatButton>

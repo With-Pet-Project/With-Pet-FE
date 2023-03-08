@@ -1,0 +1,65 @@
+@import '/src/lib/styles/vars.scss';
+
+.show-pet-account {
+  width: 954px;
+  margin: 63px auto 0;
+  height: 35px;
+
+  .select-pet {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+  }
+
+  .pet-name {
+    display: block;
+    font-family: TmoneyRoundWindBold;
+    font-size: 28px;
+    color: $fontColor-black;
+    cursor: pointer;
+
+    @media (max-width: $narrow) {
+      font-size: 23px;
+    }
+  }
+
+  .chevron {
+    display: block;
+    padding-right: 27px;
+    cursor: pointer;
+    font-size: 20px;
+
+    @media (max-width: $narrow) {
+      font-size: 15px;
+    }
+  }
+
+  @media (max-width: $semi-wide) {
+    width: 90%;
+  }
+}
+
+.select-pet-list {
+  background-color: #ffffff;
+  border: 1px solid #dbdbdb;
+  border-radius: 10px;
+  width: fit-content;
+  position: relative;
+  top: 5px;
+  z-index: 1;
+
+  li {
+    color: #757575;
+    font-size: 18px;
+    height: 45px;
+    width: 170px;
+    padding-left: 15px;
+    line-height: 45px;
+    border-bottom: 1px solid #dbdbdb;
+    cursor: pointer;
+  }
+
+  li:hover {
+    background-color: $background-yellow;
+  }
+}

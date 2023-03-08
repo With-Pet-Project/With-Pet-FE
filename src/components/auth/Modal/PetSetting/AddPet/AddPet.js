@@ -1,26 +1,40 @@
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { useAddPet } from 'components/Diary/hooks/useAddPet';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Input from '../../../common/Input/Input';
 import './AddPet.scss';
 
 function AddPet() {
+  const addPet = useAddPet();
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    const { value: petName } = event.target.elements.petName;
+    const { value: petWeight } = event.target.elements.petWeight;
+    const { value: petBday } = event.target.elements.petBday;
+    // 유효성검사 필요
+
+    addPet({ name: petName, initWeight: Number(petWeight), birthday: petBday });
+  };
+
   return (
-    <form className="add-pet-form">
+    <form className="add-pet-form" onSubmit={handleSubmit}>
       <Input
         type="text"
-        name="pet_name"
+        name="petName"
         className="pet-name"
         placeholder="펫 이름"
       />
       <Input
         type="number"
-        name="pet_weight"
+        name="petWeight"
+        step="any"
         className="pet-weight"
         placeholder="펫 무게"
       />
       <Input
         type="date"
-        name="pet_bday"
+        name="petBday"
         className="pet-bday"
         placeholder="펫 생일"
       />

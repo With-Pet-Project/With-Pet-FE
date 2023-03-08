@@ -1,5 +1,6 @@
+/* eslint-disable no-param-reassign */
 import './UserInfo.scss';
-import dog from 'lib/assets/images/dog/md_icon.png';
+import FallbacktImg from 'lib/assets/images/dog/md_icon.png';
 
 function UserInfo({ user = null }) {
   return (
@@ -9,7 +10,14 @@ function UserInfo({ user = null }) {
       ) : (
         <>
           <div className="user-img">
-            <img src={user.profileImg || dog} alt="dog-img" />
+            <img
+              src={user.profileImg || FallbacktImg}
+              alt="dog-img"
+              onError={({ target }) => {
+                target.onerror = null;
+                target.src = FallbacktImg;
+              }}
+            />
           </div>
           <div className="user-nickname-email">
             <div className="user-nickname">

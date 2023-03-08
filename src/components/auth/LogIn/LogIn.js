@@ -22,9 +22,6 @@ function LogIn() {
 
     if (response?.status === 200) {
       // 토큰 처리
-      console.log(response);
-      const { token: accessToken } = response.data.body;
-      console.log(accessToken);
       alert('로그인되었습니다.');
 
       navigate('/');

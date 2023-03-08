@@ -1,9 +1,17 @@
-function ShowPet({ setIsEdit, pet }) {
+import { useState } from 'react';
+import EditPet from '../EditPet/EditPet';
+
+function ShowPet({ pet }) {
+  const [isEdit, setIsEdit] = useState(false);
+  console.log(isEdit);
+
   const handleEditPet = bool => {
     setIsEdit(bool);
   };
 
-  return (
+  const HTML = isEdit ? (
+    <EditPet setIsEdit={setIsEdit} pet={pet} />
+  ) : (
     <li className="pet-item">
       <span className="pet-name">{pet.name}</span>
       <span className="pet-weight">{pet.initWeight}kg</span>
@@ -13,6 +21,8 @@ function ShowPet({ setIsEdit, pet }) {
       </button>
     </li>
   );
+
+  return HTML;
 }
 
 export default ShowPet;

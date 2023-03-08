@@ -8,14 +8,26 @@ import {
 import { TODAY } from '../../common/Calender/constant';
 import { fetchAccount } from './useAccount';
 
-export const useMonthYear = () => {
+export const useMonthYear = petsId => {
   const [yearMonth, setYearMonth] = useState(getMonthYearDetails(TODAY));
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    const { year, month } = getNextYearMonth(yearMonth.dateObject, -1);
-    queryClient.prefetchQuery([queryKeys.account, year, month], () =>
-      fetchAccount(year, month),
+    const { year: beforeYear, month: beforeMonth } = getNextYearMonth(
+      yearMonth.dateObject,
+      -1,
+    );
+    queryClient.prefetchQuery(
+      [queryKeys.account, beforeYear, beforeMonth],
+      () => fetchAccount(beforeYear, beforeMonth, petsId),
+    );
+
+    const { year: nextYear, month: nextMonth } = getNextYearMonth(
+      yearMonth.dateObject,
+      1,
+    );
+    queryClient.prefetchQuery([queryKeys.account, nextYear, nextMonth], () =>
+      fetchAccount(nextYear, nextMonth, petsId),
     );
   }, [yearMonth, queryClient]);
 

@@ -3,8 +3,9 @@ import './DateBox.scss';
 import { TODAY } from './constant';
 import { getMonthYearDetails } from './hooks/date';
 
-function DateBox({ id, day, handleSelectDate, selectDate, data = [] }) {
-  const showHasDataIcon = selectDate !== id && data.length > 0;
+function DateBox({ id, day, handleSelectDate, selectDate, data = {} }) {
+  const hasData = Object.keys(data).length > 0;
+  const showHasDataIcon = selectDate !== id && hasData;
   const { dateTime: today } = getMonthYearDetails(TODAY);
   const isToday = selectDate !== id && today === id;
 

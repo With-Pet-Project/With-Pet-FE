@@ -8,7 +8,7 @@ import { useUpdateAccount } from '../hooks/useUpdateAccount';
 import './TodayAccountSection.scss';
 
 // api 적용 후 이부분 리펙토링
-function TodayAccountSection({ accountData, yearMonth }) {
+function TodayAccountSection({ accountData, yearMonth, selectPet }) {
   const [isEdit, setIsEdit] = useState(false);
   const deleteAccount = useDeleteAccount();
   const updateAccount = useUpdateAccount();
@@ -17,8 +17,7 @@ function TodayAccountSection({ accountData, yearMonth }) {
 
   const onConfirm = () => {
     const { id } = consumption;
-    console.log(id);
-    deleteAccount(id);
+    deleteAccount({ id, petId: selectPet.id });
   };
 
   const confirmDelete = useConfirm(onConfirm, '삭제하시겠습니까?');
@@ -36,6 +35,7 @@ function TodayAccountSection({ accountData, yearMonth }) {
       year: Number(year),
       month: Number(month),
       week: 1,
+      petId: selectPet.id,
     });
     setIsEdit(false);
   };

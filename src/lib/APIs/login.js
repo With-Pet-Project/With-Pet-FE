@@ -28,7 +28,7 @@ export const getUserInfo = async jwt => {
 
 export const localLogin = async (email, password) => {
   const response = await CLIENT.post(
-    '/user',
+    '/user/login',
     {
       email,
       password,
@@ -43,7 +43,9 @@ export const localLogin = async (email, password) => {
     alert('아이디 또는 비밀번호를 잘못 입력했습니다.');
   });
 
-  const { token: accessToken } = response.data.body;
+  console.log(response);
+  const { data: accessToken } = response.data;
+  console.log(accessToken);
   localStorage.setItem('jwt_token', accessToken);
   axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
 

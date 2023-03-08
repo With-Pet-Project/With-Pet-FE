@@ -5,7 +5,7 @@ import '../TodayAccount.scss';
 
 function ShowTodayAccount({ accountData }) {
   const { consumption } = accountData.length > 0 && accountData[0];
-
+  console.log(accountData);
   const getTotal = () => {
     if (accountData.length <= 0) return 0;
 
@@ -15,6 +15,7 @@ function ShowTodayAccount({ accountData }) {
       return acc + consumption[key];
     }, 0);
   };
+  console.log(accountData);
 
   const todayAccountItemHtml = Object.entries(ACCOUNT_LIST).map(
     ([key, { name, darkColor }]) => (
