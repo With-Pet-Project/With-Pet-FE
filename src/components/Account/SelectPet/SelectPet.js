@@ -23,7 +23,7 @@ function SelectPet({ selectPet, setSelectPet }) {
       </li>
       {pets.map(pet => (
         <li key={pet.id} data-pet-id={pet.id} onClick={handleOnclick}>
-          {pet.name}
+          {pet.name} {pet.id}
         </li>
       ))}
     </ul>

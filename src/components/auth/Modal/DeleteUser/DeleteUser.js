@@ -11,6 +11,7 @@ function DeleteUser() {
     deleteMutate();
     closeModal(DeleteUser);
     // 로그인으로 ㄱㄱ
+    // 보류: api
   };
 
   return (

@@ -10,7 +10,7 @@ function ShowTodayItem({ name, price = 0, darkColor }) {
         <span className="name">{name}</span>
       </div>
       <div className="today-item-price">
-        <span className="price">{getComma(price)}</span>
+        <span className="price">{price && getComma(price)}</span>
         <span className="unit">원</span>
       </div>
     </li>
