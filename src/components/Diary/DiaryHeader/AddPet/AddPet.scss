@@ -1,0 +1,11 @@
+.add-pet-button {
+  & button {
+    width: 190px;
+    text-align: center;
+  }
+
+  & span {
+    font-family: 'TmoneyRoundWindBold';
+    font-size: 20px;
+  }
+}

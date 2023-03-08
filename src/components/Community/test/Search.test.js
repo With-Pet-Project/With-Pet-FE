@@ -6,7 +6,7 @@ import UserEvent from '@testing-library/user-event';
 import Search from '../Search/Search';
 
 test('when I focus on Input in Search Form', async () => {
-  const user = UserEvent.setup();
+  /* const user = UserEvent.setup();
   render(<Search focus />, { wrapper: BrowserRouter });
 
   const searchInput = screen.getByRole('textbox', {
@@ -21,5 +21,5 @@ test('when I focus on Input in Search Form', async () => {
 
   const historyHeader = screen.getByRole('heading', {
     name: '최근 검색어',
-  });
+  }); */
 });

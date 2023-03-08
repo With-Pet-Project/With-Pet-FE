@@ -20,6 +20,8 @@ export function useUser() {
       logout();
       navigate('/', { replace: true });
     },
+    staleTime: 1000 * 60 * 45,
+    cacheTime: 1000 * 60 * 50,
     enabled: jwt_token !== null,
   });
 

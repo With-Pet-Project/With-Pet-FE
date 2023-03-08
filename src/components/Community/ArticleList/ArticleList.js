@@ -4,34 +4,25 @@ import './ArticleList.scss';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useArticles } from 'components/Community/hooks/useArticles';
-import { Link } from 'react-router-dom';
 import ArticleItem from './ArticleItem';
 
 function ArticleList() {
-  const { data, fetchNextPage, hasNextPage, isError, error } = useArticles(
-    'ALL',
-    '서울',
-    '강남구',
-    '인기',
-  );
   const { ref, inView } = useInView();
+  const { pages, fetchNextPage, hasNextPage } = useArticles();
 
   useEffect(() => {
     if (inView && hasNextPage) {
       fetchNextPage();
     }
   }, [inView]);
-
   return (
     <div className="article-section">
       <div className="Article-list">
         <ul>
-          {data?.pages?.map(elem =>
-            elem.data?.data?.articlesList?.map(article => (
+          {pages?.map(page =>
+            page.data?.data?.viewArticleListDtoList?.map(article => (
               <li key={article.articleId}>
-                <Link to={`${article.articleId}`}>
-                  <ArticleItem article={article} />
-                </Link>
+                <ArticleItem article={article} />
               </li>
             )),
           )}

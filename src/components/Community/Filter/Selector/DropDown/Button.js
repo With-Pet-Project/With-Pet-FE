@@ -11,7 +11,7 @@ import Options from './Options';
 
 const RotateArrow = styled.span`
   & svg {
-    transform: rotate(${({ rotate }) => (rotate ? '180deg' : '0')});
+    transform: rotate(${({ rotated }) => (rotated ? '180deg' : '0')});
     transition-duration: 0.2s;
   }
 `;
@@ -31,7 +31,7 @@ function Button({ handleParameter, list, children, parameterName }) {
   return (
     <div className="filter-selector-button" ref={targetRef}>
       <button type="button" onClick={isOpen} disabled={!buttonEnabled}>
-        <RotateArrow rotate={open}>
+        <RotateArrow rotated={!!open}>
           <FontAwesomeIcon icon={faAngleDown} />
         </RotateArrow>
         <span>{buttonEnabled ? children : '해당없음'}</span>

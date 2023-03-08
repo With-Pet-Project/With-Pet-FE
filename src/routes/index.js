@@ -23,6 +23,7 @@ function RootRoute() {
           <Route index element={<LandingPage />} />
           <Route path="diary" element={<DiaryPage />} />
           <Route path="editor" element={<EditorPage />} />
+          <Route path="editor/:articleId" element={<EditorPage />} />
           <Route path="community" element={<CommunityPage />} />
           <Route path="community/:articleId" element={<ArticlePage />} />
           <Route path="account" element={<AccountPage />} />

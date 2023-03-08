@@ -5,6 +5,7 @@
   background-position: right top;
   background-size: contain;
   background-repeat: no-repeat;
+  background-color: #fff;
   min-width: 678px;
   height: 930px;
   max-height: 980px;
@@ -19,13 +20,12 @@
 }
 
 .landing-first-section-title-text {
-  padding-left: 10%;
-  margin: 150px 0 0 0;
+  margin: 185px 0 0 20%;
   max-width: 716px;
   max-height: 162px;
 
   & img {
-    width: 100%;
+    width: 70%;
     height: 80%;
   }
 
@@ -75,7 +75,7 @@
   .landing-first-section-login-btn {
     width: 180px;
     height: 55px;
-    margin-top: 50px;  
+    margin-top: 50px;
 
     & button {
       font-weight: 400;
@@ -94,13 +94,13 @@
   .landing-first-section-login-btn {
     width: 150px;
     height: 44px;
-    margin-top: 50px;  
+    margin-top: 50px;
 
     & button {
       font-weight: 400;
       font-size: 22px;
       line-height: 40px;
-  
+
       color: #fff;
     }
   }

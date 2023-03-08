@@ -1,7 +1,9 @@
+@import '/src/lib/styles/vars.scss';
+
 .article-section {
   display: flex;
   flex-direction: column;
-  
+
   width: 100%;
   min-height: 700px;
 }
@@ -28,6 +30,7 @@
   height: 30px;
   border: 1px solid #dbdbdb;
   border-radius: 100px;
+  background-color: $background-yellow;
 }
 
 .article-nickname-date {
@@ -61,7 +64,7 @@
     color: #252525;
   }
 
-  & p {
+  & .article-detail-text {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
@@ -74,11 +77,16 @@
     line-height: 20px;
 
     color: #878888;
+
+    & img {
+      display: block;
+      width: 50px;
+    }
   }
 }
 
 .article-tag {
-  width: 39px;
+  max-width: 60px;
   height: 24px;
   text-align: center;
 
@@ -91,7 +99,7 @@
   & span {
     font-weight: 400;
     font-size: 12px;
-    line-height: 14px;
+    line-height: 24px;
     color: #878888;
   }
 }
