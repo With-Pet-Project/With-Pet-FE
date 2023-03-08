@@ -21,7 +21,7 @@
 
   // width: $sidebar-opened;
   min-height: 100vh;
-  transition: .3s;
+  transition: 0.3s;
 
   padding: 10px 20px 20px;
   background-color: $background-yellow;
@@ -48,7 +48,7 @@
   flex-grow: 1;
   vertical-align: middle;
   color: $fontColor-brown;
-  transition-delay: .3s;
+  transition-delay: 0.3s;
 
   & ul {
     display: flex;
@@ -64,7 +64,8 @@
     height: 50px;
   }
 
-  & ul li a, & ul li button {
+  & ul li a,
+  & ul li button {
     height: 100%;
     display: block;
     padding: 0 15px;
@@ -80,7 +81,7 @@
     width: 100%;
     align-items: center;
   }
-  
+
   & ul li button span {
     font-family: 'TmoneyRoundWindBold';
   }

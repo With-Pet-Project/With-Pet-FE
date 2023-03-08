@@ -17,7 +17,7 @@ export function useOAuth() {
     onError: () => toast.error(TOAST_MESSAGE.LOGIN_FAIL, TOAST_OPTION),
     refetchOnWindowFocus: false,
   });
-
+  console.log(kakaoData);
   const jwt_token = kakaoData?.data.data.token;
 
   if (jwt_token) {

@@ -4,6 +4,7 @@ import { forwardRef } from 'react';
 const Button = forwardRef(({ petIdx, petInfoList, isOpen }, ref) => {
   const getBirthDay = date => {
     const birthday = date.split('-');
+    console.log(petInfoList);
 
     return `${birthday[0]}년 ${birthday[1]}월 ${birthday[2]}일 - ${
       new Date().getFullYear() - Number(birthday[0])
@@ -24,7 +25,7 @@ const Button = forwardRef(({ petIdx, petInfoList, isOpen }, ref) => {
         </h2>
         <span>
           {petInfoList?.length
-            ? getBirthDay(petInfoList[petIdx].birthday)
+            ? `${getBirthDay(petInfoList[petIdx].birthday)}`
             : '반려동물 없음'}
         </span>
       </div>

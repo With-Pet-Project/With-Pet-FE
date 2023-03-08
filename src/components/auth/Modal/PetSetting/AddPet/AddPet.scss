@@ -6,20 +6,25 @@
 
     .pet-name {
       width: 25%;
+      cursor: pointer;
       margin-right: 3%;
     }
     .pet-weight {
       width: 20%;
       margin-right: 3%;
+      cursor: pointer;
     }
     .pet-bday {
       width: 35%;
       margin-right: 3%;
       padding-right: 10px;
+      color: gray;
+      cursor: pointer;
     }
     .add-pet-submit {
       width: 11%;
       height: 35px;
+      cursor: pointer;
       background: $background-yellow;
     }
   }
