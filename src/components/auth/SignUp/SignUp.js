@@ -2,7 +2,7 @@
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ERROR_MESSAGE } from 'lib/constants/errorMessage';
-import { setSignup } from 'lib/APIs/signup';
+import { signup } from 'lib/APIs/signup';
 import { isValidateNickName } from 'lib/APIs/profile';
 
 import Input from '../common/Input/Input';
@@ -69,7 +69,7 @@ function SignUp() {
     const { value: password } = passwordRef.current;
     const { value: nickname } = nicknameRef.current;
 
-    const response = await setSignup(email, password, nickname);
+    const response = await signup(email, password, nickname);
     if (response?.status === 200) {
       alert('회원가입 되었습니다.');
       navigate('/login');
