@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { TOAST_MESSAGE, TOAST_OPTION } from 'components/common/Toast/toast';
 
 const deleteUser = async jwt => {
+  // 성공하면 localStorage에서 jwt 삭제하기
   console.log(jwt);
   const response = await CLIENT.delete(`/user`, {
     headers: {
@@ -21,7 +22,6 @@ export function useDeleteUser(selectPet = f => f) {
   const jwt_token = localStorage.getItem('jwt_token');
   const { PetInfoList } = QUERY_KEY;
 
-  // optimistic upates
   const { mutate } = useMutation({
     mutationFn: () => deleteUser(jwt_token),
     onSuccess: () => {

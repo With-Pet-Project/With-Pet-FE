@@ -53,13 +53,14 @@ function EditProfile() {
   };
 
   const nickNameHtml = () => {
-    if (isValidNickName === null) return <span />;
-    if (isValidNickName)
+    if (isValidNickName === false)
       return (
-        <span className="nickname-available">사용가능한 닉네임 입니다.</span>
+        <span className="nickname-unavailable">
+          사용할 수 없는 닉네임입니다.
+        </span>
       );
     return (
-      <span className="nickname-unavailable">사용할 수 없는 닉네임입니다.</span>
+      <span className="nickname-available">사용가능한 닉네임 입니다.</span>
     );
   };
 

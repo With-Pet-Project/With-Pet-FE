@@ -7,12 +7,13 @@ export const isValidateNickName = async value => {
     method: 'get',
     url: `/user/duplicate-check?nickName=${value}`,
     headers: {
-      Authorization: `Bearer ${jwt}`,
+      // Authorization: `Bearer ${jwt}`,
       'Content-Type': 'application/json',
     },
   }).catch(error => {
     return error.response;
   });
+  console.log(response);
 
   return response?.status === 200;
 };
