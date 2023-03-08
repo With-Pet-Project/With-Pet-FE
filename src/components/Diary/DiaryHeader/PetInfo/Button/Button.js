@@ -4,7 +4,6 @@ import { forwardRef } from 'react';
 const Button = forwardRef(({ petIdx, petInfoList, isOpen }, ref) => {
   const getBirthDay = date => {
     const birthday = date.split('-');
-    console.log(petInfoList);
 
     return `${birthday[0]}년 ${birthday[1]}월 ${birthday[2]}일 - ${
       new Date().getFullYear() - Number(birthday[0])
