@@ -4,7 +4,7 @@ import CLIENT from './client';
 // 카카오 토큰 얻는 함수
 export const getKakaoUserLoginToken = async code => {
   const response = await CLIENT.post(
-    `/user/kakao/login?code=${code}`,
+    `/user/login/kakao?code=${code}`,
     {},
     {
       headers: {
