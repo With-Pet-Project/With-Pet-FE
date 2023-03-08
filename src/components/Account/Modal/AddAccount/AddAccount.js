@@ -33,6 +33,7 @@ function AddAccount({ selectDate }) {
     });
 
     closeModal(AddAccount); // it's not working. but why?
+    console.log('yes');
   };
 
   const petOptions = pets.map(pet => (
@@ -61,7 +62,6 @@ function AddAccount({ selectDate }) {
         <div>
           <span className="label">펫 선택</span>
           <select name="petId" className="select-wrapper">
-            <span>👇</span>
             {petOptions}
           </select>
         </div>

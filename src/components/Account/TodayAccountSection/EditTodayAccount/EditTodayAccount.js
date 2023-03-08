@@ -5,15 +5,13 @@ import EditTodayItem from '../EditTodayItem/EditTodayItem';
 import './EditTodayAccount.scss';
 import '../TodayAccount.scss';
 
-function EditTodayAccount({ accountData, accountValue, todayTotal }) {
-  console.log(accountData);
-  console.log(accountValue);
+function EditTodayAccount({ data, updateData, todayTotal }) {
   const onChange = (event, type) => {
     const { value } = event.target;
-    accountValue[type] = Number(value);
+    updateData[type] = Number(value);
   };
 
-  const hasData = Object.keys(accountData).length > 0;
+  const hasData = Object.keys(data).length > 0;
 
   const todayAccountItemHtml = Object.entries(ACCOUNT_LIST).map(
     ([key, { name, darkColor }]) => (
@@ -21,7 +19,7 @@ function EditTodayAccount({ accountData, accountValue, todayTotal }) {
         key={key}
         id={key}
         name={name}
-        price={hasData ? accountData[key] : 0}
+        price={hasData ? data[key] : 0}
         darkColor={darkColor}
         onChange={onChange}
       />

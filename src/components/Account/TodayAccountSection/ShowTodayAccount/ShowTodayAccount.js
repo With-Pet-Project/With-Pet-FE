@@ -3,15 +3,15 @@ import { ACCOUNT_LIST } from '../../constant';
 import ShowTodayItem from '../ShowTodayItem/ShowTodayItem';
 import '../TodayAccount.scss';
 
-function ShowTodayAccount({ accountData, todayTotal }) {
-  const hasData = Object.keys(accountData).length > 0;
+function ShowTodayAccount({ data, todayTotal }) {
+  const hasData = Object.keys(data).length > 0;
 
   const todayAccountItemHtml = Object.entries(ACCOUNT_LIST).map(
     ([key, { name, darkColor }]) => (
       <ShowTodayItem
         key={key}
         name={name}
-        price={hasData ? accountData[key] : 0}
+        price={hasData ? data[key] : 0}
         darkColor={darkColor}
       />
     ),

@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { queryKeys } from 'lib/reactQuery/queryKeys';
-import CLIENT from 'lib/APIs/client';
+import { fetchAccount } from 'lib/APIs/account';
 
 const setCalenderFormat = (year, month) => {
   const lastDay = new Date(year, Number(month), 0).getDate();
@@ -68,7 +68,7 @@ const getTotal = (rawData, petId, isAllData) => {
   };
 };
 
-const makeAccountData = (rawData, year, month, petsId) => {
+export const makeAccountData = (rawData, year, month, petsId) => {
   const result = {};
 
   petsId.forEach(petId => {
@@ -83,23 +83,7 @@ const makeAccountData = (rawData, year, month, petsId) => {
     result.all.total = { ...allTotal };
   });
 
-  console.log(result);
-  return result;
-};
-
-export const fetchAccount = async (year, month, petsId) => {
-  const jwt = localStorage.getItem('jwt_token') || null;
-  const url = `/pet/consumption?year=${year}&month=${month}`;
-
-  const { data } = await CLIENT.get(url, {
-    headers: {
-      Authorization: `Bearer ${jwt}`,
-    },
-  });
-
-  // console.log(JSON.stringify(data.data, null, '\t'));
-  const result = makeAccountData(data.data, year, month, petsId);
-  // console.log(JSON.stringify(result, null, '\t'));
+  // console.log(result);
   return result;
 };
 

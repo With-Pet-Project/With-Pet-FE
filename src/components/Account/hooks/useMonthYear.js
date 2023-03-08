@@ -5,8 +5,8 @@ import {
   getMonthYearDetails,
   getNextYearMonth,
 } from 'components/common/Calender/hooks/date';
+import { fetchAccount } from 'lib/APIs/account';
 import { TODAY } from '../../common/Calender/constant';
-import { fetchAccount } from './useAccount';
 
 export const useMonthYear = petsId => {
   const [yearMonth, setYearMonth] = useState(getMonthYearDetails(TODAY));
