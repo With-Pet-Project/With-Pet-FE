@@ -6,7 +6,7 @@ import axios from 'axios';
 
 function EditProfile() {
   const [selectFile, setSelectFile] = useState(null);
-  const [isValidNickName, setIsValidNickName] = useState(true);
+  const [isValidNickName, setIsValidNickName] = useState(null);
   const fileInput = useRef(null);
   const nickNameRef = useRef(null);
   const fileLabelInput = useRef(null);
@@ -21,7 +21,6 @@ function EditProfile() {
       const uploadFile = e.target.files[0];
       formData.append('file', uploadFile);
       setSelectFile(uploadFile);
-      console.log(uploadFile);
     }
   };
 
@@ -52,21 +51,32 @@ function EditProfile() {
     });
   };
 
-  const validateNickName = event => {
+  const nickNameHtml = () => {
+    if (isValidNickName === null) return <span />;
+    if (isValidNickName)
+      return (
+        <span className="nickname-available">사용가능한 닉네임 입니다.</span>
+      );
+    return (
+      <span className="nickname-unavailable">사용할 수 없는 닉네임입니다.</span>
+    );
+  };
+
+  const validateNickName = async event => {
     const jwt = localStorage.getItem('jwt_token') || null;
     const { value: inputValue } = event.target;
-    console.log(inputValue);
-    axios({
+
+    const response = await axios({
       method: 'get',
-      url: `http://13.209.146.77:8082/user/duplicate?nickName=${inputValue}`,
+      url: `http://13.209.146.77:8082/user/duplicate-check?nickName=${inputValue}`,
       headers: {
         Authorization: `Bearer ${jwt}`,
         'Content-Type': 'application/json',
       },
-    }).then(result => {
-      console.log('요청성공');
-      console.log(result);
+    }).catch(err => {
+      if (err.response?.status === 409) setIsValidNickName(false);
     });
+    if (response?.status === 200) setIsValidNickName(true);
   };
 
   return (
@@ -101,7 +111,7 @@ function EditProfile() {
           placeholder="닉네임을 입력하세요"
           onBlur={validateNickName}
         />
-        <span className="nickname-available">사용가능한 닉네임 입니다.</span>
+        {nickNameHtml()}
         <div className="btn-wrapper">
           <button type="button" onClick={() => closeModal(EditProfile)}>
             취소
