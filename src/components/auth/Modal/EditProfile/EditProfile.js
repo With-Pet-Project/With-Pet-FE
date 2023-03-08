@@ -3,6 +3,7 @@ import './EditProfile.scss';
 import Input from 'components/auth/common/Input/Input';
 import { useModal } from 'components/common/Modal/context/useModal';
 import axios from 'axios';
+import { isValidateNickName } from 'lib/APIs/profile';
 
 function EditProfile() {
   const [selectFile, setSelectFile] = useState(null);
@@ -63,20 +64,9 @@ function EditProfile() {
   };
 
   const validateNickName = async event => {
-    const jwt = localStorage.getItem('jwt_token') || null;
-    const { value: inputValue } = event.target;
-
-    const response = await axios({
-      method: 'get',
-      url: `http://13.209.146.77:8082/user/duplicate-check?nickName=${inputValue}`,
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-        'Content-Type': 'application/json',
-      },
-    }).catch(err => {
-      if (err.response?.status === 409) setIsValidNickName(false);
-    });
-    if (response?.status === 200) setIsValidNickName(true);
+    const { value } = event.target;
+    const isValid = await isValidateNickName(value);
+    setIsValidNickName(isValid);
   };
 
   return (
