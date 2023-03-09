@@ -11,11 +11,15 @@ jobs:
         # Install NPM dependencies, cache them correctly
         # and run all Cypress tests
       - run: echo https://with-pet-fe-cgh123198-with-pet-prod.vercel.app/
+      - run: echo ${{ github.event.deployment_status.target_url }}
       - name: Run Cypress
         uses: cypress-io/github-action@v5
         with:
           browser: chrome
           record: false
           wait-on: https://with-pet-fe-cgh123198-with-pet-prod.vercel.app/
+          # wait-on: ${{ github.event.deployment_status.target_url }}
         env:
+          # CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
+          CYPRESS_BASE_URL: https://with-pet-fe-cgh123198-with-pet-prod.vercel.app/
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
