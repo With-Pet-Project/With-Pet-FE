@@ -20,7 +20,12 @@ function Location() {
 
   return (
     <div className="Location-selector-button" ref={targetRef}>
-      <button type="button" onClick={isOpen} disabled={!buttonEnabled}>
+      <button
+        type="button"
+        onClick={isOpen}
+        disabled={!buttonEnabled}
+        aria-label="지역"
+      >
         <span>{buttonEnabled ? params.get('firstPlace') : '해당없음'}</span>
       </button>
       <div className="editor-down-arrow">

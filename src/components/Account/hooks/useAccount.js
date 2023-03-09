@@ -15,7 +15,6 @@ const setCalenderFormat = (year, month) => {
 
 const getCalender = (year, month, rawData, petId) => {
   const calender = setCalenderFormat(year, month);
-
   rawData.forEach(data => {
     if (data.petId !== petId) return;
     calender[`${data.day}`] = { ...calender[`${data.day}`], ...data };
@@ -82,7 +81,6 @@ export const makeAccountData = (rawData, year, month, petsId) => {
     result.all = { calender: AllCalender };
     result.all.total = { ...allTotal };
   });
-
   // console.log(result);
   return result;
 };

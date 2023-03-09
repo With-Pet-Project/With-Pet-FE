@@ -3,6 +3,7 @@
 import './MyInfoSection.scss';
 import { useModal } from 'components/common/Modal/context/useModal';
 import FallbackImg from 'lib/assets/images/dog/lg_icon.png';
+
 import EditProfile from '../../Modal/EditProfile/EditProfile';
 import DeleteUser from '../../Modal/DeleteUser/DeleteUser';
 import PetSetting from '../../Modal/PetSetting/PetSetting';

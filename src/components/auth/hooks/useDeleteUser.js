@@ -7,6 +7,7 @@ import { TOAST_MESSAGE, TOAST_OPTION } from 'components/common/Toast/toast';
 
 const deleteUser = async jwt => {
   // 성공하면 localStorage에서 jwt 삭제하기
+
   console.log(jwt);
   const response = await CLIENT.delete(`/user`, {
     headers: {
@@ -35,6 +36,7 @@ export function useDeleteUser(selectUser = f => f) {
     },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: [UserInfo, jwt_token] });
+
     },
   });
 
