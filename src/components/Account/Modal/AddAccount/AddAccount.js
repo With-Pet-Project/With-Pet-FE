@@ -33,7 +33,6 @@ function AddAccount({ selectDate }) {
     });
 
     closeModal(AddAccount); // it's not working. but why?
-    console.log('yes');
   };
 
   const petOptions = pets.map(pet => (

@@ -62,8 +62,8 @@ function SignUp() {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    const isValid = validateValues();
-    if (!isValid) return;
+    // const isValid = validateValues();
+    // if (!isValid) return;
 
     const { value: email } = emailRef.current;
     const { value: password } = passwordRef.current;

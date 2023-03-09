@@ -17,10 +17,10 @@ const deleteUser = async jwt => {
   return response;
 };
 
-export function useDeleteUser(selectPet = f => f) {
+export function useDeleteUser(selectUser = f => f) {
   const queryClient = useQueryClient();
   const jwt_token = localStorage.getItem('jwt_token');
-  const { PetInfoList } = QUERY_KEY;
+  const { UserInfo } = QUERY_KEY;
 
   const { mutate } = useMutation({
     mutationFn: () => deleteUser(jwt_token),
@@ -29,11 +29,12 @@ export function useDeleteUser(selectPet = f => f) {
     },
     onError: (err, newState, context) => {
       toast.error(TOAST_MESSAGE.DELETE_FAIL, TOAST_OPTION);
-      queryClient.setQueryData([PetInfoList, jwt_token], context.prevState);
-      selectPet(context.prevPetIdx);
+      // queryClient.setQueryData([UserInfo, jwt_token], context.prevState);
+      // selectUser(context.prevPetIdx);
+      console.log(err);
     },
     onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: [PetInfoList, jwt_token] });
+      queryClient.invalidateQueries({ queryKey: [UserInfo, jwt_token] });
     },
   });
 
