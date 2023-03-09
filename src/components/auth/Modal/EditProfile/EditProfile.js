@@ -1,9 +1,9 @@
 import { useRef, useState } from 'react';
-import './EditProfile.scss';
 import Input from 'components/auth/common/Input/Input';
 import { useModal } from 'components/common/Modal/context/useModal';
-import axios from 'axios';
 import { isValidateNickName } from 'lib/APIs/profile';
+import { useUpdateProfile } from '../../hooks/useUpdateProfile';
+import './EditProfile.scss';
 
 function EditProfile() {
   const [selectFile, setSelectFile] = useState(null);
@@ -12,15 +12,14 @@ function EditProfile() {
   const nickNameRef = useRef(null);
   const fileLabelInput = useRef(null);
   const { closeModal } = useModal();
+  const { mutate: profileUpdate } = useUpdateProfile();
 
   const handleFileChange = e => {
     fileLabelInput.current.value = fileInput.current.value;
     fileLabelInput.current.classList.add('active-input');
 
-    const formData = new FormData();
     if (e.target.files) {
       const uploadFile = e.target.files[0];
-      formData.append('file', uploadFile);
       setSelectFile(uploadFile);
     }
   };
@@ -33,23 +32,11 @@ function EditProfile() {
     event.preventDefault();
     const { value: nickname } = event.target.elements.nickname;
     const formData = new FormData();
-    formData.append('nickname', nickname);
-    formData.append('image', selectFile);
-    const jwt = localStorage.getItem('jwt_token') || null;
+    formData.append('nickName', nickname);
+    formData.append('images', selectFile);
 
-    axios({
-      method: 'patch',
-      url: 'http://13.209.146.77:8082/mypage',
-      data: formData,
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-        'Content-Type': 'application/json',
-        enctype: 'multipart/form-data',
-      },
-    }).then(result => {
-      console.log('요청성공');
-      console.log(result);
-    });
+    profileUpdate(formData);
+    closeModal(EditProfile); // 안닫힘
   };
 
   const nickNameHtml = () => {

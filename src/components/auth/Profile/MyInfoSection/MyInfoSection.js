@@ -2,7 +2,7 @@
 /* eslint-disable react/no-this-in-sfc */
 import './MyInfoSection.scss';
 import { useModal } from 'components/common/Modal/context/useModal';
-import FallbacktImg from 'lib/assets/images/dog/lg_icon.png';
+import FallbackImg from 'lib/assets/images/dog/lg_icon.png';
 import EditProfile from '../../Modal/EditProfile/EditProfile';
 import DeleteUser from '../../Modal/DeleteUser/DeleteUser';
 import PetSetting from '../../Modal/PetSetting/PetSetting';
@@ -30,11 +30,11 @@ function MyInfoSection() {
       <div className="myInfo">
         <div className="profile-img">
           <img
-            src={user.profileImg || FallbacktImg}
+            src={user.profileImg || FallbackImg}
             alt="profile"
             onError={({ target }) => {
               target.onerror = null;
-              target.src = FallbacktImg;
+              target.src = FallbackImg;
             }}
           />
         </div>
