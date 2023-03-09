@@ -11,10 +11,16 @@
 
   & .user-img {
     flex-basis: 55px;
+    width: 55px;
     height: 55px;
     border: 0;
     border-radius: 100%;
     background-color: $background-yellow;
+  }
+
+  & .user-img img {
+    width: 100%;
+    border-radius: 100%;
   }
 
   & > span {
