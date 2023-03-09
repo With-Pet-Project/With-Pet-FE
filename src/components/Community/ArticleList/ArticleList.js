@@ -20,7 +20,7 @@ function ArticleList() {
       <div className="Article-list">
         <ul>
           {pages?.map(page =>
-            page.data?.data?.viewArticleListDtoList?.map(article => (
+            page.data?.data?.viewArticleListDto?.map(article => (
               <li key={article.articleId}>
                 <ArticleItem article={article} />
               </li>

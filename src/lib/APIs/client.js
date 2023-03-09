@@ -8,3 +8,10 @@ const CLIENT = axios.create({
 });
 
 export default CLIENT;
+
+export const ACCESS_CLIENT = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem('jwt_token')}`,
+  },
+});

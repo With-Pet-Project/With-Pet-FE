@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import CLIENT from './client';
+import CLIENT, { ACCESS_CLIENT } from './client';
 // tag, priority, firstPlace, secondPlace, lastArticleId, 5
 export const getArticleList = async (
   tag,
@@ -19,7 +19,9 @@ export const getArticleList = async (
     tag = null;
   }
 
-  const data = await CLIENT.get(`/articles`, {
+  const client = localStorage.getItem('jwt_token') ? ACCESS_CLIENT : CLIENT;
+
+  const data = await client.get(`/articles`, {
     params: {
       tag,
       place1: firstPlace,
@@ -68,7 +70,9 @@ export const postCreateArticle = async (
 };
 
 export const getReadArticleDetail = async articleId => {
-  const response = await CLIENT.get(`/articles/${articleId}`);
+  const client = localStorage.getItem('jwt_token') ? ACCESS_CLIENT : CLIENT;
+
+  const response = await client.get(`/articles/${articleId}`);
   return response;
 };
 
