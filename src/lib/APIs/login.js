@@ -1,5 +1,5 @@
 import axios from 'axios';
-import CLIENT from './client';
+import { CLIENT, ACCESS_CLIENT } from './client';
 
 // 카카오 토큰 얻는 함수
 export const getKakaoUserLoginToken = async code => {
@@ -16,12 +16,8 @@ export const getKakaoUserLoginToken = async code => {
 };
 
 // 유저 정보 조회
-export const getUserInfo = async jwt => {
-  const response = await CLIENT.get(`/mypage`, {
-    headers: {
-      Authorization: `Bearer ${jwt}`,
-    },
-  });
+export const getUserInfo = async () => {
+  const response = await ACCESS_CLIENT.get(`/mypage`);
 
   return response;
 };

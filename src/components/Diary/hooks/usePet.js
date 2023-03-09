@@ -10,8 +10,8 @@ export function usePet() {
   const { PetInfoList } = QUERY_KEY;
 
   const { data: petInfoList } = useQuery({
-    queryKey: [PetInfoList, jwt_token],
-    queryFn: () => getAllPetInfo(jwt_token),
+    queryKey: [PetInfoList],
+    queryFn: () => getAllPetInfo(),
     enabled: !!jwt_token,
     onError: () => {
       toast.error(TOAST_MESSAGE.CANNOT_GET_DATA, TOAST_OPTION);

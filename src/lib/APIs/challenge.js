@@ -1,54 +1,35 @@
-import CLIENT from './client';
+import { CLIENT, ACCESS_CLIENT } from './client';
 
 export const getAllOfChallenges = async () => {
   const response = await CLIENT.get('/challenge');
   return response;
 };
 
-export const postAddChallenge = async (jwt, petId, title, targetCnt) => {
-  const response = await CLIENT.post(
-    `/pet/${petId}/challenge`,
-    {
-      title,
-      targetCnt,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-      },
-    },
-  );
+export const postAddChallenge = async (petId, title, targetCnt) => {
+  const response = await ACCESS_CLIENT.post(`/pet/${petId}/challenge`, {
+    title,
+    targetCnt,
+  });
 
   return response;
 };
 
-export const getDailyChallenge = async (jwt, petId, year, month, day, week) => {
-  const response = await CLIENT.get(
+export const getDailyChallenge = async (petId, year, month, day, week) => {
+  const response = await ACCESS_CLIENT.get(
     `/pet/${petId}/challenge/daily?year=${year}&month=${month}&day=${day}&week=${week}`,
-    {
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-      },
-    },
   );
   return response;
 };
 
-export const getWeeklyChallenge = async (jwt, petId, year, month, week) => {
-  const response = await CLIENT.get(
+export const getWeeklyChallenge = async (petId, year, month, week) => {
+  const response = await ACCESS_CLIENT.get(
     `/pet/${petId}/challenge/weekly?year=${year}&month=${month}&week=${week}`,
-    {
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-      },
-    },
   );
 
   return response;
 };
 
 export const postCheckChallenge = async (
-  jwt,
   petId,
   challengeId,
   year,
@@ -57,7 +38,7 @@ export const postCheckChallenge = async (
   week,
   date, // YYYY-MM-DD
 ) => {
-  const response = await CLIENT.post(
+  const response = await ACCESS_CLIENT.post(
     `/pet/${petId}/challenge/${challengeId}/check/`,
     {
       year: `${year}`,
@@ -66,59 +47,38 @@ export const postCheckChallenge = async (
       week: `${week}`,
       date: `${date}`,
     },
-    {
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-      },
-    },
   );
 
   return response;
 };
 
-export const deleteUncheckChallenge = async (jwt, petId, challengeLogId) => {
-  const response = await CLIENT.delete(
+export const deleteUncheckChallenge = async (petId, challengeLogId) => {
+  const response = await ACCESS_CLIENT.delete(
     `/pet/${petId}/challenge/check/${challengeLogId}`,
-    {
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-      },
-    },
   );
 
   return response;
 };
 
-export const deleteRemoveChallenge = async (jwt, petId, challengeId) => {
-  const response = await CLIENT.delete(
+export const deleteRemoveChallenge = async (petId, challengeId) => {
+  const response = await ACCESS_CLIENT.delete(
     `/pet/${petId}/challenge/${challengeId}`,
-    {
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-      },
-    },
   );
 
   return response;
 };
 
 export const putEditChallenge = async (
-  jwt,
   title,
   targetCnt,
   petId,
   challengeId,
 ) => {
-  const response = await CLIENT.put(
+  const response = await ACCESS_CLIENT.put(
     `/pet/${petId}/challenge/${challengeId}`,
     {
       title,
       targetCnt,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-      },
     },
   );
   return response;

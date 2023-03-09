@@ -9,12 +9,12 @@ import { useParams } from 'react-router-dom';
 
 export function useEditComment() {
   const queryClient = useQueryClient();
-  const jwt_token = localStorage.getItem('jwt_token') || null;
+  // const jwt_token = localStorage.getItem('jwt_token') || null;
   const { articleId } = useParams();
 
   const { mutate: editCommentMutate } = useMutation({
     mutationFn: ({ content, commentId }) =>
-      patchUpdateComment(jwt_token, commentId, content),
+      patchUpdateComment(commentId, content),
     onSuccess: () => {
       toast.success(TOAST_MESSAGE.UPDATE_SUCCESS, TOAST_OPTION);
       queryClient.invalidateQueries({

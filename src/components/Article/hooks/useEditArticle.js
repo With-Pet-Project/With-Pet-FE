@@ -9,7 +9,7 @@ import { useArticleDetail } from './useArticleDetail';
 
 export function useEditArticle() {
   const queryClient = useQueryClient();
-  const jwt_token = localStorage.getItem('jwt_token') || null;
+  // const jwt_token = localStorage.getItem('jwt_token') || null;
   const article = useArticleDetail();
   const { Article } = QUERY_KEY();
 
@@ -17,7 +17,7 @@ export function useEditArticle() {
   const modifiedArticle = {};
 
   const { mutate: EditArticleMutate } = useMutation({
-    mutationFn: () => patchEditArticle(jwt_token, { ...modifiedArticle }),
+    mutationFn: () => patchEditArticle({ ...modifiedArticle }),
     onError: () => {
       toast.error(TOAST_MESSAGE.ADD_FAIL, TOAST_OPTION);
     },

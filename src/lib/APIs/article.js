@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import CLIENT from './client';
+import { CLIENT, ACCESS_CLIENT } from './client';
 // tag, priority, firstPlace, secondPlace, lastArticleId, 5
 export const getArticleList = async (
   tag,
@@ -19,7 +19,9 @@ export const getArticleList = async (
     tag = null;
   }
 
-  const data = await CLIENT.get(`/articles`, {
+  const client = localStorage.getItem('jwt_token') ? ACCESS_CLIENT : CLIENT;
+
+  const data = await client.get(`/articles`, {
     params: {
       tag,
       place1: firstPlace,
@@ -34,7 +36,6 @@ export const getArticleList = async (
 };
 
 export const postCreateArticle = async (
-  jwt,
   title,
   tag,
   text,
@@ -47,22 +48,14 @@ export const postCreateArticle = async (
     secondPlace = null;
   }
 
-  const response = await CLIENT.post(
-    '/article',
-    {
-      title,
-      tag,
-      place1: firstPlace,
-      place2: secondPlace,
-      detailText: text,
-      images: [...checkUrl],
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-      },
-    },
-  );
+  const response = await ACCESS_CLIENT.post('/article', {
+    title,
+    tag,
+    place1: firstPlace,
+    place2: secondPlace,
+    detailText: text,
+    images: [...checkUrl],
+  });
 
   return response;
 };
@@ -73,64 +66,40 @@ export const getReadArticleDetail = async articleId => {
 };
 
 export const patchEditArticle = async (
-  jwt,
   title,
   place1,
   place2,
   detailText,
   articleId,
 ) => {
-  const response = await CLIENT.patch(
-    `/article/${articleId}`,
-    {
-      title,
-      place1,
-      place2,
-      detailText,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-      },
-    },
-  );
-
-  return response;
-};
-
-export const deleteArticle = async (jwt, articleId) => {
-  const response = await CLIENT.delete(`article/${articleId}`, {
-    headers: {
-      Authorization: `Bearer ${jwt}`,
-    },
+  const response = await ACCESS_CLIENT.patch(`/article/${articleId}`, {
+    title,
+    place1,
+    place2,
+    detailText,
   });
 
   return response;
 };
 
-export const postAddArticleLike = async (jwt, articleId) => {
-  const response = await CLIENT.post(
-    '/article_like',
-    {
-      articleId,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-      },
-    },
-  );
+export const deleteArticle = async articleId => {
+  const response = await ACCESS_CLIENT.delete(`article/${articleId}`);
 
   return response;
 };
 
-export const deleteCancelArticlelLike = async (jwt, articleId) => {
-  const response = await CLIENT.delete('/article_like', {
+export const postAddArticleLike = async articleId => {
+  const response = await ACCESS_CLIENT.post('/article_like', {
+    articleId,
+  });
+
+  return response;
+};
+
+export const deleteCancelArticlelLike = async articleId => {
+  const response = await ACCESS_CLIENT.delete('/article_like', {
     data: {
       articleId,
-    },
-    headers: {
-      Authorization: `Bearer ${jwt}`,
     },
   });
 

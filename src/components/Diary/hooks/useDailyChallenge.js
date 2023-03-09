@@ -9,7 +9,7 @@ import { petIdContext } from '../context/PetContext';
 
 export const useDailyChallenge = () => {
   const { DailyChallenge } = QUERY_KEY;
-  const jwt_token = localStorage.getItem('jwt_token') || null;
+  // const jwt_token = localStorage.getItem('jwt_token') || null;
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [petId, setPetId] = useContext(petIdContext);
@@ -21,23 +21,9 @@ export const useDailyChallenge = () => {
   const week = whatWeek(year, month, day);
 
   const { data: dailyChallenge } = useQuery({
-    queryKey: [
-      DailyChallenge,
-      jwt_token,
-      Number(year),
-      Number(month),
-      Number(day),
-      petId,
-    ],
+    queryKey: [DailyChallenge, Number(year), Number(month), Number(day), petId],
     queryFn: () =>
-      getDailyChallenge(
-        jwt_token,
-        petId,
-        year,
-        Number(month),
-        Number(day),
-        week,
-      ),
+      getDailyChallenge(petId, year, Number(month), Number(day), week),
     onError: () => {
       if (petId === null) {
         // window.location.replace('/');

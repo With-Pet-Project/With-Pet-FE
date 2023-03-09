@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import CLIENT from 'lib/APIs/client';
+import { CLIENT } from 'lib/APIs/client';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
 import { toast } from 'react-toastify';

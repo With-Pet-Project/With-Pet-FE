@@ -9,10 +9,10 @@ import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
 
 export function useDeleteComment() {
   const queryClient = useQueryClient();
-  const jwt_token = localStorage.getItem('jwt_token') || null;
+  // const jwt_token = localStorage.getItem('jwt_token') || null;
 
   const { mutate: deleteCommentMutate } = useMutation({
-    mutationFn: commentId => deleteComment(jwt_token, commentId),
+    mutationFn: commentId => deleteComment(commentId),
     onSuccess: () => {
       toast.success(TOAST_MESSAGE.DELETE_SUCCESS, TOAST_OPTION);
       queryClient.invalidateQueries({ queryKey: [QUERY_KEY.Article] });

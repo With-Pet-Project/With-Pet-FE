@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import CLIENT from 'lib/APIs/client';
+import { ACCESS_CLIENT } from 'lib/APIs/client';
 
 export const imageHandler = (QuillRef, setImg) => {
   const input = document.createElement('input');
@@ -16,10 +16,8 @@ export const imageHandler = (QuillRef, setImg) => {
     }
 
     try {
-      const jwt_token = localStorage.getItem('jwt_token');
-      const res = await CLIENT.post('/image', formData, {
+      const res = await ACCESS_CLIENT.post('/image', formData, {
         headers: {
-          Authorization: `Bearer ${jwt_token}`,
           'Content-Type': 'multipart/form-data',
         },
       });

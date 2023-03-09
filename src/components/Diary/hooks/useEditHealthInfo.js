@@ -12,7 +12,7 @@ import { whatWeek } from '../util/diary';
 export function useEditHealthInfo() {
   const queryClient = useQueryClient();
   const [searchParams, setSearchParams] = useSearchParams();
-  const jwt_token = localStorage.getItem('jwt_token') || null;
+  // const jwt_token = localStorage.getItem('jwt_token') || null;
   const [petId, setPetId] = useContext(petIdContext);
   const { PetHealth } = QUERY_KEY;
 
@@ -20,17 +20,11 @@ export function useEditHealthInfo() {
   const month = searchParams.get('month');
   const day = searchParams.get('day');
 
-  const petHealthKey = [
-    PetHealth,
-    jwt_token,
-    petId,
-    Number(year),
-    Number(month),
-  ];
+  const petHealthKey = [PetHealth, petId, Number(year), Number(month)];
 
   const editHealthInfo = useMutation({
     mutationFn: ({ ...healthInfo }) =>
-      putEditHealthInfo(jwt_token, petId, {
+      putEditHealthInfo(petId, {
         ...healthInfo,
       }),
     onMutate: async ({ ...healthInfo }) => {

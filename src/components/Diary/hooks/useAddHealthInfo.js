@@ -12,7 +12,7 @@ import { whatWeek } from '../util/diary';
 export function useAddHealthInfo() {
   const queryClient = useQueryClient();
   const [searchParams, setSearchParams] = useSearchParams();
-  const jwt_token = localStorage.getItem('jwt_token') || null;
+  // const jwt_token = localStorage.getItem('jwt_token') || null;
   const [petId, setPetId] = useContext(petIdContext);
   const { PetHealth } = QUERY_KEY;
 
@@ -22,7 +22,6 @@ export function useAddHealthInfo() {
 
   const petHealthKey = [
     PetHealth,
-    jwt_token,
     petId,
     Number(year),
     Number(month),
@@ -45,7 +44,7 @@ export function useAddHealthInfo() {
       feedAmount,
       diary = '',
     }) =>
-      postHealthInfo(jwt_token, petId, {
+      postHealthInfo(petId, {
         ...healthInfo,
         walkDistance,
         weight,

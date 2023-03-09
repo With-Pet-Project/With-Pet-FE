@@ -10,7 +10,7 @@ export function useCreateArticle() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const [searchParams, setSearchParams] = useSearchParams();
-  const jwt_token = localStorage.getItem('jwt_token') || null;
+  // const jwt_token = localStorage.getItem('jwt_token') || null;
 
   const tag = searchParams.get('tag');
   const firstPlace = searchParams.get('firstPlace');
@@ -21,17 +21,9 @@ export function useCreateArticle() {
     { tag, firstPlace, secondPlace, priority: searchParams.get('priority') },
   ];
 
-  const { mutate: createArticleMutate } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: ({ title, content, checkUrl }) =>
-      postCreateArticle(
-        jwt_token,
-        title,
-        tag,
-        content,
-        firstPlace,
-        secondPlace,
-        checkUrl,
-      ),
+      postCreateArticle(title, tag, content, firstPlace, secondPlace, checkUrl),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [...key] });
       toast.success(TOAST_MESSAGE.Add_SUCCESS, TOAST_OPTION);
@@ -42,5 +34,5 @@ export function useCreateArticle() {
     },
   });
 
-  return { createArticleMutate };
+  return { mutate };
 }

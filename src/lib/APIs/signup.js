@@ -1,4 +1,4 @@
-import CLIENT from './client';
+import { CLIENT } from './client';
 
 export const setSignup = async (email, password, nickname) => {
   const response = await CLIENT.post(

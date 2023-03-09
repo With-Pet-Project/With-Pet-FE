@@ -11,7 +11,7 @@ import { petIdContext } from '../context/PetContext';
 // jwt, title, targetCnt, petId, challengeId
 export function useEditChallenge() {
   const queryClient = useQueryClient();
-  const jwt_token = localStorage.getItem('jwt_token') || null;
+  // const jwt_token = localStorage.getItem('jwt_token') || null;
   const [petId, setPetId] = useContext(petIdContext);
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -19,27 +19,13 @@ export function useEditChallenge() {
   const month = Number(searchParams.get('month'));
   const day = Number(searchParams.get('day'));
 
-  const dailyKey = [
-    QUERY_KEY.DailyChallenge,
-    jwt_token,
-    year,
-    month,
-    day,
-    petId,
-  ];
+  const dailyKey = [QUERY_KEY.DailyChallenge, year, month, day, petId];
 
-  const weeklyKey = [
-    QUERY_KEY.WeeklyChallenge,
-    jwt_token,
-    petId,
-    year,
-    month,
-    day,
-  ];
+  const weeklyKey = [QUERY_KEY.WeeklyChallenge, petId, year, month, day];
 
   const editChallenge = useMutation({
     mutationFn: ({ title, targetCnt, challengeId }) =>
-      putEditChallenge(jwt_token, title, targetCnt, petId, challengeId),
+      putEditChallenge(title, targetCnt, petId, challengeId),
     onSuccess: () => {
       toast.success(TOAST_MESSAGE.UPDATE_SUCCESS, TOAST_OPTION);
       queryClient.invalidateQueries({ queryKey: [...dailyKey] });

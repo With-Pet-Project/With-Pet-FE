@@ -2,15 +2,13 @@ import { useQueryClient, useMutation } from '@tanstack/react-query';
 import { queryKeys } from 'lib/reactQuery/queryKeys';
 import { TOAST_OPTION, TOAST_MESSAGE } from 'components/common/Toast/toast';
 import { toast } from 'react-toastify';
-import CLIENT from 'lib/APIs/client';
+import { ACCESS_CLIENT } from 'lib/APIs/client';
 
 export const deleteAccount = async (id, petId) => {
-  const jwt = localStorage.getItem('jwt_token') || null;
-  const { data } = await CLIENT.delete(`/pet/${petId}/consumption/${id}`, {
-    headers: {
-      Authorization: `Bearer ${jwt}`,
-    },
-  });
+  // const jwt = localStorage.getItem('jwt_token') || null;
+  const { data } = await ACCESS_CLIENT.delete(
+    `/pet/${petId}/consumption/${id}`,
+  );
   return data;
 };
 

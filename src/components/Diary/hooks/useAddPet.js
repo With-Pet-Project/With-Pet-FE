@@ -7,16 +7,16 @@ import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
 
 export function useAddPet() {
   // name, initWeight, birthday, jwt
-  const jwt_token = localStorage.getItem('jwt_token') || null;
+  // const jwt_token = localStorage.getItem('jwt_token') || null;
   const queryClient = useQueryClient();
 
   const { PetInfoList } = QUERY_KEY;
 
-  const key = [PetInfoList, jwt_token];
+  const key = [PetInfoList];
 
   const { mutate } = useMutation({
     mutationFn: ({ name, initWeight, birthday }) =>
-      postCreatePetInfo(name, initWeight, birthday, jwt_token),
+      postCreatePetInfo(name, initWeight, birthday),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [...key] });
       toast.success(TOAST_MESSAGE.Add_SUCCESS, TOAST_OPTION);
@@ -26,5 +26,5 @@ export function useAddPet() {
     },
   });
 
-  return mutate;
+  return { mutate };
 }

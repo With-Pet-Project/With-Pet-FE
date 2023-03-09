@@ -10,7 +10,7 @@ import { petIdContext } from '../context/PetContext';
 export function useUnCheckChallenge() {
   const queryClient = useQueryClient();
   const [searchParams, setSearchParams] = useSearchParams();
-  const jwt_token = localStorage.getItem('jwt_token') || null;
+  // const jwt_token = localStorage.getItem('jwt_token') || null;
   const [petId, setPetId] = useContext(petIdContext);
   const { DailyChallenge } = QUERY_KEY;
 
@@ -18,18 +18,10 @@ export function useUnCheckChallenge() {
   const month = searchParams.get('month');
   const day = searchParams.get('day');
 
-  const key = [
-    DailyChallenge,
-    jwt_token,
-    Number(year),
-    Number(month),
-    Number(day),
-    petId,
-  ];
+  const key = [DailyChallenge, Number(year), Number(month), Number(day), petId];
 
-  const uncheck = useMutation({
-    mutationFn: challengeLogId =>
-      deleteUncheckChallenge(jwt_token, petId, challengeLogId),
+  const { mutate } = useMutation({
+    mutationFn: challengeLogId => deleteUncheckChallenge(petId, challengeLogId),
     onMutate: async challengeLogId => {
       await queryClient.cancelQueries({
         queryKey: [...key],
@@ -53,5 +45,5 @@ export function useUnCheckChallenge() {
     },
   });
 
-  return uncheck;
+  return { mutate };
 }

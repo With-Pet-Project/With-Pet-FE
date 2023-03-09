@@ -7,21 +7,21 @@ import { TOAST_MESSAGE, TOAST_OPTION } from 'components/common/Toast/toast';
 
 export function useRemovePet(selectPet = f => f, petIdx = 0) {
   const queryClient = useQueryClient();
-  const jwt_token = localStorage.getItem('jwt_token');
+  // const jwt_token = localStorage.getItem('jwt_token');
   const { PetInfoList } = QUERY_KEY;
 
   // optimistic upates
   const { mutate } = useMutation({
-    mutationFn: petId => deletePetInfo(jwt_token, petId),
+    mutationFn: petId => deletePetInfo(petId),
     onMutate: async petId => {
       // 진행중인 query 전부 취소.
-      await queryClient.cancelQueries({ queryKey: [PetInfoList, jwt_token] });
+      await queryClient.cancelQueries({ queryKey: [PetInfoList] });
 
       // update 전 상태 저장
-      const prevState = queryClient.getQueryData([PetInfoList, jwt_token]);
+      const prevState = queryClient.getQueryData([PetInfoList]);
       const prevPetIdx = petIdx;
       // update가 성공했을 경우의 상태 저장
-      queryClient.setQueryData([PetInfoList, jwt_token], old => {
+      queryClient.setQueryData([PetInfoList], old => {
         selectPet(0);
         let array = old.data.data;
         array = old.data.data.filter(pet => pet.id !== petId);
@@ -35,11 +35,11 @@ export function useRemovePet(selectPet = f => f, petIdx = 0) {
     },
     onError: (err, newState, context) => {
       toast.error(TOAST_MESSAGE.DELETE_FAIL, TOAST_OPTION);
-      queryClient.setQueryData([PetInfoList, jwt_token], context.prevState);
+      queryClient.setQueryData([PetInfoList], context.prevState);
       selectPet(context.prevPetIdx);
     },
     onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: [PetInfoList, jwt_token] });
+      queryClient.invalidateQueries({ queryKey: [PetInfoList] });
     },
   });
 

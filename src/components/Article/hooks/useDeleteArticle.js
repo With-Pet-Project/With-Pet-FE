@@ -10,11 +10,11 @@ import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
 export function useDeleteArticle() {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-  const jwt_token = localStorage.getItem('jwt_token') || null;
+  // const jwt_token = localStorage.getItem('jwt_token') || null;
   const { articleId } = useParams();
 
   const { mutate: deleteArticleMutate } = useMutation({
-    mutationFn: () => deleteArticle(jwt_token, articleId),
+    mutationFn: () => deleteArticle(articleId),
     onSuccess: () => {
       toast.success(TOAST_MESSAGE.DELETE_SUCCESS, TOAST_OPTION);
       navigate(-1, { replace: true });

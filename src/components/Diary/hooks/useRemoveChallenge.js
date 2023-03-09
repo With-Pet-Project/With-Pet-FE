@@ -11,19 +11,18 @@ import { petIdContext } from '../context/PetContext';
 export function useRemoveChallenge() {
   const [searchParams, setSearchParams] = useSearchParams();
   const queryClient = useQueryClient();
-  const jwt_token = localStorage.getItem('jwt_token') || null;
+  // const jwt_token = localStorage.getItem('jwt_token') || null;
   const [petId, setPetId] = useContext(petIdContext);
 
   const year = Number(searchParams.get('year'));
   const month = Number(searchParams.get('month'));
   const day = Number(searchParams.get('day'));
 
-  const key = [QUERY_KEY.DailyChallenge, jwt_token, year, month, day, petId];
+  const key = [QUERY_KEY.DailyChallenge, year, month, day, petId];
 
   // jwt, petId, challengeId
   const removeChallenge = useMutation({
-    mutationFn: challengeId =>
-      deleteRemoveChallenge(jwt_token, petId, challengeId),
+    mutationFn: challengeId => deleteRemoveChallenge(petId, challengeId),
     onSuccess: () => {
       toast.success(TOAST_MESSAGE.DELETE_SUCCESS, TOAST_OPTION);
       queryClient.invalidateQueries({ queryKey: [...key] });

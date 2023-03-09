@@ -36,7 +36,7 @@ function AddPet() {
   const [name, setName] = useState('');
   const [weight, setWeight] = useState(0);
 
-  const mutate = useAddPet();
+  const { mutate } = useAddPet();
 
   useEffect(() => {
     const NUMBER_OF_DAYS = Number(new Date(year, month, 0).getDate());

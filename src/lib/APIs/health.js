@@ -1,20 +1,14 @@
-import CLIENT from './client';
+import { CLIENT, ACCESS_CLIENT } from './client';
 
-export const getHealthInfo = async (jwt, petId, year, month) => {
-  const response = await CLIENT.get(
+export const getHealthInfo = async (petId, year, month) => {
+  const response = await ACCESS_CLIENT.get(
     `/pet/${petId}/health/monthly?year=${year}&month=${month}`,
-    {
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-      },
-    },
   );
 
   return response;
 };
 
 export const postHealthInfo = async (
-  jwt,
   petId,
   {
     walkDistance,
@@ -29,50 +23,33 @@ export const postHealthInfo = async (
     date,
   },
 ) => {
-  const response = await CLIENT.post(
-    `/pet/${petId}/health`,
-    {
-      walkDistance,
-      weight,
-      drinkAmount,
-      feedAmount,
-      diary,
-      year,
-      month,
-      week,
-      day,
-      date,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-      },
-    },
-  );
+  const response = await ACCESS_CLIENT.post(`/pet/${petId}/health`, {
+    walkDistance,
+    weight,
+    drinkAmount,
+    feedAmount,
+    diary,
+    year,
+    month,
+    week,
+    day,
+    date,
+  });
 
   return response;
 };
 
 export const putEditHealthInfo = async (
-  jwt,
   petId,
   { id, walkDistance, weight, drinkAmount, feedAmount, diary },
 ) => {
-  const response = CLIENT.put(
-    `/pet/${petId}/health/${id}`,
-    {
-      walkDistance,
-      weight,
-      drinkAmount,
-      feedAmount,
-      diary,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-      },
-    },
-  );
+  const response = await ACCESS_CLIENT.put(`/pet/${petId}/health/${id}`, {
+    walkDistance,
+    weight,
+    drinkAmount,
+    feedAmount,
+    diary,
+  });
 
   return response;
 };

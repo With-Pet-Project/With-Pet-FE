@@ -11,7 +11,7 @@ export function useCheckChallenge() {
   const queryClient = useQueryClient();
   const [petId, setPetId] = useContext(petIdContext);
   const [searchParams, setSearchParams] = useSearchParams();
-  const jwt_token = localStorage.getItem('jwt_token') || null;
+  // const jwt_token = localStorage.getItem('jwt_token') || null;
   const { DailyChallenge } = QUERY_KEY;
 
   const year = searchParams.get('year');
@@ -20,10 +20,9 @@ export function useCheckChallenge() {
   const date = `${year}-${month}-${day}`;
   const week = whatWeek(year, month, day);
 
-  const check = useMutation({
+  const { mutate } = useMutation({
     mutationFn: challengeId =>
       postCheckChallenge(
-        jwt_token,
         petId,
         challengeId,
         Number(year),
@@ -36,7 +35,6 @@ export function useCheckChallenge() {
       await queryClient.cancelQueries({
         queryKey: [
           DailyChallenge,
-          jwt_token,
           Number(year),
           Number(month),
           Number(day),
@@ -46,7 +44,6 @@ export function useCheckChallenge() {
 
       const prevState = queryClient.getQueryData([
         DailyChallenge,
-        jwt_token,
         Number(year),
         Number(month),
         Number(day),
@@ -54,14 +51,7 @@ export function useCheckChallenge() {
       ]);
 
       queryClient.setQueryData(
-        [
-          DailyChallenge,
-          jwt_token,
-          Number(year),
-          Number(month),
-          Number(day),
-          petId,
-        ],
+        [DailyChallenge, Number(year), Number(month), Number(day), petId],
         old => {
           let daily = old.data.data;
           daily = daily.map(d => {
@@ -81,14 +71,7 @@ export function useCheckChallenge() {
     },
     onError: (err, challengeId, context) => {
       queryClient.setQueryData(
-        [
-          DailyChallenge,
-          jwt_token,
-          Number(year),
-          Number(month),
-          Number(day),
-          petId,
-        ],
+        [DailyChallenge, Number(year), Number(month), Number(day), petId],
         context.prevState,
       );
     },
@@ -96,7 +79,6 @@ export function useCheckChallenge() {
       queryClient.invalidateQueries({
         queryKey: [
           DailyChallenge,
-          jwt_token,
           Number(year),
           Number(month),
           Number(day),
@@ -106,7 +88,7 @@ export function useCheckChallenge() {
     },
   });
 
-  return check;
+  return { mutate };
 }
 
 /**

@@ -13,7 +13,7 @@ export function useArticleLike(whetherLike, likeCnt) {
   const [isAlike, setIsAlike] = useState(whetherLike);
   const [likeCount, setLikeCount] = useState(likeCnt);
 
-  const jwt_token = localStorage.getItem('jwt_token') || null;
+  // const jwt_token = localStorage.getItem('jwt_token') || null;
 
   /**  const key = [
     QUERY_KEY.Article,
@@ -29,8 +29,8 @@ export function useArticleLike(whetherLike, likeCnt) {
   const { mutate } = useMutation({
     mutationFn: articleId =>
       !isAlike
-        ? postAddArticleLike(jwt_token, articleId) // isAlike(boolean)에 따라서 좋아요 추가 또는 취소
-        : deleteCancelArticlelLike(jwt_token, articleId),
+        ? postAddArticleLike(articleId) // isAlike(boolean)에 따라서 좋아요 추가 또는 취소
+        : deleteCancelArticlelLike(articleId),
     onMutate: async articleId => {
       // eslint-disable-next-line no-unused-expressions
       !isAlike ? setLikeCount(likeCount + 1) : setLikeCount(likeCount - 1);

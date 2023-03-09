@@ -10,15 +10,15 @@ import { petIdContext } from '../context/PetContext';
 export function useAddChallenge() {
   const [petId, setPetId] = useContext(petIdContext);
   const queryClient = useQueryClient();
-  const jwt_token = localStorage.getItem('jwt_token') || null;
+  // const jwt_token = localStorage.getItem('jwt_token') || null;
   const { DailyChallenge } = QUERY_KEY;
 
   const { mutate } = useMutation({
     mutationFn: ({ title, targetCnt }) =>
-      postAddChallenge(jwt_token, petId, title, targetCnt),
+      postAddChallenge(petId, title, targetCnt),
     onSuccess: () => {
       toast.success(TOAST_MESSAGE.Add_SUCCESS, TOAST_OPTION);
-      queryClient.invalidateQueries({ queryKey: [DailyChallenge, jwt_token] });
+      queryClient.invalidateQueries({ queryKey: [DailyChallenge] });
     },
     onError: () => {
       toast.error(TOAST_MESSAGE.ADD_FAIL, TOAST_OPTION);

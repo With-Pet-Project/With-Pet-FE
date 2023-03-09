@@ -2,7 +2,7 @@ import { useQueryClient, useMutation } from '@tanstack/react-query';
 import { queryKeys } from 'lib/reactQuery/queryKeys';
 import { TOAST_OPTION, TOAST_MESSAGE } from 'components/common/Toast/toast';
 import { toast } from 'react-toastify';
-import CLIENT from 'lib/APIs/client';
+import { ACCESS_CLIENT } from 'lib/APIs/client';
 
 const addAccount = async ({
   petId,
@@ -17,9 +17,9 @@ const addAccount = async ({
 }) => {
   // let id = petId;
   // if (petId === 'all') id = '37'; // 나중에 전체보기 api 나오면 수정하기
-  const jwt = localStorage.getItem('jwt_token') || null;
+  // const jwt = localStorage.getItem('jwt_token') || null;
   console.log(petId, feed, toy, hospital, beauty, etc, day, month, year);
-  const { data } = await CLIENT.post(
+  const { data } = await ACCESS_CLIENT.post(
     `/pet/${petId}/consumption`,
     {
       feed: Number(feed),
@@ -34,7 +34,6 @@ const addAccount = async ({
     },
     {
       headers: {
-        Authorization: `Bearer ${jwt}`,
         'Content-Type': 'application/json',
       },
     },

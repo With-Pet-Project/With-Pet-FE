@@ -8,12 +8,12 @@ import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
 
 export function useCreateComment() {
   const queryClient = useQueryClient();
-  const jwt_token = localStorage.getItem('jwt_token') || null;
+  // const jwt_token = localStorage.getItem('jwt_token') || null;
   const { articleId } = useParams();
 
   const { mutate: commentMutate } = useMutation({
     mutationFn: ({ content, commentId = null }) =>
-      postCreateComment(jwt_token, articleId, content, commentId),
+      postCreateComment(articleId, content, commentId),
     onSuccess: () => {
       toast.success('댓글이 추가되었습니다.', TOAST_OPTION);
       queryClient.invalidateQueries({

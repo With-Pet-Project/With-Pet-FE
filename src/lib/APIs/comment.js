@@ -1,24 +1,15 @@
-import CLIENT from './client';
+import { CLIENT, ACCESS_CLIENT } from './client';
 
 export const postCreateComment = async (
-  jwt,
   articleId,
   content,
   commentId = null,
 ) => {
-  const response = await CLIENT.post(
-    '/comment',
-    {
-      articleId,
-      content,
-      commentId,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-      },
-    },
-  );
+  const response = await ACCESS_CLIENT.post('/comment', {
+    articleId,
+    content,
+    commentId,
+  });
 
   return response;
 };
@@ -36,26 +27,16 @@ export const getReadChildComment = async commentId => {
   return response;
 };
 
-export const patchUpdateComment = async (jwt, commentId, content) => {
-  const response = await CLIENT.patch(
+export const patchUpdateComment = async (commentId, content) => {
+  const response = await ACCESS_CLIENT.patch(
     `/comment/${commentId}?content=${content}`,
-    {},
-    {
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-      },
-    },
   );
 
   return response;
 };
 
-export const deleteComment = async (jwt, commentId) => {
-  const response = await CLIENT.delete(`/comment/${commentId}`, {
-    headers: {
-      Authorization: `Bearer ${jwt}`,
-    },
-  });
+export const deleteComment = async commentId => {
+  const response = await ACCESS_CLIENT.delete(`/comment/${commentId}`);
 
   return response;
 };
