@@ -28,7 +28,6 @@ function Account() {
   const petsId = [...pets.map(pet => pet.id), 'all'];
   const [yearMonth, setYearMonth] = useMonthYear(petsId);
   const { openModal } = useModal();
-  
   const accountData = useAccount(yearMonth.year, yearMonth.month, petsId);
   const currentCalender = accountData[selectPet.id].calender;
   const currentTotal = accountData[selectPet.id].total;
@@ -56,7 +55,6 @@ function Account() {
         yearMonth={yearMonth}
         calenderData={currentCalender}
         totals={currentTotal}
-
         selectDate={selectDate}
         handleSelectDate={handleSelectDate}
         handleMonthChange={handleMonthChange}

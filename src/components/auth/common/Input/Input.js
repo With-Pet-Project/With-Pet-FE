@@ -15,7 +15,6 @@ function Input(
     step,
     onBlur,
     min,
-
   },
   ref,
 ) {

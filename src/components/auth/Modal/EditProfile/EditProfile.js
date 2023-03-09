@@ -14,7 +14,6 @@ function EditProfile() {
   const { closeModal } = useModal();
   const { mutate: profileUpdate } = useUpdateProfile();
 
-
   const handleFileChange = e => {
     fileLabelInput.current.value = fileInput.current.value;
     fileLabelInput.current.classList.add('active-input');
