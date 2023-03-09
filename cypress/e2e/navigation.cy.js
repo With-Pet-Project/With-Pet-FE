@@ -23,5 +23,6 @@ describe('페이지 네비게이션', () => {
     cy.location('pathname').should('eq', '/hospital');
     cy.get('.side-navbar-menu').contains('로그인').click();
     cy.location('pathname').should('eq', '/login');
+    cy.log('hello cypress!');
   });
 });
