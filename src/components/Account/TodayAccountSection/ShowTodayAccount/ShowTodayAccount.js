@@ -5,7 +5,6 @@ import '../TodayAccount.scss';
 
 function ShowTodayAccount({ data, todayTotal }) {
   const hasData = Object.keys(data).length > 0;
-
   const todayAccountItemHtml = Object.entries(ACCOUNT_LIST).map(
     ([key, { name, darkColor }]) => (
       <ShowTodayItem

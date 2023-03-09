@@ -28,6 +28,7 @@ function Account() {
   const petsId = [...pets.map(pet => pet.id), 'all'];
   const [yearMonth, setYearMonth] = useMonthYear(petsId);
   const { openModal } = useModal();
+  
   const accountData = useAccount(yearMonth.year, yearMonth.month, petsId);
   const currentCalender = accountData[selectPet.id].calender;
   const currentTotal = accountData[selectPet.id].total;
@@ -45,6 +46,9 @@ function Account() {
     setYearMonth(prevDate => getNextYearMonth(prevDate.dateObject, index));
   };
 
+  console.log(accountData);
+  console.log(selectPet);
+
   return (
     <section className="account-container account_bg">
       <SelectPet selectPet={selectPet} setSelectPet={setSelectPet} />
@@ -52,6 +56,7 @@ function Account() {
         yearMonth={yearMonth}
         calenderData={currentCalender}
         totals={currentTotal}
+
         selectDate={selectDate}
         handleSelectDate={handleSelectDate}
         handleMonthChange={handleMonthChange}
@@ -61,6 +66,7 @@ function Account() {
         yearMonth={yearMonth}
         selectPet={selectPet}
       />
+
       <FloatButton handleOnClick={openAddAccount}>
         <FontAwesomeIcon icon={faPlus} size="1x" />
       </FloatButton>
