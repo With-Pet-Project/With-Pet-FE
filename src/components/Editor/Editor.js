@@ -60,7 +60,7 @@ function Editor() {
   const articleDetail = useArticleDetail();
 
   // { title, text, imgUrl }
-  const { createArticleMutate } = useCreateArticle();
+  const { mutate: createArticleMutate } = useCreateArticle();
   const onSubmit = e => {
     e.preventDefault();
     const checkUrl = imgList.map(i => ({

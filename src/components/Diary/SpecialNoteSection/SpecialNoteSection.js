@@ -20,8 +20,8 @@ const TextArea = styled.textarea`
 
 function SpecialNoteSection() {
   const { dayInfo } = useHealthInfo();
-  const addHealthInfo = useAddHealthInfo();
-  const editHealthInfo = useEditHealthInfo();
+  const { mutate: addHealthInfo } = useAddHealthInfo();
+  const { mutate: editHealthInfo } = useEditHealthInfo();
   const [edit, setEdit] = useState(false);
   const [diary, setDiary] = useState('');
 
@@ -30,14 +30,14 @@ function SpecialNoteSection() {
   const isEdit = () => {
     if (edit) {
       !dayInfo
-        ? addHealthInfo.mutate({
+        ? addHealthInfo({
             walkDistance: 0,
             weight: 0,
             drinkAmount: 0,
             feedAmount: 0,
             diary,
           })
-        : editHealthInfo.mutate({
+        : editHealthInfo({
             ...dayInfo,
             id: dayInfo.id,
             walkDistance: dayInfo.walkDistance,

@@ -16,7 +16,7 @@ export function useEditArticle() {
   const key = [Article, article];
   const modifiedArticle = {};
 
-  const { mutate: EditArticleMutate } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: () => patchEditArticle(jwt_token, { ...modifiedArticle }),
     onError: () => {
       toast.error(TOAST_MESSAGE.ADD_FAIL, TOAST_OPTION);
@@ -27,5 +27,5 @@ export function useEditArticle() {
     },
   });
 
-  return { EditArticleMutate };
+  return { mutate };
 }

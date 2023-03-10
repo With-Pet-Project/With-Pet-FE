@@ -21,7 +21,7 @@ export function useCreateArticle() {
     { tag, firstPlace, secondPlace, priority: searchParams.get('priority') },
   ];
 
-  const { mutate: createArticleMutate } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: ({ title, content, checkUrl }) =>
       postCreateArticle(
         jwt_token,
@@ -42,5 +42,5 @@ export function useCreateArticle() {
     },
   });
 
-  return { createArticleMutate };
+  return { mutate };
 }

@@ -20,7 +20,7 @@ export function useCheckChallenge() {
   const date = `${year}-${month}-${day}`;
   const week = whatWeek(year, month, day);
 
-  const check = useMutation({
+  const { mutate } = useMutation({
     mutationFn: challengeId =>
       postCheckChallenge(
         jwt_token,
@@ -106,7 +106,7 @@ export function useCheckChallenge() {
     },
   });
 
-  return check;
+  return { mutate };
 }
 
 /**

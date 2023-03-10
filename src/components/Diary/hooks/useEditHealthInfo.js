@@ -28,7 +28,7 @@ export function useEditHealthInfo() {
     Number(month),
   ];
 
-  const editHealthInfo = useMutation({
+  const { mutate } = useMutation({
     mutationFn: ({ ...healthInfo }) =>
       putEditHealthInfo(jwt_token, petId, {
         ...healthInfo,
@@ -69,7 +69,7 @@ export function useEditHealthInfo() {
     },
   });
 
-  return editHealthInfo;
+  return { mutate };
 }
 
 /**

@@ -21,7 +21,7 @@ export function useRemoveChallenge() {
   const key = [QUERY_KEY.DailyChallenge, jwt_token, year, month, day, petId];
 
   // jwt, petId, challengeId
-  const removeChallenge = useMutation({
+  const { mutate } = useMutation({
     mutationFn: challengeId =>
       deleteRemoveChallenge(jwt_token, petId, challengeId),
     onSuccess: () => {
@@ -33,5 +33,5 @@ export function useRemoveChallenge() {
     },
   });
 
-  return removeChallenge;
+  return { mutate };
 }

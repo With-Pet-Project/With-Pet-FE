@@ -10,7 +10,7 @@ import { useArticleDetail } from '../hooks/useArticleDetail';
 
 function ArticleMain() {
   const { articleId } = useParams();
-  const { deleteArticleMutate } = useDeleteArticle();
+  const { mutate: deleteArticleMutate } = useDeleteArticle();
   const user = useUser();
   const article = useArticleDetail();
   const { mutate, isAlike, likeCount } = useArticleLike(

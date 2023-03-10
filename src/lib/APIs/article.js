@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import CLIENT, { ACCESS_CLIENT } from './client';
+import CLIENT from './client';
 // tag, priority, firstPlace, secondPlace, lastArticleId, 5
 export const getArticleList = async (
   tag,
@@ -19,9 +19,23 @@ export const getArticleList = async (
     tag = null;
   }
 
-  const client = localStorage.getItem('jwt_token') ? ACCESS_CLIENT : CLIENT;
+  const jwt = localStorage.getItem('jwt_token');
 
-  const data = await client.get(`/articles`, {
+  if (!jwt) {
+    const response = await CLIENT.get(`/articles`, {
+      params: {
+        tag,
+        place1: firstPlace,
+        place2: secondPlace,
+        filter: priority,
+        lastArticleId: pageParam,
+        param: searchValue,
+        size,
+      },
+    });
+    return response;
+  }
+  const response = await CLIENT.get(`/articles`, {
     params: {
       tag,
       place1: firstPlace,
@@ -31,8 +45,12 @@ export const getArticleList = async (
       param: searchValue,
       size,
     },
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+    },
   });
-  return data;
+
+  return response;
 };
 
 export const postCreateArticle = async (
@@ -70,9 +88,18 @@ export const postCreateArticle = async (
 };
 
 export const getReadArticleDetail = async articleId => {
-  const client = localStorage.getItem('jwt_token') ? ACCESS_CLIENT : CLIENT;
+  const jwt = localStorage.getItem('jwt_token');
 
-  const response = await client.get(`/articles/${articleId}`);
+  if (!jwt) {
+    const response = await CLIENT.get(`/articles/${articleId}`);
+    return response;
+  }
+
+  const response = await CLIENT.get(`/articles/${articleId}`, {
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
   return response;
 };
 

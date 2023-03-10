@@ -37,7 +37,7 @@ export function useAddHealthInfo() {
     date: `${year}-${month}-${day}`,
   };
 
-  const addHealthInfo = useMutation({
+  const { mutate } = useMutation({
     mutationFn: ({
       walkDistance,
       weight,
@@ -61,7 +61,7 @@ export function useAddHealthInfo() {
       toast.error(TOAST_MESSAGE.ADD_FAIL, TOAST_OPTION);
     },
   });
-  return addHealthInfo;
+  return { mutate };
 }
 /*
 {

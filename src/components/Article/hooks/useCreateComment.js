@@ -11,7 +11,7 @@ export function useCreateComment() {
   const jwt_token = localStorage.getItem('jwt_token') || null;
   const { articleId } = useParams();
 
-  const { mutate: commentMutate } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: ({ content, commentId = null }) =>
       postCreateComment(jwt_token, articleId, content, commentId),
     onSuccess: () => {
@@ -25,7 +25,7 @@ export function useCreateComment() {
     },
   });
 
-  return { commentMutate };
+  return { mutate };
   /* jwt,
   articleId,
   content,

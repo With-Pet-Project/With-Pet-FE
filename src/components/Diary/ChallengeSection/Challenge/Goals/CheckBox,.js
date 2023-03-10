@@ -25,12 +25,12 @@ const Icon = styled.svg`
 `;
 
 function CheckBox({ goal }) {
-  const check = useCheckChallenge();
-  const uncheck = useUnCheckChallenge();
+  const { mutate: check } = useCheckChallenge();
+  const { mutate: uncheck } = useUnCheckChallenge();
   const isChecked = () => {
     goal.challengeLogId
-      ? uncheck.mutate(goal.challengeLogId)
-      : check.mutate(goal.challengeId);
+      ? uncheck(goal.challengeLogId)
+      : check(goal.challengeId);
   };
 
   return (

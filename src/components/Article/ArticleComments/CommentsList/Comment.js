@@ -10,8 +10,8 @@ import CommentArea from '../CommentArea/CommentArea';
 
 function Comment({ comment }) {
   const user = useUser();
-  const { deleteCommentMutate } = useDeleteComment();
-  const { editCommentMutate } = useEditComment();
+  const { mutate: deleteCommentMutate } = useDeleteComment();
+  const { mutate: editCommentMutate } = useEditComment();
   const [commentValue, setCommentValue] = useState('');
   const [modifyMode, setModifyMode] = useState(false);
 
