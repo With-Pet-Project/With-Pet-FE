@@ -2,22 +2,7 @@ import { useQueryClient, useMutation } from '@tanstack/react-query';
 import { queryKeys } from 'lib/reactQuery/queryKeys';
 import { TOAST_OPTION, TOAST_MESSAGE } from 'components/common/Toast/toast';
 import { toast } from 'react-toastify';
-import CLIENT from 'lib/APIs/client';
-
-const updateAccount = async values => {
-  const jwt = localStorage.getItem('jwt_token') || null;
-  const { data } = await CLIENT.put(
-    `/pet/${values.petId}/consumption/${values.id}`,
-    values,
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${jwt}`,
-      },
-    },
-  );
-  return data;
-};
+import { updateAccount } from 'lib/APIs/account';
 
 export const useUpdateAccount = () => {
   const queryClient = useQueryClient();

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -12,22 +13,24 @@ import { useModal } from 'components/common/Modal/context/useModal';
 import { TODAY } from '../common/Calender/constant';
 import { useAccount } from './hooks/useAccount';
 import { useMonthYear } from './hooks/useMonthYear';
-
 import AddAccount from './Modal/AddAccount/AddAccount';
 import TotalAccountSection from './TotalAccountSection/TotalAccountSection';
 import TodayAccountSection from './TodayAccountSection/TodayAccountSection';
 import SelectPet from './SelectPet/SelectPet';
-
 import './Account.scss';
+
+const DEFAULT_PET = { id: 'all', name: '전체보기' };
 
 function Account() {
   const [selectDate, setSelectDate] = useState(getMonthYearDetails(TODAY));
-  const [selectPet, setSelectPet] = useState({ id: 'all', name: '전체보기' });
+  const [selectPet, setSelectPet] = useState(DEFAULT_PET);
   const pets = usePet();
   const petsId = [...pets.map(pet => pet.id), 'all'];
   const [yearMonth, setYearMonth] = useMonthYear(petsId);
-  const accountData = useAccount(yearMonth.year, yearMonth.month, petsId);
   const { openModal } = useModal();
+  const accountData = useAccount(yearMonth.year, yearMonth.month, petsId);
+  const currentCalender = accountData[selectPet.id].calender;
+  const currentTotal = accountData[selectPet.id].total;
 
   const openAddAccount = () => {
     openModal(AddAccount, { selectDate });
@@ -50,18 +53,18 @@ function Account() {
       <SelectPet selectPet={selectPet} setSelectPet={setSelectPet} />
       <TotalAccountSection
         yearMonth={yearMonth}
-        accountData={accountData}
-        calenderData={accountData[selectPet.id].calender}
-        totals={accountData[selectPet.id].total}
+        calenderData={currentCalender}
+        totals={currentTotal}
         selectDate={selectDate}
         handleSelectDate={handleSelectDate}
         handleMonthChange={handleMonthChange}
       />
-      {/* <TodayAccountSection
-        accountData={accountData[selectDate.day]}
+      <TodayAccountSection
+        calenderData={currentCalender[selectDate.day]}
         yearMonth={yearMonth}
         selectPet={selectPet}
-      /> */}
+      />
+
       <FloatButton handleOnClick={openAddAccount}>
         <FontAwesomeIcon icon={faPlus} size="1x" />
       </FloatButton>

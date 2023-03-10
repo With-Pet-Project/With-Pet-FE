@@ -14,6 +14,7 @@ function Input(
     placeholder,
     step,
     onBlur,
+    min,
   },
   ref,
 ) {
@@ -30,6 +31,8 @@ function Input(
       ref={ref}
       placeholder={placeholder}
       onBlur={onBlur}
+      min={min}
+      required
     />
   );
 }

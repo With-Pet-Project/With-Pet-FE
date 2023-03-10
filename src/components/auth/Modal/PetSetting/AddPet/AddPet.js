@@ -12,8 +12,6 @@ function AddPet() {
     const { value: petName } = event.target.elements.petName;
     const { value: petWeight } = event.target.elements.petWeight;
     const { value: petBday } = event.target.elements.petBday;
-    // 유효성검사 필요
-
     addPet({ name: petName, initWeight: Number(petWeight), birthday: petBday });
   };
 
@@ -31,6 +29,7 @@ function AddPet() {
         step="any"
         className="pet-weight"
         placeholder="펫 무게"
+        min="0.1"
       />
       <Input
         type="date"
