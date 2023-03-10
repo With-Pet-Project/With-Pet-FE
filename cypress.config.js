@@ -4,7 +4,8 @@ const { defineConfig } = require('cypress');
 // https://with-pet-fe-cgh123198-with-pet-prod.vercel.app/
 module.exports = defineConfig({
   projectId: 'n3yy1e',
-  env: { BASE_URL: 'https://with-pet-fe-cgh123198-with-pet-prod.vercel.app/' },
+  env: { BASE_URL: 'http://localhost:3000/' },
+  // env: { BASE_URL: 'https://with-pet-fe-cgh123198-with-pet-prod.vercel.app/' },
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
