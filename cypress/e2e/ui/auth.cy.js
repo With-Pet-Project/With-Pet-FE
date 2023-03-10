@@ -10,5 +10,6 @@ describe('회원가임 및 로그인', () => {
 
   it('로그인을 한다.', () => {
     cy.get('[data-cy="login-btn"]').click();
+    //
   });
 });
