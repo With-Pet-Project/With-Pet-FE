@@ -1,38 +1,38 @@
 import { useQuery } from '@tanstack/react-query';
 import { queryKeys } from 'lib/reactQuery/queryKeys';
-import CLIENT from 'lib/APIs/client';
+import { fetchAccount } from 'lib/APIs/account';
 
 const setCalenderFormat = (year, month) => {
   const lastDay = new Date(year, Number(month), 0).getDate();
-  return Array(lastDay)
+  const calender = Array(lastDay)
     .fill(null)
     .reduce((acc, _, index) => {
       acc[`${index + 1}`] = {};
       return acc;
     }, {});
+  return { ...calender };
 };
 
 const getCalender = (year, month, rawData, petId) => {
   const calender = setCalenderFormat(year, month);
-
   rawData.forEach(data => {
     if (data.petId !== petId) return;
     calender[`${data.day}`] = { ...calender[`${data.day}`], ...data };
   });
-
   return calender;
 };
 
 const getAllCalender = (year, month, rawData) => {
   const calender = setCalenderFormat(year, month);
+  const hasData = (data, type) => (data[type] ? data[type] : 0);
 
   rawData.forEach(data => {
     calender[`${data.day}`] = {
-      beauty: calender[`${data.day}`].beauty || 0 + data.beauty,
-      etc: calender[`${data.day}`].etc || 0 + data.etc,
-      hospital: calender[`${data.day}`].hospital || 0 + data.hospital,
-      feed: calender[`${data.day}`].feed || 0 + data.feed,
-      toy: calender[`${data.day}`].toy || 0 + data.toy,
+      beauty: hasData(calender[`${data.day}`], 'beauty') + data.beauty,
+      etc: hasData(calender[`${data.day}`], 'etc') + data.etc,
+      hospital: hasData(calender[`${data.day}`], 'hospital') + data.hospital,
+      feed: hasData(calender[`${data.day}`], 'feed') + data.feed,
+      toy: hasData(calender[`${data.day}`], 'toy') + data.toy,
     };
   });
 
@@ -67,7 +67,7 @@ const getTotal = (rawData, petId, isAllData) => {
   };
 };
 
-const makeAccountData = (rawData, year, month, petsId) => {
+export const makeAccountData = (rawData, year, month, petsId) => {
   const result = {};
 
   petsId.forEach(petId => {
@@ -81,24 +81,7 @@ const makeAccountData = (rawData, year, month, petsId) => {
     result.all = { calender: AllCalender };
     result.all.total = { ...allTotal };
   });
-
-  console.log(result);
-  return result;
-};
-
-export const fetchAccount = async (year, month, petsId) => {
-  const jwt = localStorage.getItem('jwt_token') || null;
-  const url = `/pet/consumption?year=${year}&month=${month}`;
-
-  const { data } = await CLIENT.get(url, {
-    headers: {
-      Authorization: `Bearer ${jwt}`,
-    },
-  });
-
-  console.log(JSON.stringify(data.data, null, '\t'));
-  const result = makeAccountData(data.data, year, month, petsId);
-  // console.log(JSON.stringify(result, null, '\t'));
+  // console.log(result);
   return result;
 };
 

@@ -1,21 +1,51 @@
-import '../common/auth.scss';
-import './ConfirmPassword.scss';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { requestConfirm, checkConfirm } from 'lib/APIs/profile';
+import styled from 'styled-components';
 import Input from '../common/Input/Input';
 import Container from '../common/Container/Container';
+import '../common/auth.scss';
+import './ConfirmPassword.scss';
 
 function ConfirmPassword() {
+  const [isSentEmail, setIsSentEmail] = useState(false);
   const navigate = useNavigate();
+  const emailRef = useRef(null);
+  const codeRef = useRef(null);
 
-  const handleSubmit = event => {
-    // 확인되었는지 처리
-    event.preventDefault();
-    navigate('/reset-password');
+  const handleVerifyCode = async () => {
+    const verifyCode = codeRef.current.value;
+    const email = emailRef.current.value;
+    if (!verifyCode) {
+      alert('인증코드를 입력하세요.');
+      emailRef.current.focus();
+      return;
+    }
+
+    const isVerify = await checkConfirm(email, verifyCode);
+    console.log(isVerify);
+    if (isVerify) navigate('/reset-password');
+    else {
+      setIsSentEmail(false);
+      emailRef.current.value = '';
+      codeRef.current.value = '';
+    }
+  };
+
+  const handleSendEmail = async () => {
+    const email = emailRef.current.value;
+    if (!email) {
+      alert('아이디를 입력하세요.');
+      emailRef.current.focus();
+      return;
+    }
+    const isEmailSent = await requestConfirm(email);
+    setIsSentEmail(isEmailSent);
   };
 
   return (
     <Container>
-      <form className="confirm-pwd-form auth-form" onSubmit={handleSubmit}>
+      <form className="confirm-pwd-form auth-form">
         <h3 className="title">본인 인증</h3>
         <label htmlFor="email" className="label">
           비밀번호를 찾고자하는 아이디를 입력하세요.
@@ -26,20 +56,41 @@ function ConfirmPassword() {
             id="email"
             name="email"
             className="id-confirm-input"
+            ref={emailRef}
+            disabled={isSentEmail}
           />
-          <button type="button" className="confirm-id-btn button">
+          <button
+            type="button"
+            className="confirm-id-btn button"
+            onClick={handleSendEmail}
+            disabled={isSentEmail}
+          >
             인증
           </button>
         </div>
-        <div className="btn-wrapper">
-          <p>입력한 이메일에서 인증을 진행한 뒤 확인버튼을 눌러주세요.</p>
-          <button type="submit" className="confirm-password-btn button">
+        <VerifyDiv show={isSentEmail}>
+          <label htmlFor="email" className="label">
+            이메일로 전송된 인증 코드를 입력하세요.
+          </label>
+          <Input type="text" name="verify-Code" ref={codeRef} />
+          <button
+            type="button"
+            className="confirm-password-btn button"
+            onClick={handleVerifyCode}
+          >
             확인
           </button>
-        </div>
+        </VerifyDiv>
       </form>
     </Container>
   );
 }
 
 export default ConfirmPassword;
+
+const VerifyDiv = styled.div`
+  margin-top: 10px;
+  opacity: ${props => (props.show ? '1' : '0')};
+  height: ${props => (props.show ? 'auto' : '0')};
+  transition: all 0.5s;
+`;

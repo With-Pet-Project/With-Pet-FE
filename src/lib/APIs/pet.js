@@ -51,3 +51,13 @@ export const deletePetInfo = async (jwt, petId) => {
 
   return response;
 };
+
+export const updatePet = async (jwt, newPet) => {
+  const { data } = await CLIENT.put(`/pet/${newPet.id}`, newPet, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
+  return data;
+};

@@ -11,11 +11,17 @@
 
   & .user-img {
     flex-basis: 55px;
+<<<<<<< HEAD
+=======
+  }
+
+  & .user-img > img {
+>>>>>>> production
     width: 55px;
     height: 55px;
     border: 0;
-    border-radius: 100%;
     background-color: $background-yellow;
+    border-radius: 100%;
   }
 
   & .user-img img {
@@ -33,6 +39,9 @@
   margin: 0 5px;
   flex-grow: 1;
   text-align: left;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
 
   & div {
     margin: 6px 0;
@@ -50,6 +59,12 @@
     color: $fontColor-gray;
     font-size: 10px;
     line-height: 12px;
+  }
+
+  .user-nickname {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 

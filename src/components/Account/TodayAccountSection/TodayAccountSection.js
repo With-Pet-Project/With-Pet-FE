@@ -2,21 +2,28 @@ import { useState } from 'react';
 import useConfirm from 'components/common/hooks/useConfirm';
 
 import ShowTodayAccount from './ShowTodayAccount/ShowTodayAccount';
+import { ACCOUNT_LIST } from '../constant';
 import EditTodayAccount from './EditTodayAccount/EditTodayAccount';
 import { useDeleteAccount } from '../hooks/useDeleteAccount';
 import { useUpdateAccount } from '../hooks/useUpdateAccount';
 import './TodayAccountSection.scss';
 
-// api 적용 후 이부분 리펙토링
-function TodayAccountSection({ accountData, yearMonth, selectPet }) {
+function TodayAccountSection({ calenderData, yearMonth, selectPet }) {
   const [isEdit, setIsEdit] = useState(false);
   const deleteAccount = useDeleteAccount();
   const updateAccount = useUpdateAccount();
-  const { consumption } = accountData.length > 0 && accountData[0];
-  const accountValue = { ...consumption };
+  const updateData = { ...calenderData };
+  const isShownBtn =
+    Object.keys(calenderData).length > 0 && selectPet.id !== 'all';
+
+  const todayTotal =
+    Object.entries(ACCOUNT_LIST).reduce(
+      (acc, [key, _]) => acc + calenderData[key],
+      0,
+    ) || 0;
 
   const onConfirm = () => {
-    const { id } = consumption;
+    const { id } = calenderData;
     deleteAccount({ id, petId: selectPet.id });
   };
 
@@ -30,8 +37,9 @@ function TodayAccountSection({ accountData, yearMonth, selectPet }) {
   const handleEditSubmit = event => {
     event.preventDefault();
     const { year, month } = yearMonth;
+
     updateAccount({
-      ...accountValue,
+      ...updateData,
       year: Number(year),
       month: Number(month),
       week: 1,
@@ -61,16 +69,20 @@ function TodayAccountSection({ accountData, yearMonth, selectPet }) {
   );
 
   const todayContentHtml = isEdit ? (
-    <EditTodayAccount accountData={accountData} accountValue={accountValue} />
+    <EditTodayAccount
+      data={calenderData}
+      todayTotal={todayTotal}
+      updateData={updateData}
+    />
   ) : (
-    <ShowTodayAccount accountData={accountData} />
+    <ShowTodayAccount data={calenderData} todayTotal={todayTotal} />
   );
 
   return (
     <div className="today-account">
       <div className="title-wrapper">
         <h2>오늘의 소비</h2>
-        <div>{accountData.length > 0 && btnHtml}</div>
+        <div>{isShownBtn && btnHtml}</div>
       </div>
       {todayContentHtml}
     </div>

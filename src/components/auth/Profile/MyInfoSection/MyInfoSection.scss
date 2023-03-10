@@ -6,9 +6,24 @@
   align-items: center;
   border-bottom: 1px solid #dbdbdb;
 
+  .myInfo {
+    text-align: center;
+    width: 400px;
+  }
+
   .profile-img {
-    background-color: $background-yellow;
     border-radius: 100px;
+
+    img {
+      border-radius: 100px;
+      width: 182px;
+      height: 182px;
+      background-color: $background-yellow;
+    }
+  }
+
+  .bg_transparent {
+    background-color: transparent;
   }
 
   .nickName {
@@ -17,6 +32,11 @@
     font-variation-settings: 'wght' 650;
     font-size: 20px;
     text-align: center;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
   }
 
   .btn {
