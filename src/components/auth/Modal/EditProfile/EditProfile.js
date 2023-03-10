@@ -1,27 +1,26 @@
 import { useRef, useState } from 'react';
-import './EditProfile.scss';
 import Input from 'components/auth/common/Input/Input';
 import { useModal } from 'components/common/Modal/context/useModal';
-import axios from 'axios';
+import { isValidateNickName } from 'lib/APIs/profile';
+import { useUpdateProfile } from '../../hooks/useUpdateProfile';
+import './EditProfile.scss';
 
 function EditProfile() {
   const [selectFile, setSelectFile] = useState(null);
-  const [isValidNickName, setIsValidNickName] = useState(true);
+  const [isValidNickName, setIsValidNickName] = useState(null);
   const fileInput = useRef(null);
   const nickNameRef = useRef(null);
   const fileLabelInput = useRef(null);
   const { closeModal } = useModal();
+  const { mutate: profileUpdate } = useUpdateProfile();
 
   const handleFileChange = e => {
     fileLabelInput.current.value = fileInput.current.value;
     fileLabelInput.current.classList.add('active-input');
 
-    const formData = new FormData();
     if (e.target.files) {
       const uploadFile = e.target.files[0];
-      formData.append('file', uploadFile);
       setSelectFile(uploadFile);
-      console.log(uploadFile);
     }
   };
 
@@ -33,40 +32,29 @@ function EditProfile() {
     event.preventDefault();
     const { value: nickname } = event.target.elements.nickname;
     const formData = new FormData();
-    formData.append('nickname', nickname);
-    formData.append('image', selectFile);
-    const jwt = localStorage.getItem('jwt_token') || null;
+    formData.append('nickName', nickname);
+    formData.append('images', selectFile);
 
-    axios({
-      method: 'patch',
-      url: 'http://13.209.146.77:8082/mypage',
-      data: formData,
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-        'Content-Type': 'application/json',
-        enctype: 'multipart/form-data',
-      },
-    }).then(result => {
-      console.log('요청성공');
-      console.log(result);
-    });
+    profileUpdate(formData);
+    closeModal(EditProfile); // 안닫힘
   };
 
-  const validateNickName = event => {
-    const jwt = localStorage.getItem('jwt_token') || null;
-    const { value: inputValue } = event.target;
-    console.log(inputValue);
-    axios({
-      method: 'get',
-      url: `http://13.209.146.77:8082/user/duplicate?nickName=${inputValue}`,
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-        'Content-Type': 'application/json',
-      },
-    }).then(result => {
-      console.log('요청성공');
-      console.log(result);
-    });
+  const nickNameHtml = () => {
+    if (isValidNickName === false)
+      return (
+        <span className="nickname-unavailable">
+          사용할 수 없는 닉네임입니다.
+        </span>
+      );
+    return (
+      <span className="nickname-available">사용가능한 닉네임 입니다.</span>
+    );
+  };
+
+  const validateNickName = async event => {
+    const { value } = event.target;
+    const isValid = await isValidateNickName(value);
+    setIsValidNickName(isValid);
   };
 
   return (
@@ -101,7 +89,7 @@ function EditProfile() {
           placeholder="닉네임을 입력하세요"
           onBlur={validateNickName}
         />
-        <span className="nickname-available">사용가능한 닉네임 입니다.</span>
+        {nickNameHtml()}
         <div className="btn-wrapper">
           <button type="button" onClick={() => closeModal(EditProfile)}>
             취소

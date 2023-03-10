@@ -1,6 +1,6 @@
 import CLIENT from './client';
 
-export const setSignup = async (email, password, nickname) => {
+export const signup = async (email, password, nickname) => {
   const response = await CLIENT.post(
     '/user/signup',
     {

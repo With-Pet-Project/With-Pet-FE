@@ -60,14 +60,24 @@
 
   .nickname-available {
     margin-top: 20px;
-    margin-bottom: 40px;
     color: $fontColor-black;
     font-size: 12px;
+  }
+
+  .nickname-unavailable {
+    margin-top: 20px;
+    color: red;
+    font-size: 12px;
+  }
+
+  input[name='profileImg'] {
+    margin-bottom: 20px;
   }
 
   .btn-wrapper {
     display: flex;
     justify-content: center;
+    margin-top: 30px;
   }
 
   button {

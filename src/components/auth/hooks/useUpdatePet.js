@@ -1,21 +1,10 @@
 import { useQueryClient, useMutation } from '@tanstack/react-query';
-import CLIENT from 'lib/APIs/client';
 import { toast } from 'react-toastify';
 import { TOAST_OPTION, TOAST_MESSAGE } from 'components/common/Toast/toast';
 import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
+import { updatePet } from 'lib/APIs/pet';
 
 const INITIAL_INDEX = 0;
-
-const updatePet = async (jwt, newPet) => {
-  console.log(newPet);
-  const { data } = await CLIENT.put(`/pet/${newPet.id}`, newPet, {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${jwt}`,
-    },
-  });
-  return data;
-};
 
 export const useUpdatePet = (selectPet = f => f) => {
   const queryClient = useQueryClient();

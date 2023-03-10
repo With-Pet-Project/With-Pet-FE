@@ -1,22 +1,25 @@
 name: Cypress CI(E2E)
-on: [ "deployment_status" ] # preview 혹은 production 배포 완료 후, 그에 대한 E2E test 자동실행
+on: ['deployment_status'] # preview 혹은 production 배포 완료 후, 그에 대한 E2E test 자동실행
 
-jobs: 
+jobs:
   E2E:
     if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-    - run: echo ${{ github.event.deployment_status.target_url }}
-    - name: Run Cypress
-      uses: cypress-io/github-action@v5
-      with:
-        browser: chrome
-        record: false
-        wait-on: ${{ github.event.deployment_status.target_url }}
-      env:
-        # CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }} 
-        CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+      - name: Checkout
+        uses: actions/checkout@v3
+        # Install NPM dependencies, cache them correctly
+        # and run all Cypress tests
+      - run: echo https://with-pet-fe-cgh123198-with-pet-prod.vercel.app/
+      - run: echo ${{ github.event.deployment_status.target_url }}
+      - name: Run Cypress
+        uses: cypress-io/github-action@v5
+        with:
+          browser: chrome
+          record: false
+          wait-on: https://with-pet-fe-cgh123198-with-pet-prod.vercel.app/
+          # wait-on: ${{ github.event.deployment_status.target_url }}
+        env:
+          # CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
+          CYPRESS_BASE_URL: https://with-pet-fe-cgh123198-with-pet-prod.vercel.app/
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}

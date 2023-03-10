@@ -61,7 +61,6 @@ function AddAccount({ selectDate }) {
         <div>
           <span className="label">펫 선택</span>
           <select name="petId" className="select-wrapper">
-            <span>👇</span>
             {petOptions}
           </select>
         </div>
