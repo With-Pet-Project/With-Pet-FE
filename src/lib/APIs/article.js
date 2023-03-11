@@ -10,13 +10,22 @@ export const getArticleList = async (
   searchValue,
   size,
 ) => {
-  if (firstPlace === '지역 선택' || secondPlace === '지역 선택') {
+  if (firstPlace === '지역 선택') {
     firstPlace = null;
+    secondPlace = null;
+  }
+
+  if (secondPlace === '지역 선택') {
     secondPlace = null;
   }
 
   if (tag === 'ALL') {
     tag = null;
+  }
+
+  if (tag !== 'LOST' || tag === 'WALK' || tag === 'HOSPITAL') {
+    firstPlace = null;
+    secondPlace = null;
   }
 
   const jwt = localStorage.getItem('jwt_token');

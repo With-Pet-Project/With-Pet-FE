@@ -19,13 +19,19 @@ function ArticleList() {
     <div className="article-section">
       <div className="Article-list">
         <ul>
-          {pages?.map(page =>
-            page.data?.data?.viewArticleListDto?.map(article => (
-              <li key={article.articleId}>
-                <ArticleItem article={article} />
+          {pages?.map(page => {
+            return page.data?.data?.viewArticleListDto?.length ? (
+              page.data?.data?.viewArticleListDto?.map(article => (
+                <li key={article.articleId}>
+                  <ArticleItem article={article} />
+                </li>
+              ))
+            ) : (
+              <li>
+                <span>검색 결과가 없습니다.</span>
               </li>
-            )),
-          )}
+            );
+          })}
         </ul>
         <div
           data-testid="inView"
