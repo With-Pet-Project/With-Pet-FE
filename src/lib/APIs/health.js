@@ -21,7 +21,6 @@ export const postHealthInfo = async (
     weight,
     drinkAmount,
     feedAmount,
-    diary,
     year,
     month,
     week,
@@ -36,7 +35,6 @@ export const postHealthInfo = async (
       weight,
       drinkAmount,
       feedAmount,
-      diary,
       year,
       month,
       week,
@@ -56,7 +54,7 @@ export const postHealthInfo = async (
 export const putEditHealthInfo = async (
   jwt,
   petId,
-  { id, walkDistance, weight, drinkAmount, feedAmount, diary },
+  { id, walkDistance, weight, drinkAmount, feedAmount },
 ) => {
   const response = CLIENT.put(
     `/pet/${petId}/health/${id}`,
@@ -65,7 +63,6 @@ export const putEditHealthInfo = async (
       weight,
       drinkAmount,
       feedAmount,
-      diary,
     },
     {
       headers: {

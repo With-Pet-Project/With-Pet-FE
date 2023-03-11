@@ -22,7 +22,7 @@ function HealthSection() {
   const { dayInfo, avgWeight } = useHealthInfo();
   const { mutate: addHealthInfo } = useAddHealthInfo();
   const { mutate: editHealthInfo } = useEditHealthInfo();
-  const petInfo = usePetById();
+  // const petInfo = usePetById();
 
   const [edit, setEdit] = useState(false);
   const [walk, setWalk] = useState();
@@ -38,7 +38,6 @@ function HealthSection() {
             weight,
             drinkAmount: drink,
             feedAmount: feed,
-            diary: '',
           })
         : editHealthInfo({
             ...dayInfo,
@@ -47,7 +46,6 @@ function HealthSection() {
             weight,
             drinkAmount: drink,
             feedAmount: feed,
-            diary: dayInfo.diary,
           });
     }
 

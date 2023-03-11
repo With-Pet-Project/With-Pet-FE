@@ -18,7 +18,7 @@ export function useCheckChallenge() {
   const month = searchParams.get('month');
   const day = searchParams.get('day');
   const date = `${year}-${month}-${day}`;
-  const week = whatWeek(year, month, day);
+  const week = whatWeek(day);
 
   const { mutate } = useMutation({
     mutationFn: challengeId =>

@@ -8,7 +8,8 @@ export const getTotalWeeks = month => {
   return totalWeeks;
 };
 
-export const whatWeek = (year, month, day) => {
+export const whatWeek = day => {
+  // parameter 수정: year, month, day => day
   // 한 주의 기준을 일요일 => 매달 1일로 수정
   //  const firstDay = new Date(year, Number(month), 1).getDay();
   return Math.ceil(Number(day) / 7);

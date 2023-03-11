@@ -7,7 +7,6 @@ import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
 import { toast } from 'react-toastify';
 import { TOAST_OPTION, TOAST_MESSAGE } from 'components/common/Toast/toast';
 import { petIdContext } from '../context/PetContext';
-import { whatWeek } from '../util/diary';
 
 export function useEditHealthInfo() {
   const queryClient = useQueryClient();
