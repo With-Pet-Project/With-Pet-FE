@@ -8,6 +8,8 @@ import { useSearchParams } from 'react-router-dom';
 
 import ReactQuill from 'react-quill';
 import { useArticleDetail } from 'components/Article/hooks/useArticleDetail';
+import { ARTICLE_TAG } from 'lib/constants/articleTag';
+import { useEditArticle } from './hooks/useEditArticle';
 import { imageHandler } from './util/imageHandler';
 import TagList from './Tag/TagList';
 import Location from './Location/Location';
@@ -56,18 +58,24 @@ function Editor() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const QuillRef = useRef();
-
   const articleDetail = useArticleDetail();
 
   // { title, text, imgUrl }
   const { mutate: createArticleMutate } = useCreateArticle();
+  const { mutate: editArticleMutate } = useEditArticle();
+
   const onSubmit = e => {
+    // 글 제출시, 글에 존재하는 img 태그들 최종 정리하여 제출.
     e.preventDefault();
-    const checkUrl = imgList.map(i => ({
+    const imgUrl = imgList.map(i => ({
       ...i,
       existence: content.includes(i.content),
     }));
-    createArticleMutate({ title, content, checkUrl });
+    console.log(imgUrl);
+    // eslint-disable-next-line no-unused-expressions
+    articleDetail
+      ? editArticleMutate({ title, content, imgUrl })
+      : createArticleMutate({ title, content, imgUrl });
   };
 
   const isValidLocation = () => {
@@ -88,10 +96,17 @@ function Editor() {
     if (articleDetail) {
       setImageList([...articleDetail.images]);
       setContent(articleDetail.detailText);
+      setTitle(articleDetail.titile);
+
+      searchParams.set('tag', articleDetail.tag);
+      searchParams.set('firstPlace', articleDetail?.firstPlace || null);
+      searchParams.set('secondPlace', articleDetail?.secondPlace || null);
+      setSearchParams(searchParams);
     }
   }, []);
 
   useEffect(() => {
+    // 글 작성중에 이미지 업로드 시, url로 변경된 이미지들 배열에 넣기
     if (img) {
       setImageList([...imgList, { content: img }]);
     }
@@ -127,7 +142,13 @@ function Editor() {
     <form className="article-form" onSubmit={onSubmit}>
       <div className="editor-filter-container">
         <div className="tag-location-filter">
-          <TagList />
+          {articleDetail ? (
+            <button disabled type="button" className="modified-article-tag">
+              <span>{ARTICLE_TAG[searchParams.get('tag')]}</span>
+            </button>
+          ) : (
+            <TagList />
+          )}
           <Location />
         </div>
         <SubmitButton

@@ -118,15 +118,25 @@ export const patchEditArticle = async (
   place1,
   place2,
   detailText,
+  imgUrl,
   articleId,
 ) => {
+  if (place1 === '지역 선택') {
+    place1 = null;
+  }
+
+  if (place2 === '지역 선택') {
+    place2 = null;
+  }
+
   const response = await CLIENT.patch(
     `/article/${articleId}`,
     {
       title,
+      detailText,
       place1,
       place2,
-      detailText,
+      images: [...imgUrl],
     },
     {
       headers: {

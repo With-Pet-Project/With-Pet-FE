@@ -28,8 +28,17 @@
     text-align: center;
   }
 
-  .tag-location-filter {
+  & .tag-location-filter {
     display: flex;
+  }
+
+  & .modified-article-tag {
+    width: 110px;
+    margin-top: -20px;
+
+    & span {
+      font-size: 20px;
+    }
   }
 }
 

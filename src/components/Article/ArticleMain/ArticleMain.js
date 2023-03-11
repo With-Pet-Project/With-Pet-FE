@@ -64,7 +64,7 @@ function ArticleMain() {
             dangerouslySetInnerHTML={{ __html: article.detailText }}
           />
           <div className="article-detail-tag">
-            <span>기타/시설{/* ARTICLE_TAG[article.tag] */}</span>
+            <span>{ARTICLE_TAG[article.tag]}</span>
           </div>
         </div>
         <div className="article-detail-like-comments">
