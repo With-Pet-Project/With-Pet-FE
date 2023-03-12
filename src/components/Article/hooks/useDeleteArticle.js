@@ -13,7 +13,7 @@ export function useDeleteArticle() {
   const jwt_token = localStorage.getItem('jwt_token') || null;
   const { articleId } = useParams();
 
-  const { mutate: deleteArticleMutate } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: () => deleteArticle(jwt_token, articleId),
     onSuccess: () => {
       toast.success(TOAST_MESSAGE.DELETE_SUCCESS, TOAST_OPTION);
@@ -25,5 +25,5 @@ export function useDeleteArticle() {
     },
   });
 
-  return { deleteArticleMutate };
+  return { mutate };
 }

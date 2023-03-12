@@ -54,13 +54,11 @@ export function useHealthInfo() {
     );
 
     setAvgWeight(
-      data &&
-        parseFloat(
-          data.reduce(
-            (acc, cur) => acc + cur.weight,
-            petInfo ? petInfo.initWeight : 0,
-          ) / (petInfo ? data.length + 1 : data.length),
-        ).toFixed(2),
+      data?.length
+        ? parseFloat(
+            data.reduce((acc, cur) => acc + cur.weight, 0) / data.length,
+          ).toFixed(2)
+        : 0,
     );
   }, [data, year, month, day, petInfo]);
 

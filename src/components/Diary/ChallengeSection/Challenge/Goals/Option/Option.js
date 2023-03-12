@@ -4,7 +4,7 @@ import { useModal } from 'components/common/Modal/context/useModal';
 import EditChallenge from 'components/Diary/Modal/EditChallenge/EditChallenge';
 
 function Option({ goal }) {
-  const removeChallenge = useRemoveChallenge();
+  const { mutate: removeChallenge } = useRemoveChallenge();
   const { openModal } = useModal();
 
   const openEditModal = () =>
@@ -21,7 +21,7 @@ function Option({ goal }) {
         <li>
           <button
             type="button"
-            onClick={() => removeChallenge.mutate(goal.challengeId)}
+            onClick={() => removeChallenge(goal.challengeId)}
           >
             <span>삭제</span>
           </button>

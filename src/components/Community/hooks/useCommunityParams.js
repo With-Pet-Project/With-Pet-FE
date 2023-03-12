@@ -13,7 +13,7 @@ export function useCommunityParams(priority = null, setPriority = null) {
     if (tag) {
       searchParams.set('tag', tag);
       if (tag !== 'LOST' && tag !== 'WALK' && tag !== 'HOSPITAL') {
-        searchParams.set('firstPlace', Object.keys(ADMIN_DISTRICT)[0]);
+        searchParams.set('firstPlace', '지역 선택');
         searchParams.set('secondPlace', secondPlace);
       } else {
         searchParams.set('firstPlace', firstPlace);

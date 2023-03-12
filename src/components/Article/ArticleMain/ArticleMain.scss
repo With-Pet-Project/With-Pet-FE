@@ -8,10 +8,17 @@
   margin: 40px;
 
   & .article-detail-user-profile {
+    width: 55px;
+    height: 55px;
     background-color: $background-yellow;
     border-radius: 100px;
 
     margin-right: 9px;
+
+    & img {
+      width: 100%;
+      border-radius: 100%;
+    }
   }
 
   & h3 {

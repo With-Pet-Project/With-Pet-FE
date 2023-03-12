@@ -10,7 +10,7 @@ function ModalErrorFallback({ error, resetErrorBoundary }) {
     <ModalWrapper>
       <ModalContent className="diary-error-fallback">
         <p>{TOAST_MESSAGE.CANNOT_GET_DATA}</p>
-        <p>모달창을 띄울 수 없습니다...</p>
+        <p>서버와의 연결이 불안정합니다...</p>
         <button type="button" onClick={resetErrorBoundary}>
           새로고침
         </button>

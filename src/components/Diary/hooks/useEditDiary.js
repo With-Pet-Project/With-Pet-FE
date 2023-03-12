@@ -1,37 +1,43 @@
 /* eslint-disable camelcase */
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { deleteRemoveChallenge } from 'lib/APIs/challenge';
 import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
-import { TOAST_MESSAGE, TOAST_OPTION } from 'components/common/Toast/toast';
-import { toast } from 'react-toastify';
-import { useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { putEditDiary } from 'lib/APIs/diary';
+import { useContext } from 'react';
+import { toast } from 'react-toastify';
+import { TOAST_MESSAGE, TOAST_OPTION } from 'components/common/Toast/toast';
 import { petIdContext } from '../context/PetContext';
+import { whatWeek } from '../util/diary';
 
-export function useRemoveChallenge() {
+export function useEditDiary() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const queryClient = useQueryClient();
   const jwt_token = localStorage.getItem('jwt_token') || null;
   const [petId, setPetId] = useContext(petIdContext);
+
+  const queryClient = useQueryClient();
 
   const year = Number(searchParams.get('year'));
   const month = Number(searchParams.get('month'));
   const day = Number(searchParams.get('day'));
+  const week = whatWeek(day);
 
-  const key = [QUERY_KEY.DailyChallenge, jwt_token, year, month, day, petId];
-
-  // jwt, petId, challengeId
   const { mutate } = useMutation({
-    mutationFn: challengeId =>
-      deleteRemoveChallenge(jwt_token, petId, challengeId),
+    mutationFn: ({ ...diary }) => putEditDiary(jwt_token, petId, { ...diary }),
     onSuccess: () => {
-      toast.success(TOAST_MESSAGE.DELETE_SUCCESS, TOAST_OPTION);
-      queryClient.invalidateQueries({ queryKey: [...key] });
+      toast.success(TOAST_MESSAGE.UPDATE_SUCCESS, TOAST_OPTION);
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY.Diary, jwt_token] });
     },
     onError: () => {
-      toast.error(TOAST_MESSAGE.DELETE_FAIL, TOAST_OPTION);
+      toast.error(TOAST_MESSAGE.UPDATE_FAIL, TOAST_OPTION);
     },
   });
 
   return { mutate };
 }
+
+/*
+ jwt,
+  petId,
+  diaryId,
+  { content, year, month, day, week },
+*/

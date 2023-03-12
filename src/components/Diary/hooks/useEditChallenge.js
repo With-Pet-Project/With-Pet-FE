@@ -37,7 +37,7 @@ export function useEditChallenge() {
     day,
   ];
 
-  const editChallenge = useMutation({
+  const { mutate } = useMutation({
     mutationFn: ({ title, targetCnt, challengeId }) =>
       putEditChallenge(jwt_token, title, targetCnt, petId, challengeId),
     onSuccess: () => {
@@ -50,5 +50,5 @@ export function useEditChallenge() {
     },
   });
 
-  return editChallenge;
+  return { mutate };
 }

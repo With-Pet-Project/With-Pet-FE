@@ -13,7 +13,7 @@ function ArticleComments() {
   const article = useArticleDetail();
 
   const user = useUser();
-  const { commentMutate } = useCreateComment();
+  const { mutate: commentMutate } = useCreateComment();
   // content, commentId = null, commentId는 대댓글인 경우 본댓의 ID
 
   const handleCommentValue = e => setComment(e.target.value);

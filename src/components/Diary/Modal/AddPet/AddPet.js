@@ -36,7 +36,7 @@ function AddPet() {
   const [name, setName] = useState('');
   const [weight, setWeight] = useState(0);
 
-  const mutate = useAddPet();
+  const { mutate: addPetMutate } = useAddPet();
 
   useEffect(() => {
     const NUMBER_OF_DAYS = Number(new Date(year, month, 0).getDate());
@@ -50,7 +50,7 @@ function AddPet() {
 
   // name, initWeight, birthday, jwt
   const addPet = () =>
-    mutate({
+    addPetMutate({
       name,
       initWeight: parseFloat(weight),
       birthday: `${year}-${month.toString().padStart(2, '0')}-${day
