@@ -32,7 +32,7 @@ const InnerContainer = styled.div`
 
 const Navigation = styled.div`
   display: flex;
-  flex-grow: 1;
+  // flex-grow: 1;
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;

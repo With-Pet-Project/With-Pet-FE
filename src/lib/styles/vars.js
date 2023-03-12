@@ -5,7 +5,7 @@ export const vars = {
   wide: `1250px`,
 
   sidebarOpened: `250px`,
-  sidebarClosed: `75px`,
+  sidebarClosed: `90px`,
 
   backgroundDisabledYellow: `#aa8e00`,
   backgroundYellow: `#ffe259`,
