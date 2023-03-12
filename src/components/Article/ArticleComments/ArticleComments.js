@@ -3,7 +3,7 @@ import dog from 'lib/assets/images/dog/md_icon.png';
 import { useUser } from 'components/auth/hooks/useUser';
 import { useState } from 'react';
 import { useArticleDetail } from '../hooks/useArticleDetail';
-import { useCreateComment } from '../hooks/useCreateComment';
+import { useAddComment } from '../hooks/useAddComment';
 import CommentsList from './CommentsList/CommentsList';
 import CommentArea from './CommentArea/CommentArea';
 
@@ -13,7 +13,7 @@ function ArticleComments() {
   const article = useArticleDetail();
 
   const user = useUser();
-  const { mutate: commentMutate } = useCreateComment();
+  const { mutate: commentMutate } = useAddComment();
   // content, commentId = null, commentId는 대댓글인 경우 본댓의 ID
 
   const handleCommentValue = e => setComment(e.target.value);

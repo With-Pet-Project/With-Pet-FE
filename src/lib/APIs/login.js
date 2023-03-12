@@ -3,15 +3,9 @@ import CLIENT from './client';
 
 // 카카오 토큰 얻는 함수
 export const getKakaoUserLoginToken = async code => {
-  const response = await CLIENT.post(
-    `/user/login/kakao?code=${code}`,
-    {},
-    {
-      headers: {
-        'Content-type': 'application/x-www-form-urlencoded;charset=utf-8',
-      },
-    },
-  );
+  const response = await CLIENT.post(`/user/login/kakao?code=${code}`, {
+    redirectURI: process.env.REACT_APP_KAKAO_REDIRECT_URI,
+  });
   return response;
 };
 

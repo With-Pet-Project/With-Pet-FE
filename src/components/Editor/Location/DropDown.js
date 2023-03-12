@@ -9,8 +9,7 @@ import Option from './Option';
 
 const Wrapper = styled.div`
   height: ${({ open }) => (open ? '230px' : '0')};
-  border: 1px solid
-    ${({ open }) => (open ? `${vars.backgroundYellow}` : '#fff')};
+  border: ${({ open }) => (open ? `1px solid ${vars.backgroundYellow}` : '0')};
 `;
 
 function DropDown({ open }) {

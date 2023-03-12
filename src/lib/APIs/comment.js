@@ -59,3 +59,9 @@ export const deleteComment = async (jwt, commentId) => {
 
   return response;
 };
+
+export const getReadReplies = async commentId => {
+  const response = await CLIENT.get(`/comments/${commentId}`);
+
+  return response;
+};
