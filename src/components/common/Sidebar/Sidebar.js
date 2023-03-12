@@ -72,7 +72,7 @@ function Sidebar() {
               <Menu to={user ? '/diary' : '/login'} menuName="다이어리">
                 <Diary />
               </Menu>
-              <Menu to="/account" menuName="가계부">
+              <Menu to={user ? '/account' : '/login'} menuName="가계부">
                 <Account />
               </Menu>
               <Menu to="/community" menuName="커뮤니티">
