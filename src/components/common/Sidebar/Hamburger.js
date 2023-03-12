@@ -6,6 +6,7 @@ const Button = styled.button`
   width: 40px;
   margin: 0 auto;
   margin-top: 20px;
+  padding: 0 3px 0;
 
   & span {
     display: block;
