@@ -6,7 +6,7 @@ import { postCreateComment } from 'lib/APIs/comment';
 import { useParams } from 'react-router-dom';
 import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
 
-export function useCreateComment() {
+export function useAddComment() {
   const queryClient = useQueryClient();
   const jwt_token = localStorage.getItem('jwt_token') || null;
   const { articleId } = useParams();
@@ -19,9 +19,15 @@ export function useCreateComment() {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEY.Article],
       });
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEY.Reply],
+      });
     },
     onError: () => {
-      toast.error(TOAST_MESSAGE.ADD_FAIL, TOAST_OPTION);
+      toast.error(
+        '로그아웃 상태 혹은 서버와 통신이 원활하지 않습니다.',
+        TOAST_OPTION,
+      );
     },
   });
 

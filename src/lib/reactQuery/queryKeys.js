@@ -25,4 +25,5 @@ export const QUERY_KEY = {
   PetHealth: 'petHealth',
   Article: 'article',
   Diary: 'diary',
+  Reply: 'reply',
 };

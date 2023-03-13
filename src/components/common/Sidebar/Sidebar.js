@@ -32,8 +32,10 @@ const InnerContainer = styled.div`
 
 const Navigation = styled.div`
   display: flex;
+  // flex-grow: 1;
   flex-direction: column;
-  min-height: 93vh;
+  justify-content: space-between;
+  min-height: 100vh;
   opacity: ${({ opened }) => (opened ? '1' : '0')};
   transition-delay: ${({ opened }) => (opened ? '.15s' : '0')};
 `;
@@ -66,19 +68,27 @@ function Sidebar() {
           </div>
           <div className="side-navbar-menu">
             <ul>
-              <Menu to="/" menuName="홈">
+              <Menu to="/" menuName="홈" opened={open}>
                 <Home />
               </Menu>
-              <Menu to={user ? '/diary' : '/login'} menuName="다이어리">
+              <Menu
+                to={user ? '/diary' : '/login'}
+                menuName="다이어리"
+                opened={open}
+              >
                 <Diary />
               </Menu>
-              <Menu to={user ? '/account' : '/login'} menuName="가계부">
+              <Menu
+                to={user ? '/account' : '/login'}
+                menuName="가계부"
+                opened={open}
+              >
                 <Account />
               </Menu>
-              <Menu to="/community" menuName="커뮤니티">
+              <Menu to="/community" menuName="커뮤니티" opened={open}>
                 <Community />
               </Menu>
-              <Menu to="/hospital" menuName="내 주변 병원 찾기">
+              <Menu to="/hospital" menuName="내 주변 병원 찾기" opened={open}>
                 <Hospital />
               </Menu>
             </ul>
@@ -87,20 +97,22 @@ function Sidebar() {
             <ul>
               {user ? (
                 <>
-                  <Menu to="/profile" menuName="마이 페이지">
+                  <Menu to="/profile" menuName="마이 페이지" opened={open}>
                     <Profile />
                   </Menu>
                   <li>
-                    <button type="button" onClick={logout}>
-                      <div className="side-navbar-menu-img">
-                        <Logout />
-                      </div>
-                      <span>로그아웃</span>
-                    </button>
+                    {open && (
+                      <button type="button" onClick={logout}>
+                        <div className="side-navbar-menu-img">
+                          <Logout />
+                        </div>
+                        <span>로그아웃</span>
+                      </button>
+                    )}
                   </li>
                 </>
               ) : (
-                <Menu to="/login" menuName="로그인">
+                <Menu to="/login" menuName="로그인" opened={open}>
                   <Profile />
                 </Menu>
               )}
