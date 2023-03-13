@@ -33,7 +33,7 @@ function Account() {
   const currentTotal = accountData[selectPet.id].total;
 
   const openAddAccount = () => {
-    openModal(AddAccount, { selectDate });
+    openModal(AddAccount, { selectDate, accountData });
   };
 
   const handleSelectDate = selected => {
