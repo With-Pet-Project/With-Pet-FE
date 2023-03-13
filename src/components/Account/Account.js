@@ -45,9 +45,6 @@ function Account() {
     setYearMonth(prevDate => getNextYearMonth(prevDate.dateObject, index));
   };
 
-  console.log(accountData);
-  console.log(selectPet);
-
   return (
     <section className="account-container account_bg">
       <SelectPet selectPet={selectPet} setSelectPet={setSelectPet} />
