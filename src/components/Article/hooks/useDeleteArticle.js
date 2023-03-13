@@ -19,6 +19,7 @@ export function useDeleteArticle() {
       toast.success(TOAST_MESSAGE.DELETE_SUCCESS, TOAST_OPTION);
       navigate(-1, { replace: true });
       queryClient.invalidateQueries({ queryKey: [QUERY_KEY.Article] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY.UserInfo] });
     },
     onError: () => {
       toast.error(TOAST_MESSAGE.DELETE_FAIL, TOAST_OPTION);

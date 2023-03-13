@@ -16,7 +16,8 @@ export function useEditArticle() {
   const firstPlace = searchParams.get('firstPlace');
   const secondPlace = searchParams.get('secondPlace');
 
-  const key = [QUERY_KEY.Article, { tag, firstPlace, secondPlace }];
+  const articleKey = [QUERY_KEY.Article, { tag, firstPlace, secondPlace }];
+  const userKey = [QUERY_KEY.UserInfo, jwt_token];
 
   const { mutate } = useMutation({
     mutationFn: ({ title, content, imgUrl }) =>
@@ -30,7 +31,8 @@ export function useEditArticle() {
         articleId,
       ),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [...key] });
+      queryClient.invalidateQueries({ queryKey: [...articleKey] });
+      queryClient.invalidateQueries({ queryKey: [...userKey] });
       toast.success(TOAST_MESSAGE.Add_SUCCESS, TOAST_OPTION);
       navigate('/community', { replace: true });
     },
