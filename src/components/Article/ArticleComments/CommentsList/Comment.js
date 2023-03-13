@@ -141,7 +141,7 @@ function Comment({ comment }) {
           />
         )}
         <div className="reply-show-more-button">
-          {replyList.length > 0 && (
+          {replyList?.length > 0 && (
             <button
               type="button"
               className="show-more-button"
