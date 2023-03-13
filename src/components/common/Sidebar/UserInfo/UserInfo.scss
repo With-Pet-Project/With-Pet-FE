@@ -18,8 +18,9 @@
     border-radius: 100%;
   }
 
-  & .user-img img {
+  & .user-img > img {
     width: 100%;
+    height: 100%;
     border-radius: 100%;
   }
 

@@ -141,20 +141,22 @@ function Comment({ comment }) {
           />
         )}
         <div className="reply-show-more-button">
-          <button
-            type="button"
-            className="show-more-button"
-            onClick={handleShowMore}
-          >
-            <span>
-              {showMore ? (
-                <FontAwesomeIcon icon={faAngleUp} />
-              ) : (
-                <FontAwesomeIcon icon={faAngleDown} />
-              )}
-            </span>
-            <span>댓글 {replyList.length}개 더보기</span>
-          </button>
+          {replyList.length > 0 && (
+            <button
+              type="button"
+              className="show-more-button"
+              onClick={handleShowMore}
+            >
+              <span>
+                {showMore ? (
+                  <FontAwesomeIcon icon={faAngleUp} />
+                ) : (
+                  <FontAwesomeIcon icon={faAngleDown} />
+                )}
+              </span>
+              <span>댓글 {replyList.length}개 더보기</span>
+            </button>
+          )}
           <button
             type={replyOpen ? 'button' : 'submit'}
             className="comment-button"
