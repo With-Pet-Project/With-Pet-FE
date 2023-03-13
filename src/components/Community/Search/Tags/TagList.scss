@@ -22,7 +22,7 @@
     white-space: nowrap;
     min-width: 60px;
     max-height: 41px;
-    background: #FFFFFF;
+    background: #ffffff;
 
     padding: 11px 15px;
     border-radius: 100px;
@@ -37,6 +37,7 @@
 @media screen and (max-width: $normal) {
   .tag-item {
     & button {
+      min-width: 50px;
       padding: 8px 3px;
       font-size: 12px;
     }

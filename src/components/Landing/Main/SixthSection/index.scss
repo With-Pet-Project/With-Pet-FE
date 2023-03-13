@@ -53,6 +53,21 @@
     margin: 0 auto;
     padding: 0;
   }
+
+  .landing-sixth-section-title {
+    margin: 0 49px 49px;
+
+    & h2 {
+      font-family: 'TmoneyRoundWindBold';
+      font-size: 36px;
+      line-height: 47px;
+    }
+  }
+
+  .landing-sixth-section-img {
+    width: 550px;
+    margin: 0 auto;
+  }
 }
 
 @media screen and (max-width: $narrow) {

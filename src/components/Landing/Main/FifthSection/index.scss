@@ -72,15 +72,24 @@
   .landing-fifth-section {
     padding: 200px 50px;
   }
-  
 }
 
 @media screen and (max-width: $normal) {
   .landing-fifth-section {
     padding: 200px 10px;
   }
-  
+
   .landing-fifth-section-background {
-    width: 620px;
+    width: 550px;
+  }
+
+  .landing-fifth-section-text {
+    h2 {
+      width: 61%;
+    }
+  }
+
+  .landing-fifth-section-img {
+    width: 500px;
   }
 }

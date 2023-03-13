@@ -6,6 +6,9 @@ export function useOutsideDetection() {
 
   const isOpen = () => setOpen(!open);
 
+  const openContent = () => setOpen(true);
+  const closeContent = () => setOpen(false);
+
   useEffect(() => {
     const handleClickOutside = e => {
       if (open && !targetRef?.current?.contains(e.target)) {
@@ -20,5 +23,5 @@ export function useOutsideDetection() {
     };
   });
 
-  return { open, isOpen, targetRef };
+  return { open, isOpen, openContent, closeContent, targetRef };
 }
