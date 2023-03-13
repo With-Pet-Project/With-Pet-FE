@@ -21,14 +21,7 @@ export const useDailyChallenge = () => {
   const week = whatWeek(day);
 
   const { data: dailyChallenge } = useQuery({
-    queryKey: [
-      DailyChallenge,
-      jwt_token,
-      Number(year),
-      Number(month),
-      Number(day),
-      petId,
-    ],
+    queryKey: [DailyChallenge, Number(year), Number(month), Number(day), petId],
     queryFn: () =>
       getDailyChallenge(
         jwt_token,
