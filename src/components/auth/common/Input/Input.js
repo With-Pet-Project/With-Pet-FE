@@ -15,6 +15,7 @@ function Input(
     step,
     onBlur,
     min,
+    isRequired,
   },
   ref,
 ) {
@@ -32,7 +33,7 @@ function Input(
       placeholder={placeholder}
       onBlur={onBlur}
       min={min}
-      required
+      required={isRequired}
     />
   );
 }
