@@ -58,7 +58,7 @@ function ArticleMain() {
           )}
         </div>
         <div className="article-detail-content">
-          <h2 className="article-title">타이틀</h2>
+          <h2 className="article-title">{article.titile}</h2>
           <div
             className="article-detail-content-text"
             dangerouslySetInnerHTML={{ __html: article.detailText }}
