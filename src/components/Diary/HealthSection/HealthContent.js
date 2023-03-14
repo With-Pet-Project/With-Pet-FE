@@ -39,7 +39,7 @@ function HealthContent({
           <p>{text}</p>
         </div>
         <div className="Health-circle-img">
-          <img src={imgUrl} alt="섹션 이미지" />
+          {!edit && <img src={imgUrl} alt="섹션 이미지" />}
         </div>
       </div>
       <div className="Health-category-bottom">

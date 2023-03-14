@@ -1,57 +1,69 @@
 @import '/src/lib/styles/vars.scss';
 
 .SpecialNote {
-    & > div:first-child {
-        display: flex;
-        justify-content: space-between;
-    }
+  & > div:first-child {
+    display: flex;
+    justify-content: space-between;
+  }
 
-    & button {
-        background-color: #ffffff;
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 24px;
-        color: $background-yellow;
-    }
+  & button {
+    background-color: #ffffff;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: $background-yellow;
+  }
 }
 
 .SpecialNote-textArea {
-    width: 100%;
-    height: 80%;
+  width: 100%;
+  height: 70%;
+  border-radius: 10px;
+  margin: 10px 0;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -1px;
+  border: 0;
+  resize: none;
+  outline: none;
+
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    width: 7px;
+    background: $background-yellow;
+    border-radius: 30px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #d1d1d1;
     border-radius: 10px;
-    margin: 10px 0;
-    font-weight: 700;
-    font-size: 15px;
-    letter-spacing: -1px;
-    border: 0;
-    resize: none;
-    outline: none;
+  }
+}
 
-    &::-webkit-scrollbar {
-        width: 7px;
-    }
+@media screen and (max-width: $wide) {
+  .SpecialNote {
+    height: 220px;
+  }
 
-    &::-webkit-scrollbar-thumb {
-        width: 7px;
-        background: $background-yellow;
-        border-radius: 30px;
-    }
-
-    &::-webkit-scrollbar-track  {
-        background: #d1d1d1;
-        border-radius: 10px;
-    }
+  .SpecialNote-textArea {
+    height: 120px;
+  }
 }
 
 @media screen and (max-width: $semi-wide) {
-    .SpecialNote {
-        & button {
-            font-size: 17px;
-            line-height: 20px;
-        }
-    }
+  .SpecialNote {
+    height: 285px;
 
-    .SpecialNote-textArea {
-        height: 200px;
+    & button {
+      font-size: 17px;
+      line-height: 20px;
     }
+  }
+
+  .SpecialNote-textArea {
+    height: 180px;
+  }
 }

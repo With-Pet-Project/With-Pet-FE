@@ -18,8 +18,7 @@ CLIENT.interceptors.response.use(
     const originalRequest = error.config;
     if (
       error.response.status === 400 && // 만료된 토큰으로 인한 401 에러
-      (error.response.data === '해당 토큰은 만료되었습니다.' ||
-        error.response.data === '유효기간이 만료된 토큰입니다.') &&
+      error.response.data === '유효기간이 만료된 토큰입니다.' &&
       !originalRequest.retry // 재시도 중인 요청이 아닐 경우에만 갱신 요청
     ) {
       originalRequest.retry = true;
@@ -38,7 +37,7 @@ CLIENT.interceptors.response.use(
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`; // 다시 요청하기 위해 헤더에 추가
         return CLIENT(originalRequest); // 다시 요청
       } catch (err) {
-        console.log(err);
+        console.log('~~~~갱신 실패~~~~~~~', err);
       }
     }
     return Promise.reject(error);
