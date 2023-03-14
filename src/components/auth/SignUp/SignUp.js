@@ -62,8 +62,8 @@ function SignUp() {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    // const isValid = validateValues();
-    // if (!isValid) return;
+    const isValid = validateValues();
+    if (!isValid) return;
 
     const { value: email } = emailRef.current;
     const { value: password } = passwordRef.current;
@@ -107,6 +107,7 @@ function SignUp() {
           name="email"
           ref={emailRef}
           placeholder="이메일 형식으로 입력해주세요."
+          cy="sign-up-id"
         />
         <label htmlFor="password" className="password">
           비밀번호
@@ -118,6 +119,7 @@ function SignUp() {
           placeholder="8자이상의 문자, 숫자, 특수문자를 입력해주세요."
           ref={passwordRef}
           onChange={isPasswordValid}
+          cy="sign-up-pwd"
         />
         <label htmlFor="password-check" className="label">
           비밀번호 확인
@@ -128,9 +130,12 @@ function SignUp() {
           name="password-check"
           ref={passwordCheckRef}
           onChange={isPasswordValid}
+          cy="sign-up-pwd-check"
         />
         {validPwd === false && (
-          <span className="validate">비밀번호가 일치하지 않습니다.</span>
+          <span className="validate" data-cy="pwd-check-fail">
+            비밀번호가 일치하지 않습니다.
+          </span>
         )}
         <label htmlFor="nickname" className="label nickname-label">
           닉네임
@@ -141,9 +146,12 @@ function SignUp() {
           name="nickname"
           ref={nicknameRef}
           onBlur={isNicknameValid}
+          cy="sign-up-nickname"
         />
         {validNickname === false && (
-          <span className="validate">이미 존재하는 닉네임 입니다.</span>
+          <span className="validate" data-cy="nickname-check-fail">
+            이미 존재하는 닉네임 입니다.
+          </span>
         )}
         <div className="btn-wrapper">
           <button type="button" className=" button" onClick={handleCancel}>

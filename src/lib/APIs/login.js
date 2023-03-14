@@ -43,11 +43,10 @@ export const localLogin = async (email, password) => {
     alert('아이디 또는 비밀번호를 잘못 입력했습니다.');
   });
 
-  console.log(response);
-  const { data: accessToken } = response.data;
-  console.log(accessToken);
-  localStorage.setItem('jwt_token', accessToken);
-  axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+  if (response) {
+    const { data: accessToken } = response.data;
+    localStorage.setItem('jwt_token', accessToken);
+  }
 
-  return response;
+  return response?.status;
 };

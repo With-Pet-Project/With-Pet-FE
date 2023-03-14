@@ -54,7 +54,7 @@ function Sidebar() {
         onMouseOver={isMouseOver}
         onMouseLeave={isMouseLeave}
       >
-        <Hamburger opened={open} />
+        <Hamburger opened={open} data-cy="side-bar-hamburger" />
         <Navigation opened={open}>
           <div className="side-navbar-top">
             <div className="logo-box">

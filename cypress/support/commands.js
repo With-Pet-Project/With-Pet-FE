@@ -23,3 +23,35 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('$', selector => {
+  return cy.get(`[data-cy=${selector}]`);
+});
+
+Cypress.Commands.add(
+  'database',
+  (operation, entity, query, logTask = false) => {
+    const params = {
+      entity,
+      query,
+    };
+
+    const log = Cypress.log({
+      name: 'database',
+      displayName: 'DATABASE',
+      message: [`🔎 ${operation}ing within ${entity} data`],
+      autoEnd: false,
+      consoleProps() {
+        return params;
+      },
+    });
+
+    return cy
+      .task(`${operation}:database`, params, { log: logTask })
+      .then(data => {
+        log.snapshot();
+        log.end();
+        return data;
+      });
+  },
+);
