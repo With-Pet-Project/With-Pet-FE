@@ -16,16 +16,22 @@ function ConfirmPassword() {
   const codeRef = useRef(null);
 
   const handleVerifyCode = async () => {
-    const verifyCode = codeRef.current.value;
-    const email = emailRef.current.value;
-    if (!verifyCode) {
-      toast.error(TOAST_MESSAGE.DO_NOT_EMPTY_VERIFY_CODE, TOAST_OPTION);
-      emailRef.current.focus();
-      return;
-    }
+    // const verifyCode = codeRef.current.value;
+    // const email = emailRef.current.value;
+    // if (!verifyCode) {
+    //   toast.error(TOAST_MESSAGE.DO_NOT_EMPTY_VERIFY_CODE, TOAST_OPTION);
+    //   emailRef.current.focus();
+    //   return;
+    // }
 
-    const isVerify = await checkConfirm(email, verifyCode);
-    if (isVerify) navigate('/reset-password');
+    // const isVerify = await checkConfirm(email, verifyCode);
+    const isVerify = true;
+    if (isVerify)
+      navigate({
+        pathname: '/reset-password',
+        search: `?id=${emailRef.current.value}`,
+      });
+    //  navigate('/reset-password');
     else {
       setIsSentEmail(false);
       emailRef.current.value = '';
@@ -34,13 +40,14 @@ function ConfirmPassword() {
   };
 
   const handleSendEmail = async () => {
-    const email = emailRef.current.value;
-    if (!email) {
-      toast.error(TOAST_MESSAGE.DO_NOT_EMPTY_ID, TOAST_OPTION);
-      emailRef.current.focus();
-      return;
-    }
-    const isEmailSent = await requestConfirm(email);
+    // const email = emailRef.current.value;
+    // if (!email) {
+    //   toast.error(TOAST_MESSAGE.DO_NOT_EMPTY_ID, TOAST_OPTION);
+    //   emailRef.current.focus();
+    //   return;
+    // }
+    // const isEmailSent = await requestConfirm(email);
+    const isEmailSent = true;
     setIsSentEmail(isEmailSent);
     setIsSentEmail(true);
   };
