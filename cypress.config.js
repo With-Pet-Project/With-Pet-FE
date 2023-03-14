@@ -4,8 +4,8 @@ const { seed } = require('./db-seeder');
 
 module.exports = defineConfig({
   projectId: 'n3yy1e',
-  env: { baseUrl: 'http://localhost:3000/' },
-  // env: { BASE_URL: 'https://with-pet-fe-cgh123198-with-pet-prod.vercel.app/' },
+  // env: { baseUrl: 'http://localhost:3000/' },
+  env: { BASE_URL: 'https://with-pet-fe-cgh123198-with-pet-prod.vercel.app/' },
   e2e: {
     setupNodeEvents(on, config) {
       on('task', {
