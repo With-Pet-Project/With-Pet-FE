@@ -14,7 +14,6 @@ CLIENT.interceptors.response.use(
     return response;
   },
   async error => {
-    console.log(error);
     const originalRequest = error.config;
     if (
       error.response.status === 400 && // 만료된 토큰으로 인한 401 에러
@@ -22,7 +21,7 @@ CLIENT.interceptors.response.use(
       !originalRequest.retry // 재시도 중인 요청이 아닐 경우에만 갱신 요청
     ) {
       originalRequest.retry = true;
-      CLIENT.defaults.headers.common.Authorization = null;
+      // CLIENT.defaults.headers.common.Authorization = null;
       try {
         const response = await CLIENT.get(
           // 토큰만 재요청하는 api
@@ -33,13 +32,11 @@ CLIENT.interceptors.response.use(
         const newAccessToken = response.data.data;
         localStorage.removeItem('jwt_token');
         localStorage.setItem('jwt_token', newAccessToken);
-        localStorage.setItem('갱신', '갱신');
-        CLIENT.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`; // 헤더에 갱신된 액세스 토큰 추가
+
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`; // 다시 요청하기 위해 헤더에 추가
         return CLIENT(originalRequest); // 다시 요청
       } catch (err) {
         console.log(err);
-        // refresh token이 만료된 경우 처리할 내용 추가
       }
     }
     return Promise.reject(error);
