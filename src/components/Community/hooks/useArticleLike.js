@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 // import { useParams, useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { postAddArticleLike, deleteCancelArticlelLike } from 'lib/APIs/article';
 // import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
 import { toast } from 'react-toastify';

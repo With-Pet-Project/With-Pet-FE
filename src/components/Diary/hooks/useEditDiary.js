@@ -25,7 +25,7 @@ export function useEditDiary() {
     mutationFn: ({ ...diary }) => putEditDiary(jwt_token, petId, { ...diary }),
     onSuccess: () => {
       toast.success(TOAST_MESSAGE.UPDATE_SUCCESS, TOAST_OPTION);
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEY.Diary, jwt_token] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY.Diary] });
     },
     onError: () => {
       toast.error(TOAST_MESSAGE.UPDATE_FAIL, TOAST_OPTION);

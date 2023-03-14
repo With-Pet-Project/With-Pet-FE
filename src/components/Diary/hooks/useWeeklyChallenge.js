@@ -14,7 +14,7 @@ export function useWeeklyChallenge(year, month, week) {
 
   // jwt, petId, year, month, week
   const { data: weeklyChallenge } = useQuery({
-    queryKey: [WeeklyChallenge, jwt_token, petId, year, month, week],
+    queryKey: [WeeklyChallenge, petId, year, month, week],
     queryFn: () => getWeeklyChallenge(jwt_token, petId, year, month, week),
     onError: () => {
       toast.error(TOAST_MESSAGE.CANNOT_GET_DATA, TOAST_OPTION);

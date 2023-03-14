@@ -41,7 +41,7 @@
     font-weight: 600;
     font-size: 35px;
     line-height: 35px;
-    color: $fontColor-black;
+    color: $fontColor-deep-brown;
 
     display: -webkit-inline-box;
     -webkit-box-orient: vertial;
@@ -49,7 +49,7 @@
   }
 }
 
-.Challenge-Health-section {
+.challenge-health-section {
   display: flex;
   flex-direction: column;
   flex-basis: calc(85% - 20px);
@@ -64,7 +64,7 @@
   }
 }
 
-.Walking-Weight-SpecialNote {
+.walking-weight-specialNote {
   display: flex;
   flex-wrap: wrap;
   flex-grow: 1;
@@ -84,7 +84,7 @@
     flex-grow: 1;
   }
 
-  .right-section-text-box {
+  .average-section-text-box {
     display: flex;
     flex-basis: 60%;
     flex-direction: column;
@@ -105,9 +105,13 @@
 
   .circle-img {
     align-self: flex-end;
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border-radius: 100%;
+  }
+
+  & .circle-img > img {
+    width: 100%;
   }
 }
 
@@ -123,14 +127,13 @@
     width: 100%;
   }
 
-  .Walking-Weight-SpecialNote {
+  .walking-weight-specialNote {
     flex-direction: row;
     min-height: 200px;
     margin: 10px 0;
 
     & section {
       margin: 10px;
-      flex-basis: 230px;
     }
 
     & section:last-child {
@@ -139,9 +142,9 @@
 
     .circle-img {
       align-self: flex-end;
-      width: 60px;
+      width: 80px;
       min-width: 60px;
-      height: 60px;
+      height: 80px;
     }
   }
 }
@@ -159,7 +162,7 @@
     }
   }
 
-  .Walking-Weight-SpecialNote {
+  .walking-weight-specialNote {
     flex-direction: row;
     min-height: 250px;
     margin: 10px 0;
@@ -170,8 +173,21 @@
 
     .circle-img {
       align-self: flex-end;
-      width: 60px;
-      height: 60px;
+      width: 80px;
+      height: 80px;
+    }
+  }
+}
+
+@media screen and (max-width: $normal) {
+  .walking-weight-specialNote {
+    & section {
+      flex-basis: calc(50% - 20px);
+      max-width: calc(50% - 20px);
+    }
+
+    & section:last-child {
+      max-width: none;
     }
   }
 }

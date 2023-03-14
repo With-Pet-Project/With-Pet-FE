@@ -19,13 +19,7 @@ export function useEditHealthInfo() {
   const month = searchParams.get('month');
   const day = searchParams.get('day');
 
-  const petHealthKey = [
-    PetHealth,
-    jwt_token,
-    petId,
-    Number(year),
-    Number(month),
-  ];
+  const petHealthKey = [PetHealth, petId, Number(year), Number(month)];
 
   const { mutate } = useMutation({
     mutationFn: ({ ...healthInfo }) =>

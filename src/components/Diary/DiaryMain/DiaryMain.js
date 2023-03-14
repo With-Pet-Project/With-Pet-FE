@@ -10,11 +10,11 @@ function DiaryMain() {
   return (
     <div className="diary-main-container">
       <div className="diary-main-flex-container">
-        <div className="Challenge-Health-section">
+        <div className="challenge-health-section">
           <ChallengeSection />
           <HealthSection />
         </div>
-        <div className="Walking-Weight-SpecialNote">
+        <div className="walking-weight-specialNote">
           <WalkingSection />
           <WeightSection />
           <SpecialNoteSection />

@@ -23,7 +23,7 @@ export function useHealthInfo() {
   // jwt, petId, year, month => 3월로 보내면 서버에 2월로 저장
   // API 함수에서 month - 1
   const { data: petHealth } = useQuery({
-    queryKey: [PetHealth, jwt_token, petId, year, month],
+    queryKey: [PetHealth, petId, year, month],
     queryFn: () => getHealthInfo(jwt_token, petId, year, month),
     onError: () => {
       toast.error(TOAST_MESSAGE.CANNOT_GET_DATA, TOAST_OPTION);

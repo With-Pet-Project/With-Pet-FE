@@ -18,14 +18,7 @@ export function useUnCheckChallenge() {
   const month = searchParams.get('month');
   const day = searchParams.get('day');
 
-  const key = [
-    DailyChallenge,
-    jwt_token,
-    Number(year),
-    Number(month),
-    Number(day),
-    petId,
-  ];
+  const key = [DailyChallenge, Number(year), Number(month), Number(day), petId];
 
   const { mutate } = useMutation({
     mutationFn: challengeLogId =>

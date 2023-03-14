@@ -22,7 +22,6 @@ export function useAddHealthInfo() {
 
   const petHealthKey = [
     PetHealth,
-    jwt_token,
     petId,
     Number(year),
     Number(month),

@@ -1,5 +1,7 @@
+/* eslint-disable react/no-danger */
 import { Link } from 'react-router-dom';
 import dog from 'lib/assets/images/dog/md_icon.png';
+import Dompurify from 'dompurify';
 import { ARTICLE_TAG } from 'lib/constants/articleTag';
 import { useArticleLike } from '../hooks/useArticleLike';
 
@@ -39,7 +41,9 @@ function ArticleItem({ article }) {
           <h2>{article.title}</h2>
           <div
             className="article-detail-text"
-            dangerouslySetInnerHTML={{ __html: article.detailText }}
+            dangerouslySetInnerHTML={{
+              __html: Dompurify.sanitize(article.detailText),
+            }}
           />
         </Link>
         <div className="article-tag">

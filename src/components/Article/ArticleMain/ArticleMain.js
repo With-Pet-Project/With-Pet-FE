@@ -1,5 +1,7 @@
+/* eslint-disable react/no-danger */
 import './ArticleMain.scss';
-import { Suspense, useState } from 'react';
+import Dompurify from 'dompurify';
+import { Suspense } from 'react';
 import dog from 'lib/assets/images/dog/md_icon.png';
 import { ARTICLE_TAG } from 'lib/constants/articleTag';
 import { useArticleLike } from 'components/Community/hooks/useArticleLike';
@@ -61,7 +63,9 @@ function ArticleMain() {
           <h2 className="article-title">{article.titile}</h2>
           <div
             className="article-detail-content-text"
-            dangerouslySetInnerHTML={{ __html: article.detailText }}
+            dangerouslySetInnerHTML={{
+              __html: Dompurify.sanitize(article.detailText),
+            }}
           />
           <div className="article-detail-tag">
             <span>{ARTICLE_TAG[article.tag]}</span>

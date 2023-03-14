@@ -16,8 +16,8 @@ export function useEditArticle() {
   const firstPlace = searchParams.get('firstPlace');
   const secondPlace = searchParams.get('secondPlace');
 
-  const articleKey = [QUERY_KEY.Article, { tag, firstPlace, secondPlace }];
-  const userKey = [QUERY_KEY.UserInfo, jwt_token];
+  const articleKey = [QUERY_KEY.Article];
+  const userKey = [QUERY_KEY.UserInfo];
 
   const { mutate } = useMutation({
     mutationFn: ({ title, content, imgUrl }) =>

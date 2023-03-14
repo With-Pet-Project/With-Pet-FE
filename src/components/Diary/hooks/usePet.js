@@ -10,7 +10,7 @@ export function usePet() {
   const { PetInfoList } = QUERY_KEY;
 
   const { data: petInfoList } = useQuery({
-    queryKey: [PetInfoList, jwt_token],
+    queryKey: [PetInfoList],
     queryFn: () => getAllPetInfo(jwt_token),
     enabled: !!jwt_token,
     onError: () => {

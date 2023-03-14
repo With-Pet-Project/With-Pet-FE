@@ -35,7 +35,7 @@ export function useDeleteUser(selectUser = f => f) {
       console.log(err);
     },
     onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: [UserInfo, jwt_token] });
+      queryClient.invalidateQueries({ queryKey: [UserInfo] });
     },
   });
 

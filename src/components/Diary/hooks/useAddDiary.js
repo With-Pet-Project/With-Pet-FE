@@ -29,7 +29,7 @@ export function useAddDiary() {
     },
     onSuccess: () => {
       toast.success(TOAST_MESSAGE.Add_SUCCESS, TOAST_OPTION);
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEY.Diary, jwt_token] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY.Diary] });
     },
   });
 
