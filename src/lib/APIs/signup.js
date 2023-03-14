@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+import { TOAST_OPTION } from 'components/common/Toast/toast';
 import CLIENT from './client';
 
 export const signup = async (email, password, nickname) => {
@@ -15,7 +17,7 @@ export const signup = async (email, password, nickname) => {
     },
   ).catch(err => {
     console.log(err);
-    alert(err.response.data.message);
+    toast.error(err.response.data.message, TOAST_OPTION);
   });
 
   return response;

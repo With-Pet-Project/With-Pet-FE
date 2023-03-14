@@ -33,7 +33,7 @@ function Account() {
   const currentTotal = accountData[selectPet.id].total;
 
   const openAddAccount = () => {
-    openModal(AddAccount, { selectDate });
+    openModal(AddAccount, { selectDate, accountData });
   };
 
   const handleSelectDate = selected => {
@@ -44,9 +44,6 @@ function Account() {
   const handleMonthChange = index => {
     setYearMonth(prevDate => getNextYearMonth(prevDate.dateObject, index));
   };
-
-  console.log(accountData);
-  console.log(selectPet);
 
   return (
     <section className="account-container account_bg">

@@ -11,11 +11,15 @@
     margin: 40px auto;
     padding: 50px 30px 59px;
     max-width: 955px;
-    height: 900px;
     border: 1px solid #dbdbdb;
     background-color: #ffffff;
     border-radius: 10px;
-    grid-template-rows: 1fr 2fr;
-    display: grid;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .active {
+    font-variation-settings: 'wght' 550 !important;
+    color: #1f2633 !important;
   }
 }

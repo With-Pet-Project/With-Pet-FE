@@ -32,14 +32,15 @@ function EditProfile() {
     event.preventDefault();
     const { value: nickname } = event.target.elements.nickname;
     const formData = new FormData();
-    formData.append('nickName', nickname);
+    if (nickname) formData.append('nickName', nickname);
     formData.append('images', selectFile);
 
     profileUpdate(formData);
-    closeModal(EditProfile); // 안닫힘
+    closeModal(EditProfile);
   };
 
   const nickNameHtml = () => {
+    if (isValidNickName === null) return null;
     if (isValidNickName === false)
       return (
         <span className="nickname-unavailable">
@@ -88,6 +89,7 @@ function EditProfile() {
           name="nickname"
           placeholder="닉네임을 입력하세요"
           onBlur={validateNickName}
+          isRequired={false}
         />
         {nickNameHtml()}
         <div className="btn-wrapper">

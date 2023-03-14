@@ -56,14 +56,17 @@ export const checkConfirm = async (email, key) => {
     `/check-confirm?requestEmail=${email}&key=${key}`,
   )
     .then(res => {
-      toast.success('확인되었습니다.', TOAST_OPTION);
+      toast.success('확인되었습니다.', {
+        ...TOAST_OPTION,
+        position: toast.POSITION.TOP_CENTER,
+      });
       return res;
     })
     .catch(err => {
-      toast.error(
-        '인증코드가 일치하지 않습니다. 처음부터 다시 진행해주세요',
-        TOAST_OPTION,
-      );
+      toast.error('인증코드가 일치하지 않습니다. 처음부터 다시 진행해주세요', {
+        ...TOAST_OPTION,
+        position: toast.POSITION.TOP_CENTER,
+      });
       return err.response;
     });
 

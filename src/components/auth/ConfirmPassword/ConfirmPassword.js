@@ -1,6 +1,8 @@
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { requestConfirm, checkConfirm } from 'lib/APIs/profile';
+import { TOAST_OPTION, TOAST_MESSAGE } from 'components/common/Toast/toast';
+import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import Input from '../common/Input/Input';
 import Container from '../common/Container/Container';
@@ -14,17 +16,22 @@ function ConfirmPassword() {
   const codeRef = useRef(null);
 
   const handleVerifyCode = async () => {
-    const verifyCode = codeRef.current.value;
-    const email = emailRef.current.value;
-    if (!verifyCode) {
-      alert('인증코드를 입력하세요.');
-      emailRef.current.focus();
-      return;
-    }
+    // const verifyCode = codeRef.current.value;
+    // const email = emailRef.current.value;
+    // if (!verifyCode) {
+    //   toast.error(TOAST_MESSAGE.DO_NOT_EMPTY_VERIFY_CODE, TOAST_OPTION);
+    //   emailRef.current.focus();
+    //   return;
+    // }
 
-    const isVerify = await checkConfirm(email, verifyCode);
-    console.log(isVerify);
-    if (isVerify) navigate('/reset-password');
+    // const isVerify = await checkConfirm(email, verifyCode);
+    const isVerify = true;
+    if (isVerify)
+      navigate({
+        pathname: '/reset-password',
+        search: `?id=${emailRef.current.value}`,
+      });
+    //  navigate('/reset-password');
     else {
       setIsSentEmail(false);
       emailRef.current.value = '';
@@ -33,21 +40,26 @@ function ConfirmPassword() {
   };
 
   const handleSendEmail = async () => {
-    const email = emailRef.current.value;
-    if (!email) {
-      alert('아이디를 입력하세요.');
-      emailRef.current.focus();
-      return;
-    }
-    const isEmailSent = await requestConfirm(email);
+    // const email = emailRef.current.value;
+    // if (!email) {
+    //   toast.error(TOAST_MESSAGE.DO_NOT_EMPTY_ID, TOAST_OPTION);
+    //   emailRef.current.focus();
+    //   return;
+    // }
+    // const isEmailSent = await requestConfirm(email);
+    const isEmailSent = true;
     setIsSentEmail(isEmailSent);
+    setIsSentEmail(true);
   };
 
   return (
     <Container>
       <form className="confirm-pwd-form auth-form">
         <h3 className="title">본인 인증</h3>
-        <label htmlFor="email" className="label">
+        <label
+          htmlFor="email"
+          className={`label ${isSentEmail && 'blur-label'}`}
+        >
           비밀번호를 찾고자하는 아이디를 입력하세요.
         </label>
         <div className="confirm-id-wrapper">
