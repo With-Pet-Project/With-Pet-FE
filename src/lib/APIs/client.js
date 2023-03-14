@@ -14,10 +14,12 @@ CLIENT.interceptors.response.use(
     return response;
   },
   async error => {
+    console.log(error);
     const originalRequest = error.config;
     if (
       error.response.status === 400 && // 만료된 토큰으로 인한 401 에러
-      error.response.data === '유효기간이 만료된 토큰입니다.' &&
+      (error.response.data === '해당 토큰은 만료되었습니다.' ||
+        error.response.data === '유효기간이 만료된 토큰입니다.') &&
       !originalRequest.retry // 재시도 중인 요청이 아닐 경우에만 갱신 요청
     ) {
       originalRequest.retry = true;
@@ -32,7 +34,7 @@ CLIENT.interceptors.response.use(
         const newAccessToken = response.data.data;
         localStorage.removeItem('jwt_token');
         localStorage.setItem('jwt_token', newAccessToken);
-
+        // CLIENT.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`; // 다시 요청하기 위해 헤더에 추가
         return CLIENT(originalRequest); // 다시 요청
       } catch (err) {
