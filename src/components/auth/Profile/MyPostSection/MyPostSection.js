@@ -1,4 +1,5 @@
 import './MyPostSection.scss';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useUser } from 'components/auth/hooks/useUser';
 import PageNav from './PageNav/PageNav';
@@ -131,13 +132,15 @@ function MyPostSection() {
       (article, index) => index >= startPost && index < endPost,
     );
     return currentPost.map(({ articleId, content, createdTime }) => (
-      <MyPost
-        key={articleId}
-        currentPage={currentPage}
-        articleId={articleId}
-        content={content}
-        createdTime={createdTime}
-      />
+      <Link to={`/community/${articleId}`}>
+        <MyPost
+          key={articleId}
+          currentPage={currentPage}
+          articleId={articleId}
+          content={content}
+          createdTime={createdTime}
+        />
+      </Link>
     ));
   };
 

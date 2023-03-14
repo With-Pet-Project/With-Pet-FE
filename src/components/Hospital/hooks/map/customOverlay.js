@@ -2,6 +2,7 @@
 
 const { kakao } = window;
 let overlay;
+let overlayList = [];
 
 export const setCustomOverlay = (title, placePosition, map) => {
   const $customOveray = `<div class="overlay" >${title}</div>`;
@@ -12,6 +13,7 @@ export const setCustomOverlay = (title, placePosition, map) => {
     position: placePosition,
   });
   overlay.setMap(null);
+  overlayList = [...overlayList, overlay];
 };
 
 export const getCustomOverlay = () => {
