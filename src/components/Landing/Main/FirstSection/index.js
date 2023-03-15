@@ -28,7 +28,7 @@ function FirstSection({
         </div>
         <div className="landing-first-section-login-btn">
           {!user && (
-            <button type="button" onClick={gotoLogin}>
+            <button type="button" onClick={gotoLogin} data-cy="move-login-btn">
               <span>로그인</span>
             </button>
           )}
