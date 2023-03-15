@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { PetIdProvider } from 'components/Diary/context/PetContext';
 import { BrowserRouter } from 'react-router-dom';
