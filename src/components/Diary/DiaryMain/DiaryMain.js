@@ -1,7 +1,5 @@
 import './DiaryMain.scss';
 
-import { DateProvider } from '../context/DateContext';
-
 import ChallengeSection from '../ChallengeSection/ChallengeSection';
 import WalkingSection from '../WalkingSection/WalkingSection';
 import WeightSection from '../WeightSection/WeightSection';

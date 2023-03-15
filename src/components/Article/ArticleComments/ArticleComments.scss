@@ -31,9 +31,18 @@
 }
 
 .article-comments-user-img {
+  width: 55px;
+  height: 55px;
+
   background-color: $background-yellow;
   border-radius: 100px;
   margin-right: 10px;
+
+  & img {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+  }
 }
 
 .article-comments-user-nickname {

@@ -1,3 +1,5 @@
+@import '/src/lib/styles/vars.scss';
+
 .article-comments-createdTime {
   & span {
     font-size: 11px;
@@ -17,6 +19,13 @@
   }
 }
 
+.comment-list-item-reply {
+  display: block;
+  padding-left: 65px;
+  margin: -10px 40px 0 0;
+  text-align: right;
+}
+
 .comment-edit-delete-button {
   margin-left: auto;
 
@@ -25,12 +34,16 @@
   }
 }
 
-.comment-delete-button {
-  width: 20px !important;
+.comment-button {
+  width: 42px !important;
   height: 20px !important;
 }
 
-.comment-edit-button {
-  height: 20px !important;
-  width: 42px !important;
+.reply-show-more-button {
+  & .show-more-button span {
+    color: $fontColor-blue;
+    font-weight: 800;
+
+    margin: 2px;
+  }
 }

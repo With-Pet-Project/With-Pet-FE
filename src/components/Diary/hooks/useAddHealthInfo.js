@@ -32,26 +32,19 @@ export function useAddHealthInfo() {
   const healthInfo = {
     year: Number(year),
     month: Number(month),
-    week: whatWeek(Number(year), Number(month), Number(day)),
+    week: whatWeek(Number(day)),
     day: Number(day),
     date: `${year}-${month}-${day}`,
   };
 
-  const addHealthInfo = useMutation({
-    mutationFn: ({
-      walkDistance,
-      weight,
-      drinkAmount,
-      feedAmount,
-      diary = '',
-    }) =>
+  const { mutate } = useMutation({
+    mutationFn: ({ walkDistance, weight, drinkAmount, feedAmount }) =>
       postHealthInfo(jwt_token, petId, {
         ...healthInfo,
         walkDistance,
         weight,
         drinkAmount,
         feedAmount,
-        diary,
       }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [...petHealthKey] });
@@ -61,7 +54,7 @@ export function useAddHealthInfo() {
       toast.error(TOAST_MESSAGE.ADD_FAIL, TOAST_OPTION);
     },
   });
-  return addHealthInfo;
+  return { mutate };
 }
 /*
 {
@@ -69,7 +62,6 @@ export function useAddHealthInfo() {
     "weight":3.18,
     "drinkAmount":3.18,
     "feedAmount":3.18,
-    "diary":"다이어리!",
     "year":2023,
     "month":2,
     "week":3,

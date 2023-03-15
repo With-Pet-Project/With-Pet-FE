@@ -10,7 +10,7 @@ import PetList from './PetList/PetList';
 
 function PetInfo() {
   const [petId, setPetId] = useContext(petIdContext);
-  const [petIdx, setPetIdx] = useState(0);
+  const [petIdx, setPetIdx] = useState(0); // 조회하고 있는 pet의 idx
   const petInfoList = usePet();
   const selectPet = idx => setPetIdx(idx);
 

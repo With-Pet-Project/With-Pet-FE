@@ -7,6 +7,7 @@ export function useLogout() {
   const logout = () => {
     localStorage.removeItem('jwt_token');
     navigate('/', { replace: true });
+    // window.location.reload();
   };
 
   return { logout };

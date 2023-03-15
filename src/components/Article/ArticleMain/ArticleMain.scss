@@ -8,10 +8,18 @@
   margin: 40px;
 
   & .article-detail-user-profile {
+    width: 55px;
+    height: 55px;
     background-color: $background-yellow;
     border-radius: 100px;
 
     margin-right: 9px;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      border-radius: 100%;
+    }
   }
 
   & h3 {
@@ -53,8 +61,15 @@
   padding: 0;
   margin: 0 90px;
 
+  & h2 {
+    font-size: 25px;
+    font-weight: 700;
+    margin: 0 0 40px;
+  }
+
   & .article-detail-content-text {
     min-height: 300px;
+    margin-bottom: 30px;
   }
 
   & img {

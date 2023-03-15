@@ -9,7 +9,7 @@ function HistoryList({ history, clickHistory, removeHistory }) {
       <h2>최근 검색어</h2>
       <ul>
         {history &&
-          history.map(h => (
+          history?.map(h => (
             <li key={h}>
               <History
                 history={h}

@@ -26,5 +26,5 @@ export function useAddPet() {
     },
   });
 
-  return mutate;
+  return { mutate };
 }

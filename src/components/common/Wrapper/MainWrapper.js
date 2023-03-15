@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { vars } from 'lib/styles/vars';
 
 const Main = styled.main`
   &::before,
@@ -10,7 +11,6 @@ const Main = styled.main`
 `;
 
 const ContentWrapper = styled.div`
-  width: 85%;
   max-width: 955px;
   min-height: calc(100% - 80px);
 
@@ -19,6 +19,10 @@ const ContentWrapper = styled.div`
   border-radius: 10px;
 
   margin: 0 auto;
+
+  @media screen and (max-width: ${vars.normal}) {
+    margin: 0 10px;
+  }
 `;
 
 function MainWrapper({ component = null, children }) {

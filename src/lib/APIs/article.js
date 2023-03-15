@@ -10,8 +10,12 @@ export const getArticleList = async (
   searchValue,
   size,
 ) => {
-  if (firstPlace === '지역 선택' || secondPlace === '지역 선택') {
+  if (firstPlace === '지역 선택') {
     firstPlace = null;
+    secondPlace = null;
+  }
+
+  if (secondPlace === '지역 선택') {
     secondPlace = null;
   }
 
@@ -19,7 +23,28 @@ export const getArticleList = async (
     tag = null;
   }
 
-  const data = await CLIENT.get(`/articles`, {
+  if (tag !== 'LOST' || tag === 'WALK' || tag === 'HOSPITAL') {
+    firstPlace = null;
+    secondPlace = null;
+  }
+
+  const jwt = localStorage.getItem('jwt_token');
+
+  if (!jwt) {
+    const response = await CLIENT.get(`/articles`, {
+      params: {
+        tag,
+        place1: firstPlace,
+        place2: secondPlace,
+        filter: priority,
+        lastArticleId: pageParam,
+        param: searchValue,
+        size,
+      },
+    });
+    return response;
+  }
+  const response = await CLIENT.get(`/articles`, {
     params: {
       tag,
       place1: firstPlace,
@@ -29,8 +54,12 @@ export const getArticleList = async (
       param: searchValue,
       size,
     },
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+    },
   });
-  return data;
+
+  return response;
 };
 
 export const postCreateArticle = async (
@@ -68,7 +97,18 @@ export const postCreateArticle = async (
 };
 
 export const getReadArticleDetail = async articleId => {
-  const response = await CLIENT.get(`/articles/${articleId}`);
+  const jwt = localStorage.getItem('jwt_token');
+
+  if (!jwt) {
+    const response = await CLIENT.get(`/articles/${articleId}`);
+    return response;
+  }
+
+  const response = await CLIENT.get(`/articles/${articleId}`, {
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
   return response;
 };
 
@@ -78,15 +118,25 @@ export const patchEditArticle = async (
   place1,
   place2,
   detailText,
+  imgUrl,
   articleId,
 ) => {
+  if (place1 === '지역 선택') {
+    place1 = null;
+  }
+
+  if (place2 === '지역 선택') {
+    place2 = null;
+  }
+
   const response = await CLIENT.patch(
     `/article/${articleId}`,
     {
       title,
+      detailText,
       place1,
       place2,
-      detailText,
+      images: [...imgUrl],
     },
     {
       headers: {

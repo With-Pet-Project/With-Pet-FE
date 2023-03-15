@@ -4,8 +4,9 @@ const Button = styled.button`
   display: ${({ opened }) => (opened ? 'none' : 'block')};
   background-color: rgba(0, 0, 0, 0);
   width: 40px;
-  margin: 0 auto;
   margin-top: 20px;
+  margin-left: 2px;
+  padding: 0 4px 0;
 
   & span {
     display: block;

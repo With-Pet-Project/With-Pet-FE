@@ -11,7 +11,7 @@ export function useDeleteComment() {
   const queryClient = useQueryClient();
   const jwt_token = localStorage.getItem('jwt_token') || null;
 
-  const { mutate: deleteCommentMutate } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: commentId => deleteComment(jwt_token, commentId),
     onSuccess: () => {
       toast.success(TOAST_MESSAGE.DELETE_SUCCESS, TOAST_OPTION);
@@ -22,5 +22,5 @@ export function useDeleteComment() {
     },
   });
 
-  return { deleteCommentMutate };
+  return { mutate };
 }

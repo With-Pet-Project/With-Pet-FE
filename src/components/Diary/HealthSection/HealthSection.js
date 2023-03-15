@@ -20,9 +20,9 @@ const EditButton = styled.button`
 
 function HealthSection() {
   const { dayInfo, avgWeight } = useHealthInfo();
-  const addHealthInfo = useAddHealthInfo();
-  const editHealthInfo = useEditHealthInfo();
-  const petInfo = usePetById();
+  const { mutate: addHealthInfo } = useAddHealthInfo();
+  const { mutate: editHealthInfo } = useEditHealthInfo();
+  // const petInfo = usePetById();
 
   const [edit, setEdit] = useState(false);
   const [walk, setWalk] = useState();
@@ -33,21 +33,19 @@ function HealthSection() {
   const isEdit = () => {
     if (edit) {
       !dayInfo
-        ? addHealthInfo.mutate({
+        ? addHealthInfo({
             walkDistance: walk,
             weight,
             drinkAmount: drink,
             feedAmount: feed,
-            diary: '',
           })
-        : editHealthInfo.mutate({
+        : editHealthInfo({
             ...dayInfo,
             id: dayInfo.id,
             walkDistance: walk,
             weight,
             drinkAmount: drink,
             feedAmount: feed,
-            diary: dayInfo.diary,
           });
     }
 

@@ -2,7 +2,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
 import { getArticleList } from 'lib/APIs/article';
 import { useSearchParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export const useArticles = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -13,12 +13,10 @@ export const useArticles = () => {
   const firstPlace = searchParams.get('firstPlace');
   const secondPlace = searchParams.get('secondPlace');
   const priority = searchParams.get('priority');
+  const search = searchParams.get('search') || '';
 
   const { fetchNextPage, hasNextPage, data } = useInfiniteQuery({
-    queryKey: [
-      Article,
-      { tag, firstPlace, secondPlace, priority, searchValue },
-    ],
+    queryKey: [Article, { tag, firstPlace, secondPlace, priority, search }],
     queryFn: ({ pageParam = 0 }) =>
       getArticleList(
         tag,
@@ -26,7 +24,7 @@ export const useArticles = () => {
         firstPlace,
         secondPlace,
         pageParam,
-        searchValue,
+        search,
         5,
       ),
     getNextPageParam: lastPage =>
