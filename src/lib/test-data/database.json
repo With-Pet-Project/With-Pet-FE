@@ -1,16 +1,16 @@
 {
   "users": [
     {
-      "id": "cy1@test.com",
+      "id": "cypress1@test.com",
       "password": "1234",
       "profileImg": "https://with-pet-test.s3.ap-northeast-2.amazonaws.com/ad5993be-72e1-4c9d-962e-7b759ef2debe.jpg",
-      "nickname": "111"
+      "nickname": "cypress tester 1"
     },
     {
-      "id": "cy2@test.com",
+      "id": "cypress2@test.com",
       "password": "1234",
       "profileImg": "https://with-pet-test.s3.ap-northeast-2.amazonaws.com/ad5993be-72e1-4c9d-962e-7b759ef2debe.jpg",
-      "nickname": "222"
+      "nickname": "cypress tester 2"
     }
   ]
 }

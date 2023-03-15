@@ -16,7 +16,7 @@
     "cypress": "^12.3.0",
     "eslint-plugin-jest-dom": "^4.0.3",
     "eslint-plugin-testing-library": "^5.10.0",
-		"lowdb": "^1.0.0",
+    "lowdb": "^1.0.0",
     "react": "^18.2.0",
     "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
@@ -51,7 +51,6 @@
     ]
   },
   "devDependencies": {
-    "babel-plugin-react-remove-properties": "^0.3.0",
     "eslint": "^8.2.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.6.0",
