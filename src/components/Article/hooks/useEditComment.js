@@ -12,7 +12,7 @@ export function useEditComment() {
   const jwt_token = localStorage.getItem('jwt_token') || null;
   const { articleId } = useParams();
 
-  const { mutate: editCommentMutate } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: ({ content, commentId }) =>
       patchUpdateComment(jwt_token, commentId, content),
     onSuccess: () => {
@@ -26,5 +26,5 @@ export function useEditComment() {
     },
   });
 
-  return { editCommentMutate };
+  return { mutate };
 }

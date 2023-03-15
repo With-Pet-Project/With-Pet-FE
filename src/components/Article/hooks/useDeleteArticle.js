@@ -13,17 +13,18 @@ export function useDeleteArticle() {
   const jwt_token = localStorage.getItem('jwt_token') || null;
   const { articleId } = useParams();
 
-  const { mutate: deleteArticleMutate } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: () => deleteArticle(jwt_token, articleId),
     onSuccess: () => {
       toast.success(TOAST_MESSAGE.DELETE_SUCCESS, TOAST_OPTION);
       navigate(-1, { replace: true });
       queryClient.invalidateQueries({ queryKey: [QUERY_KEY.Article] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY.UserInfo] });
     },
     onError: () => {
       toast.error(TOAST_MESSAGE.DELETE_FAIL, TOAST_OPTION);
     },
   });
 
-  return { deleteArticleMutate };
+  return { mutate };
 }

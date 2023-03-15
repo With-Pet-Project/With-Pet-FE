@@ -30,12 +30,13 @@ function ChallengeSection() {
   };
 
   useEffect(() => {
-    const date = selectDate.dateTime.split('-');
-    searchParams.set('year', date[0]);
-    searchParams.set('month', date[1]);
-    searchParams.set('day', date[2]);
+    const yearAndMonth = yearMonth.dateTime.split('-');
+    const day = selectDate.dateTime.split('-')[2];
+    searchParams.set('year', yearAndMonth[0]);
+    searchParams.set('month', yearAndMonth[1]);
+    searchParams.set('day', day);
     setSearchParams(searchParams);
-  }, [searchParams, setSearchParams, selectDate.dateTime]);
+  }, [searchParams, setSearchParams, selectDate.dateTime, yearMonth.dateTime]);
 
   return (
     <section className="diary-center-section">

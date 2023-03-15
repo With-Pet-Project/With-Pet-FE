@@ -1,0 +1,35 @@
+@import '/src/lib/styles/vars.scss';
+
+.reply-item {
+  margin-left: 100px;
+}
+
+.reply-user-info {
+  display: flex;
+  align-items: center;
+}
+
+.reply-user-img {
+  background-color: $background-yellow;
+  border-radius: 100px;
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+
+  & img {
+    width: 100%;
+  }
+}
+
+.reply-user-nickname {
+  font-size: 15px;
+}
+
+.reply-content {
+  font-size: 15px;
+  margin: 5px 0 15px 36px;
+
+  & p {
+    max-width: 700px;
+  }
+}

@@ -27,7 +27,7 @@ export function useUnCheckChallenge() {
     petId,
   ];
 
-  const uncheck = useMutation({
+  const { mutate } = useMutation({
     mutationFn: challengeLogId =>
       deleteUncheckChallenge(jwt_token, petId, challengeLogId),
     onMutate: async challengeLogId => {
@@ -53,5 +53,5 @@ export function useUnCheckChallenge() {
     },
   });
 
-  return uncheck;
+  return { mutate };
 }

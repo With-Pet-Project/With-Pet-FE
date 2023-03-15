@@ -15,7 +15,7 @@
 
 .landing-forth-section-title {
   width: calc(50% - 50px);
-  min-width: 476px
+  min-width: 476px;
 }
 
 .landing-forth-section-text {
@@ -30,7 +30,7 @@
 
     margin-top: 100px;
   }
-  
+
   p {
     font-weight: 500;
     font-size: 17px;
@@ -41,7 +41,6 @@
     margin-top: 26px;
   }
 }
-
 
 .landing-forth-section-img {
   width: 70%;
@@ -77,9 +76,9 @@
   }
 
   .landing-forth-section-img {
-    width: 520px;
+    width: 500px;
     margin: 0 auto;
-  
+
     & img {
       width: 100%;
     }

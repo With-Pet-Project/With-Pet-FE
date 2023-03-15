@@ -11,13 +11,16 @@
 
   & .user-img {
     flex-basis: 55px;
-  }
-
-  & .user-img > img {
     width: 55px;
     height: 55px;
     border: 0;
     background-color: $background-yellow;
+    border-radius: 100%;
+  }
+
+  & .user-img > img {
+    width: 100%;
+    height: 100%;
     border-radius: 100%;
   }
 

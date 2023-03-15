@@ -18,7 +18,7 @@ export const useDailyChallenge = () => {
   const month = searchParams.get('month'); // 1 ~ 12
   const day = searchParams.get('day');
 
-  const week = whatWeek(year, month, day);
+  const week = whatWeek(day);
 
   const { data: dailyChallenge } = useQuery({
     queryKey: [

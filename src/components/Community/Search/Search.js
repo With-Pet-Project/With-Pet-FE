@@ -7,6 +7,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useInput } from 'components/common/hooks/useInput';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { useSearchParams } from 'react-router-dom';
 import { useArticles } from '../hooks/useArticles';
 import HistoryList from './History/HistoryList';
 import TagList from './Tags/TagList';
@@ -34,6 +35,7 @@ const SearchInput = styled.input`
 `;
 
 function Search() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const { value, setValue, handleChange } = useInput();
   const [inputFocus, setInputFocus] = useState(false);
   const [history, setHistory] = useState([]); // 검색기록 관리 state
@@ -65,22 +67,23 @@ function Search() {
   const onSubmit = e => {
     e.preventDefault();
     value && !history.includes(value) ? setHistory([...history, value]) : 0;
-    setSearchValue(value);
+    searchParams.set('search', value);
+    setSearchParams(searchParams);
     // inputRef.current.value를  submit
-    console.log(inputRef.current.value);
   };
 
   useEffect(() => {
     // localStorage에서 검색기록 가져오기
+    searchParams.set('search', '');
+    setSearchParams(searchParams);
+
     const searchHistory = localStorage.getItem('search');
     searchHistory && setHistory(JSON.parse(searchHistory));
   }, []);
 
   useEffect(() => {
     // localStorage에 검색기록 저장
-    history.length
-      ? localStorage.setItem('search', JSON.stringify(history))
-      : localStorage.setItem('search', JSON.stringify([]));
+    history.length && localStorage.setItem('search', JSON.stringify(history));
   }, [history]);
 
   return (

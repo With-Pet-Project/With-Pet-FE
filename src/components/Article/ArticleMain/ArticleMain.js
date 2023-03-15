@@ -10,7 +10,7 @@ import { useArticleDetail } from '../hooks/useArticleDetail';
 
 function ArticleMain() {
   const { articleId } = useParams();
-  const { deleteArticleMutate } = useDeleteArticle();
+  const { mutate: deleteArticleMutate } = useDeleteArticle();
   const user = useUser();
   const article = useArticleDetail();
   const { mutate, isAlike, likeCount } = useArticleLike(
@@ -58,13 +58,13 @@ function ArticleMain() {
           )}
         </div>
         <div className="article-detail-content">
-          <h2 className="article-title">타이틀</h2>
+          <h2 className="article-title">{article.titile}</h2>
           <div
             className="article-detail-content-text"
             dangerouslySetInnerHTML={{ __html: article.detailText }}
           />
           <div className="article-detail-tag">
-            <span>기타/시설{/* ARTICLE_TAG[article.tag] */}</span>
+            <span>{ARTICLE_TAG[article.tag]}</span>
           </div>
         </div>
         <div className="article-detail-like-comments">

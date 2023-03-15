@@ -5,8 +5,10 @@ import styled from 'styled-components';
 import { vars } from 'lib/styles/vars';
 import { useState, useEffect } from 'react';
 import { useHealthInfo } from '../hooks/useHealthInfo';
-import { useAddHealthInfo } from '../hooks/useAddHealthInfo';
+import { useAddDiary } from '../hooks/useAddDiary';
+import { useDiary } from '../hooks/useDiary';
 import { useEditHealthInfo } from '../hooks/useEditHealthInfo';
+import { useEditDiary } from '../hooks/useEditDiary';
 
 const EditButton = styled.button`
   color: ${({ edit }) => (edit ? '$backgroundYellow' : '#000 !important')};
@@ -20,8 +22,10 @@ const TextArea = styled.textarea`
 
 function SpecialNoteSection() {
   const { dayInfo } = useHealthInfo();
-  const addHealthInfo = useAddHealthInfo();
-  const editHealthInfo = useEditHealthInfo();
+  const dailyDiary = useDiary();
+  const { mutate: addDiary } = useAddDiary();
+  const { mutate: editHealthInfo } = useEditHealthInfo();
+  const { mutate: editDiary } = useEditDiary();
   const [edit, setEdit] = useState(false);
   const [diary, setDiary] = useState('');
 
@@ -29,22 +33,11 @@ function SpecialNoteSection() {
 
   const isEdit = () => {
     if (edit) {
-      !dayInfo
-        ? addHealthInfo.mutate({
-            walkDistance: 0,
-            weight: 0,
-            drinkAmount: 0,
-            feedAmount: 0,
-            diary,
-          })
-        : editHealthInfo.mutate({
-            ...dayInfo,
-            id: dayInfo.id,
-            walkDistance: dayInfo.walk,
-            weight: dayInfo.weight,
-            drinkAmount: dayInfo.drinkAmount,
-            feedAmount: dayInfo.feedAmount,
-            diary,
+      !dailyDiary
+        ? addDiary(diary)
+        : editDiary({
+            ...dailyDiary,
+            content: diary,
           });
     }
 
@@ -52,8 +45,8 @@ function SpecialNoteSection() {
   };
 
   useEffect(() => {
-    setDiary(dayInfo?.diary || '');
-  }, [dayInfo]);
+    setDiary(dailyDiary?.content || '');
+  }, [dailyDiary]);
 
   return (
     <section className="SpecialNote diary-section-Padding">

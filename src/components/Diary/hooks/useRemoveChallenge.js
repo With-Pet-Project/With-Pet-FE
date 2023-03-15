@@ -18,20 +18,22 @@ export function useRemoveChallenge() {
   const month = Number(searchParams.get('month'));
   const day = Number(searchParams.get('day'));
 
-  const key = [QUERY_KEY.DailyChallenge, jwt_token, year, month, day, petId];
+  const dailyKey = [QUERY_KEY.DailyChallenge, jwt_token];
+  const weeklyKey = [QUERY_KEY.WeeklyChallenge, jwt_token];
 
   // jwt, petId, challengeId
-  const removeChallenge = useMutation({
+  const { mutate } = useMutation({
     mutationFn: challengeId =>
       deleteRemoveChallenge(jwt_token, petId, challengeId),
     onSuccess: () => {
       toast.success(TOAST_MESSAGE.DELETE_SUCCESS, TOAST_OPTION);
-      queryClient.invalidateQueries({ queryKey: [...key] });
+      queryClient.invalidateQueries({ queryKey: [...dailyKey] });
+      queryClient.invalidateQueries({ queryKey: [...weeklyKey] });
     },
     onError: () => {
       toast.error(TOAST_MESSAGE.DELETE_FAIL, TOAST_OPTION);
     },
   });
 
-  return removeChallenge;
+  return { mutate };
 }
