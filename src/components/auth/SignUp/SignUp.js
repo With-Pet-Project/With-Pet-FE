@@ -157,7 +157,11 @@ function SignUp() {
           <button type="button" className=" button" onClick={handleCancel}>
             취소
           </button>
-          <button type="submit" className="signup-btn button">
+          <button
+            type="submit"
+            className="signup-btn button"
+            data-cy="sign-up-submit"
+          >
             확인
           </button>
         </div>

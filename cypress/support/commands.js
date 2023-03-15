@@ -55,3 +55,40 @@ Cypress.Commands.add(
       });
   },
 );
+
+Cypress.Commands.add('login', (username, password) => {
+  const log = Cypress.log({
+    name: 'login',
+    displayName: 'LOGIN',
+    message: [`🔐 Authenticating | ${username}`],
+    autoEnd: false,
+  });
+
+  cy.intercept('POST', '/user/login', req => {
+    // req.reply({
+    //   statusCode: 200, // default
+    // });
+  }).as('loginUser');
+
+  log.snapshot('before');
+
+  cy.$('login-id-input').type(username);
+  cy.$('login-pwd-input').type(password);
+  cy.$('login-submit').click();
+
+  cy.wait('@loginUser').then(loginUser => {
+    log.set({
+      consoleProps() {
+        return {
+          username,
+          password,
+          data:
+            loginUser.response.statusCode !== 401 &&
+            loginUser.response.body.data,
+        };
+      },
+    });
+
+    log.end();
+  });
+});

@@ -49,7 +49,7 @@ function LogIn() {
           <button
             type="submit"
             className="login-btn button"
-            data-cy="login-btn"
+            data-cy="login-submit"
           >
             로그인
           </button>
