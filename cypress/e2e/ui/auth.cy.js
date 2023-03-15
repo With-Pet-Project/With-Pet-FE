@@ -35,21 +35,21 @@ describe('회원가입 및 로그인', () => {
   //   cy.$('sign-up-submit').click();
   // });
 
-  // // jwt 부분은 나중에...
-  // it('로그인을 한다.', () => {
-  //   const user = ctx.users[0];
-  //   cy.log(user);
-  //   cy.login(user.id, user.password);
+  // jwt 부분은 나중에...
+  it('로그인을 한다.', () => {
+    const user = ctx.users[0];
+    cy.log(user);
+    cy.login(user.id, user.password);
 
-  //   cy.location('pathname').should('equal', '/');
-  //   cy.$('side-bar-hamburger').trigger('mouseover');
-  //   cy.$('side-ber-profile-img').should('have.attr', 'src', user.profileImg);
-  //   cy.$('side-ber-nickname').should('have.text', user.nickname);
-  //   cy.$('side-ber-id').should('have.text', user.id);
+    cy.location('pathname').should('equal', '/');
+    cy.$('side-bar-hamburger').trigger('mouseover');
+    cy.$('side-ber-profile-img').should('have.attr', 'src', user.profileImg);
+    cy.$('side-ber-nickname').should('have.text', user.nickname);
+    cy.$('side-ber-id').should('have.text', user.id);
 
-  //   cy.visit(`${Cypress.env('baseUrl')}`);
-  //   cy.$('move-login-btn').should('not.exist');
-  // });
+    cy.visit(`${Cypress.env('baseUrl')}`);
+    cy.$('move-login-btn').should('not.exist');
+  });
 
   // it('로그인시 잘못된 값을 입력하면 에러를 표출한다.', () => {
   //   // 아이디와 비밀번호가 일치해야 한다.
