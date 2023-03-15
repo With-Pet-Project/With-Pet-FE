@@ -16,12 +16,10 @@
 //     cy.location('pathname').should('equal', '/login');
 //   });
 
-//   const user = {
-//     id: 'test1@test.com',
+//   // 나중에 intercept해서 회원가입하고 그 데이터로 login 진행하기
+//   const correctUser = {
+//     id: 'cypress1@test.com',
 //     password: '1234',
-//     profileImg:
-//       'https://with-pet-test.s3.ap-northeast-2.amazonaws.com/ad5993be-72e1-4c9d-962e-7b759ef2debe.jpg',
-//     nickname: '시바견주',
 //   };
 
 //   const incorrectUser = {
@@ -33,8 +31,8 @@
 
 //   it('로그인을 한다.', () => {
 //     cy.log(ctx.allUsers);
-//     cy.$('login-id-input').type('cy2@test.com');
-//     cy.$('login-pwd-input').type('1234');
+//     cy.$('login-id-input').type(correctUser.id);
+//     cy.$('login-pwd-input').type(correctUser.password);
 //     cy.$('login-btn').click();
 //     cy.wait('@login');
 //     // cy.location('pathname').should('equal', '/');
