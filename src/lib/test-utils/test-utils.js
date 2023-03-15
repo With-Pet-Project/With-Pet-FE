@@ -2,7 +2,7 @@
 import { render } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { PetIdProvider } from 'components/Diary/context/PetContext';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import React from 'react';
 
 const queryTestClient = new QueryClient({
@@ -21,9 +21,9 @@ const queryTestClient = new QueryClient({
 function ReactQueryProvider({ children }) {
   return (
     <QueryClientProvider client={queryTestClient}>
-      <BrowserRouter>
+      <MemoryRouter>
         <PetIdProvider>{children}</PetIdProvider>
-      </BrowserRouter>
+      </MemoryRouter>
     </QueryClientProvider>
   );
 }
