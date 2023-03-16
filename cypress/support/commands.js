@@ -68,6 +68,10 @@ Cypress.Commands.add('login', (username, password) => {
     // req.reply({
     //   statusCode: 200, // default
     // });
+    // req.continue(res => {
+    // const jwt = res.body.data;
+    // window.localStorage.setItem('jwt_token', jwt);
+    // });
   }).as('loginUser');
 
   log.snapshot('before');
@@ -90,5 +94,6 @@ Cypress.Commands.add('login', (username, password) => {
     });
 
     log.end();
+    return window.localStorage.getItem('jwt_token');
   });
 });
