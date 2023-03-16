@@ -96,7 +96,7 @@ describe('가계부 API', () => {
     });
   });
 
-  context('POST /pet/${petId}/consumption/${accountid}', function () {
+  context('DELETE /pet/${petId}/consumption/${accountid}', function () {
     it('가계부 데이터를 삭제한다.', function () {
       const petId = ctx.pets[1].id;
       const accountId = ctx.accounts[0].id;
