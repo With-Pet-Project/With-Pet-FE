@@ -1,48 +1,49 @@
 import './MyPostSection.scss';
-import { useUser } from '../../hooks/useUser';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useUser } from 'components/auth/hooks/useUser';
+import PageNav from './PageNav/PageNav';
+import MyPost from './MyPost/MyPost';
+import { PAGE_PER_SIZE } from '../constant';
 
 function MyPostSection() {
   const { articleList } = useUser();
-  const emptyHtml = <p>게시글이 없습니다.</p>;
+  const [currentPage, setCurrentPage] = useState(1);
+  const startPost = (currentPage - 1) * PAGE_PER_SIZE; // 시작 게시글 번호
+  const endPost = startPost + PAGE_PER_SIZE;
+  const hasPost = Object.keys(articleList).length > 0;
+  const emptyPostHtml = <p>게시글이 없습니다.</p>;
+
+  const changeCurrentPage = newPage => {
+    setCurrentPage(prev => newPage);
+  };
+  const postList = () => {
+    if (!hasPost) return emptyPostHtml;
+    const currentPost = articleList.filter(
+      (article, index) => index >= startPost && index < endPost,
+    );
+    return currentPost.map(({ articleId, title, createdTime }) => (
+      <Link to={`/community/${articleId}`}>
+        <MyPost
+          key={articleId}
+          currentPage={currentPage}
+          articleId={articleId}
+          title={title}
+          createdTime={createdTime}
+        />
+      </Link>
+    ));
+  };
 
   return (
     <div className="MyPostSection">
       <h2 className="mypost-title">나의 게시글</h2>
-      <ul className="mypost-list">
-        {articleList.length === 0
-          ? emptyHtml
-          : articleList.map(item => (
-              <li className="mypost">
-                <span className="date">2023년 2월 10일</span>
-                <p className="content">
-                  오늘은 반려견 산책 올바르게 하는 방법에 대해 알아보려고
-                  합니다!
-                  <br />
-                  우리의 반려견과 산책하기 전에 준비해야 될 것과 알아야 할 것이
-                  정말 많은데요.
-                </p>
-              </li>
-            ))}
-        {/* 
-        <li className="mypost">
-          <span className="date">2023년 2월 10일</span>
-          <p className="content">
-            오늘은 반려견 산책 올바르게 하는 방법에 대해 알아보려고 합니다!
-            <br />
-            우리의 반려견과 산책하기 전에 준비해야 될 것과 알아야 할 것이 정말
-            많은데요.
-          </p>
-        </li>
-        <li className="mypost">
-          <span className="date">2023년 2월 10일</span>
-          <p className="content">
-            오늘은 반려견 산책 올바르게 하는 방법에 대해 알아보려고 합니다!
-            <br />
-            우리의 반려견과 산책하기 전에 준비해야 될 것과 알아야 할 것이 정말
-            많은데요.
-          </p>
-        </li> */}
-      </ul>
+      <ul className="mypost-list">{postList()}</ul>
+      <PageNav
+        currentPage={currentPage}
+        postLength={articleList.length}
+        changeCurrentPage={changeCurrentPage}
+      />
     </div>
   );
 }

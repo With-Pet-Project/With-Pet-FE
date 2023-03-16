@@ -1,4 +1,5 @@
-import axios from 'axios';
+import { toast } from 'react-toastify';
+import { TOAST_OPTION, TOAST_MESSAGE } from 'components/common/Toast/toast';
 import CLIENT from './client';
 
 // 카카오 토큰 얻는 함수
@@ -16,6 +17,7 @@ export const getUserInfo = async jwt => {
       Authorization: `Bearer ${jwt}`,
     },
   });
+  console.log(response);
 
   return response;
 };
@@ -34,13 +36,13 @@ export const localLogin = async (email, password) => {
     },
   ).catch(err => {
     console.log(err);
-    alert('아이디 또는 비밀번호를 잘못 입력했습니다.');
+    toast.error(TOAST_MESSAGE.INCORRECT_ID_PWD, TOAST_OPTION);
+    return err;
   });
 
-  if (response) {
-    const { data: accessToken } = response.data;
-    localStorage.setItem('jwt_token', accessToken);
-  }
+  const accessToken = response?.data?.data;
+  // console.log(accessToken);
+  localStorage.setItem('jwt_token', accessToken);
 
   return response?.status;
 };

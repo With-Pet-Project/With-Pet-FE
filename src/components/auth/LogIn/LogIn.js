@@ -4,6 +4,8 @@ import './LogIn.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { KAKAO_OAUTH_URL } from 'lib/KakaoAPIs/client';
 import { localLogin } from 'lib/APIs/login';
+import { toast } from 'react-toastify';
+import { TOAST_OPTION, TOAST_MESSAGE } from 'components/common/Toast/toast';
 import Container from '../common/Container/Container';
 import Input from '../common/Input/Input';
 
@@ -14,12 +16,21 @@ function LogIn() {
     event.preventDefault();
     const { value: email } = event.target.email;
     const { value: password } = event.target.password;
-    // 유효성 검사
+    if (!email) {
+      toast.error(TOAST_MESSAGE.DO_NOT_EMPTY_ID, TOAST_OPTION);
+      return false;
+    }
+    if (!password) {
+      toast.error(TOAST_MESSAGE.DO_NOT_EMPTY_PASSWORD, TOAST_OPTION);
+      return false;
+    }
+
     const status = await localLogin(email, password);
     if (status === 200) {
-      alert('로그인되었습니다.');
+      toast.success(TOAST_MESSAGE.LOGIN_SUCCESS, TOAST_OPTION);
       navigate('/');
     }
+    return true;
   };
 
   return (
