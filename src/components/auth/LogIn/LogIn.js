@@ -25,8 +25,8 @@ function LogIn() {
       return false;
     }
 
-    const response = await localLogin(email, password);
-    if (response?.status === 200) {
+    const status = await localLogin(email, password);
+    if (status === 200) {
       toast.success(TOAST_MESSAGE.LOGIN_SUCCESS, TOAST_OPTION);
       navigate('/');
     }
