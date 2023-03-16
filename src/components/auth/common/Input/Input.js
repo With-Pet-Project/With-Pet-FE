@@ -36,7 +36,6 @@ function Input(
       min={min}
       required={isRequired}
       data-cy={cy}
-      required
     />
   );
 }

@@ -7,9 +7,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
-
-const PAGE_PER_SIZE = 4; // 한 페이지에 보여질 게시물 수
-const NAV_ITEM_SIZE = 5; // 보여질 버튼의 개수
+import { PAGE_PER_SIZE, NAV_ITEM_SIZE } from '../../constant';
 
 function PageNav({ currentPage, postLength, changeCurrentPage }) {
   const currentSet = Math.ceil(currentPage / NAV_ITEM_SIZE); // 현재 버튼 세트 번호
