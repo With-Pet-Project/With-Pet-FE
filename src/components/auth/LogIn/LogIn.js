@@ -40,17 +40,28 @@ function LogIn() {
         <label htmlFor="email" className="label">
           이메일
         </label>
-        <Input type="text" id="email" name="email" />
+        <Input type="text" id="email" name="email" cy="login-id-input" />
         <label htmlFor="password" className="label">
           비밀번호
         </label>
-        <Input type="password" id="password" name="password" />
+        <Input
+          type="password"
+          id="password"
+          name="password"
+          cy="login-pwd-input"
+        />
         <div className="btn-wrapper">
           <div className="signin-wrapper">
             <Link to="/confirm-password">비밀번호 재설정 하기</Link>
-            <Link to="/signup">회원가입</Link>
+            <Link to="/signup" data-cy="move-sign-up-btn">
+              회원가입
+            </Link>
           </div>
-          <button type="submit" className="login-btn button">
+          <button
+            type="submit"
+            className="login-btn button"
+            data-cy="login-submit"
+          >
             로그인
           </button>
         </div>

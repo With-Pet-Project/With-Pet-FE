@@ -16,6 +16,7 @@ function Input(
     onBlur,
     min,
     isRequired,
+    cy,
   },
   ref,
 ) {
@@ -34,6 +35,8 @@ function Input(
       onBlur={onBlur}
       min={min}
       required={isRequired}
+      data-cy={cy}
+      required
     />
   );
 }

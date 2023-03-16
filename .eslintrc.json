@@ -41,6 +41,7 @@
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-props-no-spreading": "off",
     "react/jsx-boolean-value": "off",
+    "react/no-unknown-property": "off",
     "jsx-a11y/label-has-associated-control": [
       2,
       {
