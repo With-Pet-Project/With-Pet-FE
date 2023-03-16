@@ -4,29 +4,31 @@ import { useState } from 'react';
 import { useUser } from 'components/auth/hooks/useUser';
 import PageNav from './PageNav/PageNav';
 import MyPost from './MyPost/MyPost';
-
-const PAGE_PER_SIZE = 4; // 한 페이지에 보여질 게시물 수
+import { PAGE_PER_SIZE } from '../constant';
 
 function MyPostSection() {
   const { articleList } = useUser();
   const [currentPage, setCurrentPage] = useState(1);
   const startPost = (currentPage - 1) * PAGE_PER_SIZE; // 시작 게시글 번호
   const endPost = startPost + PAGE_PER_SIZE;
+  const hasPost = Object.keys(articleList).length > 0;
+  const emptyPostHtml = <p>게시글이 없습니다.</p>;
 
   const changeCurrentPage = newPage => {
     setCurrentPage(prev => newPage);
   };
   const postList = () => {
+    if (!hasPost) return emptyPostHtml;
     const currentPost = articleList.filter(
       (article, index) => index >= startPost && index < endPost,
     );
-    return currentPost.map(({ articleId, content, createdTime }) => (
+    return currentPost.map(({ articleId, title, createdTime }) => (
       <Link to={`/community/${articleId}`}>
         <MyPost
           key={articleId}
           currentPage={currentPage}
           articleId={articleId}
-          content={content}
+          title={title}
           createdTime={createdTime}
         />
       </Link>

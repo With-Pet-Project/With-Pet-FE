@@ -33,8 +33,7 @@ function ResetPassword() {
     }
 
     updatePassword({ password, email });
-    // alert('변경되었습니다. 로그인하세요');
-    // navigate('/login');
+    navigate('/login');
     return true;
   };
 
@@ -53,7 +52,7 @@ function ResetPassword() {
           새 비밀번호
         </label>
         <Input
-          type="text"
+          type="password"
           id="password"
           name="password"
           isRequired={true}
@@ -64,7 +63,7 @@ function ResetPassword() {
           새 비밀번호 확인
         </label>
         <Input
-          type="text"
+          type="password"
           id="password-check"
           name="password-check"
           isRequired={true}
