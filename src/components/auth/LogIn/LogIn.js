@@ -4,6 +4,8 @@ import './LogIn.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { KAKAO_OAUTH_URL } from 'lib/KakaoAPIs/client';
 import { localLogin } from 'lib/APIs/login';
+import { toast } from 'react-toastify';
+import { TOAST_OPTION, TOAST_MESSAGE } from 'components/common/Toast/toast';
 import Container from '../common/Container/Container';
 import Input from '../common/Input/Input';
 
@@ -14,16 +16,21 @@ function LogIn() {
     event.preventDefault();
     const { value: email } = event.target.email;
     const { value: password } = event.target.password;
-    // 유효성 검사
+    if (!email) {
+      toast.error(TOAST_MESSAGE.DO_NOT_EMPTY_ID, TOAST_OPTION);
+      return false;
+    }
+    if (!password) {
+      toast.error(TOAST_MESSAGE.DO_NOT_EMPTY_PASSWORD, TOAST_OPTION);
+      return false;
+    }
+
     const response = await localLogin(email, password);
-    // auth.signin(email, password);
-
     if (response?.status === 200) {
-      // 토큰 처리
-      alert('로그인되었습니다.');
-
+      toast.success(TOAST_MESSAGE.LOGIN_SUCCESS, TOAST_OPTION);
       navigate('/');
     }
+    return true;
   };
 
   return (
@@ -33,17 +40,28 @@ function LogIn() {
         <label htmlFor="email" className="label">
           이메일
         </label>
-        <Input type="text" id="email" name="email" />
+        <Input type="text" id="email" name="email" cy="login-id-input" />
         <label htmlFor="password" className="label">
           비밀번호
         </label>
-        <Input type="password" id="password" name="password" />
+        <Input
+          type="password"
+          id="password"
+          name="password"
+          cy="login-pwd-input"
+        />
         <div className="btn-wrapper">
           <div className="signin-wrapper">
             <Link to="/confirm-password">비밀번호 재설정 하기</Link>
-            <Link to="/signup">회원가입</Link>
+            <Link to="/signup" data-cy="move-sign-up-btn">
+              회원가입
+            </Link>
           </div>
-          <button type="submit" className="login-btn button">
+          <button
+            type="submit"
+            className="login-btn button"
+            data-cy="login-submit"
+          >
             로그인
           </button>
         </div>

@@ -15,6 +15,8 @@ function Input(
     step,
     onBlur,
     min,
+    isRequired,
+    cy,
   },
   ref,
 ) {
@@ -32,6 +34,8 @@ function Input(
       placeholder={placeholder}
       onBlur={onBlur}
       min={min}
+      required={isRequired}
+      data-cy={cy}
       required
     />
   );

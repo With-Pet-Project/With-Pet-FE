@@ -1,3 +1,5 @@
 # .eslintignore
 public/**
 node_modules/**
+cypress.config.js
+cypress/**

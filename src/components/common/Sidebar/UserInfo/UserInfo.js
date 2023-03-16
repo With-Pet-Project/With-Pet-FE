@@ -17,14 +17,15 @@ function UserInfo({ user = null }) {
                 target.onerror = null;
                 target.src = FallbackImg;
               }}
+              data-cy="side-ber-profile-img"
             />
           </div>
           <div className="user-nickname-email">
             <div className="user-nickname">
-              <span>{user.nickName}</span>
+              <span data-cy="side-ber-nickname">{user.nickName}</span>
             </div>
             <div className="user-email">
-              <span>{user.email}</span>
+              <span data-cy="side-ber-id">{user.email}</span>
             </div>
           </div>
         </>
