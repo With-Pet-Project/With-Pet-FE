@@ -1,10 +1,6 @@
-// const userString = window.localStorage.getItem('user')
 /// <reference types="Cypress"/>
 
-const apiAccounts = `${Cypress.env(
-  'apiUrl',
-)}/pet/consumption?year=2023&month=03`;
-const apiPet = `${Cypress.env('apiUrl')}/pet`;
+const url = `${Cypress.env('apiUrl')}/pet`;
 
 const updateAccount = {};
 const addAccount = petId => {
@@ -37,7 +33,7 @@ describe('가계부 API', () => {
 
         cy.request({
           method: 'GET',
-          url: apiPet,
+          url,
           headers: {
             Authorization: `Bearer ${ctx.jwt}`,
           },
@@ -55,7 +51,25 @@ describe('가계부 API', () => {
     it('유저의 가게부 데이터를 가져온다.', function () {
       cy.request({
         method: 'GET',
-        url: apiAccounts,
+        url: `${url}/consumption?year=2023&month=03`,
+        headers: {
+          Authorization: `Bearer ${ctx.jwt}`,
+        },
+      }).then(response => {
+        expect(response.status).to.eq(200);
+        ctx.accounts = response.body.data;
+      });
+    });
+  });
+
+  context('POST /pet/${petId}/consumption', function () {
+    it('가계부를 추가한다.', function () {
+      const petId = ctx.pets[1].id;
+
+      cy.request({
+        method: 'POST',
+        url: `${url}/${petId}/consumption`,
+        body: addAccount(petId),
         headers: {
           Authorization: `Bearer ${ctx.jwt}`,
         },
@@ -65,21 +79,36 @@ describe('가계부 API', () => {
     });
   });
 
-  context('POST /pet/${petId}/consumption', function () {
-    it('가계부를 추가한다.', function () {
-      const petId = ctx.pets[0].id;
-
+  context('PUT /pet/${petId}/consumption/${accountId}', function () {
+    it('가계부 데이터를 수정한다.', function () {
+      const petId = ctx.pets[1].id;
+      const accountId = ctx.accounts[0].id;
       cy.request({
-        method: 'POST',
-        url: `/pet/${petId}/consumption`,
+        method: 'PUT',
+        url: `${url}/${petId}/consumption/${accountId}`,
         body: addAccount(petId),
         headers: {
           Authorization: `Bearer ${ctx.jwt}`,
         },
       }).then(response => {
         expect(response.status).to.eq(200);
-        // expect(response.body.account.id).to.be.a('string');
-        // expect(response.body.account.userId).to.eq(userId);
+      });
+    });
+  });
+
+  context('POST /pet/${petId}/consumption/${accountid}', function () {
+    it('가계부 데이터를 삭제한다.', function () {
+      const petId = ctx.pets[1].id;
+      const accountId = ctx.accounts[0].id;
+      cy.request({
+        method: 'DELETE',
+        url: `${url}/${petId}/consumption/${accountId}`,
+        body: addAccount(petId),
+        headers: {
+          Authorization: `Bearer ${ctx.jwt}`,
+        },
+      }).then(response => {
+        expect(response.status).to.eq(200);
       });
     });
   });
