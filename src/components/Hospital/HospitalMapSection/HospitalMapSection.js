@@ -51,6 +51,7 @@ function HospitalMapSection({
         overlay.setMap(map);
       };
       $fragment.appendChild($item);
+      overlay.setMap(null);
     });
 
     list.current.appendChild($fragment);
@@ -69,7 +70,6 @@ function HospitalMapSection({
       displayPlaces(data);
       // 페이지 번호를 표출합니다
       displayPagination(pagination, paginationContainer);
-      menu.current.classList.remove('hide');
     }
   }
 
@@ -112,6 +112,8 @@ function HospitalMapSection({
 
     servicePlace.keywordSearch(`${keyword}`, placesSearchCB, keywordMapOption);
     addMapEvent();
+
+    menu.current.classList.remove('hide');
   }, [servicePlace]);
 
   const handleChangeLocation = () => {

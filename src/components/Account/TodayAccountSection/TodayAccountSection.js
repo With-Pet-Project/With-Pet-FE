@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useConfirm from 'components/common/hooks/useConfirm';
 
 import ShowTodayAccount from './ShowTodayAccount/ShowTodayAccount';
@@ -21,6 +21,10 @@ function TodayAccountSection({ calenderData, yearMonth, selectPet }) {
       (acc, [key, _]) => acc + calenderData[key],
       0,
     ) || 0;
+
+  useEffect(() => {
+    setIsEdit(false);
+  }, [selectPet, yearMonth]);
 
   const onConfirm = () => {
     const { id } = calenderData;

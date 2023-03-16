@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: center;
   border-bottom: 1px solid #dbdbdb;
+  height: 323px;
 
   .myInfo {
     text-align: center;
@@ -49,16 +50,17 @@
     bottom: 80%;
     left: 47%;
     color: #878888;
+    bottom: 70%;
   }
 
   .edit-profile-btn {
-    bottom: 20%;
+    bottom: 10%;
     left: 46%;
     color: $fontColor-black;
   }
 
   .edit-pet-btn {
-    bottom: 17%;
+    bottom: 5%;
     left: 47.5%;
     color: $fontColor-black;
   }

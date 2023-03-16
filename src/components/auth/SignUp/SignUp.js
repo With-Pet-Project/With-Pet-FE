@@ -1,10 +1,12 @@
+/* eslint-disable react/jsx-boolean-value */
 /* eslint-disable consistent-return */
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ERROR_MESSAGE } from 'lib/constants/errorMessage';
 import { signup } from 'lib/APIs/signup';
 import { isValidateNickName } from 'lib/APIs/profile';
-
+import { toast } from 'react-toastify';
+import { TOAST_OPTION } from 'components/common/Toast/toast';
 import Input from '../common/Input/Input';
 import Container from '../common/Container/Container';
 import '../common/auth.scss';
@@ -30,31 +32,31 @@ function SignUp() {
     const { value: password } = passwordRef.current;
     const { value: nickname } = nicknameRef.current;
 
-    console.log(email);
-    console.log(password);
-    console.log(nickname);
-
-    // 비밀번호와 비밀번호 확인과 일치하는지 검사
-    if (!validPwd) {
-      alert(VALIDATION.NOT_CORRECT_PASSWORD);
-      return false;
-    }
+    // console.log(email);
+    // console.log(password);
+    // console.log(nickname);
 
     // 이메일 유효성 검사
     if (!CHECK_EMAIL.test(email)) {
-      alert(VALIDATION.MALFUNCTION_ID);
+      toast.error(VALIDATION.MALFUNCTION_ID, TOAST_OPTION);
+      return false;
+    }
+
+    // 비밀번호와 비밀번호 확인과 일치하는지 검사
+    if (!validPwd) {
+      toast.error(VALIDATION.NOT_CORRECT_PASSWORD, TOAST_OPTION);
       return false;
     }
 
     // 비밀번호 유효성 검사 (8글자 이상 문자 숫자 특수문자 포함)
     if (!CHECK_PASSWORD.test(password)) {
-      alert(VALIDATION.MALFUNCTION_PWD);
+      toast.error(VALIDATION.MALFUNCTION_PWD, TOAST_OPTION);
       return false;
     }
 
     // 닉네임 존재하는지 검사
     if (!validNickname) {
-      alert(VALIDATION.NICKNAME_EXIST);
+      toast.error(VALIDATION.NICKNAME_EXIST, TOAST_OPTION);
       return false;
     }
     return true;
@@ -107,6 +109,7 @@ function SignUp() {
           name="email"
           ref={emailRef}
           placeholder="이메일 형식으로 입력해주세요."
+          isRequired={true}
           cy="sign-up-id"
         />
         <label htmlFor="password" className="password">
@@ -118,6 +121,7 @@ function SignUp() {
           name="password"
           placeholder="8자이상의 문자, 숫자, 특수문자를 입력해주세요."
           ref={passwordRef}
+          isRequired={true}
           onChange={isPasswordValid}
           cy="sign-up-pwd"
         />
@@ -128,6 +132,7 @@ function SignUp() {
           type="password"
           id="password-check"
           name="password-check"
+          isRequired={true}
           ref={passwordCheckRef}
           onChange={isPasswordValid}
           cy="sign-up-pwd-check"
@@ -145,6 +150,7 @@ function SignUp() {
           id="nickname"
           name="nickname"
           ref={nicknameRef}
+          isRequired={true}
           onBlur={isNicknameValid}
           cy="sign-up-nickname"
         />
