@@ -15,6 +15,7 @@ function DateBox({ id, day, handleSelectDate, selectDate, data = {} }) {
       tabIndex={0}
       className="item"
       onClick={() => handleSelectDate(id)}
+      data-cy="calender-date"
     >
       <div
         className={`day ${selectDate === id ? 'hasDataFont' : ''} ${

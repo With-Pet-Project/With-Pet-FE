@@ -28,6 +28,10 @@ Cypress.Commands.add('$', selector => {
   return cy.get(`[data-cy=${selector}]`);
 });
 
+Cypress.Commands.add('getAll', selector => {
+  return cy.get(`[data-cy*=${selector}]`);
+});
+
 Cypress.Commands.add(
   'database',
   (operation, entity, query, logTask = false) => {

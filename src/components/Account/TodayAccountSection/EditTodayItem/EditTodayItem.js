@@ -14,6 +14,7 @@ function EditTodayItem({ id, name, price = 0, darkColor, onChange }) {
           onChange={event => onChange(event, id)}
           className="today-input"
           placeholder={price && getComma(price)}
+          data-cy="account-edit-item"
         />
         <span className="unit">원</span>
       </div>

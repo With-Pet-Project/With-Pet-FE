@@ -21,7 +21,9 @@ function ShowTodayAccount({ data, todayTotal }) {
       <div className="today-total">
         <span className="total-title">전체 소비</span>
         <div className="total-price">
-          <span className="price">{getComma(todayTotal)}</span>
+          <span className="price" data-cy="account-today-total">
+            {getComma(todayTotal)}
+          </span>
           <span className="unit">원</span>
         </div>
       </div>

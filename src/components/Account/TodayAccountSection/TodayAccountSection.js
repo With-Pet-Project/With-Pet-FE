@@ -54,7 +54,7 @@ function TodayAccountSection({ calenderData, yearMonth, selectPet }) {
 
   const btnHtml = isEdit ? (
     <>
-      <button type="button" onClick={handleDelete}>
+      <button type="button" onClick={handleDelete} data-cy="account-delete-btn">
         모두삭제
       </button>
       <button
@@ -62,12 +62,17 @@ function TodayAccountSection({ calenderData, yearMonth, selectPet }) {
         type="submit"
         form="edit-account-form"
         onClick={handleEditSubmit}
+        data-cy="account-edit-submit-btn"
       >
         완료
       </button>
     </>
   ) : (
-    <button type="button" onClick={() => setIsEdit(true)}>
+    <button
+      type="button"
+      data-cy="account-edit-btn"
+      onClick={() => setIsEdit(true)}
+    >
       편집
     </button>
   );

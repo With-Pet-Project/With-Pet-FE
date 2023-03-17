@@ -13,7 +13,7 @@ export const fetchAccount = async (year, month, petsId) => {
 
   // console.log(JSON.stringify(data.data, null, '\t'));
   const result = makeAccountData(data.data, year, month, petsId);
-  console.log(JSON.stringify(result, null, '\t'));
+  // console.log(JSON.stringify(result, null, '\t'));
   return result;
 };
 
