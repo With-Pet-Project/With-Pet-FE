@@ -1,8 +1,10 @@
 import './index.scss';
 import Logo from 'components/common/Logo/Logo';
 import title from 'lib/assets/images/landing/section/section01/title.png';
+import titleLow from 'lib/assets/images/landing/section/section01/title_low.png';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from 'components/auth/hooks/useUser';
+import ProgressiveImg from 'components/common/ProgressiveImg/ProgressiveImg';
 import Navigation from './Navigation/Navigation';
 
 function FirstSection({
@@ -23,7 +25,11 @@ function FirstSection({
           <Logo />
         </div>
         <div className="landing-first-section-title-text">
-          <img src={title} alt="타이틀 텍스트 이미지" />
+          <ProgressiveImg
+            imgSrc={title}
+            placeholderSrc={titleLow}
+            alt="타이틀 텍스트 이미지"
+          />
           <h2>소중한 반려견을 위한 건강 다이어리</h2>
         </div>
         <div className="landing-first-section-login-btn">

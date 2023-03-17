@@ -27,7 +27,7 @@ function ArticleList() {
                 </li>
               ))
             ) : (
-              <li>
+              <li key="none" className="no-result">
                 <span>검색 결과가 없습니다.</span>
               </li>
             );

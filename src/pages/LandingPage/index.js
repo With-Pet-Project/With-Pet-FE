@@ -7,6 +7,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 
 import Main from 'components/Landing/Main';
 import Footer from 'components/Landing/Footer';
+import Loading from 'components/common/Loading/Loading';
 
 const Wrapper = styled.div`
   flex-grow: 1;
@@ -18,7 +19,7 @@ function LandingPage() {
   return (
     <Wrapper>
       <main>
-        <Suspense>
+        <Suspense fallback={<Loading />}>
           <ErrorBoundary FallbackComponent={ErrorFallback} onReset={reset}>
             <Main />
           </ErrorBoundary>

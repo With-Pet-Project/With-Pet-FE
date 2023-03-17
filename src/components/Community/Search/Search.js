@@ -115,6 +115,7 @@ function Search() {
           onFocus={isFocus}
           value={value}
           onChange={handleChange}
+          aria-label="검색어 입력창"
         />
         {!inputFocus && <FontAwesomeIcon icon={faMagnifyingGlass} />}
         {inputFocus && (

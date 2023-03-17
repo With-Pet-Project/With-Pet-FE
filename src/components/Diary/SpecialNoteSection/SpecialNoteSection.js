@@ -56,6 +56,7 @@ function SpecialNoteSection() {
           {!edit ? <span>편집</span> : <span>저장</span>}
         </EditButton>
       </div>
+      <p>오늘의 특이사항을 기록해주세요!</p>
       <TextArea
         className="SpecialNote-textArea"
         disabled={!edit}

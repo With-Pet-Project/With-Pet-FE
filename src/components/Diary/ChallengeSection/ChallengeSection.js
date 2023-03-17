@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-expressions */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
+import Loading from 'components/common/Loading/Loading';
 import {
   getMonthYearDetails,
   getNextYearMonth,
@@ -47,12 +48,14 @@ function ChallengeSection() {
         selectDate={selectDate.dateTime}
         data={[]}
       />
-      <ErrorBoundary
-        FallbackComponent={ModalErrorFallback}
-        onReset={() => window.location.reload()}
-      >
-        <Challenge />
-      </ErrorBoundary>
+      <Suspense fallback={<Loading />}>
+        <ErrorBoundary
+          FallbackComponent={ModalErrorFallback}
+          onReset={() => window.location.reload()}
+        >
+          <Challenge />
+        </ErrorBoundary>
+      </Suspense>
     </section>
   );
 }

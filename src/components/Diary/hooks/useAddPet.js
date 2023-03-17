@@ -12,7 +12,7 @@ export function useAddPet() {
 
   const { PetInfoList } = QUERY_KEY;
 
-  const key = [PetInfoList, jwt_token];
+  const key = [PetInfoList];
 
   const { mutate } = useMutation({
     mutationFn: ({ name, initWeight, birthday }) =>

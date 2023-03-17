@@ -18,8 +18,8 @@ export function useRemoveChallenge() {
   const month = Number(searchParams.get('month'));
   const day = Number(searchParams.get('day'));
 
-  const dailyKey = [QUERY_KEY.DailyChallenge, jwt_token];
-  const weeklyKey = [QUERY_KEY.WeeklyChallenge, jwt_token];
+  const dailyKey = [QUERY_KEY.DailyChallenge];
+  const weeklyKey = [QUERY_KEY.WeeklyChallenge];
 
   // jwt, petId, challengeId
   const { mutate } = useMutation({
