@@ -30,6 +30,7 @@ function LogIn() {
       toast.success(TOAST_MESSAGE.LOGIN_SUCCESS, TOAST_OPTION);
       navigate('/');
     }
+
     return true;
   };
 

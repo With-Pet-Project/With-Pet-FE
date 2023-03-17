@@ -11,13 +11,15 @@ import { useEditHealthInfo } from '../hooks/useEditHealthInfo';
 import { useEditDiary } from '../hooks/useEditDiary';
 
 const EditButton = styled.button`
-  color: ${({ edit }) => (edit ? '$backgroundYellow' : '#000 !important')};
+  color: ${({ edit }) =>
+    edit ? `${vars.backgroundYellow}` : '#000 !important'};
 `;
 
 const TextArea = styled.textarea`
   background-color: ${({ edit }) => (edit ? '#fff' : '#f2f2f2')};
   padding: 5px;
-  border: ${({ edit }) => (edit ? `1px solid ${vars.backgroundYellow}` : '0')};
+  border: ${({ edit }) =>
+    edit ? `1px solid ${vars.backgroundYellow}` : '0'} !important;
 `;
 
 function SpecialNoteSection() {

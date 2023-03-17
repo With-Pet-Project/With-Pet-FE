@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { useEffect, Suspense } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useOAuth } from 'components/auth/hooks/useOAuth';
 import { ErrorBoundary } from 'react-error-boundary';
