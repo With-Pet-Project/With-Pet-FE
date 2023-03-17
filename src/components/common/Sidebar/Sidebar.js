@@ -3,7 +3,7 @@ import './Sidebar.scss';
 import { vars } from 'lib/styles/vars';
 import styled from 'styled-components';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useUser } from 'components/auth/hooks/useUser';
 import { useLogout } from 'components/auth/hooks/useLogout';
 import Menu from './Menu';
@@ -42,8 +42,8 @@ const Navigation = styled.div`
 
 function Sidebar() {
   // const { open, isOpen, targetRef } = useOutsideDetection();
-  const user = useUser();
   const { logout } = useLogout();
+  const user = useUser();
   const [open, setOpen] = useState(false);
   const isMouseOver = () => setOpen(true);
   const isMouseLeave = () => setOpen(false);

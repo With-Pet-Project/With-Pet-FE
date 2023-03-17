@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 // Domain =  with-pet-be.org
 // export const BASE_URL = 'http://15.165.92.156:8080';
 export const BASE_URL = process.env.REACT_APP_BASE_URL; // 임시 서버

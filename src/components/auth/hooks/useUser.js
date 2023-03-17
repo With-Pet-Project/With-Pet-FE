@@ -14,7 +14,7 @@ export function useUser() {
 
   const { data: userInfo } = useQuery({
     queryKey: [QUERY_KEY.UserInfo],
-    queryFn: () => getUserInfo(jwt_token),
+    queryFn: () => getUserInfo(),
     onError: () => {
       toast.error(TOAST_MESSAGE.LOGIN_FAIL, TOAST_OPTION);
       logout();
