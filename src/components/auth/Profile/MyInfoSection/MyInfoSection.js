@@ -37,14 +37,18 @@ function MyInfoSection() {
               target.onerror = null;
               target.src = FallbackImg;
             }}
+            data-cy="profile-img"
           />
         </div>
-        <p className="nickName">{user.nickName}</p>
+        <p className="nickName" data-cy="profile-nickname">
+          {user.nickName}
+        </p>
       </div>
       <button
         type="button"
         className="Withdrawal-btn btn"
         onClick={handleDeleteUser}
+        data-cy="delete-user-btn"
       >
         회원탈퇴
       </button>
@@ -52,6 +56,7 @@ function MyInfoSection() {
         type="button"
         className="edit-profile-btn btn"
         onClick={handleEditProfile}
+        data-cy="mypage-edit-profile"
       >
         프로필 편집
       </button>
@@ -59,6 +64,7 @@ function MyInfoSection() {
         type="button"
         className="edit-pet-btn btn"
         onClick={handleEditPet}
+        data-cy="mypage-edit-pet"
       >
         펫 편집
       </button>

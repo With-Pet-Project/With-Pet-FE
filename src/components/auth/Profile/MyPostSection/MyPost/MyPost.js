@@ -3,7 +3,7 @@ function MyPost({ articleId, title, createdTime }) {
     `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
 
   return (
-    <li className="mypost" key={articleId}>
+    <li className="mypost" key={articleId} data-cy="mypost-item">
       <span className="date">{convertDate(new Date(createdTime))}</span>
       <p className="content">{title}</p>
     </li>
