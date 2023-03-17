@@ -26,7 +26,7 @@ CLIENT.interceptors.response.use(
       try {
         const response = await CLIENT.get(
           // 토큰만 재요청하는 api
-          '/access',
+          '/reissue',
           {},
           { withCredentials: true }, // 쿠키를 주고 받기 위해 withCredentials 설정
         );
