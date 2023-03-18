@@ -75,7 +75,7 @@ describe('가계부 테스트', () => {
   //   cy.get('.Toastify').should('have.text', TOAST_MESSAGE.UPDATE_SUCCESS);
   // });
 
-  // 펫 수정이 가능하다
+  it('펫 수정이 가능하다', () => {});
   // 펫 추가가 가능하다
   // 펫 삭제가 가능하다
 });
