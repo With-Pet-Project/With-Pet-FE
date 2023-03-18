@@ -24,7 +24,6 @@ export const postCreateDiary = async (
       },
     },
   );
-
   return response;
 };
 

@@ -21,7 +21,7 @@ export function useDiary() {
   const [diaryOfDay, setDiaryOfDay] = useState();
 
   const { data } = useQuery({
-    queryKey: [Diary, jwt_token, petId, year, month],
+    queryKey: [Diary, petId, year, month],
     queryFn: () => getReadMonthlyDiary(jwt_token, petId, year, month),
     onError: () => {
       toast.error(TOAST_MESSAGE.ADD_FAIL, TOAST_OPTION);

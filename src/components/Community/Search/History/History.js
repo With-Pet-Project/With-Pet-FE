@@ -8,7 +8,7 @@ function History({ history, clickHistory, removeHistory }) {
         <span>{history}</span>
       </button>
       <button type="button" onClick={() => removeHistory(history)}>
-        <FontAwesomeIcon icon={faCircleXmark} />
+        <FontAwesomeIcon icon={faCircleXmark} title="X button" />
       </button>
     </div>
   );

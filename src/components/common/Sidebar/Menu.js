@@ -11,7 +11,7 @@ function Menu({ to, menuName, opened, onClick = f => f, children }) {
         <NavLink
           to={to}
           style={({ isActive }) => (isActive ? activeStyle : undefined)}
-          onClick={onClick}
+          // onClick={onClick}
         >
           <div>
             <div className="side-navbar-menu-img">{children}</div>

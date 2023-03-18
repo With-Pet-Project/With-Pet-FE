@@ -5,7 +5,7 @@ import Input from '../../../common/Input/Input';
 import './AddPet.scss';
 
 function AddPet() {
-  const addPet = useAddPet();
+  const { mutate: addPet } = useAddPet();
 
   const handleSubmit = event => {
     event.preventDefault();

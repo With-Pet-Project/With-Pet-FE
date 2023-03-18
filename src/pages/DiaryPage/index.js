@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import DiaryHeader from 'components/Diary/DiaryHeader/DiaryHeader';
 import DiaryMain from 'components/Diary/DiaryMain/DiaryMain';
 import { Suspense } from 'react';
+import Loading from 'components/common/Loading/Loading';
 import topLeft from 'lib/assets/images/diary/bg_bg_white.png';
 import bottomRight from 'lib/assets/images/diary/bg_sm_white.png';
 
@@ -17,7 +18,7 @@ const Background = styled.div`
 function DiaryPage() {
   return (
     <main>
-      <Suspense>
+      <Suspense fallback={<Loading />}>
         <Background className="diary-background">
           <DiaryHeader />
           <DiaryMain />

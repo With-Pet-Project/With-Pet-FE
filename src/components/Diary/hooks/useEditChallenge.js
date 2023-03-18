@@ -19,23 +19,9 @@ export function useEditChallenge() {
   const month = Number(searchParams.get('month'));
   const day = Number(searchParams.get('day'));
 
-  const dailyKey = [
-    QUERY_KEY.DailyChallenge,
-    jwt_token,
-    year,
-    month,
-    day,
-    petId,
-  ];
+  const dailyKey = [QUERY_KEY.DailyChallenge, year, month, day, petId];
 
-  const weeklyKey = [
-    QUERY_KEY.WeeklyChallenge,
-    jwt_token,
-    petId,
-    year,
-    month,
-    day,
-  ];
+  const weeklyKey = [QUERY_KEY.WeeklyChallenge, petId, year, month, day];
 
   const { mutate } = useMutation({
     mutationFn: ({ title, targetCnt, challengeId }) =>

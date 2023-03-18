@@ -3,18 +3,18 @@ import './Sidebar.scss';
 import { vars } from 'lib/styles/vars';
 import styled from 'styled-components';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useUser } from 'components/auth/hooks/useUser';
 import { useLogout } from 'components/auth/hooks/useLogout';
 import Menu from './Menu';
 import Hamburger from './Hamburger';
-import Home from './img/Home';
-import Diary from './img/Diary';
-import Community from './img/Community';
-import Account from './img/Account';
-import Hospital from './img/Hospital';
-import Profile from './img/Profile';
-import Logout from './img/Logout';
+import Home from './svg/Home';
+import Diary from './svg/Diary';
+import Community from './svg/Community';
+import Account from './svg/Account';
+import Hospital from './svg/Hospital';
+import Profile from './svg/Profile';
+import Logout from './svg/Logout';
 
 import Logo from '../Logo/Logo';
 import UserInfo from './UserInfo/UserInfo';
@@ -42,8 +42,8 @@ const Navigation = styled.div`
 
 function Sidebar() {
   // const { open, isOpen, targetRef } = useOutsideDetection();
-  const user = useUser();
   const { logout } = useLogout();
+  const user = useUser();
   const [open, setOpen] = useState(false);
   const isMouseOver = () => setOpen(true);
   const isMouseLeave = () => setOpen(false);
@@ -51,6 +51,7 @@ function Sidebar() {
   return (
     <NavContainer className="side-navbar-container" opened={open}>
       <InnerContainer
+        data-testid="sidebar"
         className="side-navbar-inner-container"
         opened={open}
         onMouseOver={isMouseOver}

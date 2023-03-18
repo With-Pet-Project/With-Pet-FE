@@ -17,6 +17,7 @@ export const queryKeys = createQueryKeyStore({
 
 export const QUERY_KEY = {
   KakaoOAuth: 'kakaoOAuth',
+  LocalLogin: 'localLogin',
   UserInfo: 'userInfo',
   PetInfoList: 'petInfoList',
   PetInfoById: 'petInfoById',

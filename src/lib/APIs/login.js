@@ -11,14 +11,12 @@ export const getKakaoUserLoginToken = async code => {
 };
 
 // 유저 정보 조회
-export const getUserInfo = async jwt => {
+export const getUserInfo = async () => {
   const response = await CLIENT.get(`/mypage`, {
     headers: {
-      Authorization: `Bearer ${jwt}`,
+      Authorization: `Bearer ${localStorage.getItem('jwt_token')}`,
     },
   });
-  console.log(response);
-
   return response;
 };
 
@@ -41,8 +39,8 @@ export const localLogin = async (email, password) => {
   });
 
   const accessToken = response?.data?.data;
-  // console.log(accessToken);
+  console.log(accessToken);
   localStorage.setItem('jwt_token', accessToken);
 
-  return response?.status;
+  return response.status;
 };

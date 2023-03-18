@@ -1,6 +1,4 @@
 import './PetList.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useRemovePet } from 'components/Diary/hooks/useRemovePet';
 import Pet from './Pet';
 
