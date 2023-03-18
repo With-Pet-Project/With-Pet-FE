@@ -43,12 +43,14 @@ function EditProfile() {
     if (isValidNickName === null) return null;
     if (isValidNickName === false)
       return (
-        <span className="nickname-unavailable">
+        <span className="nickname-unavailable" data-cy="nickname-unavailable">
           사용할 수 없는 닉네임입니다.
         </span>
       );
     return (
-      <span className="nickname-available">사용가능한 닉네임 입니다.</span>
+      <span className="nickname-available" data-cy="nickname-available">
+        사용가능한 닉네임 입니다.
+      </span>
     );
   };
 
@@ -77,6 +79,7 @@ function EditProfile() {
             type="button"
             className="image-submit-btn"
             onClick={handleFileOnClick}
+            data-cy="profile-img-submit"
           >
             등록
           </button>
@@ -90,13 +93,16 @@ function EditProfile() {
           placeholder="닉네임을 입력하세요"
           onBlur={validateNickName}
           isRequired={false}
+          cy="profile-edit-nickname"
         />
         {nickNameHtml()}
         <div className="btn-wrapper">
           <button type="button" onClick={() => closeModal(EditProfile)}>
             취소
           </button>
-          <button type="submit">확인</button>
+          <button type="submit" data-cy="profile-edit-submit">
+            확인
+          </button>
         </div>
       </form>
     </div>

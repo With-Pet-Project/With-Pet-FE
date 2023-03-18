@@ -62,7 +62,7 @@ function Account() {
         selectPet={selectPet}
       />
 
-      <FloatButton handleOnClick={openAddAccount}>
+      <FloatButton handleOnClick={openAddAccount} cy="account-add-btn">
         <FontAwesomeIcon icon={faPlus} size="1x" />
       </FloatButton>
     </section>
