@@ -48,7 +48,9 @@ function EditProfile() {
         </span>
       );
     return (
-      <span className="nickname-available">사용가능한 닉네임 입니다.</span>
+      <span className="nickname-available" data-cy="nickname-available">
+        사용가능한 닉네임 입니다.
+      </span>
     );
   };
 

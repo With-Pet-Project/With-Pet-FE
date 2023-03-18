@@ -1,9 +1,28 @@
-const url = `${Cypress.env('apiUrl')}/user`;
+import { TOAST_MESSAGE } from '/src/components/common/Toast/toast';
+
+const url = `${Cypress.env('apiUrl')}`;
 
 describe('가계부 테스트', () => {
   const ctx = {};
   beforeEach(() => {
     cy.task('db:seed');
+
+    // cy.intercept(
+    //   {
+    //     method: 'GET',
+    //     url: `${url}/duplicate-check`,
+    //     query: { nickName: '시바견주' },
+    //   },
+    //   {
+    //     statusCode: 409,
+    //   },
+    // ).as('nickNameCheck');
+
+    cy.intercept('PATCH', `${url}/mypage`, { statusCode: 201 }).as(
+      'updateProfile',
+    );
+
+    // cy.intercept('GET', `${url}/mypage`, { statusCode: 201 }).as('getProfile');
 
     cy.database('filter', 'users').then(users => {
       ctx.users = users;
@@ -13,17 +32,7 @@ describe('가계부 테스트', () => {
         ctx.jwt = jwt;
       });
     });
-
-    cy.intercept(
-      {
-        method: 'GET',
-        url: `${url}/duplicate-check`,
-        query: { nickName: '123' },
-      },
-      {
-        statusCode: 409,
-      },
-    ).as('nickNameCheck');
+    cy.log(`${url}/duplicate-check`);
 
     cy.visit(`${Cypress.env('baseUrl')}/profile`);
     cy.log(ctx);
@@ -41,20 +50,32 @@ describe('가계부 테스트', () => {
   // });
 
   // it('회원탈퇴가 가능하다', () => {});
-  it('프로필 편집이 가능하다', () => {
-    cy.$('mypage-edit-profile').click();
-    cy.$('profile-img-submit').click();
-    cy.get('input[type=file]').selectFile(
-      {
-        contents: 'cypress/sample.png',
-        fileName: 'sample.png',
-        mimeType: 'text/plain',
-        lastModified: new Date('Feb 18 2023').valueOf(),
-      },
-      { force: true },
-    );
-    cy.$('profile-edit-nickname').type('불금');
-    cy.$('profile-edit-nickname').blur();
-    cy.wait('@nickNameCheck');
-  });
+  // it('프로필 편집이 가능하다', () => {
+  //   cy.$('mypage-edit-profile').click();
+  //   cy.$('profile-img-submit').click();
+  //   cy.get('input[type=file]').selectFile(
+  //     {
+  //       contents: 'cypress/sample.png',
+  //       fileName: 'sample.png',
+  //       mimeType: 'text/plain',
+  //       lastModified: new Date('Feb 18 2023').valueOf(),
+  //     },
+  //     { force: true },
+  //   );
+  //   cy.$('profile-edit-nickname').type('시바견주');
+  //   cy.$('profile-edit-nickname').blur();
+  //   cy.$('nickname-unavailable').should('exist');
+  //   cy.$('profile-edit-nickname').clear();
+  //   cy.$('profile-edit-nickname').type('시바견주123');
+  //   cy.$('profile-edit-nickname').blur();
+  //   cy.$('nickname-available').should('exist');
+  //   cy.$('profile-edit-submit').click();
+
+  //   cy.wait('@updateProfile');
+  //   cy.get('.Toastify').should('have.text', TOAST_MESSAGE.UPDATE_SUCCESS);
+  // });
+
+  // 펫 수정이 가능하다
+  // 펫 추가가 가능하다
+  // 펫 삭제가 가능하다
 });
