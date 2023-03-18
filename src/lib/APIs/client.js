@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+
 import axios from 'axios';
 // Domain =  with-pet-be.org
 // export const BASE_URL = 'http://15.165.92.156:8080';
@@ -13,6 +15,7 @@ CLIENT.interceptors.response.use(
     return response;
   },
   async error => {
+    console.log('client axios error');
     console.log(error);
     const originalRequest = error.config;
     if (
@@ -23,18 +26,24 @@ CLIENT.interceptors.response.use(
       originalRequest.retry = true;
       // CLIENT.defaults.headers.common.Authorization = null;
       try {
+        console.log('토큰을 재요청합니다');
         const response = await CLIENT.get(
           // 토큰만 재요청하는 api
           '/reissue',
           {},
           { withCredentials: true }, // 쿠키를 주고 받기 위해 withCredentials 설정
         );
+        console.log(response);
         const newAccessToken = response.data.data;
+        console.log('새로운 access token', newAccessToken);
         localStorage.removeItem('jwt_token');
         localStorage.setItem('jwt_token', newAccessToken);
         // CLIENT.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`; // 다시 요청하기 위해 헤더에 추가
+        console.log(originalRequest);
+
         return CLIENT(originalRequest); // 다시 요청
+        // 갑자기 /reissue가 호출
       } catch (err) {
         console.log('~~~~갱신 실패~~~~~~~', err);
       }

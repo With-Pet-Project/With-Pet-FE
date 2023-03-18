@@ -7,7 +7,6 @@ import ShowPet from './ShowPet/ShowPet';
 function PetSetting() {
   const { closeModal } = useModal();
   const pets = usePet();
-  console.log(pets);
 
   const handleCloseModal = () => {
     closeModal(PetSetting);
