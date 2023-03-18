@@ -43,8 +43,6 @@ describe('가계부 API', () => {
         });
       });
     });
-
-    // 펫 목록 가져오기 (추가할때 필요)
   });
 
   context('GET /pet/consumption?year=${year}&month=${month}', function () {
@@ -83,6 +81,7 @@ describe('가계부 API', () => {
     it('가계부 데이터를 수정한다.', function () {
       const petId = ctx.pets[1].id;
       const accountId = ctx.accounts[0].id;
+      cy.log(ctx);
       cy.request({
         method: 'PUT',
         url: `${url}/${petId}/consumption/${accountId}`,
