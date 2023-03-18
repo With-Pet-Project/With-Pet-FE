@@ -22,6 +22,7 @@ function AddPet() {
         name="petName"
         className="pet-name"
         placeholder="펫 이름"
+        cy="mypage-add-pet-input"
       />
       <Input
         type="number"
@@ -30,14 +31,20 @@ function AddPet() {
         className="pet-weight"
         placeholder="펫 무게"
         min="0.1"
+        cy="mypage-add-pet-input"
       />
       <Input
         type="date"
         name="petBday"
         className="pet-bday"
         placeholder="펫 생일"
+        cy="mypage-add-pet-input"
       />
-      <button type="submit" className="add-pet-submit">
+      <button
+        type="submit"
+        className="add-pet-submit"
+        data-cy="mypage-add-pet-submit"
+      >
         <FontAwesomeIcon icon={faPlus} size="1x" />
       </button>
     </form>
