@@ -15,7 +15,6 @@ const updateUser = async (jwt, newProfile) => {
       Authorization: `Bearer ${jwt}`,
     },
   });
-
   return response;
 };
 

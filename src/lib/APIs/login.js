@@ -17,6 +17,7 @@ export const getUserInfo = async () => {
       Authorization: `Bearer ${localStorage.getItem('jwt_token')}`,
     },
   });
+  console.log(response);
   return response;
 };
 

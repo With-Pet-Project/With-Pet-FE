@@ -28,10 +28,6 @@ Cypress.Commands.add('$', selector => {
   return cy.get(`[data-cy=${selector}]`);
 });
 
-Cypress.Commands.add('getAll', selector => {
-  return cy.get(`[data-cy*=${selector}]`);
-});
-
 Cypress.Commands.add(
   'database',
   (operation, entity, query, logTask = false) => {
@@ -68,16 +64,7 @@ Cypress.Commands.add('login', (username, password) => {
     autoEnd: false,
   });
 
-  cy.intercept('POST', '/user/login', req => {
-    // req.reply({
-    //   statusCode: 200, // default
-    // });
-    // req.continue(res => {
-    // const jwt = res.body.data;
-    // window.localStorage.setItem('jwt_token', jwt);
-    // });
-  }).as('loginUser');
-
+  cy.intercept('POST', '/user/login').as('loginUser');
   log.snapshot('before');
 
   cy.$('login-id-input').type(username);

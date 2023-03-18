@@ -40,23 +40,32 @@ function EditPet({ setIsEdit, pet }) {
           placeholder={pet.name}
           className="pet-name"
           name="petName"
+          cy="mypost-edit-pet-item"
         />
         <Input
           type="text"
           placeholder={`${pet.initWeight}kg`}
           className="pet-weight"
           name="petWeight"
+          cy="mypost-edit-pet-item"
         />
         <Input
           type="text"
           placeholder={pet.birthday}
           className="pet-bday"
           name="petBday"
+          cy="mypost-edit-pet-item"
         />
-        <button type="button" onClick={handleDelete}>
+        <button
+          type="button"
+          onClick={handleDelete}
+          data-cy="mypost-delete-pet-submit"
+        >
           삭제
         </button>
-        <button type="submit">완료</button>
+        <button type="submit" data-cy="mypost-edit-pet-submit">
+          완료
+        </button>
       </form>
     </li>
   );
