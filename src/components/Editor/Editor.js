@@ -71,7 +71,6 @@ function Editor() {
       ...i,
       existence: content.includes(i.content),
     }));
-    console.log(imgUrl);
     // eslint-disable-next-line no-unused-expressions
     articleDetail
       ? editArticleMutate({ title, content, imgUrl })

@@ -32,10 +32,6 @@ function SignUp() {
     const { value: password } = passwordRef.current;
     const { value: nickname } = nicknameRef.current;
 
-    // console.log(email);
-    // console.log(password);
-    // console.log(nickname);
-
     // 이메일 유효성 검사
     if (!CHECK_EMAIL.test(email)) {
       toast.error(VALIDATION.MALFUNCTION_ID, TOAST_OPTION);

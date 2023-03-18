@@ -16,7 +16,7 @@ export const signup = async (email, password, nickname) => {
       },
     },
   ).catch(err => {
-    console.log(err);
+    console.error(err);
     toast.error(err.response.data.message, TOAST_OPTION);
   });
 
