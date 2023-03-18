@@ -60,55 +60,55 @@
 //     });
 //   });
 
-  // context('POST /pet/${petId}/consumption', function () {
-  //   it('가계부를 추가한다.', function () {
-  //     const petId = ctx.pets[1].id;
+// context('POST /pet/${petId}/consumption', function () {
+//   it('가계부를 추가한다.', function () {
+//     const petId = ctx.pets[1].id;
 
-  //     cy.request({
-  //       method: 'POST',
-  //       url: `${url}/${petId}/consumption`,
-  //       body: addAccount(petId),
-  //       headers: {
-  //         Authorization: `Bearer ${ctx.jwt}`,
-  //       },
-  //     }).then(response => {
-  //       expect(response.status).to.eq(200);
-  //     });
-  //   });
-  // });
+//     cy.request({
+//       method: 'POST',
+//       url: `${url}/${petId}/consumption`,
+//       body: addAccount(petId),
+//       headers: {
+//         Authorization: `Bearer ${ctx.jwt}`,
+//       },
+//     }).then(response => {
+//       expect(response.status).to.eq(200);
+//     });
+//   });
+// });
 
-  // context('PUT /pet/${petId}/consumption/${accountId}', function () {
-  //   it('가계부 데이터를 수정한다.', function () {
-  //     const petId = ctx.pets[1].id;
-  //     const accountId = ctx.accounts[0].id;
-  //     cy.log(ctx);
-  //     cy.request({
-  //       method: 'PUT',
-  //       url: `${url}/${petId}/consumption/${accountId}`,
-  //       body: addAccount(petId),
-  //       headers: {
-  //         Authorization: `Bearer ${ctx.jwt}`,
-  //       },
-  //     }).then(response => {
-  //       expect(response.status).to.eq(200);
-  //     });
-  //   });
-  // });
+// context('PUT /pet/${petId}/consumption/${accountId}', function () {
+//   it('가계부 데이터를 수정한다.', function () {
+//     const petId = ctx.pets[1].id;
+//     const accountId = ctx.accounts[0].id;
+//     cy.log(ctx);
+//     cy.request({
+//       method: 'PUT',
+//       url: `${url}/${petId}/consumption/${accountId}`,
+//       body: addAccount(petId),
+//       headers: {
+//         Authorization: `Bearer ${ctx.jwt}`,
+//       },
+//     }).then(response => {
+//       expect(response.status).to.eq(200);
+//     });
+//   });
+// });
 
-  // context('DELETE /pet/${petId}/consumption/${accountid}', function () {
-  //   it('가계부 데이터를 삭제한다.', function () {
-  //     const petId = ctx.pets[1].id;
-  //     const accountId = ctx.accounts[0].id;
-  //     cy.request({
-  //       method: 'DELETE',
-  //       url: `${url}/${petId}/consumption/${accountId}`,
-  //       body: addAccount(petId),
-  //       headers: {
-  //         Authorization: `Bearer ${ctx.jwt}`,
-  //       },
-  //     }).then(response => {
-  //       expect(response.status).to.eq(200);
-  //     });
-  //   });
-  // });
-});
+// context('DELETE /pet/${petId}/consumption/${accountid}', function () {
+//   it('가계부 데이터를 삭제한다.', function () {
+//     const petId = ctx.pets[1].id;
+//     const accountId = ctx.accounts[0].id;
+//     cy.request({
+//       method: 'DELETE',
+//       url: `${url}/${petId}/consumption/${accountId}`,
+//       body: addAccount(petId),
+//       headers: {
+//         Authorization: `Bearer ${ctx.jwt}`,
+//       },
+//     }).then(response => {
+//       expect(response.status).to.eq(200);
+//     });
+//   });
+// });
+// });
