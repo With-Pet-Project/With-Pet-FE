@@ -13,8 +13,12 @@ function Pet({ removePet, selectPet, pet, petIdx }) {
       <button type="button" onClick={() => selectPet(petIdx)}>
         <span>{pet.name}</span>
       </button>
-      <button type="button">
-        <FontAwesomeIcon icon={faXmark} onClick={() => removeConfirm()} />
+      <button
+        type="button"
+        data-testid={`${pet.name} delete button`}
+        onClick={() => removeConfirm()}
+      >
+        <FontAwesomeIcon icon={faXmark} />
       </button>
     </>
   );

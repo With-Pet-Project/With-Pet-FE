@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { PetIdProvider } from 'components/Diary/context/PetContext';
 import { ModalsProvider } from 'components/common/Modal/context/ModalContext';
-import { Modal } from 'components/common/Modal/context/useModal';
+import { Modal } from 'components/common/Modal/context/Modal';
 
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';

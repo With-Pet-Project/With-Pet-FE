@@ -1,8 +1,8 @@
 import { createContext, useState, useMemo } from 'react';
 
 export const ModalsDispatchContext = createContext({
-  open: () => {},
-  close: () => {},
+  openModal: () => {},
+  closeModal: () => {},
 });
 
 export const ModalsStateContext = createContext([]);
@@ -10,12 +10,12 @@ export const ModalsStateContext = createContext([]);
 export function ModalsProvider({ children }) {
   const [modalList, setModalList] = useState([]);
 
-  const open = (Component, props) => {
+  const openModal = (Component, props) => {
     setModalList(modals => {
       return [...modals, { Component, props }];
     });
   };
-  const close = Component => {
+  const closeModal = Component => {
     setModalList(modals => {
       return modals.filter(modal => {
         return modal.Component !== Component;
@@ -23,7 +23,7 @@ export function ModalsProvider({ children }) {
     });
   };
 
-  const dispatch = useMemo(() => ({ open, close }), []);
+  const dispatch = useMemo(() => ({ openModal, closeModal }), []);
 
   return (
     <ModalsStateContext.Provider value={modalList}>
