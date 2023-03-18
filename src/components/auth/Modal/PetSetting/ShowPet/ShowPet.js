@@ -3,7 +3,6 @@ import EditPet from '../EditPet/EditPet';
 
 function ShowPet({ pet }) {
   const [isEdit, setIsEdit] = useState(false);
-  console.log(isEdit);
 
   const handleEditPet = bool => {
     setIsEdit(bool);

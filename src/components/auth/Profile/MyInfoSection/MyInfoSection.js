@@ -12,7 +12,6 @@ import { useUser } from '../../hooks/useUser';
 function MyInfoSection() {
   const { openModal } = useModal();
   const user = useUser();
-  console.log(user);
 
   const handleEditProfile = () => {
     openModal(EditProfile);
