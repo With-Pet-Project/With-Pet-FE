@@ -11,7 +11,7 @@ describe('가계부 테스트', () => {
     cy.database('filter', 'accounts').then(accounts => {
       ctx.accounts = accounts;
     });
-    cy.database('filter', 'pet').then(pets => {
+    cy.database('filter', 'pets').then(pets => {
       ctx.pets = pets;
     });
     const { year, month } = getMonthYearDetails(TODAY);
