@@ -102,9 +102,13 @@
 }
 
 @media screen and (max-width: $narrow) {
+  .landing-third-section {
+    padding: 200px 0;
+  }
+
   .landing-third-section-content {
     & article img {
-      max-width: 400px;
+      max-width: 380px;
 
       margin-top: 20px;
       margin-left: -18px;

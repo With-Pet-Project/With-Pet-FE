@@ -42,7 +42,8 @@ CLIENT.interceptors.response.use(
           originalRequest.headers.Authorization = `Bearer ${token}`; // 다시 요청하기
           return axios(originalRequest);
         } catch (err) {
-          throw error;
+          processQueue(err, null);
+          throw err;
         }
       }
       originalRequest.retry = true;

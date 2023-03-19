@@ -14,8 +14,8 @@
 }
 
 .landing-forth-section-title {
-  width: calc(50% - 50px);
-  min-width: 476px;
+  // width: calc(50% - 50px);
+  width: 80vw;
 }
 
 .landing-forth-section-text {
@@ -27,6 +27,7 @@
     font-size: 36px;
     line-height: 47px;
     color: $fontColor-black;
+    white-space: pre;
 
     margin-top: 100px;
   }
@@ -37,6 +38,7 @@
     line-height: 24px;
     color: $fontColor-deep-gray;
     letter-spacing: -1px;
+    white-space: pre;
 
     margin-top: 26px;
   }

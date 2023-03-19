@@ -99,3 +99,13 @@
     width: 500px;
   }
 }
+
+@media screen and (max-width: $narrow) {
+  .landing-fifth-section {
+    padding: 200px 0;
+  }
+
+  .landing-fifth-section-img {
+    width: 450px;
+  }
+}
