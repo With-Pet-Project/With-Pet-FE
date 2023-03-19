@@ -2,7 +2,6 @@
 	<h1>소중한 반려견을 관리하는 서비스, With pet</h1>
 	<img src="./src/lib/assets/images/dog/lg_icon.png"/>
 </div>
-<br><br>
 
 # 프로젝트 소개
 
