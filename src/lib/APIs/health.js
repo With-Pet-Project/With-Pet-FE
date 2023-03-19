@@ -9,7 +9,6 @@ export const getHealthInfo = async (jwt, petId, year, month) => {
       },
     },
   );
-
   return response;
 };
 

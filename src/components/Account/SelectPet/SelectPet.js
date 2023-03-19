@@ -22,7 +22,12 @@ function SelectPet({ selectPet, setSelectPet }) {
         전체보기
       </li>
       {pets.map(pet => (
-        <li key={pet.id} data-pet-id={pet.id} onClick={handleOnclick}>
+        <li
+          key={pet.id}
+          data-pet-id={pet.id}
+          onClick={handleOnclick}
+          data-cy="account-pet-item"
+        >
           {pet.name}
         </li>
       ))}
@@ -36,6 +41,7 @@ function SelectPet({ selectPet, setSelectPet }) {
         className="select-pet"
         ref={targetRef}
         onClick={isOpen}
+        data-cy="account-pet-select-btn"
       >
         <span className="chevron">
           <FontAwesomeIcon rotation={90} size="1x" icon={faChevronRight} />

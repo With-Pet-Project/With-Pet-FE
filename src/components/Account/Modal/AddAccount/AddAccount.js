@@ -80,6 +80,7 @@ function AddAccount({ selectDate, accountData }) {
           name={key}
           placeholder={selectedPetValue[key] || 0}
           onChange={event => inputOnChange(event, key)}
+          data-cy="add-account-input"
         />
         <span className="unit">원</span>
       </div>
@@ -92,7 +93,11 @@ function AddAccount({ selectDate, accountData }) {
         <h2>오늘의 소비 입력</h2>
         <p>오늘의 소비를 입력해 주세요 !</p>
       </header>
-      <form className="add-account-form" onSubmit={handleSubmit}>
+      <form
+        className="add-account-form"
+        onSubmit={handleSubmit}
+        data-cy="add-account-form"
+      >
         <div>
           <span className="label">펫 선택</span>
           <select
@@ -112,7 +117,11 @@ function AddAccount({ selectDate, accountData }) {
           >
             취소
           </button>
-          <button type="submit" className="submit-btn">
+          <button
+            type="submit"
+            className="submit-btn"
+            data-cy="add-account-submit"
+          >
             입력완료
           </button>
         </div>

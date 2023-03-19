@@ -6,7 +6,7 @@ export const getListItem = (index, places) => {
   const itemHTML = `
 	<span class="markerbg marker_${index + 1}">
 	</span>
-	<div class="info">
+	<div class="info" data-cy="hospital-list-item">
 		<h5>${places.place_name}</h5>
 		${
       places.road_address_name

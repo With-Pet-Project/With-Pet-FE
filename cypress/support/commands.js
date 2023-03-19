@@ -64,12 +64,7 @@ Cypress.Commands.add('login', (username, password) => {
     autoEnd: false,
   });
 
-  cy.intercept('POST', '/user/login', req => {
-    // req.reply({
-    //   statusCode: 200, // default
-    // });
-  }).as('loginUser');
-
+  cy.intercept('POST', '/user/login').as('loginUser');
   log.snapshot('before');
 
   cy.$('login-id-input').type(username);
@@ -90,5 +85,6 @@ Cypress.Commands.add('login', (username, password) => {
     });
 
     log.end();
+    return window.localStorage.getItem('jwt_token');
   });
 });

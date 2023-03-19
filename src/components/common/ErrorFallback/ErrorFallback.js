@@ -2,11 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import './ErrorFallback.scss';
 
 function ErrorFallback({ error, resetErrorBoundary }) {
-  // const { status } = error.response;
-  console.log(error);
   const status = error ? error.response.status : 500;
   const navigate = useNavigate();
-  // 접근 권한 없으면 사이드바 없애야되지않나
 
   const getErrorMessage = () => {
     switch (status) {

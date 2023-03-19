@@ -7,7 +7,6 @@ import ShowPet from './ShowPet/ShowPet';
 function PetSetting() {
   const { closeModal } = useModal();
   const pets = usePet();
-  console.log(pets);
 
   const handleCloseModal = () => {
     closeModal(PetSetting);
@@ -17,7 +16,7 @@ function PetSetting() {
     <div className="pet-setting-wrapper">
       <h3 className="title">펫 수정</h3>
       <AddPet />
-      <ul className="pet-list">
+      <ul className="pet-list" data-cy="mypost-pet-list">
         {pets.map(pet => (
           <ShowPet pet={pet} key={pet.id} />
         ))}

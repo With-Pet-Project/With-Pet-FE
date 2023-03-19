@@ -81,7 +81,6 @@ export const makeAccountData = (rawData, year, month, petsId) => {
     result.all = { calender: AllCalender };
     result.all.total = { ...allTotal };
   });
-  // console.log(result);
   return result;
 };
 

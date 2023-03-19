@@ -33,13 +33,12 @@ export const localLogin = async (email, password) => {
       },
     },
   ).catch(err => {
-    console.log(err);
+    console.error(err);
     toast.error(TOAST_MESSAGE.INCORRECT_ID_PWD, TOAST_OPTION);
     return err;
   });
 
   const accessToken = response?.data?.data;
-  console.log(accessToken);
   localStorage.setItem('jwt_token', accessToken);
 
   return response.status;
