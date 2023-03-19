@@ -63,16 +63,12 @@
     padding: 200px 15%;
   }
 
-  .landing-forth-section-title {
-    width: 100%;
-  }
-
   .landing-forth-section-background {
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    width: 100%;
+    width: 80vw;
   }
 
   .landing-forth-section-img {
@@ -88,5 +84,24 @@
 @media screen and (max-width: $narrow) {
   .landing-forth-section {
     padding: 200px 10px;
+  }
+
+  .landing-forth-section-text {
+    h2 {
+      font-size: 2.4rem;
+    }
+
+    p {
+      font-size: 17px;
+    }
+  }
+
+  .landing-forth-section-img {
+    width: 450px;
+    margin: 0 auto;
+
+    & img {
+      width: 100%;
+    }
   }
 }

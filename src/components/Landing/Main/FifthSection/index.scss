@@ -48,6 +48,7 @@
     line-height: 24px;
     color: $fontColor-deep-gray;
     letter-spacing: -1px;
+    white-space: nowrap;
 
     margin: 26px auto 0;
   }
@@ -80,12 +81,17 @@
   }
 
   .landing-fifth-section-background {
-    width: 550px;
+    width: 80vw;
   }
 
   .landing-fifth-section-text {
     h2 {
       width: 61%;
+      font-size: 2.5rem;
+    }
+
+    p {
+      font-size: 16px;
     }
   }
 

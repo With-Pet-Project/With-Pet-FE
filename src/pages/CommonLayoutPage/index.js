@@ -1,3 +1,5 @@
+import { vars } from 'lib/styles/vars';
+
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -19,6 +21,10 @@ const Wrapper = styled.div`
   & main {
     position: relative;
     flex-grow: 1;
+  }
+
+  @media screen and (max-width: ${vars.narrow}) {
+    height: 100vh;
   }
 `;
 

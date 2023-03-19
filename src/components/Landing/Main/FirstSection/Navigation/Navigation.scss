@@ -8,12 +8,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 0 5%;
   }
 
   & ul li {
     min-width: 150px;
-    margin: 20px 30px;
+    margin: 10px 30px;
   }
+
   & ul li button {
     background: transparent;
     display: flex;
@@ -21,23 +23,21 @@
   }
 
   & ul li img {
-    width: 60px;
-    height: 68px;
+    width: 45px;
+    height: 50px;
   }
-  
+
   & ul li span:last-child {
     font-family: 'TmoneyRoundWindNormal';
     color: $font-brown;
     font-size: 20px;
-
-    margin-top: -10px;
   }
 }
 
 @media screen and (max-width: $narrow) {
   .landing-first-section-nav {
     & ul li span:last-child {
-      font-size: 18px;
+      font-size: 20px;
     }
   }
 }
@@ -45,5 +45,18 @@
 @media screen and (max-width: $normal) {
   .landing-first-section-nav {
     margin: 100px auto 0;
+  }
+}
+
+@media screen and (max-width: $narrow) {
+  .landing-first-section-nav {
+    & ul {
+      flex-direction: column;
+      margin-top: -50px;
+    }
+
+    & ul li {
+      min-width: 150px;
+    }
   }
 }
