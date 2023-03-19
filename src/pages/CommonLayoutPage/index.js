@@ -18,13 +18,13 @@ import Sidebar from '../../components/common/Sidebar/Sidebar';
 const Wrapper = styled.div`
   display: flex;
 
-  & main {
+  & > main {
     position: relative;
     flex-grow: 1;
   }
 
   @media screen and (max-width: ${vars.narrow}) {
-    width: 100vw;
+    width: 100%;
     min-height: 100vh;
   }
 `;

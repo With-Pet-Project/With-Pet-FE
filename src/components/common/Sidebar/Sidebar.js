@@ -36,7 +36,7 @@ const InnerContainer = styled.div`
   height: 100%;
 
   @media screen and (max-width: ${vars.narrow}) {
-    width: ${({ opened }) => (opened ? '100vw' : `${vars.sidebarClosed}`)};
+    width: ${({ opened }) => (opened ? '100vw' : '0')};
     height: ${({ opened }) => (opened ? '100vh' : `${vars.sidebarClosed}`)};
     background-color: ${({ opened }) =>
       opened ? `${vars.backgroundYellow}` : 'transparent'} !important;

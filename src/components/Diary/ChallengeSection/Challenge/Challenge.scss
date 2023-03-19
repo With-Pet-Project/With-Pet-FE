@@ -21,7 +21,7 @@
       line-height: 26px;
       color: $fontColor-black;
     }
-    
+
     p {
       display: -webkit-inline-box;
       -webkit-box-orient: vertical;
@@ -49,5 +49,21 @@
     font-weight: 600;
     font-size: 15px;
     line-height: 18px;
+  }
+}
+
+@media screen and (max-width: $narrow) {
+  .Challenge {
+    max-width: 100%;
+    min-width: 300px;
+    padding: 15px;
+  }
+
+  .Challenge-title {
+    & div {
+      h2 {
+        font-size: 1rem;
+      }
+    }
   }
 }

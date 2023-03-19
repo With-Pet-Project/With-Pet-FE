@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { vars } from 'lib/styles/vars';
 
-const Main = styled.main`
+const Main = styled.div`
+  flex-grow: 1;
   &::before,
   &::after {
     display: block;
