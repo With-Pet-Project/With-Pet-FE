@@ -1,5 +1,8 @@
+@import '/src/lib/styles/vars.scss';
+
 .filter-options {
   position: absolute;
+  z-index: 1;
 
   background-color: #fff;
   padding: 10px;
@@ -12,5 +15,11 @@
     display: flex;
     flex-wrap: wrap;
     max-width: 400px;
+  }
+}
+
+@media screen and (max-width: $narrow) {
+  .filter-options {
+    max-width: 200px;
   }
 }

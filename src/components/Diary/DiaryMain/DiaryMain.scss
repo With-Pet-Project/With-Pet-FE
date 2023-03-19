@@ -98,7 +98,8 @@
     & p {
       display: -webkit-inline-box !important;
       -webkit-box-orient: vertical !important;
-      -webkit-line-clamp: 2 !important;
+      -webkit-line-clamp: 3 !important;
+      font-size: 0.85rem;
     }
 
     & b,
@@ -200,10 +201,10 @@
 @media screen and (max-width: $narrow) {
   .diary-main-flex-container {
     // min-width: 370px;
-    width: 370px;
+    width: 100%;
 
     & em {
-      font-size: 1.4em;
+      font-size: 1rem;
     }
 
     & .section-title {
@@ -215,12 +216,18 @@
     padding: 0.8rem;
   }
 
-  .walking-weight-specialNote {
-    .average-section-text-box {
-      width: 60%;
+  .circle-img {
+    display: none;
+  }
 
+  .walking-weight-specialNote {
+    & section {
+      display: block;
+    }
+    .average-section-text-box {
+      width: 100%;
       & p {
-        font-size: 0.65rem;
+        font-size: 0.7rem;
       }
     }
   }

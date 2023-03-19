@@ -78,3 +78,9 @@
   margin-right: 10px;
   margin-bottom: -1.3px;
 }
+
+@media screen and (max-width: $narrow) {
+  .community-search-container {
+    padding: 0 10px;
+  }
+}

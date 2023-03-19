@@ -3,17 +3,21 @@ import { vars } from 'lib/styles/vars';
 
 const Main = styled.div`
   flex-grow: 1;
+  width: 100%;
+
   &::before,
   &::after {
     display: block;
     content: '';
-    height: 40px;
+    height: 0px;
   }
 `;
 
 const ContentWrapper = styled.div`
-  max-width: 955px;
-  min-height: calc(100% - 80px);
+  max-width: 950px;
+  // width: 100%;
+  min-height: 100%;
+  height: 100%;
 
   background: #ffffff;
   border: 1px solid #dbdbdb;
@@ -22,6 +26,7 @@ const ContentWrapper = styled.div`
   margin: 0 auto;
 
   @media screen and (max-width: ${vars.normal}) {
+    width: calc(100% - 20px);
     margin: 0 10px;
   }
 `;

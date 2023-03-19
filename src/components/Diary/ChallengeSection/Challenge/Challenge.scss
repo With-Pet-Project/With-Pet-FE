@@ -4,7 +4,6 @@
   flex-grow: 1;
   padding: 15px;
   padding-left: 32px;
-  min-width: 390px;
 }
 
 .Challenge-title {
@@ -26,7 +25,7 @@
       display: -webkit-inline-box;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      -webkit-line-clamp: 1;
+      -webkit-line-clamp: 3;
       padding: 0 10px;
     }
   }
@@ -55,7 +54,6 @@
 @media screen and (max-width: $narrow) {
   .Challenge {
     max-width: 100%;
-    min-width: 300px;
     padding: 15px;
   }
 

@@ -13,6 +13,12 @@ const FloatButtonWrapper = styled.div`
   & svg {
     margin-top: 5px;
   }
+
+  &::after {
+    display: block;
+    content: '';
+    clear: both;
+  }
 `;
 
 function EnterEditorButton() {
