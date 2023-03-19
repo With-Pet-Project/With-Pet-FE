@@ -23,41 +23,71 @@ import UserInfo from './UserInfo/UserInfo';
 
 const NavContainer = styled.nav`
   min-width: ${vars.sidebarClosed};
+
+  @media screen and (max-width: ${vars.narrow}) {
+    width: ${({ opened }) => (opened ? '100vw' : `${vars.sidebarClosed}`)};
+    height: ${({ opened }) => (opened ? '100vh' : `${vars.sidebarClosed}`)};
+  }
 `;
 
 const InnerContainer = styled.div`
   width: ${({ opened }) =>
     opened ? `${vars.sidebarOpened}` : `${vars.sidebarClosed}`};
+  height: 100%;
+
+  @media screen and (max-width: ${vars.narrow}) {
+    width: ${({ opened }) => (opened ? '100vw' : `${vars.sidebarClosed}`)};
+    height: ${({ opened }) => (opened ? '100vh' : `${vars.sidebarClosed}`)};
+    background-color: ${({ opened }) =>
+      opened ? `${vars.backgroundYellow}` : 'transparent'} !important;
+  }
 `;
 
 const Navigation = styled.div`
+  position: relative;
   display: flex;
-  // flex-grow: 1;
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
   opacity: ${({ opened }) => (opened ? '1' : '0')};
-  transition-delay: ${({ opened }) => (opened ? '.15s' : '0')};
+  transition-delay: ${({ opened }) => (opened ? '.3s' : '0')};
+
+  @media screen and (max-width: ${vars.narrow}) {
+    overflow-y: ${({ opened }) => (opened ? 'auto' : 'hidden')};
+  }
 `;
 
 function Sidebar() {
-  // const { open, isOpen, targetRef } = useOutsideDetection();
   const { logout } = useLogout();
   const user = useUser();
   const [open, setOpen] = useState(false);
-  const isMouseOver = () => setOpen(true);
-  const isMouseLeave = () => setOpen(false);
 
+  const isMouseEnter = e => {
+    e.preventDefault();
+    setOpen(true);
+  };
+
+  const isMouseLeave = e => {
+    e.preventDefault();
+    setOpen(false);
+  };
+
+  const handleHamburger = e => {
+    e.preventDefault();
+    setOpen(!open);
+  };
   return (
     <NavContainer className="side-navbar-container" opened={open}>
       <InnerContainer
         data-testid="sidebar"
         className="side-navbar-inner-container"
         opened={open}
-        onMouseOver={isMouseOver}
+        onMouseEnter={isMouseEnter}
         onMouseLeave={isMouseLeave}
+        onClick={handleHamburger}
       >
         <Hamburger opened={open} data-cy="side-bar-hamburger" />
+
         <Navigation opened={open}>
           <div className="side-navbar-top">
             <div className="logo-box">
