@@ -21,7 +21,7 @@ export function useOutsideDetection() {
     return () => {
       window.removeEventListener('click', handleClickOutside);
     };
-  });
+  }, [open]);
 
   return { open, isOpen, openContent, closeContent, targetRef };
 }

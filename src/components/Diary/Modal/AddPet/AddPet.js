@@ -76,6 +76,7 @@ function AddPet() {
             placeholder="10자 이내로 입력하세요"
             value={name}
             onChange={handleName}
+            data-testid="petName"
           />
         </div>
         <div className="add-Pet-birthday">
@@ -116,15 +117,16 @@ function AddPet() {
         <div className="add-Pet-input">
           <h3>몸무게</h3>
           <input
-            type="text"
+            type="number"
             placeholder="몸무게를 입력하세요."
             value={weight}
             onChange={handleWeight}
+            data-testid="weight"
           />
         </div>
         <ModalButtons
           Component={AddPet}
-          disabled={!name.length && !weight.length}
+          disabled={!name.length || !weight.length}
           mutate={addPet}
         />
       </div>

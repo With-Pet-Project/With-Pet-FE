@@ -1,18 +1,28 @@
 import styled from 'styled-components';
 import { vars } from 'lib/styles/vars';
 
-const Main = styled.main`
-  &::before,
-  &::after {
+const Main = styled.div`
+  flex-grow: 1;
+  width: 100%;
+
+  &::before {
     display: block;
     content: '';
-    height: 40px;
+    height: 20px;
+  }
+
+  @media screen and (max-width: ${vars.normal}) {
+    &::before {
+      height: 0;
+    }
   }
 `;
 
 const ContentWrapper = styled.div`
-  max-width: 955px;
-  min-height: calc(100% - 80px);
+  max-width: 950px;
+  // width: 100%;
+  min-height: 100%;
+  height: 100%;
 
   background: #ffffff;
   border: 1px solid #dbdbdb;
@@ -21,7 +31,8 @@ const ContentWrapper = styled.div`
   margin: 0 auto;
 
   @media screen and (max-width: ${vars.normal}) {
-    margin: 0 10px;
+    width: calc(100% - 20px);
+    margin: 20px 10px;
   }
 `;
 

@@ -1,8 +1,8 @@
 @import '/src/lib/styles/vars.scss';
 
 .landing-second-section {
-  min-height: 700px;
-  padding: 150px 0;
+  max-height: 940px;
+  padding: 30px 0;
 }
 
 .landing-second-section-background {
@@ -21,12 +21,13 @@
     font-family: 'TmoneyRoundWindBold';
     font-size: 36px;
     line-height: 47px;
+    word-break: keep-all;
   }
 
   & p {
     max-width: 607px;
     margin: auto;
-    white-space: pre;
+    word-break: keep-all;
     text-align: center;
 
     font-weight: 500;
@@ -70,13 +71,16 @@
 
 @media screen and (max-width: $normal) {
   .landing-second-section {
-    padding: 150px 0;
+    padding: 10% 0;
   }
 
   .landing-second-section-background {
     max-width: 80vw;
     min-height: 600px;
     padding: 0;
+
+    background-position: 50% 60%;
+    background-size: 120%;
 
     & h2 {
       margin: 30px auto;
@@ -87,7 +91,7 @@
       display: block;
       margin: 20px auto;
       font-size: 13px;
-      width: 280px;
+      width: 100%;
       white-space: pre-wrap;
     }
   }

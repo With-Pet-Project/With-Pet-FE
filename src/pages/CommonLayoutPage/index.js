@@ -1,9 +1,11 @@
+import { vars } from 'lib/styles/vars';
+
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { PetIdProvider } from 'components/Diary/context/PetContext';
 import { ModalsProvider } from 'components/common/Modal/context/ModalContext';
-import { Modal } from 'components/common/Modal/context/useModal';
+import { Modal } from 'components/common/Modal/context/Modal';
 
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -16,9 +18,14 @@ import Sidebar from '../../components/common/Sidebar/Sidebar';
 const Wrapper = styled.div`
   display: flex;
 
-  & main {
+  & > main {
     position: relative;
     flex-grow: 1;
+  }
+
+  @media screen and (max-width: ${vars.narrow}) {
+    width: 100%;
+    min-height: 100vh;
   }
 `;
 

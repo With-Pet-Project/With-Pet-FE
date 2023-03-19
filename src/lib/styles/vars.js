@@ -11,6 +11,7 @@ export const vars = {
   backgroundYellow: `#ffe259`,
   backgroundGreen: `#62ccab`,
   backgroundGray: `#f2f2f2`,
+  backgroundLightBrown: `#695339`,
 
   fontColorGray: `#949494`,
   fontColorBrown: `#695339`,

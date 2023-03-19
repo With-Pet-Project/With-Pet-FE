@@ -1,7 +1,7 @@
 import './Fallback.scss';
 
 import { TOAST_MESSAGE } from 'components/common/Toast/toast';
-import { ModalWrapper, ModalContent } from '../context/useModal';
+import { ModalWrapper, ModalContent } from '../context/Modal';
 
 function ModalErrorFallback({ error, resetErrorBoundary }) {
   console.log('error Message: ', error.message);

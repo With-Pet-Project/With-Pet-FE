@@ -1,3 +1,5 @@
+@import '/src/lib/styles/vars.scss';
+
 .search-filter {
   display: flex;
   align-items: center;
@@ -24,5 +26,19 @@
 
   & .button-filter:first-child {
     margin-right: auto;
+  }
+}
+
+@media screen and (max-width: $narrow) {
+  .search-filter {
+    .button-filter {
+      & button {
+        font-size: 0.6rem;
+      }
+    }
+    & .button-filter:last-child {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }

@@ -35,47 +35,39 @@ CLIENT.interceptors.response.use(
       !originalRequest.retry // 재시도 중인 요청이 아닐 경우에만 갱신 요청
     ) {
       if (isRefreshing) {
-        return new Promise(function (resolve, reject) {
-          failedQueue.push({ resolve, reject });
-        })
-          .then(token => {
-            originalRequest.headers.Authorization = `Bearer ${token}`; // 다시 요청하기
-
-            return axios(originalRequest);
-          })
-          .catch(err => {
-            return Promise.reject(err);
+        try {
+          const token = await new Promise((resolve, reject) => {
+            failedQueue.push({ resolve, reject });
           });
+          originalRequest.headers.Authorization = `Bearer ${token}`; // 다시 요청하기
+          return axios(originalRequest);
+        } catch (err) {
+          processQueue(err, null);
+          throw err;
+        }
       }
-
       originalRequest.retry = true;
       isRefreshing = true;
-      console.log('토큰 재요청');
-      return new Promise(function (resolve, reject) {
-        CLIENT.get(
+      try {
+        const response = await CLIENT.get(
           '/reissue',
           {},
           { withCredentials: true }, // 쿠키를 주고 받기 위해 withCredentials 설정
-        )
-          .then(response => {
-            const newAccessToken = response.data.data;
-            localStorage.removeItem('jwt_token');
-            localStorage.setItem('jwt_token', newAccessToken);
-            originalRequest.headers.Authorization = `Bearer ${newAccessToken}`; // 다시 요청하기
-            processQueue(null, newAccessToken);
-            resolve(CLIENT(originalRequest));
-          })
-          .catch(err => {
-            processQueue(err, null);
-            console.error('~~~~갱신 실패~~~~~~~', err);
-            Promise.reject(error);
-          })
-          .finally(() => {
-            isRefreshing = false;
-          });
-      });
+        );
+        const newAccessToken = response.data.data;
+        localStorage.removeItem('jwt_token');
+        localStorage.setItem('jwt_token', newAccessToken);
+        originalRequest.headers.Authorization = `Bearer ${newAccessToken}`; // 다시 요청하기
+        processQueue(null, newAccessToken);
+        return CLIENT(originalRequest);
+      } catch (err) {
+        processQueue(err, null);
+        throw error;
+      } finally {
+        isRefreshing = false;
+      }
     }
-    return Promise.reject(error);
+    throw error;
   },
 );
 

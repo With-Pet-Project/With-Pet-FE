@@ -1,7 +1,7 @@
 import './AddChallenge.scss';
 
 import { useAddChallenge } from 'components/Diary/hooks/useAddChallenge';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import DownArrow from 'components/common/SelectArrow/DownArrow';
 import ModalButtons from '../ModalButtons';
 
@@ -39,6 +39,7 @@ function AddChallenge() {
             onChange={handleTitleChange}
             placeholder="10자 이내로 입력하세요"
             maxLength={10}
+            data-testid="title"
           />
         </div>
       </div>
