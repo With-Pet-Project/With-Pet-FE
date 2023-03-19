@@ -22,7 +22,7 @@ with pet은 반려견의 하루하루를 기록하는 서비스입니다. with p
 <div>
 <br/>
 <h2 align="left">프론트앤드</h2> 
-  <img src="./src/lib/assets/images/readme/fe-skill.png"/>
+  <img src="./src/lib/assets/images/readme/fe-skills.png"/>
 <br/>
 <br/>
 <h2 align="left">백앤드</h2> 
