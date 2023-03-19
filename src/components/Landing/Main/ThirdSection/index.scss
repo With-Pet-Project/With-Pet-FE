@@ -10,6 +10,7 @@
     font-size: 28px;
     line-height: 47px;
     margin-bottom: 20px;
+    word-break: keep-all;
   }
 
   & p {
@@ -17,8 +18,7 @@
     line-height: 24px;
     font-weight: 500;
     color: $fontColor-deep-gray;
-
-    white-space: pre;
+    word-break: keep-all;
   }
 }
 
@@ -53,6 +53,10 @@
     & > div {
       flex-direction: column;
       align-items: center;
+    }
+
+    & p {
+      white-space: break-spaces;
     }
   }
 }
@@ -108,10 +112,25 @@
 
   .landing-third-section-content {
     & article img {
-      max-width: 380px;
+      max-width: 100%;
 
       margin-top: 20px;
       margin-left: -18px;
+    }
+  }
+
+  .landing-third-section {
+    min-height: 1200px;
+    padding: 200px 10%;
+    background-color: $background-light-yellow;
+
+    & h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    & p {
+      font-size: 0.9rem;
     }
   }
 }

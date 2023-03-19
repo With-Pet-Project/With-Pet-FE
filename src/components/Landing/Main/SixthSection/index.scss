@@ -72,7 +72,18 @@
 
 @media screen and (max-width: $narrow) {
   .landing-sixth-section {
-    padding: 200px 10px;
+    padding: 100px 10px;
     background-color: #fff;
+  }
+  .landing-sixth-section-title {
+    & h2 {
+      font-size: 2rem;
+      line-height: 47px;
+    }
+  }
+  .landing-sixth-section-img {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 10%;
   }
 }

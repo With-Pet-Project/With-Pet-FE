@@ -152,7 +152,7 @@
 @media screen and (max-width: $semi-wide) {
   .diary-main-flex-container {
     width: 75%;
-    min-width: 540px;
+    min-width: 520px;
   }
 
   .diary-section-Padding {
@@ -188,6 +188,20 @@
 
     & section:last-child {
       max-width: none;
+    }
+  }
+}
+
+@media screen and (max-width: $narrow) {
+  .diary-main-flex-container {
+    & em {
+      font-size: 1.7em;
+      line-height: 35px;
+      color: $fontColor-deep-brown;
+
+      display: -webkit-inline-box;
+      -webkit-box-orient: vertial;
+      line-clamp: 1;
     }
   }
 }

@@ -24,6 +24,7 @@ const Wrapper = styled.div`
   }
 
   @media screen and (max-width: ${vars.narrow}) {
+    width: 100vw;
     min-height: 100vh;
   }
 `;

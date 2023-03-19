@@ -59,7 +59,7 @@
     vertical-align: middle;
     cursor: pointer;
     font-size: 14px;
-    height: 50px;
+    height: 3em;
   }
 
   & ul li a,
@@ -92,7 +92,7 @@
   }
 
   & .side-navbar-menu-img {
-    flex-basis: 22px;
+    flex-basis: 10%;
     height: 22px;
     border-radius: 10px;
   }
@@ -101,7 +101,7 @@
     vertical-align: middle;
     margin-left: 20px;
     font-size: 14px;
-    line-height: 17px;
+    line-height: 1rem;
   }
 }
 

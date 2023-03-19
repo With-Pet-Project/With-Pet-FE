@@ -18,6 +18,10 @@ export const ModalWrapper = styled.div`
   width: calc(100% - ${vars.sidebarClosed}); // ${vars.sidebarClosed}
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
+
+  @media screen and (max-width: ${vars.narrow}) {
+    width: 100%;
+  }
 `;
 
 export const ModalContent = styled.div`

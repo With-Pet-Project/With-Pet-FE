@@ -21,12 +21,13 @@
     font-family: 'TmoneyRoundWindBold';
     font-size: 36px;
     line-height: 47px;
+    word-break: keep-all;
   }
 
   & p {
     max-width: 607px;
     margin: auto;
-    white-space: pre;
+    word-break: keep-all;
     text-align: center;
 
     font-weight: 500;

@@ -48,7 +48,6 @@
     line-height: 24px;
     color: $fontColor-deep-gray;
     letter-spacing: -1px;
-    white-space: nowrap;
 
     margin: 26px auto 0;
   }
@@ -102,10 +101,24 @@
 
 @media screen and (max-width: $narrow) {
   .landing-fifth-section {
-    padding: 200px 0;
+    padding: 100px 0;
+  }
+
+  .landing-fifth-section-text {
+    h2 {
+      width: 61%;
+      font-size: 1.5rem;
+      line-height: 1.6rem;
+      word-break: keep-all;
+    }
+
+    p {
+      font-size: 0.8rem;
+      word-break: keep-all;
+    }
   }
 
   .landing-fifth-section-img {
-    width: 450px;
+    width: 100%;
   }
 }
