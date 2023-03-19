@@ -5,11 +5,16 @@ const Main = styled.div`
   flex-grow: 1;
   width: 100%;
 
-  &::before,
-  &::after {
+  &::before {
     display: block;
     content: '';
-    height: 0px;
+    height: 20px;
+  }
+
+  @media screen and (max-width: ${vars.normal}) {
+    &::before {
+      height: 0;
+    }
   }
 `;
 
@@ -27,7 +32,7 @@ const ContentWrapper = styled.div`
 
   @media screen and (max-width: ${vars.normal}) {
     width: calc(100% - 20px);
-    margin: 0 10px;
+    margin: 20px 10px;
   }
 `;
 

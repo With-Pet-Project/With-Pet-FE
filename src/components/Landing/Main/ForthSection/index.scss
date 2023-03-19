@@ -87,7 +87,11 @@
   .landing-forth-section {
     padding: 200px 10px;
   }
-
+  .landing-forth-section-title {
+    & img {
+      width: 100%;
+    }
+  }
   .landing-forth-section-text {
     margin: 0 0 10% 10%;
 

@@ -71,13 +71,16 @@
 
 @media screen and (max-width: $normal) {
   .landing-second-section {
-    padding: 150px 0;
+    padding: 10% 0;
   }
 
   .landing-second-section-background {
     max-width: 80vw;
     min-height: 600px;
     padding: 0;
+
+    background-position: 50% 60%;
+    background-size: 120%;
 
     & h2 {
       margin: 30px auto;
@@ -88,7 +91,7 @@
       display: block;
       margin: 20px auto;
       font-size: 13px;
-      width: 280px;
+      width: 100%;
       white-space: pre-wrap;
     }
   }

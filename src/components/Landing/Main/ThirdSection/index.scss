@@ -110,6 +110,14 @@
     padding: 200px 0;
   }
 
+  .landing-third-section-title {
+    width: 100%;
+
+    & img {
+      width: 80%;
+    }
+  }
+
   .landing-third-section-content {
     & article img {
       max-width: 100%;

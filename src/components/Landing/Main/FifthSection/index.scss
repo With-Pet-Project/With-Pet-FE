@@ -104,16 +104,25 @@
     padding: 100px 0;
   }
 
+  .landing-fifth-section-title {
+    width: 100%;
+
+    & img {
+      width: 100%;
+    }
+  }
+
   .landing-fifth-section-text {
     h2 {
       width: 61%;
-      font-size: 1.5rem;
-      line-height: 1.6rem;
+      font-size: 1.4rem;
+      line-height: 1.7rem;
       word-break: keep-all;
     }
 
     p {
       font-size: 0.8rem;
+      line-height: 1.1rem;
       word-break: keep-all;
     }
   }
