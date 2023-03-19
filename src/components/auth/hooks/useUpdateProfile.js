@@ -51,7 +51,7 @@ export const useUpdateProfile = (selectUser = f => f) => {
       // selectUser(context.prevPetIdx);
     },
     onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: [UserInfo, jwt] });
+      queryClient.invalidateQueries({ queryKey: UserInfo });
     },
   });
 
