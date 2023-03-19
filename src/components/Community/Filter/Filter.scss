@@ -30,8 +30,15 @@
 }
 
 @media screen and (max-width: $narrow) {
-  .button-filter {
-    display: flex;
-    flex-direction: column;
+  .search-filter {
+    .button-filter {
+      & button {
+        font-size: 0.6rem;
+      }
+    }
+    & .button-filter:last-child {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
