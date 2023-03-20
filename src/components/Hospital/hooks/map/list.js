@@ -25,7 +25,7 @@ export const getListItem = (index, places) => {
   return $li;
 };
 
-export const removeAllChildNods = list => {
+export const removeAllChildNods = (list = []) => {
   while (list.current.hasChildNodes()) {
     list.current.removeChild(list.current.lastChild);
   }

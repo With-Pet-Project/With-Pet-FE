@@ -1,5 +1,9 @@
 @import '/src/lib/styles/vars.scss';
 
+.landing-first-section {
+  width: calc(100%-70px) !important;
+}
+
 .landing-first-section-background {
   background: url('../../../../lib/assets/images/landing/section/section01/backgroundimage.png');
   background-position: right top;

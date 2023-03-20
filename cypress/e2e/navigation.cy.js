@@ -61,6 +61,7 @@ describe('페이지 네비게이션', () => {
       .wrap(() => {
         cy.location('pathname').should('eq', '/profile');
       });
+
     cy.$('side-bar-hamburger').trigger('mouseover');
     cy.get('.side-navbar-menu')
       .contains('로그아웃')

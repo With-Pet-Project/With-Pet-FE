@@ -1,5 +1,5 @@
 // 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
-export const displayPagination = (pagination, paginationContainer) => {
+export const displayPagination = (pagination, paginationContainer = []) => {
   const $pagination = paginationContainer.current;
   const $fragment = document.createDocumentFragment();
   // 기존에 추가된 페이지번호를 삭제합니다
