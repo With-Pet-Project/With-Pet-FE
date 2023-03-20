@@ -15,7 +15,7 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           browser: chrome
-          record: true
+          record: false
           wait-on: https://with-pet-fe-cgh123198-with-pet-prod.vercel.app/
         env:
           # CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}

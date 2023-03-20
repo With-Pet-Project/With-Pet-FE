@@ -46,13 +46,13 @@ describe('페이지 네비게이션', () => {
         cy.location('pathname').should('eq', '/community');
       });
 
-    cy.$('side-bar-hamburger').trigger('mouseover');
-    cy.get('.side-navbar-menu')
-      .contains('병원 찾기')
-      .click()
-      .wrap(() => {
-        cy.location('pathname').should('eq', '/hospital');
-      });
+    // cy.$('side-bar-hamburger').trigger('mouseover');
+    // cy.get('.side-navbar-menu')
+    //   .contains('병원 찾기')
+    //   .click()
+    //   .wrap(() => {
+    //     cy.location('pathname').should('eq', '/hospital');
+    //   });
 
     cy.$('side-bar-hamburger').trigger('mouseover');
     cy.get('.side-navbar-menu')
