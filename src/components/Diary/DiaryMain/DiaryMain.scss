@@ -71,13 +71,13 @@
 .walking-weight-specialNote {
   display: flex;
   flex-wrap: wrap;
-  flex-grow: 1;
   flex-direction: column;
   margin: 0 10px;
 
   & section {
     display: flex;
     justify-content: space-between;
+    // max-width: 325px;
     margin-bottom: 20px;
     flex-basis: 200px;
   }
