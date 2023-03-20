@@ -2,9 +2,12 @@
 
 .withdrawal-wrapper {
   width: 350px;
-  height: 300px;
   padding: 24px;
   font-family: 'Pretendard Variable';
+
+  @media (max-width: $narrow) {
+    width: 18rem;
+  }
 
   h2 {
     font-variation-settings: 'wght' 650;

@@ -4,15 +4,28 @@
   .add-pet-form {
     margin: 20px auto 0;
 
+    @media (max-width: $narrow) {
+      width: 240px;
+    }
+
     .pet-name {
       width: 25%;
       cursor: pointer;
       margin-right: 3%;
+
+      @media (max-width: $narrow) {
+        width: 50px;
+        height: 25px;
+      }
     }
     .pet-weight {
       width: 20%;
       margin-right: 3%;
       cursor: pointer;
+      @media (max-width: $narrow) {
+        width: 50px;
+        height: 25px;
+      }
     }
     .pet-bday {
       width: 35%;
@@ -20,12 +33,27 @@
       padding-right: 10px;
       color: gray;
       cursor: pointer;
+
+      @media (max-width: $narrow) {
+        width: 90px;
+        height: 25px;
+      }
     }
     .add-pet-submit {
       width: 11%;
       height: 35px;
       cursor: pointer;
       background: $background-yellow;
+
+      @media (max-width: $narrow) {
+        width: 25px;
+        height: 25px;
+      }
+    }
+    * {
+      @media (max-width: $narrow) {
+        font-size: 10px;
+      }
     }
   }
 }

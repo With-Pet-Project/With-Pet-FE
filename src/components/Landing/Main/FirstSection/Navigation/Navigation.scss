@@ -27,6 +27,12 @@
     height: 50px;
   }
 
+  & ul li span {
+    @media (max-width: $narrow) {
+      margin-left: 1rem;
+    }
+  }
+
   & ul li span:last-child {
     font-family: 'TmoneyRoundWindNormal';
     color: $font-brown;

@@ -6,6 +6,10 @@
   padding: 24px;
   font-family: 'Pretendard Variable';
 
+  @media (max-width: $narrow) {
+    width: 18rem;
+  }
+
   h2 {
     font-variation-settings: 'wght' 650;
     font-size: 20px;
