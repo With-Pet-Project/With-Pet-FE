@@ -10,6 +10,10 @@
   .myInfo {
     text-align: center;
     width: 400px;
+
+    @media (max-width: $narrow) {
+      width: 12rem;
+    }
   }
 
   .profile-img {

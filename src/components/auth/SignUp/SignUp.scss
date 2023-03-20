@@ -7,8 +7,16 @@
   box-shadow: 0px 4px 18px rgba(137, 137, 137, 0.25);
   border-radius: 10px;
 
+  @media (max-width: $narrow) {
+    width: 18rem;
+  }
+
   Input {
     margin: 10px 0 20px;
+
+    @media (max-width: $narrow) {
+      font-size: 9px;
+    }
   }
 
   .validate {
