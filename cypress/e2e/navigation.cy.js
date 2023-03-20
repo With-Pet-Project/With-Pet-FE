@@ -30,6 +30,7 @@ describe('페이지 네비게이션', () => {
         cy.location('pathname').should('eq', '/diary');
       });
 
+    cy.$('side-bar-hamburger').trigger('mouseover');
     cy.get('.side-navbar-menu')
       .contains('가계부')
       .click()
@@ -37,6 +38,7 @@ describe('페이지 네비게이션', () => {
         cy.location('pathname').should('eq', '/account');
       });
 
+    cy.$('side-bar-hamburger').trigger('mouseover');
     cy.get('.side-navbar-menu')
       .contains('커뮤니티')
       .click()
@@ -44,6 +46,7 @@ describe('페이지 네비게이션', () => {
         cy.location('pathname').should('eq', '/community');
       });
 
+    cy.$('side-bar-hamburger').trigger('mouseover');
     cy.get('.side-navbar-menu')
       .contains('병원 찾기')
       .click()
@@ -51,13 +54,14 @@ describe('페이지 네비게이션', () => {
         cy.location('pathname').should('eq', '/hospital');
       });
 
+    cy.$('side-bar-hamburger').trigger('mouseover');
     cy.get('.side-navbar-menu')
       .contains('마이 페이지')
       .click()
       .wrap(() => {
         cy.location('pathname').should('eq', '/profile');
       });
-
+    cy.$('side-bar-hamburger').trigger('mouseover');
     cy.get('.side-navbar-menu')
       .contains('로그아웃')
       .click()
