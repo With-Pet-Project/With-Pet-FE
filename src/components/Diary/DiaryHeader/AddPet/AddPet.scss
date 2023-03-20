@@ -12,12 +12,18 @@
   }
 }
 
-@media screen and (max-width: $narrow) {
+@media screen and (max-width: $normal) {
   .add-pet-button {
-    margin-left: 2rem;
+    margin-left: 3rem;
 
     & span {
       font-size: 1rem;
     }
+  }
+}
+
+@media screen and (max-width: $narrow) {
+  .add-pet-button {
+    margin-left: 2rem;
   }
 }
