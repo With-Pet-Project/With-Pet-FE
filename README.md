@@ -9,24 +9,24 @@ with pet은 반려견의 하루하루를 기록하는 서비스입니다. with p
 
 # 핵심 기능
 
-<b>🚀 다이어리를 통해 주 단위로 챌린지를 추가하고, 반려견의 건강을 관리할 수 있습니다.</b> <img src="./src/lib/assets/images/readme/diary.gif"> <br><br>
+🚀 다이어리를 통해 주 단위로 챌린지를 추가하고, 반려견의 건강을 관리할 수 있습니다.<img src="./src/lib/assets/images/readme/diary.gif"> <br><br>
 
-<b>🚀 가계부를 통하여 반려견에 대한 소비를 기록하고, 각 반려견 별로 지출을 관리할 수 있습니다.</b><img src="./src/lib/assets/images/readme/account.gif"> <br><br>
+🚀 가계부를 통하여 반려견에 대한 소비를 기록하고, 각 반려견 별로 지출을 관리할 수 있습니다.<img src="./src/lib/assets/images/readme/account.gif"> <br><br>
 
-<b>🚀 위치 기반 커뮤니티를 통하여 반려견 관련한 소통과반려견 카페, 병원에 대한 정보를 공유할 수 있습니다.</b> <img src="./src/lib/assets/images/readme/community.gif"> <br><br>
+🚀 위치 기반 커뮤니티를 통하여 반려견 관련한 소통과 반려견 카페, 병원에 대한 정보를 공유할 수 있습니다. <img src="./src/lib/assets/images/readme/community.gif"> <br><br>
 
-<b>🚀 내 주변 동물 병원을 찾을 수 있습니다.</b><img src="./src/lib/assets/images/readme/hospital.gif"> <br><br>
+🚀 내 주변 동물 병원을 찾을 수 있습니다.<img src="./src/lib/assets/images/readme/hospital.gif"> <br><br>
 
 # 🛠 프로젝트 기술 스택
 
 <div>
 <br/>
 <h2 align="left">프론트앤드</h2> 
-  <img src="./src/lib/assets/images/readme/fe-skills.png"/>
+  <img src="./src/lib/assets/images/readme/fe-skill.png"/>
 <br/>
 <br/>
 <h2 align="left">백앤드</h2> 
-  // 백앤드 스킬
+    <img src="./src/lib/assets/images/readme/be-skill.png"/>
   <br/>
 </div>
   <br/>
