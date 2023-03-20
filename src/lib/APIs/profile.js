@@ -15,7 +15,6 @@ export const isValidateNickName = async value => {
   }).catch(error => {
     return error.response;
   });
-  console.log(response);
 
   return response?.status === 200;
 };
@@ -83,7 +82,6 @@ export const updatePassword = async value => {
   }).catch(error => {
     return error.response;
   });
-  console.log(response);
 
   return response?.status === 200;
 };

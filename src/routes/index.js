@@ -7,6 +7,7 @@ import ConfirmPassword from 'pages/ConfirmPassword';
 import OAuthCallbackPage from 'pages/OAuthCallbackPage';
 import SignUpPage from 'pages/SignUpPage';
 import Loading from 'components/common/Loading/Loading';
+import NotFoundPage from 'pages/NotFoundPage';
 
 const CommonLayoutPage = lazy(() => import('pages/CommonLayoutPage'));
 const LandingPage = lazy(() => import('pages/LandingPage'));
@@ -39,6 +40,7 @@ function RootRoute() {
           <Route path="/confirm-password" element={<ConfirmPassword />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route path="/login/oauth/callback" element={<OAuthCallbackPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

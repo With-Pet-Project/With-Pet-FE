@@ -21,3 +21,11 @@
     color: $fontColor-black;
   }
 }
+
+@media screen and (max-width: $narrow) {
+  .diary-header {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 1.5rem;
+  }
+}

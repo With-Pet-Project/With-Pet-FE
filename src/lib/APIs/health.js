@@ -46,7 +46,6 @@ export const postHealthInfo = async (
       },
     },
   );
-  console.log(response);
 
   return response;
 };

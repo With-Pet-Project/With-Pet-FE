@@ -52,9 +52,15 @@
 }
 
 .article-content {
-  padding: 20px 80px 0 35px;
+  padding: 20px 10% 0 35px;
 
   & h2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+
+    width: 100%;
     margin-bottom: 14px;
 
     font-weight: 600;

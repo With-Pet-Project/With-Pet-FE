@@ -12,23 +12,23 @@ export const useMonthYear = petsId => {
   const [yearMonth, setYearMonth] = useState(getMonthYearDetails(TODAY));
   const queryClient = useQueryClient();
 
-  // useEffect(() => {
-  //   const { year: beforeYear, month: beforeMonth } = getNextYearMonth(
-  //     yearMonth.dateObject,
-  //     -1,
-  //   );
-  //   queryClient.prefetchQuery(
-  //     [queryKeys.account, beforeYear, beforeMonth],
-  //     () => fetchAccount(beforeYear, beforeMonth, petsId),
-  //   );
-  //   const { year: nextYear, month: nextMonth } = getNextYearMonth(
-  //     yearMonth.dateObject,
-  //     1,
-  //   );
-  //   queryClient.prefetchQuery([queryKeys.account, nextYear, nextMonth], () =>
-  //     fetchAccount(nextYear, nextMonth, petsId),
-  //   );
-  // }, [yearMonth, queryClient, petsId]);
+  useEffect(() => {
+    const { year: beforeYear, month: beforeMonth } = getNextYearMonth(
+      yearMonth.dateObject,
+      -1,
+    );
+    queryClient.prefetchQuery(
+      [queryKeys.account, beforeYear, beforeMonth],
+      () => fetchAccount(beforeYear, beforeMonth, petsId),
+    );
+    const { year: nextYear, month: nextMonth } = getNextYearMonth(
+      yearMonth.dateObject,
+      1,
+    );
+    queryClient.prefetchQuery([queryKeys.account, nextYear, nextMonth], () =>
+      fetchAccount(nextYear, nextMonth, petsId),
+    );
+  }, [yearMonth, queryClient, petsId]);
 
   return [yearMonth, setYearMonth];
 };

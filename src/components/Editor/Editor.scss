@@ -42,29 +42,29 @@
   }
 }
 
-.tagList-button select, .Location-selector-button button {
+.tagList-button select,
+.Location-selector-button button {
   position: relative;
-    z-index: 1;
-    appearance: none;
-    -moz-appearance: none;
-    -webkit-appearance: none;
+  z-index: 1;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
 
-    background-color: transparent;
-    
-    height: 21px;
-    border: 0;
-    outline: none;
-    padding-right: 20px;
-    padding-left: 3px;
-    margin: -4px 3px 2px 0;
+  background-color: transparent;
 
-    
-    color: #878787;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 21px;
+  height: 21px;
+  border: 0;
+  outline: none;
+  padding-right: 20px;
+  padding-left: 3px;
+  margin: -4px 3px 2px 0;
 
-    cursor: pointer;
+  color: #878787;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+
+  cursor: pointer;
 }
 
 .Location-selector-button {
@@ -94,4 +94,18 @@
 
 .editor-down-arrow {
   margin-top: 3px;
+}
+
+@media screen and (max-width: $narrow) {
+  .editor-filter-container {
+    & .tag-location-filter {
+      flex-direction: column;
+    }
+  }
+
+  .Location-selector-button {
+    & button {
+      margin-left: 0;
+    }
+  }
 }

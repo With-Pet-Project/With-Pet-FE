@@ -1,4 +1,5 @@
 /* eslint-disable no-return-assign */
+import './index.scss';
 import { useRef } from 'react';
 import FirstSection from './FirstSection';
 import SecondSection from './SecondSection';

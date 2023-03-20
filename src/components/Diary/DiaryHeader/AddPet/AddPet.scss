@@ -1,3 +1,5 @@
+@import '/src/lib/styles/vars.scss';
+
 .add-pet-button {
   & button {
     width: 190px;
@@ -7,5 +9,15 @@
   & span {
     font-family: 'TmoneyRoundWindBold';
     font-size: 20px;
+  }
+}
+
+@media screen and (max-width: $narrow) {
+  .add-pet-button {
+    margin-left: 2rem;
+
+    & span {
+      font-size: 1rem;
+    }
   }
 }
