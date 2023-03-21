@@ -1,5 +1,9 @@
 @import '/src/lib/styles/vars.scss';
 
+#outfocus-search-icon {
+  margin-left: -28px;
+}
+
 .community-search-container {
   display: flex;
   width: 100%;
@@ -31,24 +35,11 @@
   align-items: center;
   flex-grow: 1;
 
-  & label {
-    position: relative;
-    z-index: 10;
-    top: 30px;
-
-    min-height: 17px;
-    align-self: flex-start;
-    margin-left: 30px;
-
-    color: #878888;
-  }
-
   & input {
     width: 100%;
     max-width: 930px;
     height: 43px;
     border-radius: 100px;
-    margin-right: -30px;
     outline: none;
 
     font-weight: 500;
@@ -67,9 +58,23 @@
   color: #252525;
 }
 
-.community-search-label {
-  span {
-    margin: 0 0 0 5px;
+.community-submit-button {
+  position: relative;
+  z-index: 1;
+  width: 22px;
+  height: 22px;
+  margin: 0 auto -33px 15px;
+
+  & button {
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    margin-right: auto;
+  }
+
+  & button svg {
+    width: 18px;
+    height: 18px;
   }
 }
 

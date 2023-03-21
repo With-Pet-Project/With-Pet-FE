@@ -42,8 +42,6 @@ function Search() {
   const inputRef = useRef(); // search Input의 value를 가져와서 submit하기 위해서.
   const searchRef = useRef(); // 검색창 바깥 클릭시, input focus 해제
 
-  const { setSearchValue } = useArticles();
-
   const isFocus = () => setInputFocus(true);
   const isBlur = e => {
     if (!searchRef.current.contains(e.target)) {
@@ -69,6 +67,8 @@ function Search() {
     value && !history.includes(value) ? setHistory([...history, value]) : 0;
     searchParams.set('search', value);
     setSearchParams(searchParams);
+    setInputFocus(false);
+    inputRef.current.blur();
     // inputRef.current.value를  submit
   };
 
@@ -100,10 +100,16 @@ function Search() {
         ref={searchRef}
       >
         {inputFocus && (
-          <label htmlFor="community-search" className="community-search-label">
-            <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" />
-            {value.length ? '' : <span>검색어를 입력해주세요.</span>}
-          </label>
+          <div className="community-submit-button">
+            <button className="community-search-button" type="submit">
+              <span>
+                <FontAwesomeIcon
+                  icon={faMagnifyingGlass}
+                  className="search-icon"
+                />
+              </span>
+            </button>
+          </div>
         )}
         <SearchInput
           ref={inputRef}
@@ -112,12 +118,15 @@ function Search() {
           autoComplete="off"
           spellCheck={false}
           focus={inputFocus}
+          placeholder="검색어를 입력해주세요."
           onFocus={isFocus}
           value={value}
           onChange={handleChange}
           aria-label="검색어 입력창"
         />
-        {!inputFocus && <FontAwesomeIcon icon={faMagnifyingGlass} />}
+        {!inputFocus && (
+          <FontAwesomeIcon icon={faMagnifyingGlass} id="outfocus-search-icon" />
+        )}
         {inputFocus && (
           <HistoryList
             history={history}

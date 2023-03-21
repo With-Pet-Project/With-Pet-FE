@@ -10,7 +10,7 @@ import Calender from 'components/common/Calender/Calender';
 import { useSearchParams } from 'react-router-dom';
 
 import { ErrorBoundary } from 'react-error-boundary';
-import ModalErrorFallback from 'components/common/Modal/Fallback/Fallback';
+import ErrorFallback from 'components/common/ErrorFallback/ErrorFallback';
 
 import { TODAY } from '../../common/Calender/constant';
 import Challenge from './Challenge/Challenge';
@@ -50,7 +50,7 @@ function ChallengeSection() {
       />
       <Suspense fallback={<Loading />}>
         <ErrorBoundary
-          FallbackComponent={ModalErrorFallback}
+          FallbackComponent={ErrorFallback}
           onReset={() => window.location.reload()}
         >
           <Challenge />

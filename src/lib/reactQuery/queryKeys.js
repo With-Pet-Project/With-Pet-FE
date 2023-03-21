@@ -4,15 +4,7 @@ import { createQueryKeyStore } from '@lukemorales/query-key-factory';
 export const queryKeys = createQueryKeyStore({
   healthcare: null,
   account: [],
-  challenge: {
-    key: key => ({ key }),
-    id: id => ({ id }),
-  },
   article: [],
-  oauth: code => ({ code }),
-  user: jwt => ({ jwt }),
-  userTest: [],
-  pet: [],
 });
 
 export const QUERY_KEY = {
