@@ -69,6 +69,7 @@ function Search() {
     value && !history.includes(value) ? setHistory([...history, value]) : 0;
     searchParams.set('search', value);
     setSearchParams(searchParams);
+    setInputFocus(false);
     // inputRef.current.value를  submit
   };
 
@@ -100,10 +101,16 @@ function Search() {
         ref={searchRef}
       >
         {inputFocus && (
-          <label htmlFor="community-search" className="community-search-label">
-            <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" />
-            {value.length ? '' : <span>검색어를 입력해주세요.</span>}
-          </label>
+          <div className="community-submit-button">
+            <button className="community-search-button" type="submit">
+              <span>
+                <FontAwesomeIcon
+                  icon={faMagnifyingGlass}
+                  className="search-icon"
+                />
+              </span>
+            </button>
+          </div>
         )}
         <SearchInput
           ref={inputRef}
@@ -112,6 +119,7 @@ function Search() {
           autoComplete="off"
           spellCheck={false}
           focus={inputFocus}
+          placeholder="검색어를 입력해주세요."
           onFocus={isFocus}
           value={value}
           onChange={handleChange}

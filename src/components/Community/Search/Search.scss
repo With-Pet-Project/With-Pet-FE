@@ -67,9 +67,23 @@
   color: #252525;
 }
 
-.community-search-label {
-  span {
-    margin: 0 0 0 5px;
+.community-submit-button {
+  position: relative;
+  z-index: 1;
+  width: 22px;
+  height: 22px;
+  margin: 0 auto -32px 29px;
+
+  & button {
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    margin-right: auto;
+  }
+
+  & button svg {
+    width: 18px;
+    height: 18px;
   }
 }
 
