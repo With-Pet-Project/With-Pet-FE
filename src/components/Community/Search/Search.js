@@ -68,6 +68,7 @@ function Search() {
     searchParams.set('search', value);
     setSearchParams(searchParams);
     setInputFocus(false);
+    inputRef.current.blur();
     // inputRef.current.value를  submit
   };
 
