@@ -1,4 +1,4 @@
-import content from '../../../../lib/assets/images/landing/section/section03/image_02.png';
+import content from '../../../../lib/assets/images/landing/section/section03/image_02.webp';
 
 function SpecialNote() {
   return (

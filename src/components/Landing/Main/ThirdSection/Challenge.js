@@ -1,4 +1,4 @@
-import content from '../../../../lib/assets/images/landing/section/section03/image_00.png';
+import content from '../../../../lib/assets/images/landing/section/section03/image_00.webp';
 
 function Challenge() {
   return (

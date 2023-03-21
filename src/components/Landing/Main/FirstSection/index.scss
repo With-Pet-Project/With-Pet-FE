@@ -1,7 +1,7 @@
 @import '/src/lib/styles/vars.scss';
 
 .landing-first-section-background {
-  background: url('../../../../lib/assets/images/landing/section/section01/backgroundimage.png');
+  background: url('../../../../lib/assets/images/landing/section/section01/backgroundimage.webp');
   background-position: right top;
   background-size: contain;
   background-repeat: no-repeat;
@@ -23,13 +23,6 @@
   margin: 185px 0 0 20%;
   max-width: 716px;
   max-height: 162px;
-
-  @media (max-width: $narrow) {
-    width: 100%;
-    margin: 0;
-    margin-top: 100px;
-    text-align: center;
-  }
 
   & img {
     width: 70%;
@@ -117,5 +110,9 @@
   .landing-first-section-title-text {
     max-width: 350px;
     max-height: 110px;
+    width: 100%;
+    margin: 0;
+    margin-top: 100px;
+    text-align: center;
   }
 }

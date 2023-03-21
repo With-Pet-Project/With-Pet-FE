@@ -1,4 +1,4 @@
-import content from '../../../../lib/assets/images/landing/section/section03/image_01.png';
+import content from '../../../../lib/assets/images/landing/section/section03/image_01.webp';
 
 function Health() {
   return (
@@ -6,7 +6,7 @@ function Health() {
       <h2>일일 건강기록 기능</h2>
       <p>산책기록, 몸무게, 음수량, 사료 등 건강기록</p>
       <div className="landing-third-section-Health-img">
-        <img src={content} alt="firstWindow" />
+        <img src={content} alt="건강기록" />
       </div>
     </article>
   );

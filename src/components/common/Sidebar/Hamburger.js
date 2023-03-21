@@ -52,7 +52,12 @@ const Button = styled.button`
 
 function Hamburger({ opened, ...props }) {
   return (
-    <Button type="button" {...props} opened={opened}>
+    <Button
+      type="button"
+      {...props}
+      opened={opened}
+      aria-label="Sidebar On and Off"
+    >
       <span />
       <span />
       <span />
