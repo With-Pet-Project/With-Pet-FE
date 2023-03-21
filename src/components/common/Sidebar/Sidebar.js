@@ -3,7 +3,7 @@ import './Sidebar.scss';
 import { vars } from 'lib/styles/vars';
 import styled from 'styled-components';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useUser } from 'components/auth/hooks/useUser';
 import { useLogout } from 'components/auth/hooks/useLogout';
 import Menu from './Menu';
@@ -18,8 +18,6 @@ import Logout from './svg/Logout';
 
 import Logo from '../Logo/Logo';
 import UserInfo from './UserInfo/UserInfo';
-
-// import { useOutsideDetection } from '../hooks/useOutsideDetection';
 
 const NavContainer = styled.nav`
   min-width: ${vars.sidebarClosed};

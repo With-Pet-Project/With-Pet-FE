@@ -1,4 +1,4 @@
-import content from '../../../../lib/assets/images/landing/section/section03/image_03.png';
+import content from '../../../../lib/assets/images/landing/section/section03/image_03.webp';
 
 function WeightWalk() {
   return (

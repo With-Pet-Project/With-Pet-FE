@@ -1,14 +1,14 @@
 import './index.scss';
 import { forwardRef } from 'react';
-import title from '../../../../lib/assets/images/landing/section/section04/title.png';
-import content from '../../../../lib/assets/images/landing/section/section04/image_00.png';
+import title from '../../../../lib/assets/images/landing/section/section04/title.webp';
+import content from '../../../../lib/assets/images/landing/section/section04/image_00.webp';
 
 const ForthSection = forwardRef((props, ref) => {
   return (
     <section className="landing-forth-section" ref={ref}>
       <div className="landing-forth-section-background">
         <div className="landing-forth-section-title">
-          <img src={title} alt="섹션4 타이틀" />
+          <img src={title} alt="커뮤티니 텍스트 이미지" />
           <div className="landing-forth-section-text">
             <h2>
               자체 가계부를 통한
@@ -22,7 +22,7 @@ const ForthSection = forwardRef((props, ref) => {
           </div>
         </div>
         <div className="landing-forth-section-img">
-          <img src={content} alt="섹션4 컨텐츠" />
+          <img src={content} alt="커뮤니티 예시 이미지" />
         </div>
       </div>
     </section>
