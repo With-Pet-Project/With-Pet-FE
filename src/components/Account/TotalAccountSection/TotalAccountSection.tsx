@@ -1,8 +1,21 @@
+import { ReactElement } from 'react';
 import { getComma } from 'lib/utils/account';
 import Calender from 'components/common/Calender/Calender';
 import { ACCOUNT_LIST } from '../constant';
 import TotalAccountItem from './TotalAccountItem/TotalAccountItem';
+import { YearMonth, AccountTotal, AccountCalender } from 'lib/types/types';
 import './TotalAccountSection.scss';
+
+interface TotalAccountSectionProps {
+  yearMonth: YearMonth;
+  handleMonthChange(index: number): void;
+  selectDate: YearMonth;
+  handleSelectDate(selected: string): void;
+  calenderData: {
+    [key: number]: AccountCalender;
+  };
+  totals: AccountTotal;
+}
 
 function TotalAccountSection({
   yearMonth,
@@ -11,8 +24,9 @@ function TotalAccountSection({
   handleSelectDate,
   calenderData,
   totals,
-}) {
-  const getPercentage = (divider, total) => (divider / total) * 100;
+}: TotalAccountSectionProps): ReactElement {
+  const getPercentage = (divider: number, total: number) =>
+    (divider / total) * 100;
 
   const totalAccountItemHtml = Object.entries(ACCOUNT_LIST).map(
     ([key, { name, darkColor }]) => (

@@ -8,10 +8,22 @@ import {
 import { fetchAccount } from 'lib/APIs/account';
 import { TODAY } from '../../common/Calender/constant';
 
-export const useMonthYear = petsId => {
+interface YearMonth {
+  dateObject: Date;
+  dateTime: string;
+  day: string;
+  firstDayOfWeek: number;
+  lastDay: number;
+  month: string;
+  monthName: string;
+  year: string;
+}
+
+export const useMonthYear = (petsId: (number | string)[]): any => {
   const [yearMonth, setYearMonth] = useState(getMonthYearDetails(TODAY));
   const queryClient = useQueryClient();
-
+  // console.log(yearMonth);
+  // console.log(setYearMonth);
   useEffect(() => {
     const { year: beforeYear, month: beforeMonth } = getNextYearMonth(
       yearMonth.dateObject,

@@ -2,6 +2,8 @@ import { useQuery } from '@tanstack/react-query';
 import { queryKeys } from 'lib/reactQuery/queryKeys';
 import { fetchAccount } from 'lib/APIs/account';
 
+// interface UseAccount {}
+
 const setCalenderFormat = (year, month) => {
   const lastDay = new Date(year, Number(month), 0).getDate();
   const calender = Array(lastDay)
@@ -86,10 +88,15 @@ export const makeAccountData = (rawData, year, month, petsId) => {
 
 export const useAccount = (year, month, petsId) => {
   const fallback = {};
+  // console.log(year);
+  // console.log(month);
+  // console.log(petsId);
 
   const { data = fallback } = useQuery([queryKeys.account, year, month], () =>
     fetchAccount(year, month, petsId),
   );
+
+  // console.log(data);
 
   return data;
 };

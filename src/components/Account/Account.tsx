@@ -1,5 +1,4 @@
-import { useState } from 'react';
-
+import { useState, ReactElement } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -18,30 +17,42 @@ import TotalAccountSection from './TotalAccountSection/TotalAccountSection';
 import TodayAccountSection from './TodayAccountSection/TodayAccountSection';
 import SelectPet from './SelectPet/SelectPet';
 import './Account.scss';
+import { YearMonth, AccountDataItems } from 'lib/types/types';
 
 const DEFAULT_PET = { id: 'all', name: '전체보기' };
 
-function Account() {
-  const [selectDate, setSelectDate] = useState(getMonthYearDetails(TODAY));
-  const [selectPet, setSelectPet] = useState(DEFAULT_PET);
+interface SelectPetProps {
+  id: number | string;
+  name: string;
+}
+
+function Account(): ReactElement {
+  const [selectDate, setSelectDate] = useState<YearMonth>(
+    getMonthYearDetails(TODAY),
+  );
+  const [selectPet, setSelectPet] = useState<SelectPetProps>(DEFAULT_PET);
   const pets = usePet();
   const petsId = [...pets.map(pet => pet.id), 'all'];
   const [yearMonth, setYearMonth] = useMonthYear(petsId);
   const { openModal } = useModal();
-  const accountData = useAccount(yearMonth.year, yearMonth.month, petsId);
+  const accountData = useAccount(
+    yearMonth.year,
+    yearMonth.month,
+    petsId,
+  ) as AccountDataItems;
   const currentCalender = accountData[selectPet.id].calender;
   const currentTotal = accountData[selectPet.id].total;
 
-  const openAddAccount = () => {
+  const openAddAccount = (): void => {
     openModal(AddAccount, { selectDate, accountData });
   };
 
-  const handleSelectDate = selected => {
+  const handleSelectDate = (selected: string) => {
     const nextDate = toDateObject(selected);
     setSelectDate(getMonthYearDetails(nextDate));
   };
 
-  const handleMonthChange = index => {
+  const handleMonthChange = (index: number): void => {
     setYearMonth(prevDate => getNextYearMonth(prevDate.dateObject, index));
   };
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { createContext, useState, useMemo } from 'react';
 
 export const ModalsDispatchContext = createContext({
