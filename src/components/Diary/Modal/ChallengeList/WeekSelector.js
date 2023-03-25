@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 import './WeekSelector.scss';
 
 import { useState, useEffect } from 'react';

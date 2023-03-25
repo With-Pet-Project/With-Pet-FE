@@ -12,6 +12,9 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
+    "@types/react-bootstrap": "^0.32.25",
+    "@types/react-dom": "^17.0.3",
+    "@types/react-router-dom": "^5.3.3",
     "axios": "^1.2.4",
     "cypress": "^12.3.0",
     "dompurify": "^3.0.1",
@@ -31,6 +34,7 @@
     "styled-components": "^5.3.6",
     "styled-reset": "^4.4.5",
     "vercel": "^28.12.4",
+    "typescript": "4.2.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

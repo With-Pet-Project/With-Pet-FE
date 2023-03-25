@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable camelcase */
-import { useEffect, useState, useRef, useMemo } from 'react';
+import { useEffect, useState, useRef, useMemo, MutableRefObject } from 'react';
 import './HospitalMapSection.scss';
 import { ERROR_MESSAGE } from 'lib/constants/errorMessage';
 import { setCustomOverlay, getCustomOverlay } from '../hooks/map/customOverlay';
@@ -86,7 +86,7 @@ function HospitalMapSection({
     }
   }, [location, keyword]);
 
-  const addMapEvent = () => {
+  const addMapEvent = (): void => {
     kakao.maps.event.addListener(map, 'dragend', () => {
       const latlng = map.getCenter();
       setChangedLocation([latlng.getLat(), latlng.getLng()]);
@@ -116,7 +116,7 @@ function HospitalMapSection({
     menu.current.classList.remove('hide');
   }, [servicePlace]);
 
-  const handleChangeLocation = () => {
+  const handleChangeLocation = (): void => {
     const [lat, lang] = changedLocation;
     setLocation([lat, lang]);
     setMapOption({

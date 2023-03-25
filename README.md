@@ -37,7 +37,7 @@ with pet은 반려견의 하루하루를 기록하는 서비스입니다. with p
 | Designer | Backend | Backend | Frontend | Frontend |
 | :-: | :-: | :-: | :-: | :-: |
 | ![image](https://avatars.githubusercontent.com/u/55576227?v=4) | ![image](https://avatars.githubusercontent.com/u/77621712?v=4) | ![image](https://avatars.githubusercontent.com/u/108208265?v=4) | ![image](https://avatars.githubusercontent.com/u/68717963?v=4) | ![image](https://avatars.githubusercontent.com/u/41810621?v=4) |
-| [김유리](https://github.com/reachyusam)<br/> | [Seunghee Jin](https://github.com/Jin409)<br/> | [min1998](https://github.com/Lee-Sang-Min1998)<br/> | [최규호 (Choi Gyu Ho)](https://github.com/gyuhoho)<br/> | [윤다솜 (Dasom Yun)](https://github.com/datoybi)<br/> |
+| [김유리](https://github.com/reachyusam)<br/> | [Seunghee Jin](https://github.com/Jin409)<br/> | [min1998](https://github.com/Lee-Sang-Min1998)<br/> | [최규호 (Choi Gyu Ho)](https://github.com/gyuhoBest)<br/> | [윤다솜 (Dasom Yun)](https://github.com/datoybi)<br/> |
 
  <br/>
 <br/>
