@@ -12,7 +12,6 @@ interface UseModal {
 export const useModal = (): UseModal => {
   const { openModal, closeModal } = useContext(ModalsDispatchContext);
   const modalList = useContext(ModalsStateContext);
-  console.log(modalList);
   return {
     openModal,
     closeModal,

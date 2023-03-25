@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import styled from 'styled-components';
 import { vars } from 'lib/styles/vars';
 

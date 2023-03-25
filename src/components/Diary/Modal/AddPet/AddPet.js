@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 import './AddPet.scss';
 import DownArrow from 'components/common/SelectArrow/DownArrow';
 import { useState, useEffect } from 'react';

@@ -64,6 +64,7 @@ export const deleteAccount = async (id, petId) => {
 };
 
 export const updateAccount = async values => {
+  console.log(values);
   const jwt = localStorage.getItem('jwt_token') || null;
   const { data } = await CLIENT.put(
     `/pet/${values.petId}/consumption/${values.id}`,

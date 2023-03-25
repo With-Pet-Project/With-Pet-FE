@@ -1,12 +1,12 @@
 export interface YearMonth {
   dateObject: Date;
   dateTime: string;
-  day: string;
   firstDayOfWeek: number;
   lastDay: number;
-  month: string;
   monthName: string;
   year: string;
+  month: string;
+  day: string;
 }
 
 export interface AccountTotal {
@@ -19,21 +19,37 @@ export interface AccountTotal {
 }
 
 export interface AccountCalender {
-  beauty?: number;
+  id?: number;
+  petId?: number;
   day?: number;
+  beauty?: number;
   etc?: number;
   feed?: number;
   hospital?: number;
-  id?: number;
-  petId?: number;
   toy?: number;
 }
 
-interface AccountDataItem {
-  calender: {
-    [key: number]: AccountCalender;
-  };
-  total: AccountTotal;
+export interface SelectPetProps {
+  id: number | string;
+  name: string;
 }
 
-export type AccountDataItems = { [key: string]: AccountDataItem };
+export interface AccountDataItem {
+  calender?: {
+    [key: number]: AccountCalender;
+  };
+  total?: AccountTotal;
+}
+
+export type AccountDataItems = {
+  all: AccountDataItem;
+  [key: number]: AccountDataItem;
+};
+
+export interface Pet {
+  birthday: string;
+  id: number;
+  initWeight: number;
+  name: string;
+}
+// export type AccountDataItems = { [key: number]: AccountDataItem };

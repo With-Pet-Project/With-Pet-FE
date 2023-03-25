@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-expressions */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import './SpecialNoteSection.scss';
 import styled from 'styled-components';
 import { vars } from 'lib/styles/vars';

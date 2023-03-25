@@ -17,14 +17,9 @@ import TotalAccountSection from './TotalAccountSection/TotalAccountSection';
 import TodayAccountSection from './TodayAccountSection/TodayAccountSection';
 import SelectPet from './SelectPet/SelectPet';
 import './Account.scss';
-import { YearMonth, AccountDataItems } from 'lib/types/types';
+import { YearMonth, AccountDataItems, SelectPetProps } from 'lib/types/types';
 
-const DEFAULT_PET = { id: 'all', name: '전체보기' };
-
-interface SelectPetProps {
-  id: number | string;
-  name: string;
-}
+const DEFAULT_PET = { id: 'all', name: '전체보기' } as SelectPetProps;
 
 function Account(): ReactElement {
   const [selectDate, setSelectDate] = useState<YearMonth>(
