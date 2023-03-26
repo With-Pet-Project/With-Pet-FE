@@ -9,8 +9,8 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
-    "noImplicitAny": false,
-    "strictNullChecks": false,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
     "jsx": "react-jsx",
     "typeRoots": ["node_modules/@types"],
     "types": ["node", "jest"],
@@ -26,5 +26,14 @@
     "downlevelIteration": true,
     "strict": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "node_modules/@types", "src/components/Account/constant.js", "src/components/Account/constant.js", "src/components/Account/Modal/AddAccount/AddAccount.js", "src/components/Account/hooks/useAccount.js", "src/pages/CommonLayoutPage/index.js"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "node_modules/@types",
+    "src/components/Account/constant.js",
+    "src/components/Account/constant.js",
+    "src/components/Account/Modal/AddAccount/AddAccount.js",
+    "src/components/Account/hooks/useAccount.js",
+    "src/pages/CommonLayoutPage/index.js"
+  ]
 }
