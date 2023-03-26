@@ -65,6 +65,7 @@
         "endOfLine": "auto"
       }
     ],
+    "react/jsx-props-no-spreading": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-curly-newline": "off",
     "jsx-a11y/label-has-associated-control": "off",
