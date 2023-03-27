@@ -12,7 +12,7 @@ export function useDeleteComment() {
   const jwt_token = localStorage.getItem('jwt_token') || null;
 
   const { mutate } = useMutation({
-    mutationFn: commentId => deleteComment(jwt_token, commentId),
+    mutationFn: (commentId: number) => deleteComment(jwt_token, commentId),
     onSuccess: () => {
       toast.success(TOAST_MESSAGE.DELETE_SUCCESS, TOAST_OPTION);
       queryClient.invalidateQueries({ queryKey: [QUERY_KEY.Article] });
