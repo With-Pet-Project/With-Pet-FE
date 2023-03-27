@@ -13,7 +13,19 @@ import { useState } from 'react';
 import CommentArea from '../CommentArea/CommentArea';
 import Reply from './Reply/Reply';
 
-function Comment({ comment }) {
+type CommentType = {
+  commentId: number;
+  createdTime: Date;
+  profileImg: string;
+  nickName: string;
+  content: string;
+};
+
+interface CommentProps {
+  comment: CommentType;
+}
+
+function Comment({ comment }: CommentProps): JSX.Element {
   const user = useUser();
   const replyList = useReply(comment.commentId);
   const { mutate: deleteCommentMutate } = useDeleteComment();
@@ -49,11 +61,19 @@ function Comment({ comment }) {
     }월 ${date.getDate()}일`;
   };
 
-  const handleCommentValue = e => setCommentValue(e.target.value);
-  const handleReplyValue = e => setReplyValue(e.target.value);
+  const handleCommentValue = (
+    e: React.ChangeEvent<HTMLTextAreaElement>,
+  ): void => {
+    setCommentValue(e.target.value);
+  };
+  const handleReplyValue = (
+    e: React.ChangeEvent<HTMLTextAreaElement>,
+  ): void => {
+    setReplyValue(e.target.value);
+  };
   const handleShowMore = () => setShowMore(!showMore);
 
-  const editComment = e => {
+  const editComment = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     if (commentValue === '') {
@@ -68,7 +88,7 @@ function Comment({ comment }) {
     setCommentValue('');
   };
 
-  const addReply = e => {
+  const addReply = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     if (replyValue === '') {
@@ -112,7 +132,11 @@ function Comment({ comment }) {
               <button
                 type="button"
                 className="comment-button"
-                onClick={() => deleteConfirm()}
+                onClick={() => {
+                  if (deleteConfirm !== null) {
+                    deleteConfirm();
+                  }
+                }}
               >
                 <span>삭제</span>
               </button>
