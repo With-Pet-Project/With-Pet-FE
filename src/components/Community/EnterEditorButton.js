@@ -3,7 +3,6 @@ import FloatButton from 'components/common/FloatButton/FloatButton';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from 'components/auth/hooks/useUser';
 import { toast } from 'react-toastify';
-import { TOAST_OPTION } from 'components/common/Toast/toast';
 
 const FloatButtonWrapper = styled.div`
   position: sticky;

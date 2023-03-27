@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import styled from 'styled-components';
 import { vars } from 'lib/styles/vars';
+import { ReactNode } from 'react';
 
 const Main = styled.div`
   flex-grow: 1;
@@ -37,11 +38,21 @@ const ContentWrapper = styled.div`
   }
 `;
 
-function MainWrapper({ component = null, children }) {
-  // const { Component, props } = component;
+type ComponentType = {
+  Component: () => JSX.Element;
+};
+
+interface MainWrapperProps {
+  children: ReactNode;
+  component?: ComponentType;
+}
+
+function MainWrapper({ component, children }: MainWrapperProps) {
+  const Component = component?.Component;
+
   return (
     <Main>
-      {component && <component.Component {...component.props} />}
+      {Component && <Component />}
       <ContentWrapper>{children}</ContentWrapper>
     </Main>
   );
