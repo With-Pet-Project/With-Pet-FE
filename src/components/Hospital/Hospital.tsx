@@ -8,7 +8,7 @@ import { useKeyword } from './hooks/useKeyword';
 import './Hospital.scss';
 
 function Hospital(): ReactElement {
-  const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState<number[] | null>(null);
   const [mapOption, setMapOption] = useState(null);
   const keyword = useKeyword(location);
   const { GEOLOCATION: GEOLOCATION_ERROR } = ERROR_MESSAGE;
