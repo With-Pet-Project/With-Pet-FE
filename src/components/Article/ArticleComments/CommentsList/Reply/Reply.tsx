@@ -2,7 +2,18 @@ import './Reply.scss';
 
 import dog from 'lib/assets/images/dog/md_icon.png';
 
-function Reply({ reply }) {
+type ReplyType = {
+  createdTime: Date;
+  profileImg: string;
+  nickName: string;
+  content: string;
+};
+
+type ReplyProps = {
+  reply: ReplyType;
+};
+
+function Reply({ reply }: ReplyProps) {
   const timeFormat = () => {
     const date = new Date(reply.createdTime);
     return `${date.getFullYear()}년 ${

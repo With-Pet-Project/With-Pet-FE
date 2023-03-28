@@ -21,9 +21,16 @@ type CommentType = {
   content: string;
 };
 
-interface CommentProps {
+type CommentProps = {
   comment: CommentType;
-}
+};
+
+type ReplyType = {
+  createdTime: Date;
+  profileImg: string;
+  nickName: string;
+  content: string;
+};
 
 function Comment({ comment }: CommentProps): JSX.Element {
   const user = useUser();
@@ -190,7 +197,9 @@ function Comment({ comment }: CommentProps): JSX.Element {
           </button>
         </div>
       </form>
-      <ul>{showMore && replyList?.map(re => <Reply reply={re} />)}</ul>
+      <ul>
+        {showMore && replyList?.map((re: ReplyType) => <Reply reply={re} />)}
+      </ul>
     </div>
   );
 }

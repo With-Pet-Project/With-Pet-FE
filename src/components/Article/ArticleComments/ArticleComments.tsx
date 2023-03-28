@@ -16,9 +16,11 @@ function ArticleComments() {
   const { mutate: commentMutate } = useAddComment();
   // content, commentId = null, commentId는 대댓글인 경우 본댓의 ID
 
-  const handleCommentValue = e => setComment(e.target.value);
+  const handleCommentValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setComment(e.target.value);
+  };
 
-  const onCommentSubmit = e => {
+  const onCommentSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     commentMutate({ content: comment, commentId: null });
   };
