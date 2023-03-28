@@ -17,28 +17,50 @@ function ResetPassword(): ReactElement {
   const updatePassword = useUpdatePassword();
   const [searchParams, _] = useSearchParams();
   const email = searchParams.get('id');
-  const passwordRef = useRef(null);
-  const passwordCheckRef = useRef(null);
+  const passwordRef = useRef<HTMLInputElement>();
+  const passwordCheckRef = useRef<HTMLInputElement>();
   const { VALIDATION } = ERROR_MESSAGE;
-  const [validPwd, setValidPwd] = useState(null);
+  const [validPwd, setValidPwd] = useState<boolean>(false);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): boolean => {
     event.preventDefault();
-    const { value: password } = passwordRef.current;
+    let password = '';
+
+    if (
+      passwordCheckRef.current !== null &&
+      passwordCheckRef.current !== undefined
+    ) {
+      password = passwordCheckRef.current.value;
+    }
 
     if (!CHECK_PASSWORD.test(password)) {
       toast.error(VALIDATION.MALFUNCTION_PWD, TOAST_OPTION);
       return false;
     }
 
-    updatePassword({ password, email });
+    if (typeof email === 'string') {
+      updatePassword({ password, email });
+    }
+
     navigate('/login');
     return true;
   };
 
   const isPasswordValid = (): void => {
-    const { value: passwordValue } = passwordRef.current;
-    const { value: passwordCheckValue } = passwordCheckRef.current;
+    let passwordValue = '';
+    let passwordCheckValue = '';
+
+    if (passwordRef.current !== null && passwordRef.current !== undefined) {
+      passwordValue = passwordRef.current.value;
+    }
+
+    if (
+      passwordCheckRef.current !== null &&
+      passwordCheckRef.current !== undefined
+    ) {
+      passwordCheckValue = passwordCheckRef.current.value;
+    }
+
     if (passwordValue === passwordCheckValue) return setValidPwd(true);
     if (passwordCheckValue) return setValidPwd(false);
   };
