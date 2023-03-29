@@ -42,7 +42,7 @@ export const getArticleList = async (
         size,
       },
     });
-    return response;
+    return response.data.data;
   }
   const response = await CLIENT.get(`/articles`, {
     params: {
@@ -59,7 +59,7 @@ export const getArticleList = async (
     },
   });
 
-  return response;
+  return response.data.data;
 };
 
 export const postCreateArticle = async (

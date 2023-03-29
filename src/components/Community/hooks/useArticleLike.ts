@@ -7,11 +7,11 @@ import { postAddArticleLike, deleteCancelArticlelLike } from 'lib/APIs/article';
 import { toast } from 'react-toastify';
 import { TOAST_OPTION } from 'components/common/Toast/toast';
 
-export function useArticleLike(whetherLike, likeCnt) {
+export function useArticleLike(whetherLike: boolean, likeCnt: number) {
   // const queryClient = useQueryClient();
   // const [searchParams, setSearchParams] = useSearchParams();
-  const [isAlike, setIsAlike] = useState(whetherLike);
-  const [likeCount, setLikeCount] = useState(likeCnt);
+  const [isAlike, setIsAlike] = useState<boolean>(whetherLike);
+  const [likeCount, setLikeCount] = useState<number>(likeCnt);
 
   const jwt_token = localStorage.getItem('jwt_token') || null;
 
@@ -27,8 +27,8 @@ export function useArticleLike(whetherLike, likeCnt) {
 
   // Article, tag, firstPlace, secondPlace, priority
   const { mutate } = useMutation({
-    mutationFn: articleId =>
-      !isAlike
+    mutationFn: (articleId: string) =>
+      articleId && !isAlike
         ? postAddArticleLike(jwt_token, articleId) // isAlike(boolean)에 따라서 좋아요 추가 또는 취소
         : deleteCancelArticlelLike(jwt_token, articleId),
     onMutate: async articleId => {

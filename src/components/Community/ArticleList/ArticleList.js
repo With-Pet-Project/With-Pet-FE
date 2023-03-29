@@ -20,8 +20,8 @@ function ArticleList() {
       <div className="Article-list">
         <ul>
           {pages?.map(page => {
-            return page.data?.data?.viewArticleListDto?.length ? (
-              page.data?.data?.viewArticleListDto?.map(article => (
+            return page.viewArticleListDto?.length ? (
+              page.viewArticleListDto?.map(article => (
                 <li key={article.articleId}>
                   <ArticleItem article={article} />
                 </li>

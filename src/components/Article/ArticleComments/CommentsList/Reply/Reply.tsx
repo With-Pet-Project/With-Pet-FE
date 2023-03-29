@@ -1,13 +1,7 @@
 import './Reply.scss';
 
 import dog from 'lib/assets/images/dog/md_icon.png';
-
-type ReplyType = {
-  createdTime: Date;
-  profileImg: string;
-  nickName: string;
-  content: string;
-};
+import { ReplyType } from 'components/Article/types/types';
 
 type ReplyProps = {
   reply: ReplyType;

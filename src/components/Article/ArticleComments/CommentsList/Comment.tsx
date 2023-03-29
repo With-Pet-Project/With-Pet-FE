@@ -12,24 +12,10 @@ import { useReply } from 'components/Article/hooks/useReply';
 import { useState } from 'react';
 import CommentArea from '../CommentArea/CommentArea';
 import Reply from './Reply/Reply';
-
-type CommentType = {
-  commentId: number;
-  createdTime: Date;
-  profileImg: string;
-  nickName: string;
-  content: string;
-};
+import { ReplyType, CommentType } from 'components/Article/types/types';
 
 type CommentProps = {
   comment: CommentType;
-};
-
-type ReplyType = {
-  createdTime: Date;
-  profileImg: string;
-  nickName: string;
-  content: string;
 };
 
 function Comment({ comment }: CommentProps): JSX.Element {

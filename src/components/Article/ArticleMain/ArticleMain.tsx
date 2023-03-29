@@ -9,6 +9,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useUser } from 'components/auth/hooks/useUser';
 import { useDeleteArticle } from '../hooks/useDeleteArticle';
 import { useArticleDetail } from '../hooks/useArticleDetail';
+import { TOAST_OPTION } from 'components/common/Toast/toast';
+import { toast } from 'react-toastify';
 
 function ArticleMain() {
   const { articleId } = useParams();
@@ -103,7 +105,16 @@ function ArticleMain() {
             </svg>
             <span>{article.commentCnt}</span>
           </button>
-          <button type="button" onClick={() => mutate(articleId)}>
+          <button
+            type="button"
+            onClick={() => {
+              if (typeof articleId === 'string') {
+                mutate(articleId);
+              } else {
+                toast.error('게시글ID가 비었습니다.', TOAST_OPTION);
+              }
+            }}
+          >
             <svg
               width="22"
               height="20"

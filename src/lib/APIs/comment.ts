@@ -1,10 +1,10 @@
 import CLIENT from './client';
 
 export const postCreateComment = async (
-  jwt: string,
-  articleId: number,
+  jwt: string | null,
+  articleId: string | undefined,
   content: string,
-  commentId: number,
+  commentId: number | null,
 ) => {
   const response = await CLIENT.post(
     '/comment',

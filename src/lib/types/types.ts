@@ -53,3 +53,23 @@ export interface Pet {
   name: string;
 }
 // export type AccountDataItems = { [key: number]: AccountDataItem };
+
+export type Article = {
+  articleId: 53;
+  profileImg: string;
+  nickName: string;
+  title: string;
+  createdTime: Date;
+  modifiedTime: Date;
+  detailText: string;
+  likeCnt: number;
+  commentCnt: number;
+  tag: string;
+  whetherLike: boolean;
+};
+
+export interface ArticlePage {
+  hasNext: boolean;
+  lastArticleId: number;
+  viewArticleListDto: Article[];
+}
