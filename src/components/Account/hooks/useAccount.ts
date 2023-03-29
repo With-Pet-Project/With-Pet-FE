@@ -79,11 +79,11 @@ const getTotal = (
     if (!isAllData && data.petId !== petId) return acc;
     return {
       ...acc,
-      beauty: acc.beauty + data.beauty,
-      etc: acc.etc + data.etc,
-      hospital: acc.hospital + data.hospital,
-      feed: acc.feed + data.feed,
-      toy: acc.toy + data.toy,
+      beauty: acc.beauty + (data.beauty || 0),
+      etc: acc.etc + (data.beauty || 0),
+      hospital: acc.hospital + (data.beauty || 0),
+      feed: acc.feed + (data.beauty || 0),
+      toy: acc.toy + (data.beauty || 0),
     };
   }, initialJson);
 
@@ -120,7 +120,7 @@ export const makeAccountData = (
 export const useAccount = (
   year: string,
   month: string,
-  petsId: (number | string)[],
+  petsId: number[] | string[],
 ): AccountDataItems | unknown => {
   const fallback = {};
   const { data = fallback } = useQuery([queryKeys.account, year, month], () =>
