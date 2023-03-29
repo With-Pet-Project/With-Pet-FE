@@ -1,8 +1,13 @@
 import './Reply.scss';
 
 import dog from 'lib/assets/images/dog/md_icon.png';
+import { ReplyType } from 'components/Article/types/types';
 
-function Reply({ reply }) {
+type ReplyProps = {
+  reply: ReplyType;
+};
+
+function Reply({ reply }: ReplyProps) {
   const timeFormat = () => {
     const date = new Date(reply.createdTime);
     return `${date.getFullYear()}년 ${

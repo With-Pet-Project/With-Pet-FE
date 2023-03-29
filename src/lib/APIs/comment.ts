@@ -1,10 +1,10 @@
 import CLIENT from './client';
 
 export const postCreateComment = async (
-  jwt,
-  articleId,
-  content,
-  commentId = null,
+  jwt: string | null,
+  articleId: string | undefined,
+  content: string,
+  commentId: number | null,
 ) => {
   const response = await CLIENT.post(
     '/comment',
@@ -23,7 +23,11 @@ export const postCreateComment = async (
   return response;
 };
 
-export const getReadComment = async (lastCommentId, articleId, size) => {
+export const getReadComment = async (
+  lastCommentId: number,
+  articleId: number,
+  size: number,
+) => {
   const response = await CLIENT.get(
     `/comments?lastCommentId=${lastCommentId}&articleId=${articleId}&size=${size}`,
   );
@@ -31,12 +35,16 @@ export const getReadComment = async (lastCommentId, articleId, size) => {
   return response;
 };
 
-export const getReadChildComment = async commentId => {
+export const getReadChildComment = async (commentId: number) => {
   const response = await CLIENT.get(`/comments/${commentId}`);
   return response;
 };
 
-export const patchUpdateComment = async (jwt, commentId, content) => {
+export const patchUpdateComment = async (
+  jwt: string,
+  commentId: number,
+  content: string,
+) => {
   const response = await CLIENT.patch(
     `/comment/${commentId}?content=${content}`,
     {},
@@ -50,7 +58,7 @@ export const patchUpdateComment = async (jwt, commentId, content) => {
   return response;
 };
 
-export const deleteComment = async (jwt, commentId) => {
+export const deleteComment = async (jwt: string, commentId: number) => {
   const response = await CLIENT.delete(`/comment/${commentId}`, {
     headers: {
       Authorization: `Bearer ${jwt}`,
@@ -60,7 +68,7 @@ export const deleteComment = async (jwt, commentId) => {
   return response;
 };
 
-export const getReadReplies = async commentId => {
+export const getReadReplies = async (commentId: number) => {
   const response = await CLIENT.get(`/comments/${commentId}`);
 
   return response;

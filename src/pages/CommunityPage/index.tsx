@@ -6,7 +6,6 @@ import { Suspense } from 'react';
 function CommunityPage() {
   const component = {
     Component: EnterEditorButton,
-    props: null,
   };
 
   return (

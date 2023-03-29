@@ -15,17 +15,25 @@ import './SignUp.scss';
 
 function SignUp(): ReactElement {
   const navigate = useNavigate();
-  const emailRef = useRef(null);
-  const passwordCheckRef = useRef(null);
-  const passwordRef = useRef(null);
-  const nicknameRef = useRef(null);
-  const [validPwd, setValidPwd] = useState(null);
-  const [validNickname, setValidNickname] = useState(null);
+  const emailRef = useRef<HTMLInputElement>();
+  const passwordCheckRef = useRef<HTMLInputElement>();
+  const passwordRef = useRef<HTMLInputElement>();
+  const nicknameRef = useRef<HTMLInputElement>();
+  const [validPwd, setValidPwd] = useState<boolean | null>(null);
+  const [validNickname, setValidNickname] = useState<boolean | null>(null);
   const { VALIDATION } = ERROR_MESSAGE;
 
   const validateValues = (): boolean => {
-    const { value: email } = emailRef.current;
-    const { value: password } = passwordRef.current;
+    let email = '';
+    let password = '';
+
+    if (emailRef.current !== null && emailRef.current !== undefined) {
+      email = emailRef.current.value;
+    }
+
+    if (passwordRef.current !== null && passwordRef.current !== undefined) {
+      password = passwordRef.current.value;
+    }
 
     // 이메일 유효성 검사
     if (!CHECK_EMAIL.test(email)) {
@@ -58,9 +66,21 @@ function SignUp(): ReactElement {
     const isValid = validateValues();
     if (!isValid) return;
 
-    const { value: email } = emailRef.current;
-    const { value: password } = passwordRef.current;
-    const { value: nickname } = nicknameRef.current;
+    let email = '';
+    let password = '';
+    let nickname = '';
+
+    if (emailRef.current !== null && emailRef.current !== undefined) {
+      email = emailRef.current.value;
+    }
+
+    if (passwordRef.current !== null && passwordRef.current !== undefined) {
+      password = passwordRef.current.value;
+    }
+
+    if (nicknameRef.current !== null && nicknameRef.current !== undefined) {
+      nickname = nicknameRef.current.value;
+    }
 
     const response = await signup(email, password, nickname);
     if (response?.status === 200) {
@@ -74,16 +94,33 @@ function SignUp(): ReactElement {
   };
 
   const isPasswordValid = (): void => {
-    const { value: passwordValue } = passwordRef.current;
-    const { value: passwordCheckValue } = passwordCheckRef.current;
+    let passwordValue = '';
+    let passwordCheckValue = '';
+
+    if (passwordRef.current !== null && passwordRef.current !== undefined) {
+      passwordValue = passwordRef.current.value;
+    }
+
+    if (
+      passwordCheckRef.current !== null &&
+      passwordCheckRef.current !== undefined
+    ) {
+      passwordCheckValue = passwordCheckRef.current.value;
+    }
+
     if (passwordValue === passwordCheckValue) return setValidPwd(true);
     if (passwordCheckValue) return setValidPwd(false);
   };
 
   const isNicknameValid = async () => {
-    const { value } = nicknameRef.current;
-    if (!value) return;
-    const isValid = await isValidateNickName(value);
+    let nickname = '';
+
+    if (nicknameRef.current === null || nicknameRef.current === undefined) {
+      return;
+    }
+
+    nickname = nicknameRef.current.value;
+    const isValid = await isValidateNickName(nickname);
     setValidNickname(isValid);
   };
 

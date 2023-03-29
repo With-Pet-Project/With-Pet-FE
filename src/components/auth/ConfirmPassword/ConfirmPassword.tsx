@@ -96,7 +96,7 @@ function ConfirmPassword(): ReactElement {
 
 export default ConfirmPassword;
 
-const VerifyDiv = styled.div`
+const VerifyDiv = styled.div<{ show: boolean }>`
   margin-top: 10px;
   opacity: ${props => (props.show ? '1' : '0')};
   height: ${props => (props.show ? 'auto' : '0')};

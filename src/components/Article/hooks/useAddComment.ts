@@ -1,10 +1,15 @@
 /* eslint-disable camelcase */
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
-import { TOAST_MESSAGE, TOAST_OPTION } from 'components/common/Toast/toast';
+import { TOAST_OPTION } from 'components/common/Toast/toast';
 import { postCreateComment } from 'lib/APIs/comment';
 import { useParams } from 'react-router-dom';
 import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
+
+interface MutationFnParams {
+  content: string;
+  commentId?: number | null;
+}
 
 export function useAddComment() {
   const queryClient = useQueryClient();
@@ -12,7 +17,7 @@ export function useAddComment() {
   const { articleId } = useParams();
 
   const { mutate } = useMutation({
-    mutationFn: ({ content, commentId = null }) =>
+    mutationFn: ({ content, commentId = null }: MutationFnParams) =>
       postCreateComment(jwt_token, articleId, content, commentId),
     onSuccess: () => {
       toast.success('댓글이 추가되었습니다.', TOAST_OPTION);

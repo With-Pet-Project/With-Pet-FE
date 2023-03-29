@@ -1,8 +1,8 @@
 /* eslint-disable import/no-cycle */
 
 const { kakao } = window;
-let overlay;
-let overlayList = [];
+let overlay: any;
+let overlayList: any[] = [];
 
 export const setCustomOverlay = (title, placePosition, map) => {
   const $customOveray = `<div class="overlay" >${title}</div>`;
@@ -13,7 +13,9 @@ export const setCustomOverlay = (title, placePosition, map) => {
     position: placePosition,
   });
   overlay.setMap(null);
-  overlayList = [...overlayList, overlay];
+  if (overlayList !== null) {
+    overlayList = [...overlayList, overlay];
+  }
 };
 
 export const getCustomOverlay = () => {

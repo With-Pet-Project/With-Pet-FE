@@ -7,13 +7,18 @@ import { QUERY_KEY } from 'lib/reactQuery/queryKeys';
 import { useParams } from 'react-router-dom';
 // jwt, commentId, content
 
+interface MutationFnParams {
+  content: string;
+  commentId: number;
+}
+
 export function useEditComment() {
   const queryClient = useQueryClient();
   const jwt_token = localStorage.getItem('jwt_token') || null;
   const { articleId } = useParams();
 
   const { mutate } = useMutation({
-    mutationFn: ({ content, commentId }) =>
+    mutationFn: ({ content, commentId }: MutationFnParams) =>
       patchUpdateComment(jwt_token, commentId, content),
     onSuccess: () => {
       toast.success(TOAST_MESSAGE.UPDATE_SUCCESS, TOAST_OPTION);

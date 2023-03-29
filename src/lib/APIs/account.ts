@@ -1,7 +1,11 @@
 import { makeAccountData } from 'components/Account/hooks/useAccount';
 import CLIENT from './client';
 
-export const fetchAccount = async (year, month, petsId) => {
+export const fetchAccount = async (
+  year: string,
+  month: string,
+  petsId: string[] | number[],
+) => {
   const jwt = localStorage.getItem('jwt_token') || null;
   const url = `/pet/consumption?year=${year}&month=${month}`;
 
@@ -17,6 +21,18 @@ export const fetchAccount = async (year, month, petsId) => {
   return result;
 };
 
+type AddAccount = {
+  petId: number | string;
+  feed: number;
+  toy: number;
+  hospital: number;
+  beauty: number;
+  etc: number;
+  day: number;
+  month: number | string;
+  year: number | string;
+};
+
 export const addAccount = async ({
   petId,
   feed,
@@ -27,7 +43,7 @@ export const addAccount = async ({
   day,
   month,
   year,
-}) => {
+}: AddAccount) => {
   const jwt = localStorage.getItem('jwt_token') || null;
   const { data } = await CLIENT.post(
     `/pet/${petId}/consumption`,

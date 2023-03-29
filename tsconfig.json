@@ -26,5 +26,14 @@
     "downlevelIteration": true,
     "strict": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "node_modules/@types", "src/components/Account/constant.js", "src/components/Account/constant.js", "src/components/Account/Modal/AddAccount/AddAccount.js", "src/components/Account/hooks/useAccount.js", "src/pages/CommonLayoutPage/index.js"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "node_modules/@types",
+    "src/components/Account/constant.js",
+    "src/components/Account/constant.js",
+    "src/components/Account/Modal/AddAccount/AddAccount.js",
+    "src/components/Account/hooks/useAccount.js",
+    "src/pages/CommonLayoutPage/index.js"
+  ]
 }

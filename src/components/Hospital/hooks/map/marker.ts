@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
 import markersImage from 'lib/assets/images/hospital/markers.png';
 
-export const markers = [];
 const { kakao } = window;
+export const markers: any[] = [];
 
 // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 export const addMarker = (position, idx, map) => {
