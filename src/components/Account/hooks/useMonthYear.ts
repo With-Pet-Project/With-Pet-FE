@@ -14,7 +14,7 @@ interface Props {
   setYearMonth?: Dispatch<SetStateAction<YearMonth>>;
 }
 
-export const useMonthYear = (petsId: (number | string)[]): any => {
+export const useMonthYear = (petsId: number[] | string[]): any => {
   const [yearMonth, setYearMonth] = useState<YearMonth>(
     getMonthYearDetails(TODAY),
   );

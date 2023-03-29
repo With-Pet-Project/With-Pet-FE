@@ -32,7 +32,7 @@ function ShowTodayItem({
 
 export default ShowTodayItem;
 
-const ColorSign = styled.div`
+const ColorSign = styled.div<{ borderColor: string }>`
   width: 16px;
   height: 16px;
   border-radius: 100px;

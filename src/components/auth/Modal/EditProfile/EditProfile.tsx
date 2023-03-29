@@ -6,19 +6,21 @@ import { useUpdateProfile } from '../../hooks/useUpdateProfile';
 import './EditProfile.scss';
 
 function EditProfile(): ReactElement {
-  const [selectFile, setSelectFile] = useState(null);
-  const [isValidNickName, setIsValidNickName] = useState(null);
-  const fileInput = useRef(null);
+  const [selectFile, setSelectFile] = useState<File>();
+  const [isValidNickName, setIsValidNickName] = useState<boolean>();
+  const fileInput = useRef<HTMLInputElement>();
   const nickNameRef = useRef(null);
-  const fileLabelInput = useRef(null);
+  const fileLabelInput = useRef<HTMLInputElement>();
   const { closeModal } = useModal();
   const profileUpdate = useUpdateProfile();
 
   const handleFileChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ): void => {
-    fileLabelInput.current.value = fileInput.current.value;
-    fileLabelInput.current.classList.add('active-input');
+    if (fileLabelInput.current && fileInput.current) {
+      fileLabelInput.current.value = fileInput.current.value;
+      fileLabelInput.current.classList.add('active-input');
+    }
 
     if (event.target.files) {
       const uploadFile = event.target.files[0];
@@ -27,7 +29,7 @@ function EditProfile(): ReactElement {
   };
 
   const handleFileOnClick = (): void => {
-    fileInput.current.click();
+    fileInput.current && fileInput.current.click();
   };
 
   const handleSubmit = event => {
@@ -35,13 +37,13 @@ function EditProfile(): ReactElement {
     const { value: nickname } = event.target.elements.nickname;
     const formData = new FormData();
     if (nickname) formData.append('nickName', nickname);
-    formData.append('images', selectFile);
+    selectFile && formData.append('images', selectFile);
 
     profileUpdate(formData);
     closeModal(EditProfile);
   };
 
-  const nickNameHtml = (): ReactElement => {
+  const nickNameHtml = (): ReactElement | null => {
     if (isValidNickName === null) return null;
     if (isValidNickName === false)
       return (

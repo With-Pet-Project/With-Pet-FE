@@ -36,7 +36,7 @@ function TotalAccountItem({
 
 export default TotalAccountItem;
 
-const RangeBar = styled.div`
+const RangeBar = styled.div<{ percent: number }>`
   height: 100%;
   width: 0%;
   width: ${props => `${props.percent}%`};

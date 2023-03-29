@@ -22,15 +22,15 @@ export const fetchAccount = async (
 };
 
 type AddAccount = {
-  petId: number;
+  petId: number | string;
   feed: number;
   toy: number;
   hospital: number;
   beauty: number;
   etc: number;
   day: number;
-  month: number;
-  year: number;
+  month: number | string;
+  year: number | string;
 };
 
 export const addAccount = async ({
