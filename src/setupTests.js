@@ -6,6 +6,8 @@ import '@testing-library/jest-dom';
 // src/setupTests.js
 import { server } from 'lib/mockServer/server';
 // Establish API mocking before all tests.
+jest.spyOn(window, 'alert').mockImplementation(() => null);
+
 beforeAll(() => server.listen());
 
 // Reset any request handlers that we may add during the tests,

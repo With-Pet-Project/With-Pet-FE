@@ -14,9 +14,9 @@ import CommentArea from '../CommentArea/CommentArea';
 import Reply from './Reply/Reply';
 import { ReplyType, CommentType } from 'components/Article/types/types';
 
-type CommentProps = {
+interface CommentProps {
   comment: CommentType;
-};
+}
 
 function Comment({ comment }: CommentProps): JSX.Element {
   const user = useUser();

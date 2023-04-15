@@ -29,8 +29,8 @@ type AddAccount = {
   beauty: number;
   etc: number;
   day: number;
-  month: number | string;
-  year: number | string;
+  month: string;
+  year: string;
 };
 
 export const addAccount = async ({

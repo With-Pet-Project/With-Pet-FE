@@ -1,10 +1,10 @@
 import './CommentArea.scss';
 import React from 'react';
 
-type CommentAreaProps = {
+interface CommentAreaProps {
   comment: string;
   handleCommentValue: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
-};
+}
 
 function CommentArea({ comment, handleCommentValue }: CommentAreaProps) {
   return (

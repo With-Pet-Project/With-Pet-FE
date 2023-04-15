@@ -1,6 +1,11 @@
 import CLIENT from './client';
 
-export const getHealthInfo = async (jwt, petId, year, month) => {
+export const getHealthInfo = async (
+  jwt: string | null,
+  petId: string,
+  year: number,
+  month: number,
+) => {
   const response = await CLIENT.get(
     `/pet/${petId}/health/monthly?year=${year}&month=${month}`,
     {

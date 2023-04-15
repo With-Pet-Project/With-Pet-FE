@@ -2,21 +2,26 @@ import { render } from 'lib/test-utils/test-utils';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useUser } from 'components/auth/hooks/useUser';
-import Comment from './Comment';
+import { CommentType } from 'components/Article/types/types';
+import Comment from '../CommentsList/Comment';
 
 jest.mock('components/auth/hooks/useUser');
 
+afterEach(() => {
+  (useUser as jest.Mock).mockClear();
+});
+
 test('Comment 컴포넌트 수정 버튼 클릭 시, textArea생성 및 소멸', async () => {
-  const comment = {
+  const comment: CommentType = {
     commentId: 13,
     profileImg: null,
     nickName: '닉네임',
-    createdTime: '2023-03-07T05:12:40.982348',
-    modifiedTime: '2023-03-07T06:34:47.145994',
+    createdTime: new Date('2023-03-07T05:12:40.982348'),
+    modifiedTime: new Date('2023-03-07T06:34:47.145994'),
     content: '댓글 테스트',
   };
 
-  useUser.mockReturnValue({
+  (useUser as jest.Mock).mockReturnValue({
     nickName: '닉네임',
   });
 
@@ -35,4 +40,5 @@ test('Comment 컴포넌트 수정 버튼 클릭 시, textArea생성 및 소멸',
   await user.click(editButton);
 
   screen.queryByRole('textbox');
+  expect(editTextArea).not.toBeInTheDocument();
 });
