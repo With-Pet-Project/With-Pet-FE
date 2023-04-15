@@ -80,10 +80,10 @@ const getTotal = (
     return {
       ...acc,
       beauty: acc.beauty + (data.beauty || 0),
-      etc: acc.etc + (data.beauty || 0),
-      hospital: acc.hospital + (data.beauty || 0),
-      feed: acc.feed + (data.beauty || 0),
-      toy: acc.toy + (data.beauty || 0),
+      etc: acc.etc + (data.etc || 0),
+      hospital: acc.hospital + (data.hospital || 0),
+      feed: acc.feed + (data.feed || 0),
+      toy: acc.toy + (data.toy || 0),
     };
   }, initialJson);
 
