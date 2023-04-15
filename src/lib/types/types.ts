@@ -55,7 +55,7 @@ export interface Pet {
 // export type AccountDataItems = { [key: number]: AccountDataItem };
 
 export type Article = {
-  articleId: 53;
+  articleId: number;
   profileImg: string;
   nickName: string;
   title: string;

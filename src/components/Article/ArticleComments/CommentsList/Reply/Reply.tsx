@@ -3,9 +3,9 @@ import './Reply.scss';
 import dog from 'lib/assets/images/dog/md_icon.png';
 import { ReplyType } from 'components/Article/types/types';
 
-type ReplyProps = {
+interface ReplyProps {
   reply: ReplyType;
-};
+}
 
 function Reply({ reply }: ReplyProps) {
   const timeFormat = () => {

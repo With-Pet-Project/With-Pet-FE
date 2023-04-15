@@ -1,14 +1,15 @@
-export type ReplyType = {
+export interface ReplyType {
   createdTime: Date;
   profileImg?: string | null;
   nickName: string;
   content: string;
-};
+}
 
-export type CommentType = {
+export interface CommentType {
   commentId: number;
   createdTime: Date;
+  modifiedTime?: Date;
   profileImg: string;
   nickName: string;
   content: string;
-};
+}
