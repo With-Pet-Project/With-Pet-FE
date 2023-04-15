@@ -47,13 +47,13 @@ describe('가계부 테스트', () => {
     // 로그인 (id fixture로 바꿀까 생각중 ..)
     cy.database('filter', 'users').then(users => {
       ctx.users = users;
-      cy.visit(`${Cypress.env('CYPRESS_BASE_URL')}login`);
+      cy.visit(`${Cypress.env('baseUrl')}/login`);
 
       cy.login(ctx.users[0].id, ctx.users[0].password).then(jwt => {
         ctx.jwt = jwt;
       });
     });
-    cy.visit(`${Cypress.env('CYPRESS_BASE_URL')}account`);
+    cy.visit(`${Cypress.env('baseUrl')}/account`);
     cy.wait('@setPet');
     cy.wait('@setAccount');
     cy.log(ctx);
